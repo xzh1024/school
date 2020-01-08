@@ -1,0 +1,8 @@
+<!--index.wxml-->
+<view class="container">
+  <image src='/pages/images/logo04.jpg' class='logo'></image>
+  <text class='username'>hello,timo</text>
+  <view bindtap="bindViewTap" class='btn'>
+    和音乐一起分享时光
+  </view>
+</view>

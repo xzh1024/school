@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信测试首页</title>
+    <link href="../css/reset.css">
+</head>
+<body>
+    <form action="">
+        <ul>
+            <li>
+                <label for="username">用户名</label>
+                <input type="text" name="username" id="username" placeholder="用户名">
+            </li>
+            <li>
+                <label for="password">密&nbsp;码</label>
+                <input type="text" name="password" id="password" placeholder="密码">
+            </li>
+            <li>
+                <input type="button" value="提交" id="but">
+            </li>
+        </ul>
+    </form>
+    <script src="../js/jquery.min.js"></script>
+    <script>
+        $(function () {
+           $('#but').on('click', function() {
+               $.ajax({
+                   type: 'get',
+                   url: '/weixin/login',
+                   data: {},
+                   success: function (datas) {
+                       console.log(datas);
+                       if(datas.status == 1){
+                           var data = JSON.parse(datas.data);
+                       }
+                   },
+                   error: function (err) {
+                       console.log(err);
+                   }
+               })
+           });
+        });
+    </script>
+</body>
+</html>

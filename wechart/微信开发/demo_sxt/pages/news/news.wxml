@@ -1,0 +1,40 @@
+<!--pages/news/news.wxml-->
+<import src="newsTemplate/newsTemplate.wxml" />
+
+<view class='container-news'>
+  <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="key">
+      <swiper-item>
+        <image src="{{item}}" class="slide-image"/>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <block wx:for="{{newsData}}" wx:for-index="i" wx:for-item="item" wx:key="key">
+    <view bindtap="goNewsDetail" data-newsid="{{item.newsid}}">
+      <template is="newsTemp" data="{{...item}}"/>
+    </view>
+  </block>
+
+
+  
+  <view class='article'>
+    <view class='article-time'>
+      <image class='user-icon' src="{{newsData[0].authorIcon}}" ></image>
+      <text class='author'>timo</text>
+      <text class='date'>2018/11/30</text>
+    </view>
+    <text class='title'>「留恋咖啡时光」不眠夜的最佳伴侣</text>
+    <image class='article-img' src='/pages/images/banner05.jpg' ></image>
+    <text class='article-text'>
+     咖啡给了我冷夜里的温热，也给了我无数个不眠的夜。我在无眠中伴着它的芬芳，回味着一段段有咖啡和没有咖啡的日子。或欣然、或心酸，却把生活沉淀得简单起来。心头掠过一丝说不出的滋味，原来也正是咖啡的味道。一个人独处的咖啡时光总是美好的，自由，即兴，就像这些爵士乐一样……
+     </text>
+     <view class='tool'>
+      <image src='/pages/images/icon_like02.png'></image>
+      <text>12</text>
+      <image src='/pages/images/icon_news02.png'></image>
+      <text>30</text>
+     </view>
+  </view>
+</view>

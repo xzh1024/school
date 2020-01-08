@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传</title>
+</head>
+<body>
+<form action="http://localhost:8081/" method="post" enctype="multipart/form-data" id="form1">
+    文件：<input type="file" name="f1" id="imageFiles" onchange="setFile(event)"><br>
+    <input type="button" value="上传" id="fileBtn">
+</form>
+<script>
+    console.log(window.location)
+    var fileBtn = document.getElementById('fileBtn');
+    var f1 = document.getElementById('f1');
+    var file = '';
+    fileBtn.addEventListener('click', function () {
+        upload();
+    });
+
+    function setFile(e) {
+        let files = e.target.files || e.dataTransfer.files;
+        if (!files.length) return;
+        console.log(files[0])
+        file = files[0];
+    };
+
+    function upload() {
+        //1.创建对象
+        var xhr = new XMLHttpRequest();
+
+        //2.设置请求行
+        xhr.open('post', 'http://localhost:8081/');
+
+        //3.设置请求头(get请求可以省略，post不发送数据也可以省略)
+        // 如果使用的时 formData可以不写 请求头 写了 无法正常上传文件
+//        ajax.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//        ajax.setRequestHeader("Content-type","multipart/form-data");
+
+        //3.5注册回调函数
+//        xhr.onload = function () {
+//            console.log(xhr.responseText);
+//        }
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState == 4 && xhr.status == 200){
+                var data = xhr.responseText;
+//                data = JSON.parse(xhr.responseText)
+                console.log(data);
+                var img = new Image();
+                img.style.width = '300px';
+                img.src = window.location.origin + data;
+                document.body.appendChild(img);
+            }
+        };
+        // XHR2.0新增 上传进度监控
+        xhr.upload.onprogress = function (event) {
+              console.log(event);
+            var percent = event.loaded / event.total * 100 + '%';
+            console.log(percent);
+            // 设置 进度条内部step的 宽度
+//            document.querySelector('.step').style.width = percent;
+        }
+        //XHR2.0新增
+        let data = new FormData(document.getElementById('form1'));
+        xhr.send(data);
+
+
+    }
+
+    function uploadImageFile(){
+        var xhr = new XMLHttpRequest();
+        //定义表单变量
+        var file = document.getElementById('imageFiles').files;
+        //新建一个FormData对象
+        var formData = new FormData();
+        //追加文件数据
+        for(var i=0;i<file.length;i++){
+            formData.append("file["+i+"]", file[i]);
+        }
+//        console.log(file)
+//        console.log(formData)
+        //post方式
+        xhr.open('POST', 'http://localhost:8081/');
+        //发送请求
+        xhr.send(formData);
+        //success回调
+        xhr.onreadystatechange = function(){
+            if ( xhr.readyState == 4 && xhr.status == 200 ) {
+                console.log( xhr.responseText );
+                var data = xhr.responseText;
+                data = JSON.parse(xhr.responseText)
+                console.log(data);
+                var bufferData = data[0].buffer.data;
+                console.log(bufferData);
+                var blob = new Blob([bufferData], { type:'image/png' });
+                console.log(blob);
+                var reader = new FileReader();
+                reader.onload = function(){
+                    console.log(this.result);
+                    var img = new Image();
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    img.src = this.result;
+                    document.body.appendChild(img);
+                };
+                reader.readAsDataURL(blob);
+//                console.log(reader);
+
+
+
+//                var fr = new FileReader(),
+//                    blob;
+//                fr.onload = function() {
+//                    blob = new Blob(data[0]);
+//                };
+//                fr.readAsArrayBuffer(data[0]);
+//                if (data.code == 100) {
+//                    //insertPhotoList(data.userPhotos); 这里传过来的是一个List<model>，做页面逻辑处理的
+//                } else if (data.code == 101) {
+//                    aler('上传图片不符合要求');
+//                } else if (data.code == 102){
+//                    var update_vip_url = 'update_vip_url';
+//                    alert('您目前是普通会员，图片文件不可超过5M|升级会员可上传更大文件立即升级会员');
+//                } else if (data.code == 103) {
+//                    alert('您目前是VIP会员，图片文件不可超过50M');
+//                }
+
+            }
+        };
+        //设置超时时间
+        xhr.timeout = 100000;
+        xhr.ontimeout = function(event){}
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+数据库
+
+NodeJS不支持MySQL
+
+npm
+
+服务端：
+客户端：
+        node的mysql模块
+
+1.连接
+2.查询（发送请求）
+
+
+SQL
+结构化查询语言(Structured Query Language)简称SQL(发音：/ˈes kjuː ˈel/ "S-Q-L")，
+是一种特殊目的的编程语言，是一种数据库查询和程序设计语言，用于存取数据以及查询、更新和管理关系数据库系统；
+同时也是数据库脚本文件的扩展名。
+4大查询语句——增删改查
+
+增-INSERT
+    INSERT INTO 表 (字段列表) VALUES(值列表)
+    INSERT INTO `user_table` (`ID`, `username`, `password`) VALUES(0, 'blue', '666666');
+
+删-DELETE
+
+改-UPDATE
+
+查-SELECT
+    SELECT 什么 FRCM 表
+    SELECT * FROM `user_table`;
+
+SQL标准写法：
+1.关键字大写
+2.库、表、字段需要加上``（反引号）
+
+————————————————————————————————————————————————————————————
+
+1.下载mysql模块(client)
+2.连接
+     var db = mysql.createConnection({
+         host:'localhost',
+         // port: 3306, //端口号
+         user: 'root',
+         password: '123456',
+         database: '20180929'
+     });
+3.查询
+    db.quer(SQL语句, (err， data) => {
+        //回调
+    });
+4.SQL语句
+    增删改查
+
+————————————————————————————————————————————————————————————

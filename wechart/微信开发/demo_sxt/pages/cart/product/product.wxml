@@ -1,0 +1,6 @@
+<!--pages/cart/product/product.wxml-->
+<view class="container" bindtap='cartAnimation'>
+  <view animation="{{animationY}}" style="position:fixed; top:{{ballY}}px;" hidden="{{!showBall}}">
+    <view class="ball" animation="{{animationX}}" style="position:fixed; left:{{ballX}}px;"></view>
+  </view>
+</view>

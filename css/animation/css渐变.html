@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #grad {
+            width: 500px;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        #grad1 {
+            height: 200px;
+            background: -webkit-repeating-linear-gradient(45deg,red,blue 7%,green 10%); /* For Safari 5.1 to 6.0 */
+            background: -o-repeating-linear-gradient(45deg,red,blue 7%,green 10%); /* For Opera 11.1 to 12.0 */
+            background: -moz-repeating-linear-gradient(45deg,red,blue 7%,green 10%); /* For Firefox 3.6 to 15 */
+            background: repeating-linear-gradient(45deg,red,blue 7%,green 10%); /* 标准语法 (必须在最后) */
+        }
+
+        #grad2 {
+            height: 200px;
+            background: repeating-linear-gradient(90deg,red, red 2%, green, green 4%, blue, blue 6%);
+            transform: rotate(45deg);
+        }
+
+        #grad3 {
+            height: 200px;
+            background: -webkit-repeating-linear-gradient(90deg,red,blue 7%,green 10%); /* For Safari 5.1 to 6.0 */
+            background: -o-repeating-linear-gradient(90deg,red,blue 7%,green 10%); /* For Opera 11.1 to 12.0 */
+            background: -moz-repeating-linear-gradient(90deg,red,blue 7%,green 10%); /* For Firefox 3.6 to 15 */
+            background: repeating-linear-gradient(90deg,red,blue 7%,green 10%); /* 标准语法 (必须在最后) */
+        }
+    </style>
+</head>
+<body>
+<div id="grad"><div id="grad2"></div></div>
+<!--<div id="grad1"></div>-->
+
+<!--<div id="grad3"></div>-->
+</body>
+</html>

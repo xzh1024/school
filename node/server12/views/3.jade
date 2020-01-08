@@ -1,0 +1,17 @@
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    title
+        style
+        script(scr="a.js")
+        link(href="a.css",rel="stylesheet")
+    body
+        div(style="width:200px;height:200px;background:red")
+        div(style={width: '200px', height: '200px', background: 'red'})
+        div(title={width: '200px', height: '200px', background: 'red'})
+        div(class="aaa left-sweap active")
+        div(class=['aaa', 'left-sweap', 'active'])
+        div.class
+        div#id
+        div(title="aaa",id="div1")
+        div&attributes({title:"aaa",id:"div1"})

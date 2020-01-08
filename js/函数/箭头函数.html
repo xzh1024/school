@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数this指向</title>
+    <style>
+        body{
+            width: 50vw;
+            height: 50vh;
+        }
+    </style>
+</head>
+<body>
+<script>
+    // const obj = {
+    //     o: 1,
+    //     getA: function(){
+    //         console.log(this)
+    //     }
+    // }
+    // obj.getA()
+    var handler = {
+        id: '123456',
+
+        init: () => {
+            document.addEventListener('click', event => {
+                this.doSomething(event.type);
+                console.log(this);
+            }, false);
+        },
+
+        doSomething: function(type) {
+            console.log('Handling ' + type  + ' for ' + this.id);
+        }
+    };
+    handler.init()
+</script>
+</body>
+</html>

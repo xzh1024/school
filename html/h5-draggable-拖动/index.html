@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+    <style type="text/css">
+        #div1, #div2 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
+    <script>
+        function allowDrop(ev)
+        {
+            ev.preventDefault();
+        }
+
+        // 元素正在拖动时触发
+        function drag(ev)
+        {
+            // 在进行拖放操作时，DataTransfer 对象用来保存，通过拖放动作，拖动到浏览器的数据。它可以保存一项或多项数据、一种或者多种数据类型。
+            console.log(ev.target.id);
+            ev.dataTransfer.setData("Text",ev.target.id);
+            // ev.dataTransfer.setData("Text",ev.target.className);
+        }
+
+        // 在一个拖动过程中，释放鼠标键时触发此事件
+        function drop(ev)
+        {
+            console.log('释放鼠标键');
+            console.log(ev);
+            console.log(ev.dataTransfer);
+            ev.preventDefault();
+            var data=ev.dataTransfer.getData("Text");
+            // var data='.'+ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(data));
+            // ev.target.appendChild(document.querySelector(data));
+        }
+        function show(e){
+            console.log(e.target.src);
+        }
+    </script>
+</head>
+<body>
+
+<p>拖动 RUNOOB.COM 图片到矩形框中:</p>
+
+<!-- ondrop - 在一个拖动过程中，释放鼠标键时触发此事件        ondragover - 当某被拖动的对象在另一对象容器范围内拖动时触发此事件 -->
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <img id="drag1" src="https://www.runoob.com/images/logo.png" draggable="true" ondragstart="drag(event)" ondrag="show(event)" width="336" height="69" ondragend="console.log('完成元素拖动')">
+</div>
+<br>
+<!-- ondragstart - 用户开始拖动元素时触发 -->
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+</body>
+</html>

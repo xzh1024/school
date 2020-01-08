@@ -1,0 +1,34 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='container-banner'>
+    <swiper indicator-dots="{{banners.indicatorDots}}"
+      autoplay="{{banners.autoplay}}" interval="{{banners.interval}}" duration="{{banners.duration}}">
+      <block wx:for="{{banners.list}}" wx:key="key">
+        <swiper-item>
+          <image src="{{item.img}}" class="slide-image"/>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <view class='container-game'>
+    <view class='cell'>
+      <view class='cell-left'>
+        <image class="cell-image" src=""/>
+      </view>
+      <view class='cell-content'>
+        <view>口袋妖怪复刻</view>
+        <view>策略•动作</view>
+        <view>
+          <text>送VIP8</text>
+          <text>送18888钻石</text>
+          <text>100W金币</text>
+        </view>
+        <view>经典回忆复刻，解放双手，收集百样精灵</view>
+      </view>
+      <view class='cell-right'>
+        <view class='cell-btn'>申请返利</view>
+      </view>
+    </view>
+  </view>
+</view>

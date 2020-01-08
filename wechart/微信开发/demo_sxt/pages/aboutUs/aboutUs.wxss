@@ -1,0 +1,6 @@
+/* pages/aboutUs/aboutUs.wxss */
+
+.audio{
+  width: 200rpx;
+  height: 200rpx;
+}

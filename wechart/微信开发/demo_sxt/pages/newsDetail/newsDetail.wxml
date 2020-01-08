@@ -1,0 +1,25 @@
+<!--pages/newsDetail/newsDetail.wxml-->
+<view class='container-news-detail'>
+  <image class='authorImg' bindtap='show' src="{{newsDetailData.authorImg}}"></image>
+  
+  <!-- <text>新闻详情{{newsDetailData.newsid}}</text>
+  <view>{{newsDetailData.title}}</view>
+  <button open-type="share">按钮</button> -->
+  <view class='article'>
+    <view class='article-time'>
+      <image class='user-icon' src="{{newsDetailData.authorIcon}}" ></image>
+      <text class='author'>{{newsDetailData.authorName}}</text>
+      <text class='date'>发表于 {{newsDetailData.authorDate}}</text>
+    </view>
+    <text class='title'>{{newsDetailData.title}}</text>
+    <view class='tool'>
+      <image src='/pages/images/icon_like02.png'></image>
+      <text>{{newsDetailData.likeSum}}</text>
+      <image src='/pages/images/icon_news02.png'></image>
+      <text>{{newsDetailData.commentSum}}</text>
+      <image bindtap='onMusicTap' class='audio' src="{{isPlayingMusic?'/pages/images/music_start.png':'/pages/images/music_stop.png'}}"></image>
+    </view>
+    <!-- <image class='article-img' src="{{authorImg}}" ></image> -->
+    <text class='article-text'>{{newsDetailData.authorText}}</text>
+  </view>
+</view>

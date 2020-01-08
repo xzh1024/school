@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font-Awesome -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <!-- Google Webfonts -->
+    <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|PT+Serif:400,400italic' rel='stylesheet' type='text/css'>-->
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" id="theme-styles">
+</head>
+<body>
+    <header>
+        <div class="widewrapper masthead">
+            <div class="container-fluid">
+                <h1 id="logo" class="pull-left"><a href="index.html">toast</a></h1>
+                <nav class="pull-right clean-nav">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav nav-pills navbar-nav">
+                            <li>
+                                <a href="index.html">首页</a>
+                            </li>
+                            <li>
+                                <a href="about.html">关于我</a>
+                            </li>
+                            <li>
+                                <a href="contact.html">联系</a>
+                            </li>                        
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="widewrapper subheader">
+            <div class="container-fluid">
+                <div class="clean-breadcrumb">
+                    &emsp;<a href="javascript:showBlog()">博客</a>
+                    <!--<span class="separator">&#x2F;</span>
+                    <a href="#" class="hidden">类型</a>
+                    <span class="separator hidden">&#x2F;</span>
+                    <a href="#" class="hidden">内容</a>-->
+                </div>
+                <div class="clean-searchbox">
+                    <form action="#" method="get" accept-charset="utf-8">
+                        <input class="searchfield" id="searchbox" type="text" placeholder="搜索">
+                        <button class="searchbutton" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="widewrapper main">
+        <div class="container-fluid">
+            <div class="row">
+            	<!--帖子列表-->
+                <div class="col-sm-8 blog-main">
+                	<div class="row" id="artcontent">
+                	<!--帖子展示区-->
+                	</div>
+                    <div class="paging">
+                        <a href="javascript:void(0)" id="moreArt" class="">更多帖子</a>
+                    </div>
+                </div>
+                <!--类型帖子列表-->
+                <div class="col-sm-8 blog-main hidden">
+                	<div class="row" id="artSimilar">
+                	<!--类型帖子展示区-->
+                	</div>
+                </div>
+                <!--帖子内容-->
+                <div class="col-md-8 blog-main hidden">
+                    <article class="blog-post">
+                        <header>
+                            <div class="lead-image">
+                                <img src="#" alt="" class="img-responsive">
+                            </div>
+                        </header>
+                        <div class="body">
+                            <h1 id="title"></h1>
+                            <div class="meta">
+                                <i class="fa fa-user"></i><span id="writer"></span><i class="fa fa-calendar"></i><span id="time"></span><i class="fa fa-comments"></i><span class="data"><a href="#comments">3 评论</a></span>
+                            </div>
+                            <pre id="content"></pre>
+                        </div>
+                    </article>
+
+                    <aside class="social-icons clearfix">
+                        <h3>分享</h3> 
+                        <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-google"></i></a>
+                    </aside>
+
+                    <aside class="comments" id="comments">
+                        <hr>
+
+                        <h2><i class="fa fa-comments"></i> 6 评论</h2>
+
+                        <article class="comment">
+                            <header class="clearfix">
+                                <img src="img/avatar.png" alt="A Smart Guy" class="avatar">
+                                <div class="meta">
+                                    <h3><a href="#">John Doe</a></h3>
+                                    <span class="date">
+                                        24 August 2015
+                                    </span>
+                                    <span class="separator">
+                                        -
+                                    </span>
+                                    
+                                    <a href="#create-comment" class="reply-link">Reply</a>                
+                                </div>
+                            </header>
+                             <div class="body">
+                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sit perspiciatis debitis, vel ducimus praesentium expedita, assumenda ipsum cum corrupti dolorum modi. Rem ipsam similique sapiente obcaecati tenetur beatae voluptatibus.
+                            </div>
+                        </article>
+
+                        <article class="comment reply">
+                            <header class="clearfix">
+                                <img src="img/avatar.png" alt="A Smart Guy" class="avatar">
+                                <div class="meta">
+                                    <h3><a href="#">John Doe</a></h3>
+                                    <span class="date">
+                                        24 August 2015
+                                    </span>
+                                    <span class="separator">
+                                        -
+                                    </span>
+                                    
+                                    <a href="#create-comment" class="reply-link">Reply</a>                
+                                </div>
+                            </header>
+                             <div class="body">
+                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sit perspiciatis debitis, vel ducimus praesentium expedita, assumenda ipsum cum corrupti dolorum modi. Rem ipsam similique sapiente obcaecati tenetur beatae voluptatibus.
+                            </div>
+                        </article>
+
+                        <article class="comment ">
+                            <header class="clearfix">
+                                <img src="img/avatar.png" alt="A Smart Guy" class="avatar">
+                                <div class="meta">
+                                    <h3><a href="#">John Doe</a></h3>
+                                    <span class="date">
+                                        24 August 2015
+                                    </span>
+                                    <span class="separator">
+                                        -
+                                    </span>
+                                    
+                                    <a href="#create-comment" class="reply-link">Reply</a>                
+                                </div>
+                            </header>
+                             <div class="body">
+                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sit perspiciatis debitis, vel ducimus praesentium expedita, assumenda ipsum cum corrupti dolorum modi. Rem ipsam similique sapiente obcaecati tenetur beatae voluptatibus.
+                            </div>
+                        </article>
+
+                        <article class="comment">
+                            <header class="clearfix">
+                                <img src="img/avatar.png" alt="A Smart Guy" class="avatar">
+                                <div class="meta">
+                                    <h3><a href="#">John Doe</a></h3>
+                                    <span class="date">
+                                        24 August 2015
+                                    </span>
+                                    <span class="separator">
+                                        -
+                                    </span>
+                                    
+                                    <a href="#create-comment" class="reply-link">Reply</a>                
+                                </div>
+                            </header>
+                             <div class="body">
+                               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere sit perspiciatis debitis, vel ducimus praesentium expedita, assumenda ipsum cum corrupti dolorum modi. Rem ipsam similique sapiente obcaecati tenetur beatae voluptatibus.
+                            </div>
+                        </article>        
+                    </aside>
+
+                    <aside class="create-comment" id="create-comment">
+                        <hr>    
+
+                        <h2><i class="fa fa-pencil"></i> Add Comment</h2>
+
+                        <form action="#" method="get" accept-charset="utf-8">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" name="name" id="comment-name" placeholder="昵称" class="form-control input-lg">    
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" name="email" id="comment-email" placeholder="Email" class="form-control input-lg">    
+                                </div>
+                            </div>
+
+                            <input type="url" name="name" id="comment-url" placeholder="微信" class="form-control input-lg">
+
+                            <textarea rows="10" name="message" id="comment-body" placeholder="留下你想说的..." class="form-control input-lg"></textarea>
+
+                            <div class="buttons clearfix">
+                                <button type="submit" class="btn btn-xlarge btn-clean-one">提交</button>
+                            </div>
+                        </form>
+                    </aside>
+                </div>
+                <aside class="col-sm-4 blog-aside">
+                    <div class="aside-widget">
+                        <header>
+                            <h3>精选帖子</h3>
+                        </header>
+                        <div class="body">
+                            <ul class="clean-list" id="artList">
+                                <!--<li><a href="">清洁 - 响应式HTML5模板 <small class="pull-right">2015.07.21</small></a></li>
+                                <li><a href="">CSS3实现炫酷动画<small class="pull-right">2015.09.07</small></a></li>
+                                <li><a href="">Bootstrap快速入门<small class="pull-right">2017.04.15</small></a></li>
+                                <li><a href="">如何实现响应式页面<small class="pull-right">2017.06.30</small></a></li>
+                                <li><a href="">webpack</a><small class="pull-right">2017.07.18</small></li>
+                                <li><a href="">Vue2.0</a><small class="pull-right">2017.10.30</small></li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="aside-widget">
+                        <header>
+                            <h3>相关文章</h3>
+                        </header>
+                        <div class="body">
+                            <ul class="clean-list">
+                                <li><a href="">Blackor Responsive Theme</a></li>
+                                <li><a href="">Portfolio Bootstrap Template</a></li>
+                                <li><a href="">Clean Slider Template</a></li>
+                                <li><a href="">Clean - Responsive HTML5 Template</a></li>
+                                <li><a href="">Responsive Pricing Table</a></li>
+                                <li><a href="">Yellow HTML5 Template</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="aside-widget">
+                        <header>
+                            <h3>标签</h3>
+                        </header>
+                        <div class="body clearfix">
+                            <ul class="tags">
+                                <li><a href="javascript:showSimilar('HTML5')">HTML5</a></li>
+                                <li><a href="javascript:showSimilar('CSS3')">CSS3</a></li>
+                                <li><a href="javascript:showSimilar('JavaScript')">JavaScript</a></li>
+                                <li><a href="javascript:showSimilar('Nodejs')">Nodejs</a></li>
+                                <li><a href="javascript:showSimilar('MongoDB')">MongoDB</a></li>
+                                <li><a href="javascript:showSimilar('Bootstrap')">Bootstrap</a></li>
+                                <li><a href="javascript:showSimilar('React')">React</a></li>                     
+                            </ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="widewrapper footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4 footer-widget">
+                        <h3> <i class="fa fa-user"></i>关于</h3>
+                        <p>非常感谢我的朋友以及各个论坛上爱分享的技术的大牛这个博客才得以上线运行，对于在Linux服务器部署环境，我也是第一次接触，实际操作中也遇到了各种问题，很多时候都认为自己完成不了，想放弃，但最后还是坚持下来了。多尝试，多搜索，细心一点就能部署成功。为此我也写了博客记录一下部署过程，好记性不如烂笔头，以后忘记了查一下博客很快就能弄明白。</p>
+                        <p>这也是我创建这个个人博客的意义所在，记录，让自己更强大，希望也能帮助到别人，解决一些困难。</p>
+                        <p>也希望能够帮助其他刚接触linux部署的小伙伴。这个博客也不算是原创，算是整理其他博友的教程，各位可以随意转载。</p>
+                    </div>
+                    <div class="col-sm-4 footer-widget">
+                        <h3> <i class="fa fa-pencil"></i> 最近帖文</h3>
+                        <ul class="clean-list">
+                            <li><a href="">Js拨打电话的方法</a></li>
+                            <li><a href="">Object.defineProperty</a></li>
+                            <li><a href="">js中数组遍历的几种方法及其区别</a></li>
+                            <li><a href="">利用原型对原始对象的方法进行扩展</a></li>
+                            <li><a href="">网站内容禁止复制和粘贴、另存为的js代码</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-4 footer-widget">
+                        <h3> <i class="fa fa-envelope"></i>联系我</h3>
+
+                        <p>如果你也热爱生活，热爱前端，请留下联系方式，我们可以聊聊前端，分享技术</p>
+                        <p>海内存知己天涯若比邻</p>
+                        <p>Q&emsp;Q：76690604</p>
+                        <p>Email：18090202066@163.com</p>
+                        <div class="footer-widget-icon">
+                            <i class="fa fa-facebook"></i><i class="fa fa-twitter"></i><i class="fa fa-google"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="widewrapper copyright">
+            <a href="" target="_blank">Everyone's heart is a piece of sea, shining bottomless blue.</a>
+        </div>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/template.js"></script>
+    <!--<h3><a href="singles.html?id={{v._id}}">{{v.title}}</a></h3>-->
+    <script type="text/html" id="tmplmain">
+        {{each list as v i}}
+        	<div class="col-sm-6">
+	            <article class="blog-teaser">
+	                <header>
+	                    <img src="{{v.img}}" alt="">
+	                    <h3><a href="javascript:mainSwitch('{{v._id}}')">{{v.title}}</a></h3>
+	                    <span class="meta">{{v.time}}，{{v.writer}}</span>
+	                </header>
+	            </article>
+            </div>
+            {{if i%2==1}}
+            	<p class="col-sm-12"></p>
+            {{/if}}
+	    {{/each}}
+	</script>
+    <script type="text/html" id="tmpllist">
+    	{{each list as v i}}
+            <li><a href="javascript:mainSwitch('{{v._id}}')">{{v.title}} <small class="pull-right">{{v.time}}</small></a></li>
+	    {{/each}}
+    </script>
+    <script type="text/javascript">
+    	$(function() {
+    		//计数器
+    		var tally=1;
+    		var flag = true;
+    		showArticle();
+    		function showArticle() {
+//  			var sign = tally?i:tally;
+    			$.ajax({
+		            type: "get",//数据发送的方式（post 或者 get）
+		            url: "showArticle.html",//要发送的后台地址
+		            data: {"tally":tally},//要发送的数据（参数）格式为{'val1':"1","val2":"2"}
+		            dataType: "json",//后台处理后返回的数据格式
+		            success: function (data) {//ajax请求成功后触发的方法
+		            	//获取加载按钮的开关
+		            	var token = data.pop(data).token;
+		            	//判如果成立则隐藏加载更多文章按钮
+		            	if(token){
+		            		$('#moreArt').addClass('hidden');
+		            	}
+		            	//拼接数据
+		            	var html = template('tmplmain',{"list":data});
+		            	//添加到页面
+						$('#artcontent').append(html);
+//						tally++;
+						if(flag){
+							$('#moreArt').on('click',showArticle);
+							flag = false;
+						}
+						//计数器自动加1
+						tally++;
+		            },
+		            error: function (msg) {//ajax请求失败后触发的方法
+		                alert(msg);//弹出错误信息
+		            }
+		        });
+    		}
+    		//精选帖子
+    		(function() {
+    			$.ajax({
+		            type: "get",//数据发送的方式（post 或者 get）
+		            url: "showList.html",//要发送的后台地址
+		            data: {"tally":tally},//要发送的数据（参数）格式为{'val1':"1","val2":"2"}
+		            dataType: "json",//后台处理后返回的数据格式
+		            success: function (data) {//ajax请求成功后触发的方法
+		            	//获取加载按钮的开关
+//		            	var token = data.pop(data).token;
+		            	var html = template('tmpllist',{"list":data});
+    					artList.innerHTML = html;
+		            },
+		            error: function (msg) {//ajax请求失败后触发的方法
+		                alert(msg);//弹出错误信息
+		            }
+		        });
+    		})();
+    	});
+    	//类型文章
+    	function showSimilar(sim) {
+			$.ajax({
+	            type: "get",
+	            url: "showSimilar.html",
+	            data: {"sim":sim},
+	            dataType: "json",
+	            success: function (data) {
+	            	$('.blog-main').addClass('hidden');
+//	            	$('.blog-main:first').addClass('hidden');
+					$('.blog-main:eq(1)').removeClass('hidden');
+//					$('.blog-main:last').addClass('hidden');
+//	            	$('#moreArt').addClass('hidden');
+//	            	$('#similar').removeClass('hidden');
+	            	//拼接数据
+	            	var html = template('tmplmain',{"list":data});
+	            	//添加到页面
+					$('#artSimilar').html(html);
+	            },
+	            error: function (msg) {//ajax请求失败后触发的方法
+	                alert(msg);//弹出错误信息
+	            }
+	        });
+		}
+    	//显示文章内容
+    	function mainSwitch(id) {
+			$.ajax({
+	            type: "get",//数据发送的方式（post 或者 get）
+	            url: "mainSwitch.html",//要发送的后台地址
+	            data: {"id":id},//要发送的数据（参数）格式为{'val1':"1","val2":"2"}
+	            dataType: "json",//后台处理后返回的数据格式
+	            success: function (data) {//ajax请求成功后触发的方法
+	            	//获取加载按钮的开关
+//		            	var token = data.pop(data).token;
+//	            	var html = template('tmpllist',{"list":data});
+//					artList.innerHTML = html;
+					$('.blog-main').addClass('hidden');
+//					$('.blog-main:first').addClass('hidden');
+//					$('.blog-main:eq(1)').addClass('hidden');
+					$('.blog-main:last').removeClass('hidden');
+					//console.log(data);
+					$('.img-responsive').attr('src',data.img)
+					$('#title').html(data.title);
+					$('#writer').html(data.writer);
+					$('#time').html(data.time);
+					$('#content').html(data.content);
+	            },
+	            error: function (msg) {//ajax请求失败后触发的方法
+	                alert(msg);//弹出错误信息
+	            }
+	        });
+		}
+    	//博客
+    	function showBlog() {
+    		$('.blog-main').addClass('hidden');
+    		$('.blog-main:first').removeClass('hidden');
+//  		$('.blog-main:eq(1)').addClass('hidden');
+//			$('.blog-main:last').addClass('hidden');
+    	}
+    </script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<image catchtap='onMusicTap' class='audio' src="{{isPlayingMusic?'../images/music_start.png':'../images/music_stop.png'}}"></image>

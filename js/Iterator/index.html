@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterator（遍历器）</title>
+</head>
+<body>
+<script>
+    var it = makeIterator(['a', 'b']);
+
+    console.log(it.next()) // { value: "a", done: false }
+    console.log(it.next()) // { value: "b", done: false }
+    console.log(it.next()) // { value: undefined, done: true }
+
+    // function makeIterator(array) {
+    //     var nextIndex = 0;
+    //     return {
+    //         next: function() {
+    //             return nextIndex < array.length ?
+    //                 {value: array[nextIndex++], done: false} :
+    //                 {value: undefined, done: true};
+    //         }
+    //     };
+    // }
+    function makeIterator(array) {
+        var nextIndex = 0;
+        return {
+            next: function() {
+                return nextIndex < array.length ?
+                    {value: array[nextIndex++]} :
+                    {done: true};
+            }
+        };
+    }
+
+    var obj = { x: 'a', y: 'b', z: 'c' };
+    obj[Symbol.iterator] = function() {
+        let _this = this;
+        let keys = Object.keys(this);
+        console.log(keys);
+        return {
+            next: function() {
+                console.log(this);
+                return this._countDown < 3 ?
+                    {value: _this[keys[this._countDown]], index: ++this._countDown} :
+                    {done: true};
+                // if (this._countDown === 3) {
+                //     const lastValue = this._countDown;
+                //     return { value: this._countDown, done: true };
+                // }
+                // this._countDown = this._countDown + 1;
+                // return { value: this._countDown, done: false };
+            },
+            _countDown: 0
+        };
+    };
+    var list = [...obj]; // TypeError
+    console.log(list);
+</script>
+</body>
+</html>

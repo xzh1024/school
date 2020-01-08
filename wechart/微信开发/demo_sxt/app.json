@@ -1,0 +1,48 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/aboutUs/aboutUs",
+    "pages/news/news",
+    "pages/newsDetail/newsDetail",
+    "pages/movie/movie",
+    "pages/movie/movieMore/movieMore",
+    "pages/movie/movieDetail/movieDetail",
+    "pages/cart/cart",
+    "pages/cart/product/product"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#CD5C5C",
+    "navigationBarTitleText": "麋鹿",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "selectedColor": "#333",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/images/07_icon_youxi.png",
+        "selectedIconPath": "pages/images/07_icon_youxi_liang.png"
+      },
+      {
+        "pagePath": "pages/movie/movie",
+        "text": "影与评",
+        "iconPath": "pages/images/08_icon_kaifubiao.png",
+        "selectedIconPath": "pages/images/08_icon_kaifubiao_liang.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "pages/images/07_icon_youxi.png",
+        "selectedIconPath": "pages/images/07_icon_youxi_liang.png"
+      },
+      {
+        "pagePath": "pages/aboutUs/aboutUs",
+        "text": "关于我们",
+        "iconPath": "pages/images/08_icon_kaifubiao.png",
+        "selectedIconPath": "pages/images/08_icon_kaifubiao_liang.png"
+      }
+    ]
+  }
+}

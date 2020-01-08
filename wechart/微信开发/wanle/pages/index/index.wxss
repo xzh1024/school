@@ -1,0 +1,48 @@
+/**index.wxss**/
+.container-banner{
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f1f1f1;
+}
+
+.slide-image{
+  width: 100%;
+  height: 300rpx;
+}
+
+.container-game{width: 100%;}
+.cell{
+    height: 150rpx;
+    display: flex;
+    align-items: center;
+    padding: 5rpx 10rpx;
+    overflow: hidden
+}
+.cell-left{
+
+}
+.cell-image{
+  width: 120rpx;
+  height: 120rpx;
+  border: 1rpx solid #00ccff;
+  border-radius: 3rpx
+}
+.cell-content{
+  flex: 1;
+  padding: 0 5rpx;
+  font-size: 12px;
+}
+.cell-right{
+  
+}
+.cell-btn{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  border: 1rpx solid #00ccff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

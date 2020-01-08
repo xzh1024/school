@@ -1,0 +1,81 @@
+<import src="../starTemplate/starTemplate.wxml" />
+
+<view class='container-movie-detail' wx:if="{{flag}}">
+  <view class='movie-title'>{{movieData.titleCn}}</view>
+  <view class='subject-info'>
+    <view class='subject-info-left'>
+      <view class='movie-score'>
+        <template is="starTemplate" data="{{...movieData}}"/>
+        <view class='score-count'>{{movieData.scoreCount}}人点赞</view>
+      </view>
+      <view>
+        片长：{{movieData.runTime}}
+      </view>
+      <view>
+        类型：{{movieData.type}}
+      </view>
+      <view>
+        导演：{{movieData.directors}}
+      </view>
+      <view>
+        主要演员：{{movieData.actors}}
+      </view>
+      <view>
+        上映时间：{{movieData.release.date + "(" + movieData.release.location + ")"}}
+      </view>
+    </view>
+    <image class='subject-info-right' src="{{movieData.image}}"></image>
+  </view>
+  <!-- <view>
+    <text>想看</text>
+    <text>看过</text>
+  </view> -->
+  <view class='intro'>
+    <view class='intro-title'>剧情简介</view>
+    <text class='intro-content'>{{movieData.content}}</text>
+  </view>
+  <view class='section'>
+    <view class='title'>
+      <text class='title-left'>{{movieData.personCount}}位演职员</text>
+      <view class='title-right'>
+        <text>更多</text>
+        <image class="icon_right" src="/pages/images/icon_right.png"></image>
+      </view>
+    </view>
+    <!-- <scroll-view scroll-y style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+  </scroll-view> -->
+    <scroll-view class='clerk-list' scroll-x="true" style="width: 100%">
+      <view class="clerk">
+        <image class="clerk-img" src="{{movieData.director.directorImg}}"></image>
+        <view class="clerk-name">{{movieData.director.directorName}}</view>
+        <view class="clerk-job">导演</view>
+      </view>
+      <block wx:for="{{movieData.actorList}}" wx:for-index="idx" wx:for-item="item" wx:key="{{key}}">
+        <view class="clerk">
+          <image class="clerk-img" src="{{item.actorImg}}"></image>
+          <view class="clerk-name">{{item.actor}}</view>
+          <view class="clerk-job">演员</view>
+        </view>
+      </block>
+      <block wx:for="{{movieData.actorList}}" wx:for-index="idx" wx:for-item="item" wx:key="{{key}}">
+        <view class="clerk">
+          <image class="clerk-img" src="{{item.actorImg}}"></image>
+          <view class="clerk-name">{{item.actor}}</view>
+          <view class="clerk-job">演员</view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class='section'>
+    <view class='title'>
+      <text class='title-left'>{{movieData.imageCount}}张图片</text>
+      <view class='title-right'>
+        <text>更多</text>
+        <image class="icon_right" src="/pages/images/icon_right.png"></image>
+      </view>
+    </view>
+    <view class='movie-images'>
+      <image wx:for="{{movieData.images}}" wx:for-index="idx" wx:for-item="item" wx:key="{{key}}" src="{{item}}"></image>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "shop": "院落创意菜",
+    "picture": "http://img.ivsky.com/img/tupian/t/201601/10/baixiangguo-005.jpg",
+    "product": "百香果（冷饮）1扎",
+    "price": 19.9,
+    "ifCommented": true
+  },
+  {
+    "id": 2,
+    "shop": "正一味",
+    "picture": "http://img.ivsky.com/img/tupian/t/201601/10/baixiangguo-005.jpg",
+    "product": "肥牛石锅拌饭+鸡蛋羹1份",
+    "price": 29,
+    "ifCommented": false
+  },
+  {
+    "id": 3,
+    "shop": "Salud冻酸奶",
+    "picture": "http://img.ivsky.com/img/tupian/t/201601/10/baixiangguo-005.jpg",
+    "product": "冻酸奶（小杯）1杯",
+    "price": 20,
+    "ifCommented": false
+  }
+]

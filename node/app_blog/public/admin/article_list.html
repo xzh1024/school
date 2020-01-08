@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>文章列表</title>
+		<link href="images/index.css" type="text/css" rel="stylesheet"/>
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/template.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>网站后台管理系统</h1>
+			<p>
+				<a href="index.html"><span class="icon home"></span>系统首页</a>
+				<a href="#"><span class="icon quit"></span>安全退出</a>
+			</p>
+		</header>
+		<section>
+			<nav>
+				<h3>欢迎您来到管理后台</h3>
+				<p>登陆名：<strong>Admin</strong><br/>身　份：<strong>超级管理员</strong></p>
+				<dl>
+					<dt><span class="icon board"></span>单页管理</dt>
+					<dd>
+						<a href="#">-&emsp;新增单页</a>
+						<a href="#">-&emsp;单页列表</a>
+					</dd>
+					<dt><span class="icon news"></span>文章管理</dt>
+					<dd>
+						<a href="article_new.html">-&emsp;发布文章</a>
+						<a href="article_list.html">-&emsp;文章列表</a>
+						<a href="#">-&emsp;文章分类</a>
+					</dd>
+					<dt><span class="icon pro"></span>产品管理</dt>
+					<dd>
+						<a href="#">-&emsp;新增产品</a>
+						<a href="#">-&emsp;产品列表</a>
+						<a href="#">-&emsp;产品分类</a>
+					</dd>
+					<dt><span class="icon book"></span>留言管理</dt>
+					<dd>
+						<a href="#">-&emsp;留言列表</a>
+					</dd>
+					<dt><span class="icon flink"></span>友情连接管理</dt>
+					<dd>
+						<a href="#">-&emsp;新增连接</a>
+						<a href="#">-&emsp;连接列表</a>
+					</dd>
+					<dt><span class="icon admin"></span>管理员管理</dt>
+					<dd>
+						<a href="#">-&emsp;新增管理员</a>
+						<a href="#">-&emsp;管理员列表</a>
+					</dd>
+				</dl>
+			</nav>
+			<div class="mainbox">
+				<div class="note">
+					<h4>文章列表</h4>
+					<form method="post" action="" class="search_form">
+						<input type="text" name="keywords" placeholder="请输入要搜索的关键词"/>
+						<input type="submit" value="搜索"/>
+					</form>
+					<table class="news_list">
+						<thead>
+							<tr>
+								<th>作者</th>
+								<th>标题</th>
+								<th>类型</th>
+								<th>日期</th>
+								<th>点击率</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody id="articlelist">
+							<!--<tr>
+								<td>1</td>
+								<td>今天发现一件非常大的事</td>
+								<td>2017年01月18日新华社快讯：全国最知名的人——张三，掉水沟里了。</td>
+								<td>2017-1-18</td>
+								<td>555次</td>
+								<td>
+									<a href="#">修改</a> /
+									<a href="#">删除</a>
+								</td>
+							</tr>-->
+						</tbody>
+					</table>
+					<div class="page" id="articlepage">
+						<!--<a href="#" class="on">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>-->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--文章列表模板-->
+		<script type="text/html" id="tmpl">
+			{{each list as v i}}
+			<tr>
+				<td>{{v.writer}}</td>
+				<td>{{v.title}}</td>
+				<td>{{v.type}}</td>
+				<td>{{v.time}}</td>
+				<td>555次</td>
+				<td>
+					<a href="/admin/edit.html?id={{v._id}}">修改</a>
+					<a href="javascript:deleteArt('{{v._id}}')">删除</a>
+				</td>
+			</tr>
+			{{/each}}
+		</script>
+		<script>
+			$(function(){
+				$('dt').click(function(){
+					var obj=$(this).next();
+					if($(this).next().css('display')=='block'){
+						obj.hide('fast');
+						$(this).removeClass('on');
+					}else{
+						obj.show('fast');
+						$(this).addClass('on');
+					}
+				});
+				window.page = 1;
+				//调用显示文章列表的函数
+				showArt();
+			});
+			//创建显示文章列表的函数
+			function showArt (a) {
+				//判断是否有传递参数，没有就默认为1
+				window.page = a?a:window.page;
+				//创建ajax引擎对象
+				var ajax = new XMLHttpRequest();
+				//建立请求
+				ajax.open('post','/admin/showarticle.html');
+				//设置请求 ， 仿form提交 
+    			ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    			//监听状态
+				ajax.onreadystatechange = function() {
+					if (ajax.readyState == 4 && ajax.status == 200) {
+						var data = ajax.responseText;
+						data = JSON.parse(data);
+						//获取总页数
+						var pagecount = data.pop(data).pagecount;
+						//渲染模板
+						var html = template('tmpl',{"list":data});
+						articlelist.innerHTML = html;
+						//打印页码表
+						var txt = '';
+						for (var i = 1; i <= pagecount; i++) {
+							if(i == page){
+								txt += '<a href="#" class="on" id = "dada">'+ i +'</a>';
+							}else{
+								txt += '<a href="javascript:showArt('+ i +')">'+ i +'</a>';
+							}
+						}
+						//console.log(txt);
+						var articlepage = document.getElementById("articlepage");
+						articlepage.innerHTML = txt;
+					}
+				};
+				ajax.send("page="+page);
+			}
+			//删除文章
+			function deleteArt(id) {
+				var con = confirm("您确定要删除吗？")
+				if(con){
+					var ajax = new XMLHttpRequest()
+					ajax.open('post','/admin/art_del.html');
+					ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+					ajax.onreadystatechange = function() {
+						if (ajax.readyState == 4 && ajax.status == 200) {
+							var data = ajax.responseText;
+							if (data == 1) {
+								alert('删除成功');
+								showArt();
+							}
+						}
+					}
+					ajax.send("id="+id);
+				}
+			}
+			//修改文章
+//			function reviseArt(id) {
+//				var ajax = new XMLHttpRequest()
+//				ajax.open('post','/admin/edit.html');
+//				ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+//				ajax.onreadystatechange = function() {
+//					if (ajax.readyState == 4 && ajax.status == 200) {
+//						var data = ajax.responseText;
+//						console.log(data)
+////						if (data == "1") {
+////							location.href = "./article_revise.html";
+////						}
+//					}
+//				}
+//				ajax.send("id="+id);
+//			}
+		</script>
+	</body>
+</html>

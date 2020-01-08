@@ -1,0 +1,13 @@
+/**app.wxss**/
+page{
+  width: 100%;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+} 
+view,text{
+  font-size: 28rpx;
+}
+image{ vertical-align: top;}

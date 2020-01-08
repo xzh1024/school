@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "target": "esnext", //指定ECMAScript目标版本 "ES3"（默认）， "ES5"， "ES6"/ "ES2015"， "ES2016"， "ES2017"或 "ESNext"。
+    "module": "esnext", //指定生成哪个模块系统代码： "None"， "CommonJS"， "AMD"， "System"， "UMD"， "ES6"或 "ES2015"。
+    "strict": true, //启用所有严格类型检查选项。  启用 --strict相当于启用 --noImplicitAny, --noImplicitThis, --alwaysStrict， --strictNullChecks和 --strictFunctionTypes和--strictPropertyInitialization。
+    "jsx": "preserve", //在 .tsx文件里支持JSX： "React"或 "Preserve"。
+    "importHelpers": true, //从 tslib 导入辅助工具函数（比如 __extends， __rest等）
+    "moduleResolution": "node", //决定如何处理模块。或者是"Node"对于Node.js/io.js，或者是"Classic"（默认）。  "Classic" 这种策略在以前是TypeScript默认的解析策略。 现在，它存在的理由主要是为了向后兼容。
+    "experimentalDecorators": true, //启用实验性的ES装饰器。
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true, //允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。
+    "sourceMap": true, //生成相应的 .map文件。
+    "baseUrl": ".", //解析非相对模块名的基准目录。
+    // 要包含的类型声明文件名列表 @types，typeRoots和types 默认所有可见的"@types"包会在编译过程中被包含进来。 如果指定了types，只有被列出来的包才会被包含进来。
+    "types": [
+      "webpack-env"
+    ],
+    // 此处映射是相对于"baseUrl"
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    // 编译过程中需要引入的库文件的列表。
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

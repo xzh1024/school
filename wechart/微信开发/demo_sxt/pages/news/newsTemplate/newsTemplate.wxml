@@ -1,0 +1,18 @@
+<template name="newsTemp">
+  <view class='article'>
+    <view class='article-time'>
+      <image class='user-icon' src="{{authorIcon}}" ></image>
+      <text class='author'>{{authorName}}</text>
+      <text class='date'>{{authorDate}}</text>
+    </view>
+    <text class='title'>{{title}}</text>
+    <image class='article-img' src="{{authorImg}}" ></image>
+    <text class='article-text'>{{authorText}}</text>
+    <view class='tool'>
+      <image src='/pages/images/icon_like02.png'></image>
+      <text>{{likeSum}}</text>
+      <image src='/pages/images/icon_news02.png'></image>
+      <text>{{commentSum}}</text>
+    </view>
+  </view>
+</template>

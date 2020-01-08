@@ -1,0 +1,11 @@
+
+安装TypeScript的compiler(编译器)
+
+作用：将TypeScript代码转为JavaScript代码
+
+1.在线compiler:
+    https://www.tslang.cn/play/index.html
+
+2.本地compiler:
+    npm install -g typescript
+    tsc greeter.ts

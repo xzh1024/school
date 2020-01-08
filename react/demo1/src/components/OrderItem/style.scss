@@ -1,0 +1,74 @@
+$border-b: 1px solid #eee;
+
+.hidden{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.orderItem{
+  display: flex;
+  align-items: center;
+  height: 5.5rem;
+  padding: 1em;
+  border-bottom: $border-b;
+  overflow: hidden;
+  .orderItem__picContainer{
+    width: 5rem;
+    height: 5rem;
+    border: 1px solid #ccc;
+    //background-color: #61dafb;
+    .orderItem__pic{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .orderItem__content{
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    //align-items: inherit;
+    padding-left: .5em;
+    //background-color: $red;
+    .orderItem__product{
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    .orderItem__shop{
+      color: #666;
+    }
+    .orderItem__detail{
+      display: flex;
+      .orderItem__price{
+        flex: 1;
+        color: #666;
+      }
+    }
+  }
+}
+.orderItem__btn{
+  display: inline-block;
+  width: 5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+
+  @extend .hidden;
+
+
+  border: none;
+  color: #fff;
+}
+.orderItem__btn--grey{
+  background-color: #bbb;
+}
+.orderItem__btn--red{
+  background-color: #f30;
+}
+.orderItem__star--light{
+  color: #f30;
+}
+.orderItem__commentContainer{
+  .orderItem__comment{width: 100%}
+
+}

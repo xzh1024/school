@@ -1,0 +1,9 @@
+/* pages/cart/product/product.wxss */
+.ball {
+  width: 30rpx;
+  height: 30rpx;
+  background: #5EA345;
+  border-radius: 50%;
+  position: fixed;
+  transition: left 1s linear, top 1s ease-in;
+}

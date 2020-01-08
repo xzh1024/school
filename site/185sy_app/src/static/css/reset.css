@@ -1,0 +1,110 @@
+/**{margin: 0;padding: 0;list-style: none;}*/
+
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+  margin: 0;
+  padding: 0;
+}
+/** 设置默认字体 **/
+body,
+button, input, select, textarea /* for ie */ {
+ font-family:微软雅黑;font-size:12px;background-color: white;
+}
+h1, h2, h3, h4, h5, h6 {font-size: 100%; font-weight: normal;}
+address, cite, dfn, em, var {font-style: normal;} /* 将斜体扶正 */
+code, kbd, pre, samp {font-family: courier new, courier, monospace; } /* 统一等宽字体 */
+/*small {font-size: 12px;} !* 小于 12px 的中文很难阅读，让 small 正常化 *!*/
+
+/** 重置列表元素 **/
+ul, ol {list-style: none;}
+
+/** 重置文本格式元素 **/
+a {text-decoration: none; color: #000000;border: none;-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent;outline: none;}
+a:hover {text-decoration: none; color: #000000;}
+/** 重置表单元素 **/
+legend {color: #000;} /* for ie6 */
+fieldset, img {border: 0;} /* img 搭车：让链接里的 img 无边框 */
+button, input, select, textarea {font-size: 100%;} /* 使得表单元素在 ie 下能继承字体大小 */
+/* 注：optgroup 无法扶正 */
+
+/** 重置表格元素 **/
+table {border-collapse: collapse;border-spacing: 0;}
+/*
+ 解决图片3px的问题
+ * */
+img{ vertical-align: middle;}
+/*去除输入框的默认样式*/
+input,textarea,select{ outline: none;}
+option { outline: none;}
+/*input:focus{*/
+  /*-webkit-box-shadow: 0 0 0 #fff;*/
+  /*-moz-box-shadow:0 0 0 #fff;*/
+/*}*/
+textarea{ resize:none;}
+html,body{ height: 100%; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow: hidden;}
+/* 解决页面使用overflow: scroll在iOS上滑动卡顿的问题 */
+html,body,div{ -webkit-overflow-scrolling : touch;}
+/*body{
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}*/
+/*修改提示文字的颜色*/
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{ color:#bcbcbc;}
+input::-moz-placeholder,textarea::-moz-placeholder{ color:#bcbcbc;}  /* Mozilla Firefox 19+ */
+input:-moz-placeholder,textarea:-moz-placeholder{ color:#bcbcbc;} /* Mozilla Firefox 4 to 18 */
+input:-ms-input-placeholder,textarea:-ms-input-placeholder{ color:#bcbcbc;} /* Internet Explorer 10-11 */
+/*适配*/
+@media screen and (max-width: 320px) {
+  html,body{font-size: 12px;}
+}
+@media screen and (min-width: 321px) and (max-width: 413px){
+  html,body{font-size: 14px;}
+}
+@media screen and (min-width: 414px) and (max-width: 639px){
+  html,body{font-size: 15px;}
+}
+@media screen and (min-width: 640px) and (max-width: 767px){
+  html,body{font-size: 16px;}
+}
+@media screen and (min-width: 768px){
+  html,body{font-size: 16px; width: 768px; margin: 0 auto; position: relative;}
+  body{ border: 1px solid #f0f0f0;}
+}
+/*
+.small-font1{
+	display: inline-block;
+	color: #929292;
+  transform:scale(0.9);
+  -ms-transform:scale(0.9); 	IE 9
+  -moz-transform:scale(0.9); 	Firefox
+  -webkit-transform:scale(0.9); Safari 和 Chrome
+  -o-transform:scale(0.9);
+}*/
+
+
+/*::-webkit-scrollbar {*/
+  /*width: 0;*/
+  /*height: 0;*/
+  /*background-color: #F5F5F5;*/
+/*}*/
+/*!*定义滚动条轨道 内阴影+圆角*!*/
+/*::-webkit-scrollbar-track {*/
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+  /*background: #fff ;*/
+/*}*/
+/*!*定义滑块 内阴影+圆角*!*/
+/*::-webkit-scrollbar-thumb {*/
+  /*border-radius: 3px;*/
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);*/
+  /*background-color:rgba(7, 170, 247, 0.7);*/
+/*}*/
+/*::-webkit-scrollbar-thumb:hover {*/
+  /*border-radius: 3px;*/
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);*/
+  /*background-color: rgba(7, 170, 247, 1);*/
+/*}*/
+

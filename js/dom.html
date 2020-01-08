@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body {margin: 0; padding: 0; width: 100%; height: 100%;}
+        #app {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        #box {
+            width: 300px;
+            background-color: bisque;
+        }
+        .fl {
+            /* float: left; */
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="box" class="fl" v-bind="xx" v-html="内容" v-for><span>标题</span><p>Content</p>www<div>o</div>hihi</div>
+        <div class="fr">
+            <div>a</div>
+            <div>b</div>
+            <div>c</div>
+            <div>d</div>
+        </div>
+    </div>
+<script>
+    var a = document.createElement('a');
+    document.body.appendChild(a); // 如果不append进去火狐下载将无反应.
+    // console.log(a.remove);
+    a.click();
+    // a.remove();
+    a.parentNode.removeChild(a);
+    
+    const box = document.querySelector("#box");
+    formatNodes(box);
+
+    console.dir(box);
+    console.log(box.childNodes);
+    const childNodes = box.childNodes;
+    console.log(Object.prototype.toString.call(childNodes));
+    let obj = {name: 'xzh', age: 24};
+    console.log(Object.prototype.toString.call(obj));
+    let arr = ['a', 'b', 'c'];
+    console.log(Object.prototype.toString.call(arr));
+    let str = 'hello';
+    console.log(Object.prototype.toString.call(str));
+
+    // childNodes.forEach((item) => {
+    //     console.dir(item);
+    // });
+
+    function formatNodes(node) {
+        if(node.nodeType === 1) {
+            const childNodes = node.childNodes;
+            Array.from(childNodes).forEach(item => {
+                console.log(item);
+                formatNodes(item);
+            });
+        } else if(node.nodeType === 3) {
+            node.textContent += ' 666';
+        }
+    }
+</script>
+</body>
+</html>

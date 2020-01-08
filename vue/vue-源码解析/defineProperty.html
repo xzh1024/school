@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>defineProperty</title>
+</head>
+<body>
+<div id="app">
+    <p id="name"></p>
+</div>
+
+<script>
+    var data = {
+        _name: 'Jerry',
+        _title: 'hello vue',
+        _content: 'vue源码解析'
+    };
+
+    var key = '';
+    for(key in data){
+        var newKey = key.substr(1);
+
+        console.log(newKey);
+        console.log(data);
+        Object.defineProperty(data, newKey, {
+            get: function() {
+                console.log('read data property: '+newKey);
+                return data[key]
+            },
+            set: function(newVal) {
+                console.log('set data property: '+newKey+',value: '+newVal);
+                this[key] = newVal;
+            },
+            enumerable: true
+        });
+
+        Object.defineProperty(data, key, {
+            enumerable: false
+        })
+    }
+
+    data.name;
+    data.name = 'Tom';
+    console.log(data.name);
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+枚举 enum
+    使用枚举我们可以定义一些带名字的常量。 使用枚举可以清晰地表达意图或创建一组有区别的用例。 TypeScript支持数字的和基于字符串的枚举。
+
+
+1.数字枚举
+    enum Direction {
+        Up = 1,
+        Down,
+        Left,
+        Right
+    }
+    如上，我们定义了一个数字枚举， Up使用初始化为 1。 其余的成员会从 1开始自动增长。 换句话说， Direction.Up的值为 1， Down为 2， Left为 3， Right为 4。
+
+
+2.字符串枚举
+
+
+3.异构枚举（Heterogeneous enums）
+
+
+4.计算的和常量成员
+    它是枚举的第一个成员且没有初始化器，这种情况下它被赋予值 0：
+    // E.X is constant:
+    enum E { X }
+
+    它不带有初始化器且它之前的枚举成员是一个 数字常量。 这种情况下，当前枚举成员的值为它上一个枚举成员的值加1。
+    // All enum members in 'E1' and 'E2' are constant.
+    enum E1 { X, Y, Z }
+
+    enum E2 {
+        A = 1, B, C
+    }
+
+
+5.联合枚举与枚举成员的类型
+
+
+6.运行时的枚举

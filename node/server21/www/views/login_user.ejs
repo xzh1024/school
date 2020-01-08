@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>banners</title>
+    <style>
+        html, body, div, p, ul, li, span, i{ margin: 0; padding: 0; font-size: 14px;}
+        img{ vertical-align: top; width: 100%;}
+    </style>
+</head>
+<body>
+    <%= banners %>
+    <br>
+    <%= articles %>
+
+    <% for(var i=0; i<banners.length; i++){ %>
+    <div><%= banners[i].title %></div>
+    <div><%= banners[i].sub_title %></div>
+    <img src="<%= banners[i].src %>">
+    <% } %>
+    <% for(var i=0; i<articles.length; i++){ %>
+    <div><%= articles[i].title %></div>
+    <div><%= articles[i].summary %></div>
+    <% } %>
+</body>
+</html>

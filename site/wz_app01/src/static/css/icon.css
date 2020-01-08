@@ -1,0 +1,178 @@
+
+.icon-mobile-o{
+  display: inline-block;
+  width: 2.3rem;
+  height: 2.3rem;
+  background: url("../img/wz/a_icon_shouji.png") no-repeat;
+  background-size: 100% 100%;
+}
+.icon-weixin-o{
+  display: inline-block;
+  width: 2.3rem;
+  height: 2.3rem;
+  background: url("../img/wz/b_icon_weixin.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-mobile{
+  display: inline-block;
+  width: 1rem;
+  height: 1.4rem;
+  background: url("../img/wz/g_icon_shoujitubiao.png") no-repeat;
+  background-size: contain;
+}
+.icon-eye-up{
+  display: inline-block;
+  width: 1.5rem;
+  height: 1rem;
+  background: url("../img/wz/g_icon_y.png") no-repeat;
+  background-size: contain;
+}
+.icon-eye-down{
+  display: inline-block;
+  width: 1.5rem;
+  height: 1rem;
+  background: url("../img/wz/a_icon_biyan.png") no-repeat;
+  background-size: contain;
+}
+
+/*.icon-reflection{*/
+  /*display: inline-block;*/
+  /*width: 3rem;*/
+  /*height: .5rem;*/
+  /*background: url("../img/wz/a_icon_tubiaodi.png") no-repeat;*/
+  /*background-size: contain;*/
+/*}*/
+.icon-purse{
+  background: url("../img/wz/a_icon_fanli.png") no-repeat;
+  background-size: contain;
+}
+.icon-money-calculator{
+  background: url("../img/wz/a_icon_jisuanqi.png") no-repeat;
+  background-size: contain;
+}
+.icon-ranking{
+  background: url("../img/wz/a_icon_paihangban.png") no-repeat;
+  background-size: contain;
+}
+.icon-service{
+  background: url("../img/wz/a_icon_kefu.png") no-repeat;
+  background-size: contain;
+}
+.icon-question{
+  background: url("../img/wz/a_icon_changjianwenti.png") no-repeat;
+  background-size: contain;
+}
+.icon-announcement{
+  background: url("../img/wz/a_icon_guanfanggonggao.png") no-repeat;
+  background-size: contain;
+}
+.icon-feedback{
+  background: url("../img/wz/a_icon_yijianfankui.png") no-repeat;
+  background-size: contain;
+}
+.icon-exclamatory-mark{
+  background: url("../img/wz/a_icon_guanyuwomen.png") no-repeat;
+  background-size: contain;
+}
+
+.icon-money-earnings{
+  background: url("../img/wz/a_icon_shouyi.png") no-repeat;
+  background-size: contain;
+}
+.icon-order{
+  background: url("../img/wz/a_icon_dingdan.png") no-repeat;
+  background-size: contain;
+}
+.icon-user-fans{
+  background: url("../img/wz/a_icon_wanfen.png") no-repeat;
+  background-size: contain;
+}
+.icon-users{
+  background: url("../img/wz/a_icon_yaoqing.png") no-repeat;
+  background-size: contain;
+}
+
+.icon-medal1{
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: url("../img/wz/ranklist/p_icon_jin.png") no-repeat;
+  background-size: contain;
+}
+.icon-medal2{
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: url("../img/wz/ranklist/q_icon_yin.png") no-repeat;
+  background-size: contain;
+}
+.icon-medal3{
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: url("../img/wz/ranklist/r_icon_tong.png") no-repeat;
+  background-size: contain;
+}
+.icon-crown1{
+  background: url("../img/wz/ranklist/t_icon_yi.png") no-repeat;
+  background-size: contain;
+}
+.icon-crown2{
+  background: url("../img/wz/ranklist/t_icon_er.png") no-repeat;
+  background-size: contain;
+}
+.icon-crown3{
+  background: url("../img/wz/ranklist/t_icon_san.png") no-repeat;
+  background-size: contain;
+}
+.icon-touxiang-m{
+  background: url("../img/wz/ranklist/t_icon_touxiangxiao.png") no-repeat;
+  background-size: 100% 100%;
+}
+.icon-touxiang-s{
+  display: inline-block;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50% 50%;
+  background: url("../img/wz/ranklist/t_icon_touxiang-xiaoxiao.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-membership1{
+  display: inline-block;
+  width: 7.5rem;
+  height: 2rem;
+  background: url("../img/wz/a_icon_putonghuiyuan.png") no-repeat;
+  background-size: 100% 100%;
+}
+.icon-membership2{
+  display: inline-block;
+  width: 7.5rem;
+  height: 2rem;
+  background: url("../img/wz/a_icon_chaojihuiyuan.png") no-repeat;
+  background-size: 100% 100%;
+}
+.icon-membership3{
+  display: inline-block;
+  width: 7.5rem;
+  height: 2rem;
+  background: url("../img/wz/a_icon_zhuanshihuiyuan.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-membership3{
+  display: inline-block;
+  width: 7.5rem;
+  height: 2rem;
+  background: url("../img/wz/a_icon_zhuanshihuiyuan.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.icon-ranklist-question{
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: url("../img/wz/ranklist/t_icon_wenhao.png") no-repeat;
+  background-size: contain;
+}

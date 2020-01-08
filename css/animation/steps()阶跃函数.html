@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>steps()步进动画</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+        .txtbox{
+            font-size: 60px;
+            text-transform: uppercase;
+            text-align: center;
+            color: white;
+        }
+        .txtbox > span{
+            display: inline-block;
+            width: 64px;
+            height: 64px;
+            line-height: 64px;
+            position: relative;
+            /*border: 1px solid blue;*/
+            word-break: break-all;
+            overflow: hidden;
+        }
+        .txtbox > span::after{
+            content: attr(data-filter);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            /*border: 1px solid red;*/
+            background-color: black;
+
+            animation: move 2s;
+            animation-timing-function: steps(7);
+        }
+        .txtbox > span:nth-child(1)::after{
+            animation: move 2s steps(7);
+        }
+        .txtbox > span:nth-child(2)::after{
+            animation: move 3s steps(7);
+        }
+        .txtbox > span:nth-child(3)::after{
+            animation: move 1.5s steps(7);
+        }
+        .txtbox > span:nth-child(4)::after{
+            animation: move 2.5s steps(7);
+        }
+        .txtbox > span:nth-child(5)::after{
+            animation: move 2s steps(7);
+        }
+        .txtbox > span:nth-child(6)::after{
+            animation: move 1s steps(7);
+        }
+        .txtbox > span:nth-child(7)::after{
+            animation: move 1.5s steps(7);
+        }
+
+        .txtbox > span:nth-child(-n + 4){
+            animation: txt-color 2s 3s forwards;
+        }
+
+        @keyframes move{
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes txt-color{
+            from {
+                color: white;
+                text-shadow: 0 0 0 rgba(255, 255, 0, 0);
+            }
+            to {
+                color: gold;
+                text-shadow: 0 0 8px rgba(255, 255, 0, .5);
+
+            }
+        }
+    </style>
+</head>
+<body>
+<h1 class="txtbox">
+    <span data-filter="lbjphdw"></span>
+    <span data-filter="ofwrtyu"></span>
+    <span data-filter="vdbnmjk"></span>
+    <span data-filter="eeradxf"></span>
+    <span data-filter="ypoksld"></span>
+    <span data-filter="ofewoux"></span>
+    <span data-filter="umuwytd"></span>
+</h1>
+</body>
+</html>

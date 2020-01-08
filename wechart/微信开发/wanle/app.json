@@ -1,0 +1,51 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/classify/classify",
+    "pages/invite/invite",
+    "pages/drive/drive",
+    "pages/my/my"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#929292",
+    "selectedColor": "#d74d43",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "游戏",
+        "iconPath": "images/tabbed/a_icon_youxi_an.png",
+        "selectedIconPath": "images/tabbed/a_icon_youxi_hong.png"
+      },
+      {
+        "pagePath": "pages/classify/classify",
+        "text": "分类",
+        "iconPath": "images/tabbed/a_icon_fenlei_an.png",
+        "selectedIconPath": "images/tabbed/a_icon_fenlei_hong.png"
+      },
+      {
+        "pagePath": "pages/invite/invite",
+        "text": "邀请",
+        "iconPath": "images/tabbed/a_icon_yaoqing_an.png",
+        "selectedIconPath": "images/tabbed/a_icon_yaoqing_hong.png"
+      },
+      {
+        "pagePath": "pages/drive/drive",
+        "text": "充电站",
+        "iconPath": "images/tabbed/a_icon_chongdianzhan_an.png",
+        "selectedIconPath": "images/tabbed/a_icon_chongdianzhan_hong.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/tabbed/a_icon_wode_an.png",
+        "selectedIconPath": "images/tabbed/a_icon_wode_hong.png"
+      }
+    ]
+  }
+}

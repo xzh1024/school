@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>conText</title>
+    <style>
+        html, body, div, p, ul, li, span, i{ margin: 0; padding: 0;}
+        :root{ font-size: 14px;}
+        img{ vertical-align: top;}
+        div{ -webkit-overflow-scrolling:touch;}
+        a{ text-decoration:none; color: #000000;}
+        a:visited{ text-decoration:none; color: #000000;}
+        a:hover{ text-decoration:none; color: #000000;}
+        a:active{ text-decoration:none; color: #000000;}
+
+        .fl{ float: left;}
+        .fr{ float: right;}
+        .clearfix:after{ content: "."; display: block; width: 0; height: 0; clear: both; visibility: hidden;}
+
+        html, body{ width: 100%; height: 100%;}
+        .app{ width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden;}
+        .header{ position: relative; height: 3rem; padding: 0 .8rem; overflow: hidden; line-height: 3rem; text-align: center; font-size: 1.1rem; margin-bottom: 3px; box-shadow: 0 0.05rem 0.4rem rgba(48,48,48,.1); color: #606060;}
+        .return{ position: absolute; left: .5rem; top: 50%; transform: translate(0, -50%); font-size: 1rem;}
+
+        .main{ flex: 1; width: 100%; overflow-y: auto;}
+        .article{ padding: 0 .6em;}
+        .article-title{ position: relative; font-size: 1.5rem; font-weight: 700; line-height: 32px; padding-bottom: .625rem;}
+        .avatar{ width: 2em; height: 2em; border-radius: 50% 50%;}
+        .username{ color: #303030; margin-right: .4rem;}
+        .article-time{ color: silver;}
+        .article-content { padding: .5rem; background: #fff; font-size: 1.1rem; line-height: 32px; color: #606060; text-align: justify; word-break: break-all; word-wrap: break-word; white-space: pre-wrap; text-indent: 2em;}
+        .article-content img{ width: 100%;}
+
+        .footer{ width: 100%; background-color: #ffffff; border-top: 1px solid #eeeeee;}
+        .tabbar{ display: flex; align-items: center;}
+        .tab-item{ flex: 1; padding: 10px 0; display: flex; justify-content: center; align-items: center; font-size: .89rem; position: relative;}
+        .tab-item:after{ content: ""; width: 0; height: 80%; border-left: 1px solid #efefef; position: absolute; left: 0;}
+        .tab-item:nth-child(1) :after{ border-left: 1px solid transparent;}
+        .tab-item:active{ background-color: #eaeaea;}
+        .tab-item a{
+            text-decoration:none; color: #ababab;
+            -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+            -webkit-user-select: none;
+            -moz-user-focus: none;
+            -moz-user-select: none;
+        }
+        .tab-item a:visited{ text-decoration:none; color: #ababab;}
+        .tab-item a:hover{ text-decoration:none; color: #ababab;}
+        .tab-item a:active{ text-decoration:none; color: #ababab;}
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="header">
+        <span class="return" onclick="history.back(-1)">&lt;&lt;返回</span>
+        发现更多精彩
+    </div>
+    <div class="main">
+        <div class="article">
+            <div class="article-title"><%= article_data.title %></div>
+            <div class="article-author-box clearfix">
+                <img class="avatar fl" src="<%= article_data.author_src %>" alt="">
+                <span class="username fl"><%= article_data.author %></span>
+                <span class="article-time fr"><%= article_data.post_time %></span>
+            </div>
+            <div class="article-box">
+                <div class="article-content"><%- article_data.content %></div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <ul class="tabbar">
+            <li class="tab-item like">
+                <a href="/article?id=<%= article_data.ID %>&act=like">
+                    <span><%= article_data.n_like %></span>
+                    <span>赞</span>
+                </a>
+            </li>
+            <li class="tab-item">
+                <a href="">
+                    <span>0</span>
+                    <span>踩</span>
+                </a>
+            </li>
+            <li class="tab-item">
+                <a href="">
+                    <span>0</span>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li class="tab-item">
+                <a href="">
+                    <span>0</span>
+                    <span>分享</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

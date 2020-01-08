@@ -1,0 +1,4 @@
+<!--pages/invite/invite.wxml-->
+<view class="container">
+邀请
+</view>

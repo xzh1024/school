@@ -1,0 +1,11 @@
+/* pages/movie/movie.wxss */
+@import "movieListTemplate/movieListTemplate.wxss";
+.container-movie{
+
+}
+.img{
+  width: 100%;
+}
+
+
+

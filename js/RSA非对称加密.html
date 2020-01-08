@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="./jsencrypt.js"></script>
+<script>
+    let publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCGa25LV0CItkMKzWoxFEJXvqeJks7GybWbVZTAyUcDeJRP78S3yYpE3Ez2DWvY40U4DXlLBWNmQHhVScfj0aRR3d2qBVVVLbMkDDb51L0fwSjZ0mICL71isNwh2N8ZR8Zf4lxhVJHHnLfFXu8vvZKPS6KS8zvCEwLJJ7j7ND4LRwIDAQAB';
+    let privateKey = 'MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAIZrbktXQIi2QwrNajEUQle+p4mSzsbJtZtVlMDJRwN4lE/vxLfJikTcTPYNa9jjRTgNeUsFY2ZAeFVJx+PRpFHd3aoFVVUtsyQMNvnUvR/BKNnSYgIvvWKw3CHY3xlHxl/iXGFUkcect8Ve7y+9ko9LopLzO8ITAsknuPs0PgtHAgMBAAECgYBlgSCjkfqwgfm0YZOsBiFnAxieoZa1tEIIT6LpxdRzQY21o1iIdI+OGlGfiFkFSfHONxZ92U7LOynjNbjVR0zuRVeH5aZ2QbN7kXYcQnE928xn72+40yjsc/+Wd8Kk8ETix+/7l5QgAsEmvabbNe9u8ir36ha9eF7wREn+11Rc0QJBAPeFRgA4A8t0F+P96S6B5ylCDcppS4uHDR3zDBX+a6zOUfY7cQUM4N+ZGzNIyhsNpz2yql7qOfLTM5EtpAqHgt8CQQCLBkZ/W5wsF8djqn3vAs800wMc1eIYGe1Iuzr1IFTysk7w6Nyyh3671LX7Lqv2Bs7f/1K/OqzU8cU78gLIDayZAkEAr9Brm4YuM9q/iYN2mUFOSAESOJ84OOBx0b8s64ZvRyy6DTPFoLe4Fzrylify3uqAy5NX7tli1fds3odTyOLecwJBAISBdq/soO1lvKVB2sXz54pxlIXnVZejHoYz7f2000J+sL7tM2z1t9VO6CSAV2YnFwZoVHXvdst/pH1+LSh/4AECQAtZltlmUmT2DC+WzTTfUKXe3ueJi9Foqr2afqHWDeugUy6xw2cgMtlE78Tnd3DKYsy7nfiow91MZBFq1ybN058=';
+
+    //使用 公钥 加密
+    const fnencrypt = (password) => {
+        let encryptor = new JSEncrypt();  // JSEncrypt对象
+        encryptor.setPublicKey(publicKey);  // 公钥
+        let rsaPassWord = encryptor.encrypt(password);  // 密码进行加密
+        return rsaPassWord;
+    };
+
+    // 使用 私钥 解密
+    const fndecrypt = (password) => {
+        let decryptor = new JSEncrypt();
+        decryptor.setPrivateKey(privateKey);    // 私钥
+        let rsaPassWord = decryptor.decrypt(password);
+        return rsaPassWord;
+    };
+
+    //超过117(加密)长度的原文内容分割成多个部分
+
+    // 在源码 自己 添加
+
+    JSEncrypt.prototype.encryptLong = function(string) {
+        var k = this.getKey();
+        try {
+            var lt = "";
+            var ct = "";
+            //RSA每次加密117bytes，需要辅助方法判断字符串截取位置
+            //1.获取字符串截取点
+            var bytes = new Array();
+            bytes.push(0);
+            var byteNo = 0;
+            var len,c;
+            len = string.length;
+            var temp = 0;
+            for(var i = 0; i < len; i++){
+                c = string.charCodeAt(i);
+                if(c >= 0x010000 && c <= 0x10FFFF){
+                    byteNo += 4;
+                }else if(c >= 0x000800 && c <= 0x00FFFF){
+                    byteNo += 3;
+                }else if(c >= 0x000080 && c <= 0x0007FF){
+                    byteNo += 2;
+                }else{
+                    byteNo += 1;
+                }
+                if((byteNo % 117) >= 114 || (byteNo % 117) == 0){
+                    if(byteNo-temp >= 114){
+                        bytes.push(i);
+                        temp = byteNo;
+                    }
+                }
+            }
+            //2.截取字符串并分段加密
+            if(bytes.length > 1){
+                for(var i=0;i< bytes.length-1; i++){
+                    var str;
+                    if(i == 0){
+                        str = string.substring(0,bytes[i+1]+1);
+                    }else{
+                        str = string.substring(bytes[i]+1,bytes[i+1]+1);
+                    }
+                    var t1 = k.encrypt(str);
+                    ct += t1;
+                };
+                if(bytes[bytes.length-1] != string.length-1){
+                    var lastStr = string.substring(bytes[bytes.length-1]+1);
+                    ct += k.encrypt(lastStr);
+                }
+                return hex2b64(ct);
+            }
+            var t = k.encrypt(string);
+            var y = hex2b64(t);
+            return y;
+        } catch (ex) {
+            return false;
+        }
+    };
+
+    const fnencryptLone = (password) => {
+        let encryptor = new JSEncrypt();  // JSEncrypt对象
+        encryptor.setPublicKey(publicKey);  // 公钥
+        let rsaPassWord = encryptor.encryptLong(password);  // 超长密码进行加密
+        return rsaPassWord;
+    };
+
+    console.log(fnencrypt('123123'));
+    console.log(fndecrypt('CG9sYAIakE/mutiPwh1jYTa5EGOzHR+Dm0iplLduyg9CrYjNM3HDWTA4bjw3RpkXZULfWh142PTP2BPIFRAEVxEMpjrvz5JJZRPnmfvbEY8l+YzcaedqJCFN9ezbeO/vMk0/OhG2i0jISkWGR3ZNTnJ6N5y6Rc6FN+T50LDfHu4='));
+</script>
+</body>
+</html>

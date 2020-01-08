@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>test</title>
+    <style>
+        html, body, div, p, ul, li, span, i{ margin: 0; padding: 0;}
+        :root{ font-size: 14px;}
+        img{ vertical-align: top;}
+        div{ -webkit-overflow-scrolling:touch;}
+
+        .fl{ float: left;}
+        .fr{ float: right;}
+        .clearfix:after{ content: "."; display: block; width: 0; height: 0; clear: both; visibility: hidden;}
+
+        html, body{ width: 100%; height: 100%;}
+        .app{ width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden;}
+        .header{ position: relative; height: 3rem; padding: 0 .8rem; overflow: hidden; line-height: 3rem; text-align: center; font-size: 1.1rem; margin-bottom: 3px; box-shadow: 0 0.05rem 0.4rem rgba(48,48,48,.1); color: #606060;}
+        .return{ position: absolute; left: .5rem; top: 50%; transform: translate(0, -50%); font-size: 1rem;}
+
+        .main{ flex: 1; width: 100%; overflow-y: auto;}
+        .article{ padding: 0 .6em;}
+        .article-title{ position: relative; font-size: 1.5rem; font-weight: 700; line-height: 32px; padding-bottom: .625rem;}
+        .avatar{ width: 2em; height: 2em; border-radius: 50% 50%;}
+        .username{ color: #303030; margin-right: .4rem;}
+        .article-time{ color: silver;}
+        .article-content { padding: .5rem; background: #fff; font-size: 1.1rem; line-height: 32px; color: #606060; text-align: justify; word-break: break-all; word-wrap: break-word; white-space: pre-wrap;}
+        .article-content img{ width: 100%;}
+
+        .footer{ width: 100%; height: 3rem; background-color: #ffffff; border-top: 1px solid #f0f0f0; display: flex; align-items: center;}
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="header">
+        <span class="return" onclick="history.back(-1)">&lt;&lt;返回</span>
+        发现更多精彩
+    </div>
+    <div class="main">
+        <div class="article">
+            <div class="article-title">测试数据</div>
+            <div class="article-author-box clearfix">
+                <img class="avatar fl" src="/images/20180930-01.jpg">
+                <span class="username fl">三石</span>
+                <span class="article-time fr">2018-10-19 11:54</span>
+            </div>
+            <div class="article-box">
+                <div class="article-content">
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                    <p>海外社交网络涉猎电商业务，由重度年轻用户主导的Instagram和Snapchat带头，另有图片分享网站Pinterest蠢蠢欲动，移动端竖屏PUGC营销的新赛道逐渐构建起来，各大社交平台的排位战悄然打响。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div></div>
+    </div>
+</div>
+</body>
+</html>

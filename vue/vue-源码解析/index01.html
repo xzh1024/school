@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="compile.js"></script>
+<script src="kvue.js"></script>
+<script>
+    const app = new KVue({
+        data: {
+            test: 'I am test',
+            foo: {
+                bar: 'bar'
+            }
+        }
+    });
+
+    app.$data.test = 'hello, kaikeba!';
+    app.$data.foo.bar = 'oh my bar';
+</script>
+</body>
+</html>

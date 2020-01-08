@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*body{*/
+        /*    height: 500px;*/
+        /*    border: 1px solid red;*/
+        /*    overflow: scroll;*/
+        /*}*/
+        /*#box1{*/
+        /*    height: 500px;*/
+        /*    border: 1px solid red;*/
+        /*    overflow: scroll;*/
+        /*}*/
+        /*#box2{*/
+        /*    height: 3000px;*/
+        /*}*/
+        /*#box3{*/
+        /*    height: 300px;*/
+        /*}*/
+        #box4{
+            height: 3000px;
+        }
+    </style>
+</head>
+<body id="body">
+<!--<div id="box1">-->
+<!--    <div id="box2"></div>-->
+<!--</div>-->
+<!--<div id="box3"></div>-->
+<div id="box4"></div>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js" ></script>
+<script>
+    console.log(document.body.clientHeight);
+    console.log(document.body.offsetHeight);
+    console.log(document.body.scrollHeight);
+    console.log(document.body.scrollTop);
+    // console.log(box1.scrollTop);
+    window.addEventListener('scroll', function (event) {
+        console.log(this);
+        console.log(this.pageYOffset);
+        // console.log(box1.scrollTop);
+    })
+</script>
+</body>
+</html>

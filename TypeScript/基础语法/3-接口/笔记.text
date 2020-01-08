@@ -1,0 +1,149 @@
+介绍
+TypeScript的核心原则之一是对值所具有的结构进行类型检查。 它有时被称做“鸭式辨型法”或“结构性子类型化”。 在TypeScript里，接口的作用就是为这些类型命名和为你的代码或第三方代码定义契约。
+
+
+1.可选属性
+    interface SquareConfig {
+        color?: string;
+        width?: number;
+    }
+
+    function createSquare(config: SquareConfig): {color: string; area: number} {
+        let newSquare = {color: "white", area: 100};
+        if (config.color) {
+            newSquare.color = config.color;
+        }
+        if (config.width) {
+            newSquare.area = config.width * config.width;
+        }
+        return newSquare;
+    }
+
+    let mySquare = createSquare({color: "black"});
+
+
+2.只读属性
+    一些对象属性只能在对象刚刚创建的时候修改其值。 你可以在属性名前用 readonly来指定只读属性:
+
+    interface Point {
+        readonly x: number;
+        readonly y: number;
+    }
+
+    你可以通过赋值一个对象字面量来构造一个Point。 赋值后， x和y再也不能被改变了。
+
+    let p1: Point = { x: 10, y: 20 };
+    p1.x = 5; // error!
+
+    TypeScript具有ReadonlyArray<T>类型，它与Array<T>相似，只是把所有可变方法去掉了，因此可以确保数组创建后再也不能被修改：
+
+    let a: number[] = [1, 2, 3, 4];
+    let ro: ReadonlyArray<number> = a;
+    ro[0] = 12; // error!
+    ro.push(5); // error!
+    ro.length = 100; // error!
+    a = ro; // error!
+    上面代码的最后一行，可以看到就算把整个ReadonlyArray赋值到一个普通数组也是不可以的。 但是你可以用类型断言重写：
+
+    a = ro as number[];
+
+
+3.额外的属性检查
+
+    interface SquareConfig {
+        color?: string;
+        width?: number;
+        [propName: string]: any;
+    }
+
+    function createSquare(config: SquareConfig): { color: string; area: number } {
+        // ...
+        return
+    }
+
+    // as 类型断言
+    let mySquare = createSquare({ colour: "red", width: 100 });
+
+
+4.函数类型
+    为了使用接口表示函数类型，我们需要给接口定义一个调用签名。 它就像是一个只有参数列表和返回值类型的函数定义。参数列表里的每个参数都需要名字和类型。
+    interface SearchFunc {
+        (source: string, subString: string): boolean;
+    }
+
+    这样定义后，我们可以像使用其它接口一样使用这个函数类型的接口。 下例展示了如何创建一个函数类型的变量，并将一个同类型的函数赋值给这个变量。
+    let mySearch: SearchFunc;
+    mySearch = function(source: string, subString: string) {
+        let result = source.search(subString);
+        return result > -1;
+    }
+
+
+5.可索引的类型
+
+
+6.类类型 implements
+    实现接口
+        与C#或Java里接口的基本作用一样，TypeScript也能够用它来明确的强制一个类去符合某种契约。
+
+        在类中使用 implements 关键字去强制一个类去符合某种契约
+
+        interface ClockInterface {
+            currentTime: Date;
+            setTime(d: Date);
+        }
+
+        class Clock implements ClockInterface {
+            currentTime: Date;
+            setTime(d: Date) {
+                this.currentTime = d;
+            }
+            constructor(h: number, m: number) { }
+        }
+
+
+7.接口继承接口
+    interface Shape {
+        color: string;
+    }
+
+    interface PenStroke {
+        penWidth: number;
+    }
+
+    interface Square extends Shape, PenStroke {
+        sideLength: number;
+    }
+
+    let square = <Square>{};
+    square.color = "blue";
+    square.sideLength = 10;
+    square.penWidth = 5.0;
+
+
+8.混合类型
+    先前我们提过，接口能够描述JavaScript里丰富的类型。 因为JavaScript其动态灵活的特点，有时你会希望一个对象可以同时具有上面提到的多种类型。
+
+    一个例子就是，一个对象可以同时做为函数和对象使用，并带有额外的属性。
+
+    interface Counter {
+        (start: number): string;
+        interval: number;
+        reset(): void;
+    }
+
+    function getCounter(): Counter {
+        let counter = <Counter>function (start: number) { };
+        counter.interval = 123;
+        counter.reset = function () { };
+        return counter;
+    }
+
+    let c = getCounter();
+    c(10);
+    c.reset();
+    c.interval = 5.0;
+
+9.接口继承类
+    当接口继承了一个类类型时，它会继承类的成员但不包括其实现。 就好像接口声明了所有类中存在的成员，但并没有提供具体实现一样。
+    接口同样会继承到类的private和protected成员。 这意味着当你创建了一个接口继承了一个拥有私有或受保护的成员的类时，这个接口类型只能被这个类或其子类所实现（implement）。

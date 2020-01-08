@@ -1,0 +1,4 @@
+<!--pages/cart/cart.wxml-->
+<navigator url="/pages/cart/product/product">
+    跳转到新页面
+  </navigator>

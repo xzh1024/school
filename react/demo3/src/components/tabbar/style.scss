@@ -1,0 +1,23 @@
+.tabbar{
+  //background-color: #61dafb;
+  //height: 3rem;
+  //display: flex;
+  //align-items: center;
+}
+.tabbar-content{
+  flex: 1;
+  display: flex;
+  font-size: .85rem;
+  border-top: 1px solid #ddd;
+  .tarbar-item{
+    flex: 1;
+    padding: .5em 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .active{
+    color: red;
+  }
+}
