@@ -1,5 +1,5 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/aboutUs/aboutUs",
     "pages/news/news",
@@ -10,11 +10,11 @@
     "pages/cart/cart",
     "pages/cart/product/product"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#CD5C5C",
     "navigationBarTitleText": "麋鹿",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "selectedColor": "#333",
@@ -44,5 +44,9 @@
         "selectedIconPath": "pages/images/08_icon_kaifubiao_liang.png"
       }
     ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-search": "@vant/weapp/search"
   }
 }

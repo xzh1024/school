@@ -5,4 +5,5 @@
   <view bindtap="bindViewTap" class='btn'>
     和音乐一起分享时光
   </view>
+  <van-button plain type="danger">和音乐一起分享时光</van-button>
 </view>

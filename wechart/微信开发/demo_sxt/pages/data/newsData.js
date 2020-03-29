@@ -10,7 +10,7 @@ var newsData = [
     "likeSum": 30,
     "commentSum": 12,
     "music": {
-      "url": "http://localhost:8081/img/voice/JohnLegend_AllOfMe.mp3",
+      "url": "http://47.99.201.211:8080/img/voice/JohnLegend_AllOfMe.mp3",
       "title": "All of Me",
       "epname": "All of Me",
       "imgUrl": "https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=2078751632,494879754&fm=58&bpow=350&bpoh=350",
@@ -28,7 +28,7 @@ var newsData = [
     "likeSum": 30,
     "commentSum": 13,
     "music":{
-      "url": "http://localhost:8081/img/voice/YouDontKnowMe.mp3",
+      "url": "http://47.99.201.211:8080/img/voice/YouDontKnowMe.mp3",
       "title": "You Don’t Know Me",
       "epname": "You Don’t Know Me",
       "imgUrl": "http://oimageb6.ydstatic.com/image?id=-8609524943768398918&product=dict#w=400&h=400&originWidth=400&originHeight=400",

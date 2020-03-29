@@ -1,4 +1,6 @@
 <!--pages/cart/cart.wxml-->
+<van-search value="{{ value }}" placeholder="请输入搜索关键词" bind:search="mySearch" />
 <navigator url="/pages/cart/product/product">
     跳转到新页面
   </navigator>
+  <van-button type="info">信息按钮</van-button>

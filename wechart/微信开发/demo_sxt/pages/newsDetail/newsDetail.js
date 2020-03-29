@@ -6,7 +6,8 @@ Page({
    */
   data: {
     newsDetailData: {},
-    isPlayingMusic: false
+    isPlayingMusic: false,
+    audioContext: null
   },
 
   /**
@@ -15,11 +16,35 @@ Page({
   onLoad: function (options) {
     this.setData({
       newsDetailData: newsData.data[options.newsid]
-    })
-    console.log(this.data.newsDetailData)
+    });
+    // console.log(this.data.newsDetailData);
+    this.createInnerAudio();
   },
+  createInnerAudio() {
+    const audioContext = wx.createInnerAudioContext();
+    audioContext.src = this.data.newsDetailData.music.url;
+    this.setData({
+      audioContext: audioContext
+    });
+  },
+  // 音乐
+  onPlay() {
+    const audioContext = this.data.audioContext;
+    console.log(audioContext);
+    if (this.data.isPlayingMusic == false) {
+      this.setData({
+        "isPlayingMusic": true
+      });
+      audioContext.play();//播放
+    } else {
+      this.setData({
+        "isPlayingMusic": false
+      });
+      audioContext.pause();//暂停
+    };
+  },
+  // 背景音乐
   onMusicTap: function(event){
-    console.log('音乐');
     // var _this = this;
     //wx.getBackgroundAudioManager()
     // wx.getBackgroundAudioPlayerState({
@@ -65,7 +90,7 @@ Page({
         "isPlayingMusic": false
       });
       backgroundAudioManager.pause();//暂停
-    }
+    };
   },
   show: function(){
     // wx.showModal({
@@ -124,14 +149,16 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+    console.log("页面隐藏");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+    console.log("页面卸载");
+    // 销毁当前音频实例
+    this.data.audioContext.destroy();
   },
 
   /**

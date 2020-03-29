@@ -17,7 +17,7 @@
       <text>{{newsDetailData.likeSum}}</text>
       <image src='/pages/images/icon_news02.png'></image>
       <text>{{newsDetailData.commentSum}}</text>
-      <image bindtap='onMusicTap' class='audio' src="{{isPlayingMusic?'/pages/images/music_start.png':'/pages/images/music_stop.png'}}"></image>
+      <image bindtap='onPlay' class='audio' src="{{isPlayingMusic?'/pages/images/music_start.png':'/pages/images/music_stop.png'}}"></image>
     </view>
     <!-- <image class='article-img' src="{{authorImg}}" ></image> -->
     <text class='article-text'>{{newsDetailData.authorText}}</text>

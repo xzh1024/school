@@ -5,7 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    value: '小程序开发'
+  },
 
+  mySearch(event) {
+    console.log(event.detail);
   },
 
   /**
