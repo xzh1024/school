@@ -9,6 +9,22 @@ function MyPromise(fn) {
     that.resolvedCallbacks = [];
     that.rejectedCallbacks = [];
 
+    // function resolve(value) {
+    //     if (that.state === PENDING) {
+    //         that.state = RESOLVED
+    //         that.value = value
+    //         that.resolvedCallbacks.map(cb => cb(that.value))
+    //     }
+    // }
+
+    // function reject(value) {
+    //     if (that.state === PENDING) {
+    //         that.state = REJECTED
+    //         that.value = value
+    //         that.rejectedCallbacks.map(cb => cb(that.value))
+    //     }
+    // }
+
     function resolve(value) {
         if (value instanceof MyPromise) {
             return value.then(resolve, reject);
@@ -50,6 +66,7 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
                 throw r
             }
     if (that.state === PENDING) {
+        console.log('PENDING');
         // that.resolvedCallbacks.push(onFulfilled)
         // that.rejectedCallbacks.push(onRejected)
         return (promise2 = new MyPromise((resolve, reject) => {
@@ -73,6 +90,7 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
         }))
     }
     if (that.state === RESOLVED) {
+        console.log('RESOLVED');
         // onFulfilled(that.value)
         return (promise2 = new MyPromise((resolve, reject) => {
             setTimeout(() => {
@@ -82,14 +100,24 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
                 } catch (reason) {
                     reject(reason)
                 }
-            })
+            }, 0)
         }))
     }
     if (that.state === REJECTED) {
-        onRejected(that.value)
+        console.log('REJECTED');
+        // onRejected(that.value)
+        return (promise2 = new MyPromise((resolve, reject) => {
+            setTimeout(() => {
+                try {
+                    const x = onRejected(that.value)
+                    resolutionProcedure(promise2, x, resolve, reject)
+                } catch (reason) {
+                    reject(reason)
+                }
+            }, 0)
+        }))
     }
 }
-
 
 function resolutionProcedure(promise2, x, resolve, reject) {
     if (promise2 === x) {

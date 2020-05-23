@@ -8,16 +8,19 @@
 </head>
 
 <body>
-    <script src="./CutePromise.js?time=0"></script>
+    <script src="./CutePromise.js"></script>
     <script src="./MyPromise.js"></script>
     <script>
         let promise = new MyPromise((resolve, reject) => {
-            setTimeout(() => resolve('Hello'), 3000);
-            // setTimeout(() => reject('World'), 3000);
+            // setTimeout(() => resolve('Hello'), 3000);
+            setTimeout(() => reject('World'), 3000);
         });
         promise.then(res => {
             console.log(res);
             return 'World';
+        }, err => {
+            console.log(err);
+            return 'err';
         }).then(res => {
             console.log(res);
         });

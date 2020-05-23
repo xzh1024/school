@@ -84,6 +84,5 @@ class CutePromise {
             this.chained.push({ onFulfilled, onRejected });
         }
         // console.log(this.then);
-        // return this.then;
     }
 }
