@@ -17,7 +17,7 @@
                 args.push('arguments[' + i + ']');
             }
             var result = eval('context.fn(' + args + ')');
-            // delete context.fn;
+            delete context.fn;
             return result;
         }
         Function.prototype.myCall2 = function (context) {
@@ -49,19 +49,6 @@
         }
 
         Function.prototype.myCall = function (context) {
-            context = context || window;
-            context.fn = this;
-            let args = [];
-            for (let i = 1, len = arguments.length; i < len; i++) {
-                // args.push(arguments[i]);
-                args.push('arguments[' + i + ']');
-            }
-            // let result = context.fu(...args);
-            let result = eval('context.fn(' + args + ')');
-            delete context.fn;
-            return result;
-        }
-        Function.prototype.myCall3 = function (context) {
             context = context || window;
             context.fn = this;
             let args = [];
