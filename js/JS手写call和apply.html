@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Function.prototype.myCall1 = function (context) {
+            context = context || window;
+            context.fn = this;
+            var args = [];
+            for (var i = 1, len = arguments.length; i < len; i++) {
+                args.push('arguments[' + i + ']');
+            }
+            var result = eval('context.fn(' + args + ')');
+            // delete context.fn;
+            return result;
+        }
+        Function.prototype.myCall2 = function (context) {
+            context = context || window;
+            context.fn = this;
+            var args = [];
+            for (var i = 1, len = arguments.length; i < len; i++) {
+                args.push(arguments[i])
+            }
+            var result = context.fn(...args);
+            delete context.fn;
+            return result;
+        }
+
+        Function.prototype.myApply = function (context, arr) {
+            var context = context || window;
+            context.fn = this;
+            if (!arr) {
+                result = context.fn();
+            } else {
+                var args = [];
+                for (var i = 0, len = arr.length; i < len; i++) {
+                    args.push('arr[' + i + ']');
+                }
+                result = eval('context.fn(' + args + ')')
+            }
+            delete context.fn;
+            return result;
+        }
+
+        Function.prototype.myCall = function (context) {
+            context = context || window;
+            context.fn = this;
+            let args = [];
+            for (let i = 1, len = arguments.length; i < len; i++) {
+                // args.push(arguments[i]);
+                args.push('arguments[' + i + ']');
+            }
+            // let result = context.fu(...args);
+            let result = eval('context.fn(' + args + ')');
+            delete context.fn;
+            return result;
+        }
+        Function.prototype.myCall3 = function (context) {
+            context = context || window;
+            context.fn = this;
+            let args = [];
+            for (let i = 1, len = arguments.length; i < len; i++) {
+                // args.push(arguments[i]);
+                args.push('arguments[' + i + ']');
+            }
+            // let result = context.fu(...args);
+            let result = eval('context.fn(' + args + ')');
+            delete context.fn;
+            return result;
+        }
+
+        function cat() { }
+        cat.prototype = {
+            food: "fish",
+            say: function (food) {
+                this.food = food;
+                console.log("I love " + this.food);
+            }
+        };
+
+        var blackCat = new cat;
+        var whiteDog = { food: "bone" };
+        blackCat.say.myCall(whiteDog, 123);
+        console.log(whiteDog);
+    </script>
+</body>
+
+</html>
