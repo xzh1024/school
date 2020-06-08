@@ -48,6 +48,20 @@
             return result;
         }
 
+        Function.prototype.newBind = function (target) {
+            var self = this;
+            var args = [].slice.call(arguments, 1)
+            var temp = function () {
+            };
+            var f = function () {
+                var _args = [].slice.call(arguments, 0)
+                return self.apply(this instanceof temp ? this : (target || window), args.concat(_args))
+            }
+            temp.prototype = self.prototype;
+            f.prototype = self.prototype;
+            return f;
+        }
+
         Function.prototype.myCall = function (context) {
             context = context || window;
             context.fn = this;
