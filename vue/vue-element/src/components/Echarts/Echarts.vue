@@ -7,18 +7,19 @@
 </template>
 
 <script>
+    import echarts from 'echarts';
     // 引入基本模板
-    let echarts = require('echarts/lib/echarts')
-    // 引入柱状图组件
-    require('echarts/lib/chart/bar')
-    require('echarts/lib/chart/line')
-    require('echarts/lib/chart/pie')
-    // 引入提示框和title组件
-    require('echarts/lib/component/tooltip')
-    require('echarts/lib/component/title')
-    require('echarts/lib/component/legend')
-    require('echarts/lib/component/grid')
-    require('echarts/lib/component/toolbox')
+    // let echarts = require('echarts/lib/echarts')
+    // // 引入柱状图组件
+    // require('echarts/lib/chart/bar')
+    // require('echarts/lib/chart/line')
+    // require('echarts/lib/chart/pie')
+    // // 引入提示框和title组件
+    // require('echarts/lib/component/tooltip')
+    // require('echarts/lib/component/title')
+    // require('echarts/lib/component/legend')
+    // require('echarts/lib/component/grid')
+    // require('echarts/lib/component/toolbox')
 
     const successNum = 352648;
     const failureNum = 12546;
@@ -27,7 +28,7 @@
         name: 'hello',
         data () {
             return {
-            msg: 'Welcome to Your Vue.js App'
+                msg: 'Welcome to Your Vue.js App'
             }
         },
         mounted(){

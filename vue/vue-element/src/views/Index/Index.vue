@@ -4,13 +4,14 @@
         <!--<div>{{ doneTodos }}</div>-->
         <!--<el-button type="primary" @click="increment">主要按钮</el-button>-->
         <Header :title="'首页'" class="header"></Header>
-        <div class="main">
+        <div class="main" ref="main">
             <div class="router-list">
                 <router-link to="/login">登录</router-link>
                 <br>
                 <router-link to="/chart">EChart</router-link>
                 <br>
                 <router-link to="/table">表格</router-link>
+                <router-link to="/map">地图</router-link>
             </div>
             <h1>{{ time | dateServer }}</h1>
             <h1>{{ money | money }}</h1>
@@ -45,6 +46,9 @@
             console.log(this.userData);
             this.fetchData();
             console.log(this.message);
+            this.$nextTick(() => {
+                console.log(this.$refs.main);
+            });
         },
         // 计算属性
         computed: {

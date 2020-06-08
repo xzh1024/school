@@ -31,11 +31,13 @@
                     >
                         <div>
                             <i class="tool-icon"></i>
-                            <span style="vertical-align: middle;">快捷工具</span>
+                            <!-- <span style="vertical-align: middle;">快捷工具</span> -->
+                            <span style="vertical-align: middle;">{{ $t('01_01')}}</span>
                         </div>
                         <div slot="content">
                             <div class="tool-item">升级工具下载</div>
                             <div class="tool-item">FAQ</div>
+                            <div class="tool-item" @click="switchLanguage">{{Language === 'cn' ? '中文': 'English'}}</div>
                         </div>
                     </el-tooltip>
                 </div>
@@ -84,6 +86,8 @@ export default class IndexComponent extends Vue {
   private routerList: IRouterConfig[] = [];
   private isOpenLoginPopup: boolean = false;
 
+  Language: string = 'cn';
+
   get activeIndex() {
       return this.$route.matched[1].path;
   }
@@ -127,6 +131,16 @@ export default class IndexComponent extends Vue {
   private jumpLogin() {
       this.$router.push({path: '/'});
   }
+
+    //切换语言
+    private switchLanguage() {
+        if(this.Language === 'cn') { 
+            this.Language = 'en';
+        } else {
+            this.Language = 'cn';
+        }
+        this.$i18n.locale = this.Language;
+    }
 }
 </script>
 

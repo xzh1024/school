@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log("onLoad 监听页面加载");
     this.setData({
       newsDetailData: newsData.data[options.newsid]
     });
@@ -135,28 +136,28 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    console.log("onReady 监听页面初次渲染完成");
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    console.log("onShow 监听页面显示");
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    console.log("页面隐藏");
+    console.log("onHide 监听页面隐藏");
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    console.log("页面卸载");
+    console.log("onUnload 页面卸载");
     // 销毁当前音频实例
     this.data.audioContext.destroy();
   },
@@ -165,20 +166,20 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    console.log("onPullDownRefresh 监听用户下拉动作");
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
-  }
+    console.log("onReachBottom 页面上拉触底事件的处理函数");
+  },
 
   /**
    * 用户点击右上角分享
    */
-  // onShareAppMessage: function () {
-  
-  // }
+  onShareAppMessage: function () {
+    console.log("onShareAppMessage 用户点击右上角分享");
+  }
 })

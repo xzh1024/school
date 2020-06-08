@@ -1,0 +1,27 @@
+/* pages/video/video.wxss */
+
+/* .video-box {
+  width: 100%;
+} */
+#myVideo {
+  width: 100%;
+}
+.bullet-screen{
+  display: flex;
+}
+.bullet-screen-input {
+  flex: 1;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 10rpx;
+}
+
+.bullet-screen-button {
+  color: #fff;
+  background-color: #0000ff;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 30px;
+  line-height: 30px;
+}

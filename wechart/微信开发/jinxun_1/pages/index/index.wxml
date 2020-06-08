@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view>
+  <navigator target="miniProgram"
+    open-type="navigate"
+    app-id="wxe5f52902cf4de896">
+    打开绑定的小程序
+  </navigator>
+
+  <view class="video-box">
+    <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+    <view clas="btn-area">
+      <button bindtap="bindButtonTap">获取视频</button>
+      <view class="bullet-screen">
+        <input id="myInput" class="bullet-screen-input" bindblur="bindInputBlur" model:value="{{inputValue}}"/>
+        <button class="bullet-screen-button" bindtap="bindSendDanmu">发送弹幕</button>
+      </view>
+      <button id="the-id" bindtap="showNodeInfo" class="blue">打印一个元素</button>
+    </view>
+  </view>
+</view>
+
+<view>
+  <text class="red">以下是引入部分</text>
+</view>
+<include src="../../includes/include.wxml" />
+{{ tools.reverse('123456789') }}
+<wxs src="../../includes/filter.wxs" module="tools"/>

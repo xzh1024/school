@@ -1,0 +1,64 @@
+<template>
+  <!-- <list></list> -->
+  <view bindtap="showName">
+    <view>{{testVal}}</view>
+    <view>{{num}}</view>
+  </view>
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    data: {
+      testVal: 123,
+      name: 'xzh',
+      num: 0
+    },
+    onLoad () {
+      console.log('onLoad 页面加载');
+      this.testVal = 456;
+      setInterval(() => {
+        this.num++;
+      }, 1000);
+    },
+    onShow () {
+      console.log('onShow 页面显示');
+    },
+    pageHide () {
+      // 页面切入后台执行
+      console.log('pageHide 页面切入后台执行')
+    },
+    onPullDownRefresh () {
+      // 需在json域开启enablePullDownRefresh
+      console.log('page onPullDownRefresh')
+    },
+    attached () {
+      // 以Component创建页面，那么页面也将具体组件的生命周期
+      console.log('attached')
+    },
+    detached () {
+      // 以Component创建页面，那么页面也将具体组件的生命周期
+      console.log('detached')
+    },
+    // 计算属性
+    computed: {
+      reversedMessage: () => {
+        return this.num;
+      }
+    },
+    methods: {
+      showName() {
+        console.log(this.name);
+      }
+    }
+  })
+</script>
+
+<script name="json">
+  module.exports = {
+    // usingComponents: {
+    //   'list': '../components/list'
+    // }
+  }
+</script>

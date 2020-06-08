@@ -8,8 +8,8 @@ import Header from '../../components/header';
 import './style.scss'
 
 class Category extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <div className="category">
                 <Header title="分类" />
                 <div className="main">category</div>

@@ -8,8 +8,8 @@ import Tabbar from '../../components/tabbar';
 import './style.scss'
 
 class User extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <div className="user">
                 <Header title="用户中心" />
                 <div className="main">user</div>
