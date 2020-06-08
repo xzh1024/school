@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <script src="./CutePromise.js"></script>
+    <script src="./MyPromise.js"></script>
+    <script>
+        let promise = new MyPromise((resolve, reject) => {
+            // setTimeout(() => resolve('Hello'), 3000);
+            setTimeout(() => reject('World'), 3000);
+        });
+        promise.then(res => {
+            console.log(res);
+            return 'World';
+        }, err => {
+            console.log(err);
+            return 'err';
+        }).then(res => {
+            console.log(res);
+        });
+        // promise.then(res => console.log(res));
+        // promise = new CutePromise((resolve, reject) => {
+        //     setTimeout(() => reject(new Error('woops')), 100);
+        // });
+        // promise.then(() => { }, err => console.log('Async error:', err.stack));
+        // promise = new CutePromise(() => { throw new Error('woops'); });
+        // promise.then(() => { }, err => console.log('Sync error:', err.stack));
+    </script>
+</body>
+
+</html>
