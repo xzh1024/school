@@ -76,7 +76,7 @@
             return result;
         }
 
-        function cat() { }
+        function cat() { };
         cat.prototype = {
             food: "fish",
             say: function (food) {
@@ -84,9 +84,9 @@
                 console.log("I love " + this.food);
             }
         };
+        var whiteDog = { food: "bone" };
 
         var blackCat = new cat;
-        var whiteDog = { food: "bone" };
         blackCat.say.myCall(whiteDog, 123);
         console.log(whiteDog);
     </script>
