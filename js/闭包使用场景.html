@@ -11,8 +11,7 @@
         function parent(fn) {
             let count = 0;
             return function() {
-                if(count < 3) {
-                    count++;
+                if(count++ < 3) {
                     fn.apply(this, arguments);
                 }
             }
