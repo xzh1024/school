@@ -25,10 +25,6 @@
 
             // 将throttle处理结果当作函数返回
             return function () {
-                // 保留调用时的this上下文
-                let context = this
-                // 保留调用时传入的参数
-                let args = arguments
                 // 记录本次触发回调的时间
                 // let _now = +new Date()
                 let _now = Date.now()
@@ -38,7 +34,7 @@
                 if (_now - last >= interval) {
                     // 如果时间间隔大于我们设定的时间间隔阈值，则执行回调
                     last = _now;
-                    fn.apply(context, args);
+                    fn.apply(this, arguments);
                 }
             }
         }
