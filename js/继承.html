@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>继承</title>
+</head>
+<body>
+    <script>
+        function Parent(name) {
+            this.name = name;
+        }
+        Parent.prototype.showName = function () {
+            console.log(this.name);
+        }
+
+        var a = new Parent('张三');
+        a.showName();
+
+        console.dir(a.__proto__ === Parent.prototype)
+        console.dir(a.__proto__ === a.constructor.prototype)
+        console.dir(a.constructor === Parent)
+    </script>
+</body>
+</html>
