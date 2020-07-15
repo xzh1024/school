@@ -2,4 +2,3 @@
 *dist
 .idea
 yarn.lock
-/webpack/webpack-demo-02-管理资源、输出/dist
