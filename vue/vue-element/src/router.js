@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from './views/Index/Index.vue'
-import Login from './views/Login/Login.vue'
-import Chart from './views/Chart/Chart.vue'
+// import Index from './views/Index/Index.vue'
+// import Login from './views/Login/Login.vue'
+// import Chart from './views/Chart/Chart.vue'
 
 Vue.use(Router)
 
@@ -43,8 +43,17 @@ const $router = new Router({
       }
     },
     {
+      path: '/map',
+      name: 'map',
+      component: () => import('./views/Map/map.vue'),
+      meta:{
+        title: '地图',
+        index: 12
+      }
+    },
+    {
       path: '/login',
-      name: 'login',
+      name: "login",
       component: () => import('./views/Login/Login.vue'),
       meta:{
         title: '登录',

@@ -46,6 +46,7 @@ class TodoList extends Component {
          *
          * */
         super(props);
+        // 使用bind()改变this指向，也可以使用ES6的箭头函数
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.state = {
@@ -56,12 +57,69 @@ class TodoList extends Component {
                 'learn vue'
             ]
         };
+        // 创建一个 ref 来存储 textInput 的 DOM 元素
+        this.textInput = React.createRef();
+        this.focusTextInput = this.focusTextInput.bind(this);
+    }
+    
+    // //生命周期
+    // /*
+    //     1.Initialization：在这个阶段，组件准备设置初始化状态和默认属性。
+    // */
+
+    // /*
+    //     2.Mounting：react 组件已经准备好挂载到浏览器 DOM 中。这个阶段包括
+    // */
+    // componentWillMount() {
+    //     console.log('创建前');
+    // }
+    
+    // componentDidMount() {
+    //     //当组件输出到 DOM 后会执行 componentDidMount() 钩子
+    //     console.log('创建后');
+    //     this.focusTextInput();
+    // }
+    
+    // /*
+    //     3.Updating：在这个阶段，组件以两种方式更新，发送新的 props 和 state 状态。此阶段包括
+    // */
+    // //setProps
+    // componentWillReceiveProps() {
+    //     console.log('setProps');
+    // }
+    // //setState
+    // shouldComponentUpdate() {
+    //     console.log('setState');
+    //     return true;
+    // }
+
+    // componentWillUpdate() {
+    //     console.log('更新前');
+    // }
+
+    // //render
+    // componentDidUpdate() {
+    //     console.log('更新后');
+    // }
+
+    // /*
+    //     4.Unmounting：在这个阶段，组件已经不再被需要了，它从浏览器 DOM 中卸载下来。
+    //     这个阶段包含 componentWillUnmount 生命周期方法.
+    // */
+    // componentWillUnmount() {
+    //     console.log('卸载');
+    // }
+
+
+    focusTextInput() {
+        // 直接使用原生 API 使 text 输入框获得焦点
+        // 注意：我们通过 "current" 来访问 DOM 节点
+        console.log(this.textInput.current);
+        this.textInput.current.focus();
     }
 
     handleBtnClick = () => {
-        // alert('click');
-        // let list = this.state.list;
-        // list.push(this.state.value);
+        if(this.state.inputValue === '') return false;
 
         // ... 展开运算符
         this.setState({
@@ -70,7 +128,7 @@ class TodoList extends Component {
         });
     }
 
-    handleInputChange(e){
+    handleInputChange(e) {
         // console.log(e.target.value);
         this.setState({
             inputValue: e.target.value
@@ -78,14 +136,13 @@ class TodoList extends Component {
     }
 
     handleInputKeyUp = (e) => {
-        // console.log(e.keyCode);
         const keyCode = e.keyCode;
         if(keyCode === 13 || keyCode === 108){
             this.handleBtnClick();
         }
     }
 
-    handleItemClick(index){
+    handleItemClick(index) {
         const list = [...this.state.list];
         list.splice(index, 1);
         // this.setState({
@@ -94,13 +151,13 @@ class TodoList extends Component {
         this.setState({list});
     }
 
-    handleDelete(index){
+    handleDelete(index) {
         const list = [...this.state.list];
         list.splice(index, 1);
         this.setState({list});
     }
 
-    getTodoItems(){
+    getTodoItems()  {
         return this.state.list.map((item, index) => {
             return (
                 <TodoItem
@@ -110,20 +167,18 @@ class TodoList extends Component {
                     index={index}
                 />
             )
-            {/*return <li key={index} onClick={this.handleItemClick.bind(this, index)}>{index}:{item}</li>*/}
         })
     }
 
     // 父组件通过属性的形式向子组件传递参数
     // 子组件通过props接受父组件传递过来的参数
-
     render() {
         return (
             <React.Fragment>
-                <Header title="首页" />
+                <Header />
                 <div className="main">
                     <div className="memo">
-                        <input className="memo-input" type="text" value={this.state.inputValue} onChange={this.handleInputChange} onKeyUp={this.handleInputKeyUp}/>
+                        <input ref={this.textInput} className="memo-input" type="text" value={this.state.inputValue} onChange={this.handleInputChange} onKeyUp={this.handleInputKeyUp}/>
                         <button className="memo-button" onClick={this.handleBtnClick}>add</button>
                     </div>
                     <div>

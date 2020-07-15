@@ -38,16 +38,16 @@ const Tabbar = (WrappedComponent) => class Tabbar extends Component {
         }
     }
 
-    itemChange = (index) => {
+    indexChange = (index) => {
         this.setState({
             index: index
         })
     }
 
 // <Link to={v.link} key={i} className={'tarbar-item' + (this.state.index === i ? ' active' : '')} onClick={() => this.itemChange(i)}>
-    render(){
+    render() {
         const url = window.location.href;
-        return(
+        return (
             <div className="tabbar-container">
                 <div className="tabbar-children">
                     <WrappedComponent />
@@ -56,10 +56,10 @@ const Tabbar = (WrappedComponent) => class Tabbar extends Component {
                 <div className="tabbar">
                     <div className="tabbar-content">
                         {
-                            tarbarArr.map((v, i) => (
-                                    <Link to={v.link} key={i} className={'tarbar-item' + (url.indexOf(v.link) > -1 ? ' active' : '')} onClick={() => this.itemChange(i)}>
-                                        <div className={'iconfont ' + v.img}></div>
-                                        <div>{v.text}</div>
+                            tarbarArr.map((item, i) => (
+                                    <Link to={item.link} key={i} className={'tarbar-item' + (url.indexOf(item.link) > -1 ? ' active' : '')} onClick={() => this.indexChange(i)}>
+                                        <div className={'iconfont ' + item.img}></div>
+                                        <div>{item.text}</div>
                                     </Link>
                                 )
                             )

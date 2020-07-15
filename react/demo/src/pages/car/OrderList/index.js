@@ -30,28 +30,29 @@ class OrderList extends Component {
         this.submitComments = this.submitComments.bind(this);
         this.state = {
             data: [
-                {
-                    "id": 1,
-                    "shop": "院落创意菜",
-                    "picture": "http://img.ivsky.com/img/tupian/t/201601/10/baixiangguo-005.jpg",
-                    "product": "百香果（冷饮）1扎",
-                    "price": 19.9,
-                    "ifCommented": false
-                },
-                {
-                    "id": 2,
-                    "shop": "院落创意菜",
-                    "picture": "http://img.ivsky.com/img/tupian/t/201601/10/baixiangguo-005.jpg",
-                    "product": "百香果（冷饮）1扎",
-                    "price": 19.9,
-                    "ifCommented": true
-                }
+                // {
+                //     "id": 1,
+                //     "shop": "院落创意菜",
+                //     "picture": "http://img.ivsky.com/img/tupian/t/201601/10/baixiangguo-005.jpg",
+                //     "product": "百香果（冷饮）1扎",
+                //     "price": 19.9,
+                //     "ifCommented": false
+                // },
+                // {
+                //     "id": 2,
+                //     "shop": "院落创意菜",
+                //     "picture": "http://img.ivsky.com/img/tupian/t/201601/10/baixiangguo-005.jpg",
+                //     "product": "百香果（冷饮）1扎",
+                //     "price": 19.9,
+                //     "ifCommented": true
+                // }
             ]
         };
         // this.componentDidMount();
     }
 
     componentDidMount(){
+        // 获取数据
         fetch('/mock/orders.json').then(res => {
             if(res.ok){
                 // console.log(res);
@@ -60,8 +61,7 @@ class OrderList extends Component {
                 })
             }
         }).catch(err => {
-            console.log('err:');
-            console.log(err);
+            console.error(err);
         })
     }
 

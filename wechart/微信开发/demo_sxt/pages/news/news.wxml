@@ -19,7 +19,7 @@
 
 
   
-  <view class='article'>
+  <!-- <view class='article'>
     <view class='article-time'>
       <image class='user-icon' src="{{newsData[0].authorIcon}}" ></image>
       <text class='author'>timo</text>
@@ -36,5 +36,5 @@
       <image src='/pages/images/icon_news02.png'></image>
       <text>30</text>
      </view>
-  </view>
+  </view> -->
 </view>

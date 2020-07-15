@@ -9,8 +9,8 @@ import OrderList from './OrderList';
 import './style.scss'
 
 class Car extends Component {
-    render(){
-        return(
+    render() {
+        return (
             <div className="car">
                 <Header title="购物车" />
                 <div className="main">

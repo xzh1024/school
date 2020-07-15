@@ -4,6 +4,7 @@ import App from './App.vue';
 import store from './store';
 
 import './common/interceptors/interceptor.config'
+import i18n from './i18n'
 
 import routerService from '@/router/router.service';
 const router = routerService.getVueRouter();
@@ -16,6 +17,7 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
+  i18n,
   store,
   render: (h) => h(App),
 }).$mount('#app');

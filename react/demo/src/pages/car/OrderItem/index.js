@@ -40,13 +40,13 @@ class OrderItem extends Component {
         }
     }
 
-    setStars(index){
+    setStars(index) {
         this.setState({
             stars: index+1
         })
     }
 
-    submitComment(){
+    submitComment() {
         //ifCommented = false
         const { index } = this.props;
         const { stars, commentValue } = this.state;
@@ -58,18 +58,18 @@ class OrderItem extends Component {
         })
     }
 
-    commentTextareaChange(event){
+    commentTextareaChange(event) {
         // console.log(event.target.value);
         this.setState({commentValue: event.target.value});
     }
 
     render() {
         const { shop, product, price, picture, ifCommented } = this.props.data;
-        return(
+        return (
             <div>
                 <div className="orderItem">
                     <div className="orderItem__picContainer">
-                        <img className="orderItem__pic" src={picture}/>
+                        <img className="orderItem__pic" src={picture} alt="" />
                     </div>
                     <div className="orderItem__content">
                         <div className="orderItem__product">{product}</div>
@@ -93,7 +93,7 @@ class OrderItem extends Component {
         )
     }
 
-    renderEditArea(){
+    renderEditArea() {
         return (
             <div className="orderItem__commentContainer">
                 <textarea className="orderItem__comment" onChange={this.commentTextareaChange} value={this.state.commentValue} />
@@ -104,7 +104,7 @@ class OrderItem extends Component {
         )
     }
 
-    renderStars(){
+    renderStars() {
         const { stars } = this.state;
         return (
             <div>

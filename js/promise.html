@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // new Promise((resolve, reject) => {
+        //     console.log(1);
+        //     setTimeout(() => {
+        //         resolve('hello');
+        //     }, 200);
+        // }).then(value => {
+        //     return new Promise((resolve, reject) => {
+        //         setTimeout(() => {
+        //             resolve(value + ' world');
+        //         }, 200);
+        //     });
+        // }).then(value => {
+        //     console.log(value);
+        // }).catch(err => {
+        //     console.log(err);
+        // });
+
+        const promises = [2, 3, 5, 7, 11, 13].map(function (id) {
+            return '/post/' + id + ".json";
+        });
+
+        Promise.all(promises).then(function (posts) {
+            console.log(posts);
+        }).catch(function(reason){
+            console.log(reason);
+        });
+    </script>
+</body>
+</html>
