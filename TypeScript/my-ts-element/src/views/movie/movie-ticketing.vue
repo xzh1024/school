@@ -50,8 +50,6 @@
 
 <script lang="ts">
 import {Vue, Component} from 'vue-property-decorator';
-import routerService from '@/router/router.service';
-import {RouterNameEnum} from '@/router/enum/RouterNameEnum';
 
 import {ServiceFactory} from "@/common/services/ServiceFactory";
 import {ServiceType} from "@/common/services/base/service.type";
