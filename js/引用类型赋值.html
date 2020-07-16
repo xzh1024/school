@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj1 = {
+            name: '小明',
+            age: 18,
+            colors: ['red', 'green']
+        }
+
+        var obj2 = Object.assign({}, obj1);
+        obj2.name = '小刚';
+        obj2.age = 16;
+        obj2.colors.push('blue');
+
+        console.log(obj1);
+        console.log(obj2);
+    </script>
+</body>
+</html>

@@ -48,32 +48,52 @@
             return result;
         }
 
+        Function.prototype.newBind = function (target) {
+            var self = this;
+            var args = [].slice.call(arguments, 1)
+            var temp = function () {
+            };
+            var f = function () {
+                var _args = [].slice.call(arguments, 0)
+                return self.apply(this instanceof temp ? this : (target || window), args.concat(_args))
+            }
+            temp.prototype = self.prototype;
+            f.prototype = self.prototype;
+            return f;
+        }
+
         Function.prototype.myCall = function (context) {
             context = context || window;
             context.fn = this;
-            let args = [];
-            for (let i = 1, len = arguments.length; i < len; i++) {
-                // args.push(arguments[i]);
-                args.push('arguments[' + i + ']');
+            var args = [];
+            for (var i = 1, len = arguments.length; i < len; i++) {
+                console.log(arguments[i])
+                args.push(arguments[i]);
+                // args.push('arguments[' + i + ']');
             }
-            // let result = context.fu(...args);
-            let result = eval('context.fn(' + args + ')');
+            console.log(args.join())
+            // var result = eval('context.fn(' + args + ')');
+            var result = context.fn(args.join());;
+            // var args = Array.prototype.slice.call(arguments, 1);
+            // var result = context.fn(...args);
             delete context.fn;
             return result;
         }
 
-        function cat() { }
+        function cat() { };
         cat.prototype = {
             food: "fish",
-            say: function (food) {
+            age: 1,
+            say: function (food, age) {
                 this.food = food;
-                console.log("I love " + this.food);
+                this.age = age;
+                console.log("I love " + this.food + this.age);
             }
         };
+        var whiteDog = { food: "bone", age: 2 };
 
         var blackCat = new cat;
-        var whiteDog = { food: "bone" };
-        blackCat.say.myCall(whiteDog, 123);
+        blackCat.say.myCall(whiteDog, 'toast', 18);
         console.log(whiteDog);
     </script>
 </body>

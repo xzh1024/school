@@ -11,19 +11,18 @@
     <script src="./CutePromise.js"></script>
     <script src="./MyPromise.js"></script>
     <script>
-        let promise = new MyPromise((resolve, reject) => {
-            // setTimeout(() => resolve('Hello'), 3000);
-            setTimeout(() => reject('World'), 3000);
-        });
-        promise.then(res => {
-            console.log(res);
-            return 'World';
-        }, err => {
-            console.log(err);
-            return 'err';
-        }).then(res => {
-            console.log(res);
-        });
+        // let promise = new MyPromise((resolve, reject) => {
+        //     setTimeout(() => resolve('Hello'), 3000);
+        //     setTimeout(() => reject('World'), 3000);
+        // });
+        // promise.then(res => {
+        //     return res + ' World';
+        // }, err => {
+        //     console.log(err);
+        //     return 'err';
+        // }).then(res => {
+        //     console.log(res);
+        // });
         // promise.then(res => console.log(res));
         // promise = new CutePromise((resolve, reject) => {
         //     setTimeout(() => reject(new Error('woops')), 100);
@@ -31,6 +30,74 @@
         // promise.then(() => { }, err => console.log('Async error:', err.stack));
         // promise = new CutePromise(() => { throw new Error('woops'); });
         // promise.then(() => { }, err => console.log('Sync error:', err.stack));
+
+
+        function myPromise(executor) {
+            if (typeof executor !== 'function') {
+                throw new Error('Executor must be a function');
+            }
+
+            var that = this;
+            this.state = 'pending';
+            this.msg = ''; // 存放value和error
+            this.resolvedCallbacks = [];
+            this.rejectedCallbacks = [];
+
+            function resolve (res) {
+                if (that.state === 'pending') {
+                    that.state = 'fulfilled'
+                    that.msg = res
+                    that.resolvedCallbacks.map(cb => cb(that.msg));
+                }
+            };
+
+            function reject (err) {
+                if (that.state === 'pending') {
+                    that.state = 'rejected'
+                    that.msg = err
+                    that.rejectedCallbacks.map(cb => cb(that.msg));
+                }
+            }
+
+            try {
+                executor(resolve, reject);
+            } catch (error) {
+                reject(error);
+            }
+
+            return this;
+        }
+
+        myPromise.prototype.then = function (onFulfilled, onRejected) {
+            onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : v => v;
+            onRejected =
+                typeof onRejected === 'function'
+                    ? onRejected
+                    : r => {
+                        throw r
+                    };
+
+            if (this.state === 'fulfilled') {
+                onFulfilled(this.msg);
+            } else if (this.state === 'rejected' && onRejected) {
+                onRejected(this.msg);
+            } else if (this.state === 'pending') {
+                this.resolvedCallbacks.push(onFulfilled);
+                this.rejectedCallbacks.push(onRejected);
+            }
+        }
+
+        var p = new myPromise(function (resolve, reject) {
+            setTimeout(function () {
+                reject('Hello');
+            }, 1000);
+        });
+
+        p.then(function (params) {
+            console.log(params);
+        }, function (errer) {
+            console.log(errer);
+        });
     </script>
 </body>
 

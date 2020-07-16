@@ -66,7 +66,6 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
                 throw r
             }
     if (that.state === PENDING) {
-        console.log('PENDING');
         // that.resolvedCallbacks.push(onFulfilled)
         // that.rejectedCallbacks.push(onRejected)
         return (promise2 = new MyPromise((resolve, reject) => {
@@ -90,7 +89,6 @@ MyPromise.prototype.then = function (onFulfilled, onRejected) {
         }))
     }
     if (that.state === RESOLVED) {
-        console.log('RESOLVED');
         // onFulfilled(that.value)
         return (promise2 = new MyPromise((resolve, reject) => {
             setTimeout(() => {

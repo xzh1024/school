@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>插入排序</title>
+</head>
+<body>
+    <script>
+        // function insertSort(arr) {
+        //     var temp
+        //     for (var i = 1; i < arr.length; i++) {
+        //         temp = arr[i]
+        //         for (var j = i; j > 0 && temp < arr[j - 1]; j--) {
+        //             arr[j] = arr[j - 1]
+        //         }
+        //         arr[j] = temp
+        //     }
+        //     return arr
+        // }
+        // console.log(insertSort([3, 1, 8, 2, 5]))
+
+        function insertSort(arr) {
+            for (let i = 1, len = arr.length; i < len; i++) {
+                let temp = arr[i];
+                let j = i;
+                for (; j > 0; j--) {
+                    if (temp >= arr[j - 1]) {
+                        break;      // 当前考察的数大于前一个数，证明有序，退出循环
+                    }
+                    arr[j] = arr[j - 1]; // 将前一个数复制到后一个数上
+                }
+                arr[j] = temp;  // 找到考察的数应处于的位置
+            }
+            return arr;
+        }
+        let arr = [2, 5, 10, 7, 10, 32, 90, 9, 11, 1, 0, 10]
+        console.log(insertSort(arr));
+    </script>
+</body>
+</html>
