@@ -40,7 +40,7 @@ class Login extends Component {
       password: this.state.password
     }));
     console.log(this);
-    console.log(this.props);
+    console.log(this.props.user);
   }
 
   render() {
@@ -49,6 +49,7 @@ class Login extends Component {
         <div>
           <p>用户名：{this.props.user.username}</p>
           <p>密码：{this.props.user.password}</p>
+          <p>状态：{String(this.props.user.isLogin)}</p>
         </div>
         <div>
           <li>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { connect } from 'react-redux';
+// import logo from './logo.svg';
 import './App.css';
 
 import 'element-theme-default';
@@ -18,4 +19,12 @@ class App extends Component {
     }
 }
 
-export default App;
+//获取需要的数据
+function mapStateToProps(state) {
+  return {
+    user: state.user
+  }
+}
+
+// export default App;
+export default connect(mapStateToProps)(App);
