@@ -21,12 +21,15 @@
             Father.apply(this, arguments);
         }
 
-        Child.prototype = Object.create(Father.prototype);
+        // Child.prototype = Object.create(Father.prototype);
+        Child.prototype = new Father('小明', 18);
 
         Child.prototype.constructor = Child;
 
-        var person = new Child('小明', 18, '160cm');
-        // console.dir(Father.prototype === Child.__proto__);
+        var person1 = new Father('小明', 18);
+        var person = new Child('小明', 18, '110');
+        console.dir(Father.prototype === person1.__proto__);
+        console.dir(Father === Child.prototype.__proto__.constructor);
         console.dir(Child);
         person.showName();
         console.log(person);
@@ -55,6 +58,7 @@
         console.dir(a.__proto__ === Parent.prototype)
         console.dir(a.__proto__ === a.constructor.prototype)
         console.dir(a.constructor === Parent)
+        console.dir(a)
     </script>
 </body>
 </html>

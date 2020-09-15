@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <canvas id="canvas" width="1200" height="500"></canvas>
+        <!-- <canvas id="myCanvas" width="600" height="500"></canvas> -->
+    </div>
+    <script>
+        // function draw() {
+        //     var canvas = document.getElementById('tutorial');
+        //     if (!canvas.getContext) return;
+        //     var ctx = canvas.getContext("2d");
+        //     ctx.fillRect(10, 10, 100, 50); //绘制矩形,填充的默认颜色为黑色
+        //     ctx.strokeRect(10, 70, 100, 50); //绘制矩形边框
+        //     ctx.clearRect(15, 15, 50, 25);
+        // }
+        // draw();
+
+        var dom = document.getElementById('canvas');
+        var ctx = dom.getContext('2d');
+        var width = ctx.canvas.width;
+        var height = ctx.canvas.height;
+        // var r = width / 2;
+        // var rem = width / 200;
+        // var lineWidth = width / 20;
+
+        var x = width / 30;
+        var y = height / 10;
+        var lineWidth = 11;
+        var baseColor = '#02aaff';
+        var red = '#f30';
+        var triangleWidth = 7;
+        // var rem = width / 200;
+
+
+        function draw(startTime, time, index) {
+            ctx.save(); //其他：保存当前环境的状态
+            ctx.beginPath();
+            ctx.lineWidth = lineWidth; //线条样式：属性：设置或返回当前的线条宽度
+            ctx.lineCap = 'butt'; //设置或返回线条的结束端点样式
+            ctx.strokeStyle = baseColor;
+            ctx.moveTo(startTime * x, index * y); //路径：把路径移动到画布中的指定点，不创建线条
+            ctx.lineTo((startTime + time) * x, index * y); //路径：添加一个新点，然后在画布中创建从该点到最后指定点的线条
+            ctx.stroke(); //描边
+            // ctx.restore(); //返回之前保存过的路径状态和属性 //用来恢复Canvas旋转、缩放等之后的状态，当和canvas.save()一起使用时，恢复到canvas.save()保存时的状态。
+        }
+
+        // guide
+        function association(x1, x2, y1, y2) {
+            console.log("x1：" + x1 + '，x2：' + x2 + '，y1：' + y1 + '，y2：' + y2)
+            ctx.save();
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.moveTo(x1 * x, y1 * y);
+            ctx.lineTo(x1 * x, y2 * y);
+            ctx.lineTo(x2 * x, y2 * y);
+            ctx.stroke();
+
+            let endX = x2 * x;
+            let endY = y2 * y;
+            drawTriangle(endX, endY);
+        }
+
+        function drawTriangle(endX, endY) {
+            ctx.fillStyle = baseColor;
+            ctx.beginPath(); //新建一条path
+            ctx.moveTo(endX, endY); //把画笔移动到指定的坐标
+            ctx.lineTo(endX - triangleWidth, endY - triangleWidth); //绘制一条从当前位置到指定坐标(200, 50)的直线.
+            ctx.lineTo(endX - triangleWidth, endY + triangleWidth);
+            //闭合路径。会拉一条从当前点到path起始点的直线。如果当前点与起始点重合，则什么都不做
+            ctx.closePath();
+            ctx.fill(); //填充闭合区域。如果path没有闭合，则fill()会自动闭合路径。
+        }
+
+        //延后率
+        function drawAfterRate(startTime, time, index, afterRate) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.lineWidth = lineWidth;
+            ctx.lineCap = 'butt';
+            ctx.strokeStyle = red;
+            ctx.moveTo((startTime + time) * x, index * y);
+            ctx.lineTo((startTime + time + afterRate) * x, index * y);
+            ctx.stroke();
+        }
+
+
+        var list = [{
+                user_id: "141",
+                realname: "luolongwei2",
+                task_count: 0,
+                other_task_count: 4,
+                free_rate: 100,
+                task: [],
+            },
+            {
+                user_id: "3170",
+                realname: "xiezihan",
+                task_count: 0,
+                other_task_count: 7,
+                free_rate: 100,
+                task: [{
+                        id: "c52d2b3e-0165-36e2-a80f-cf56e18ef613",
+                        task_name: "任务1",
+                        status: "1",
+                        expect_start_time: 1596330000,
+                        expect_start_date: "2020-08-02 09:00:00",
+                        expect_end_time: 1596621600,
+                        expect_end_date: "2020-08-05 18:00:00",
+                        "before_rate": 10.01, //提前率
+                        "after_rate": 6, //延后率
+                    },
+                    {
+                        id: "fd1abf58-a31d-3cce-93bd-fcbd06c9a83f",
+                        task_name: "任务C",
+                        status: "1",
+                        expect_start_time: 1596675600,
+                        expect_start_date: "2020-08-06 09:00:00",
+                        expect_end_time: 1596880800,
+                        expect_end_date: "2020-08-08 18:00:00",
+                        "before_rate": 10.01, //提前率
+                        "after_rate": 1, //延后率
+                    },
+                    {
+                        id: "62b18473-9dd7-3996-ba13-092345bb531c",
+                        task_name: "任务A",
+                        status: "1",
+                        expect_start_time: 1596934800,
+                        expect_start_date: "2020-08-09 09:00:00",
+                        expect_end_time: 1597399200,
+                        expect_end_date: "2020-08-14 18:00:00",
+                        "before_rate": 10.01, //提前率
+                        "after_rate": 0.5, //延后率
+                    },
+                    {
+                        id: "ec08690e-ec02-3880-b95c-f4af7e4acdd1",
+                        task_name: "任务2",
+                        status: "2",
+                        expect_start_time: 1597453200,
+                        expect_start_date: "2020-08-15 09:00:00",
+                        expect_end_time: 1597831200,
+                        expect_end_date: "2020-08-19 18:00:00",
+                        "before_rate": 10.01, //提前率
+                        "after_rate": 1.5, //延后率
+                    },
+                    {
+                        id: "19011846-57b7-3d31-81d0-6b253627d6dd",
+                        task_name: "任务5",
+                        status: "1",
+                        expect_start_time: 1597885200,
+                        expect_start_date: "2020-08-20 09:00:00",
+                        expect_end_time: 1598090400,
+                        expect_end_date: "2020-08-22 18:00:00",
+                        "before_rate": 10.01, //提前率
+                        "after_rate": 1, //延后率
+                    },
+                    {
+                        id: "d2424f31-7e35-30bb-ab9a-62e60bc929d0",
+                        task_name: "任务3",
+                        status: "1",
+                        expect_start_time: 1598144400,
+                        expect_start_date: "2020-08-23 09:00:00",
+                        expect_end_time: 1598436000,
+                        expect_end_date: "2020-08-26 18:00:00",
+                        "before_rate": 10.01, //提前率
+                        "after_rate": 2.5, //延后率
+                    }
+                ],
+            },
+        ]
+
+        let mIndex = 0;
+        let coords = [];
+        list.forEach((item, index) => {
+            const tasks = item.task;
+            tasks.forEach((task, taskIndex) => {
+                ++mIndex;
+                let startTime = new Date(task.expect_start_time * 1000).getDate();
+                let time = (task.expect_end_time - task.expect_start_time) / 3600 / 24;
+                console.log(startTime);
+                draw(startTime, time, mIndex);
+                coords.push({
+                    x1: startTime * x,
+                    x2: (startTime + time) * x,
+                    y1: mIndex * y - 3,
+                    y2: mIndex * y + 3,
+                    task
+                });
+                if (taskIndex > 0) {
+                    const before = tasks[taskIndex - 1];
+                    let beforeStartTime = new Date(before.expect_start_time * 1000).getDate();
+                    let beforeTime = (before.expect_end_time - before.expect_start_time) / 3600 / 24;
+                    association((beforeStartTime + beforeTime / 2), startTime, mIndex - 1, mIndex);
+                }
+                if (task.after_rate) {
+                    drawAfterRate(startTime, time, mIndex, task.after_rate);
+                }
+            });
+        });
+
+
+        function drawTooltip(pagex, pagey, task) {
+            reset();
+            // ctx.save(); //其他：保存当前环境的状态
+            // ctx.beginPath();
+            // ctx.lineWidth = lineWidth; //线条样式：属性：设置或返回当前的线条宽度
+            // ctx.lineCap = 'butt'; //设置或返回线条的结束端点样式
+            // ctx.strokeStyle = baseColor;
+            // ctx.moveTo(startTime * x, index * y); //路径：把路径移动到画布中的指定点，不创建线条
+            // ctx.lineTo((startTime + time) * x, index * y); //路径：添加一个新点，然后在画布中创建从该点到最后指定点的线条
+            // ctx.stroke(); //描边
+            // ctx.restore(); //返回之前保存过的路径状态和属性 //用来恢复Canvas旋转、缩放等之后的状态，当和canvas.save()一起使用时，恢复到canvas.save()保存时的状态。
+
+            ctx.globalAlpha = 0.2;
+            ctx.fillStyle = 'blue';
+            ctx.fillRect(pagex + 10, pagey - 40, 300, 80);
+
+            ctx.font = '18px Arial'; //文本:设置或返回文本内容的当前字体属性
+            ctx.textAlign = 'start'; //文本:设置或返回文本内容的当前对齐方式
+            ctx.textBaseline = 'bottom'; //文本:设置或返回在绘制文本时使用的当前文本基线
+            // let x = pagex + 10;
+            // let y = pagey - 20;
+
+            let startDate = '开始时间：' + task.expect_start_date;
+            let endDate = '结束时间：' + task.expect_end_date;
+            ctx.fillStyle = 'white';
+            ctx.globalAlpha = 1;
+            ctx.fillText(startDate, pagex + 20, pagey - 5); //文本:在画布上绘制“被填充的”文本
+            ctx.fillText(endDate, pagex + 20, pagey + 25);
+
+            // setTimeout(() => {
+            //     ctx.clearRect(pagex + 10, pagey - 50, 300, 100);
+            //     ctx.restore();
+            // }, 1000)
+        }
+
+        // function elist(pagex, pagey) {
+        //     list.forEach((item, index) => {
+        //         const tasks = item.task;
+        //         tasks.forEach((task, taskIndex) => {
+        //             let startTime = new Date(task.expect_start_time * 1000).getDate();
+        //             let time = (task.expect_end_time - task.expect_start_time) / 3600 / 24;
+        //             console.log(startTime * x +'-'+(startTime + time) * x)
+        //             // if((pagex >= startTime * x || pagey <= (startTime + time) * x) && (pagey >= mIndex * y - 3 || pagey <= mIndex * y + 3)) {
+        //             //     console.log({pagex, pagey});
+        //             // } else {
+        //             //     console.log(222)
+        //             // }
+        //         });
+        //     })
+        // }
+        // var raf;
+        dom.addEventListener('mousemove', function (e) {
+            let mousePos = getMousePos(dom, e);
+            let pagex = mousePos.x,
+                pagey = mousePos.y;
+            // console.log(mousePos)
+            // console.log(coords)
+            coords.forEach(item => {
+                if ((pagex >= item.x1 && pagey <= item.x2) && (pagey >= item.y1 && pagey <= item.y2)) {
+                    // console.log(mousePos);
+                    console.log(item.task);
+                    drawTooltip(pagex, pagey, item.task);
+                }
+            })
+
+            // for (let j = 0, len = yArr.length; j < len; j++) {
+            //     //鼠标移入圆的范围,给圆添加新样式
+            //     if (pagex > (100 + 80 * j - 9) && pagex < (100 + 80 * j + 9) && pagey > (yArr[j] - 9) && pagey <
+            //         (yArr[j] + 9)) {
+            //         //画实心圆
+            //         cxt.beginPath();
+            //         cxt.fillStyle = "#c9302c";
+            //         cxt.arc(100 + 80 * j, yArr[j], 9, 0, Math.PI * 2, true);
+            //         cxt.fill();
+            //         cxt.closePath();
+            //     } else {
+            //         //清除鼠标移入时的圆
+
+            //         //再从新绘制圆
+            //         cxt.beginPath();
+            //         cxt.fillStyle = "#00c5de";
+            //         cxt.arc(100 + 80 * j, yArr[j], 9, 0, Math.PI * 2, true);
+            //         cxt.fill();
+            //         cxt.closePath();
+            //     }
+
+            // }
+        }, false);
+        dom.addEventListener('mouseout', function (e) {
+            // window.cancelAnimationFrame(raf);
+            reset();
+        });
+
+        function reset() {
+            ctx.clearRect(0, 0, width, height);
+            mIndex = 0;
+            coords = [];
+            list.forEach((item, index) => {
+                const tasks = item.task;
+                tasks.forEach((task, taskIndex) => {
+                    ++mIndex;
+                    let startTime = new Date(task.expect_start_time * 1000).getDate();
+                    let time = (task.expect_end_time - task.expect_start_time) / 3600 / 24;
+                    console.log(startTime);
+                    draw(startTime, time, mIndex);
+                    coords.push({
+                        x1: startTime * x,
+                        x2: (startTime + time) * x,
+                        y1: mIndex * y - 3,
+                        y2: mIndex * y + 3,
+                        task
+                    });
+                    if (taskIndex > 0) {
+                        const before = tasks[taskIndex - 1];
+                        let beforeStartTime = new Date(before.expect_start_time * 1000).getDate();
+                        let beforeTime = (before.expect_end_time - before.expect_start_time) / 3600 / 24;
+                        association((beforeStartTime + beforeTime / 2), startTime, mIndex - 1, mIndex);
+                    }
+                    if (task.after_rate) {
+                        drawAfterRate(startTime, time, mIndex, task.after_rate);
+                    }
+                });
+            });
+        }
+
+
+        //获取鼠标在canvas画布上的位置(**不是浏览器窗口的鼠标位置)
+        function getMousePos(canvas, evt) {
+            var rect = canvas.getBoundingClientRect();
+            return {
+                x: evt.clientX - rect.left * (canvas.width / rect.width),
+                y: evt.clientY - rect.top * (canvas.height / rect.height)
+            }
+        }
+    </script>
+</body>
+
+</html>

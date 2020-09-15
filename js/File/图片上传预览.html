@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片上传预览</title>
+</head>
+<body>
+    <input type="file" onchange="previewFile(event)">
+    <div id="box">
+        <!-- <img src="" height="200"> -->
+    </div>
+    <script>
+        function previewFile(e) {
+            var target = e.target || window.target;
+            // var preview = document.querySelector('img');
+            var preview = document.createElement('img');
+            preview.height = "200"
+            // var file = document.querySelector('input[type=file]').files[0];
+            var file = target.files[0];
+            var reader = new FileReader();
+
+            reader.addEventListener('load', function () {
+                preview.src = reader.result;
+                box.appendChild(preview);
+            }, false);
+
+            if (file) {
+                // 读取完成后，result属性将返回一个 Data URL 格式（Base64 编码）的字符串，代表文件内容。对于图片文件，这个字符串可以用于<img>元素的src属性。注意，这个字符串不能直接进行 Base64 解码，必须把前缀data:*/*;base64,从字符串里删除以后，再进行解码。
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
