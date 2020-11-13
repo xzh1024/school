@@ -3,7 +3,7 @@
         <!--<h1>首页</h1>-->
         <!--<div>{{ doneTodos }}</div>-->
         <!--<el-button type="primary" @click="increment">主要按钮</el-button>-->
-        <Header :title="'首页'" class="header"></Header>
+        <Header :title="'首页s'" class="header"></Header>
         <div class="main" ref="main">
             <div class="router-list">
                 <router-link to="/login">登录</router-link>
