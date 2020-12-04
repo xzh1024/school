@@ -1,0 +1,67 @@
+{
+  "name": "erp-app1",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "UMI_UI=1 umi dev",
+    "build": "umi build",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage",
+    "lint-staged": "lint-staged",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
+    "lint:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src",
+    "lint:prettier": "prettier --check \"**/*\" --end-of-line auto",
+    "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.less": "stylelint --syntax less",
+    "*.{js,jsx,ts,tsx}": "npm run lint-staged:js",
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "@ant-design/pro-layout": "^5.0.12",
+    "@ant-design/pro-table": "^2.6.3",
+    "@umijs/plugin-qiankun": "^2.11.0",
+    "@umijs/preset-react": "^1.6.4",
+    "@umijs/test": "^3.2.9",
+    "antd": "^4.6.2",
+    "axios": "^0.20.0",
+    "classnames": "^2.2.6",
+    "express": "^4.17.1",
+    "lint-staged": "^10.0.7",
+    "lodash": "^4.17.20",
+    "path-to-regexp": "^6.1.0",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet-async": "^1.0.6",
+    "umi": "^3.2.9",
+    "use-merge-value": "^1.0.2",
+    "yorkie": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10",
+    "@umijs/fabric": "^2.2.2",
+    "@umijs/preset-ui": "^2.2.7",
+    "eslint": "^7.8.1",
+    "husky": "^4.2.5",
+    "stylelint": "^13.7.0"
+  }
+}
