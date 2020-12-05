@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import 'element-theme-default';
-import Router from './router';
+import Router from './router/router';
 
 class App extends Component {
     render() {
