@@ -1,0 +1,54 @@
+@import './var.scss';
+
+.el-main {
+  padding: 6px;
+}
+
+
+.form-item-small-margin-bottom {
+  // max-width: 1600px;
+//   .placeholder-form-item {
+//       line-height: 29px;
+//   }
+  .el-form-item {
+      margin-bottom: 8px;
+
+      .el-form-item__label {
+          padding-right: 3px;
+      }
+  }
+
+  &.space-indent {
+      .el-form-item__label {
+          text-indent: 0.5em;
+      }
+  }
+  .form-search-btn-group {
+      text-align: right;
+  }
+}
+
+.el-dialog {
+  border-radius: 4px;
+  background: #F4F4F4;
+  .el-dialog__header {
+    border-radius: 4px 4px 0 0;
+    padding: 13px 20px;
+    background: $color-primary;
+    .el-dialog__title {
+      color: $color-white;
+    }
+    .el-dialog__headerbtn {
+      .el-dialog__close {
+        color: $color-white;
+      }
+    }
+  }
+  .el-dialog__body {
+    padding: 0;
+  }
+  .el-dialog__footer {
+    padding: 10px 20px;
+    text-align: center;
+  }
+}
