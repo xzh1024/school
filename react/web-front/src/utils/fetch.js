@@ -1,9 +1,9 @@
 import axios from "axios";
-import { Component } from "react";
 import { getToken, getUserValidVal } from './auth'
 import { Message } from 'element-react';
 
-const base = "/api/v1.0";
+// const base = "/api/v1.0";
+const base = "";
 
 // 创建axios实例
 const service = axios.create({
@@ -34,8 +34,9 @@ service.interceptors.request.use(
 // 返回后拦截
 service.interceptors.response.use(
     response => {
+        console.log(response);
         const res = response.data
-        if (response.status !== 200 && res.status !== 200) {
+        if (response.status !== 200 && res.code !== 0) {
             Message({
                 message: res.message,
                 type: 'error',

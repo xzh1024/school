@@ -1,0 +1,53 @@
+.clearfix:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+$titleHeight: 60px;
+.notice-title {
+    width: 100%;
+    height: $titleHeight;
+    background-color: #eef1f6;
+
+    .notice-title-icon {
+        float: left;
+        width: calc(100% - 320px);
+        font-size: 24px;
+        line-height: $titleHeight;
+        text-indent: 20px;
+    }
+
+    .notice-title-menu {
+        float: left;
+        width: 320px;
+    }
+}
+
+.notice-template {
+    width: 100%;
+    height: calc(100% - 60px);
+    .notice-menu {
+        float: left;
+        width: 240px;
+        height: 100%;
+        
+        .el-menu-vertical-demo {
+            height: 100%;
+        }
+    }
+    .notice-content {
+        float: left;
+        width: calc(100% - 240px);
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        // background-color: #F3F5F8;
+    }
+}

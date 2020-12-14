@@ -36,13 +36,11 @@
             if (typeof executor !== 'function') {
                 throw new Error('Executor must be a function');
             }
-
             var that = this;
             this.state = 'pending';
             this.msg = ''; // 存放value和error
             this.resolvedCallbacks = [];
             this.rejectedCallbacks = [];
-
             function resolve (res) {
                 if (that.state === 'pending') {
                     that.state = 'fulfilled'
@@ -50,7 +48,6 @@
                     that.resolvedCallbacks.map(cb => cb(that.msg));
                 }
             };
-
             function reject (err) {
                 if (that.state === 'pending') {
                     that.state = 'rejected'
@@ -58,13 +55,11 @@
                     that.rejectedCallbacks.map(cb => cb(that.msg));
                 }
             }
-
             try {
                 executor(resolve, reject);
             } catch (error) {
                 reject(error);
             }
-
             return this;
         }
 
@@ -76,7 +71,6 @@
                     : r => {
                         throw r
                     };
-
             if (this.state === 'fulfilled') {
                 onFulfilled(this.msg);
             } else if (this.state === 'rejected' && onRejected) {

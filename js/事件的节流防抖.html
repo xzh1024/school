@@ -27,8 +27,7 @@
             return function () {
                 // 记录本次触发回调的时间
                 // let _now = +new Date()
-                let _now = Date.now()
-                console.log(_now);
+                let _now = Date.now();
 
                 // 判断上次触发的时间和本次触发的时间差是否小于时间间隔的阈值
                 if (_now - last >= interval) {

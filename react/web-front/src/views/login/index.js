@@ -6,7 +6,7 @@ import loginApi from '../../api/user/login';
 import { connect } from 'react-redux';
 import * as userActions from '../../redux/actions/user'
 
-class Login extends Component {
+class LoginPage extends Component {
     constructor(props) {
         super(props);
 
@@ -27,7 +27,9 @@ class Login extends Component {
         const form = this.state.form;
         loginApi.login(form.username.trim(), form.password.trim()).then(response => {
             console.log(response)
-            const { token, userValidValue } = response;
+            const { data: {
+                token, userValidValue
+            } } = response;
             if (token && userValidValue) {
                 setToken(token);
                 setUserValidVal(userValidValue);
@@ -41,11 +43,12 @@ class Login extends Component {
 
     userInfo = () => {
         loginApi.userInfo(getToken()).then(response => {
+            console.log(response);
             const {
-                success,
+                code,
                 data
             } = response;
-            if (success) {
+            if (code === 0) {
                 console.log(data)
                 this.props.dispatch(userActions.login(data));
                 console.log(this);
@@ -77,7 +80,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <div>
                     <p>用户名：{this.props.user.username}</p>
                     <p>密码：{this.props.user.password}</p>
@@ -95,7 +98,7 @@ class Login extends Component {
                         <Button type="primary" onClick={this.onSubmit}>登录</Button>
                     </Form.Item>
                 </Form>
-            </div>
+            </React.Fragment>
         )
     }
 }
@@ -104,4 +107,4 @@ export default connect((state) => {
   return {
     user: state.user
   }
-})(Login);
+})(LoginPage);
