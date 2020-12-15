@@ -6,49 +6,110 @@
 
 
 .form-item-small-margin-bottom {
-  // max-width: 1600px;
-//   .placeholder-form-item {
-//       line-height: 29px;
-//   }
-  .el-form-item {
-      margin-bottom: 8px;
 
-      .el-form-item__label {
-          padding-right: 3px;
-      }
+  // max-width: 1600px;
+  //   .placeholder-form-item {
+  //       line-height: 29px;
+  //   }
+  .el-form-item {
+    margin-bottom: 8px;
+
+    .el-form-item__label {
+      padding-right: 3px;
+    }
   }
 
   &.space-indent {
-      .el-form-item__label {
-          text-indent: 0.5em;
-      }
+    .el-form-item__label {
+      text-indent: 0.5em;
+    }
   }
+
   .form-search-btn-group {
-      text-align: right;
+    text-align: right;
   }
 }
 
 .el-dialog {
   border-radius: 4px;
   background: #F4F4F4;
+
   .el-dialog__header {
     border-radius: 4px 4px 0 0;
     padding: 13px 20px;
     background: $color-primary;
+
     .el-dialog__title {
       color: $color-white;
     }
+
     .el-dialog__headerbtn {
       .el-dialog__close {
         color: $color-white;
       }
     }
   }
+
   .el-dialog__body {
-    padding: 0;
+    margin: 8px 8px 0;
+    padding: 16px;
+    background: $color-white;
+    border-radius: 8px;
   }
+
   .el-dialog__footer {
     padding: 10px 20px;
     text-align: center;
+  }
+}
+
+.el-cascader-menu {
+  height: 250px;
+}
+
+#app {
+  ::-webkit-scrollbar-track-piece {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+  }
+
+  /* 整个滚动条 */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* 滚动条竖向滑块 */
+  ::-webkit-scrollbar-thumb:vertical {
+    width: 6px;
+    height: 6px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 3px;
+  }
+
+  /* 滚动条竖向滑块hover */
+  ::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: rgba(0, 0, 0, .4);
+  }
+
+  /* 滚动条横向滑块 */
+  ::-webkit-scrollbar-thumb:horizontal {
+    width: 6px;
+    height: 6px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .2);
+    border-radius: 3px;
+  }
+
+  /* 滚动条横向滑块hover */
+  ::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: rgba(0, 0, 0, .4);
+  }
+
+  /* 同时有垂直和水平滚动条时交汇的部分 */
+  ::-webkit-scrollbar-corner {
+    display: block;
+    /* 修复交汇时出现的白块 */
   }
 }

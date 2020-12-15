@@ -1,6 +1,6 @@
 const serverUrl = process.env.BASE_API;
 
-const moduleKeys = ["united", "basics", "accounts"];
+const moduleKeys = ["united", "basic", "accounts"];
 
 const proxys = {};
 

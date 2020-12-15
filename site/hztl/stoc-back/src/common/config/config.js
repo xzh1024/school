@@ -1,5 +1,5 @@
 export const moduleKeyMap = {
   united: "united",
-  basics: "basics",
+  basic: "basic",
   accounts: "accounts"
 };

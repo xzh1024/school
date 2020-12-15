@@ -22,7 +22,9 @@ import {
   Checkbox,
   CheckboxGroup,
   CheckboxButton,
-  Cascader
+  Cascader,
+  Message,
+  Tree,
 } from "element-ui";
 
 Vue.use(Button);
@@ -48,3 +50,6 @@ Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(CheckboxButton);
 Vue.use(Cascader);
+Vue.use(Tree);
+
+Vue.prototype.$message = Message;

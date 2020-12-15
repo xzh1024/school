@@ -8,16 +8,22 @@
     </div>
     <div class="header-right">
       <div class="header-company">
-        上海优士汽车零件部件有限公司
+        {{ baseInfo.companyName }}
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
+import { BaseInfoModel } from "@/store/modules/base/interface";
+import { Getter, namespace } from "vuex-class";
+
+const BaseStore = namespace("base");
 
 @Component({ name: "HeaderAside" })
 export default class HeaderAside extends Vue {
+  @BaseStore.Getter("baseInfo")
+  protected baseInfo!: BaseInfoModel;
 }
 </script>
 

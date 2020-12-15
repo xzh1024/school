@@ -1,5 +1,6 @@
 export enum ServiceType {
+  loginService = "loginService",
   commonService = "commonService",
   basicsService = "basicsService",
-  loginService = "loginService",
+  setupService = "setupService"
 }

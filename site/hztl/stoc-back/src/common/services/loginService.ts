@@ -18,13 +18,13 @@ export class LoginService extends BaseService {
       allianceDomain: "qa2.hztl3.xyz"
     };
     return this.request({
-      module: moduleKeyMap.accounts,
       method: "post",
-      url: "/token-login",
-      data: params,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
-      }
+      },
+      data: params,
+      url: "/token-login",
+      module: moduleKeyMap.accounts
     });
   }
 }

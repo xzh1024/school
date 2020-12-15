@@ -5,16 +5,12 @@
 </template>
 
 <script>
-
 export default {
   name: "app",
-  data() {
-    return {
-      flag: false
-    }
-  },
   created() {
-    console.log(this.$route.query);
-  },
+    if (sessionStorage.token || this.$route.query.token) {
+      this.$store.dispatch("base/loadBase");
+    }
+  }
 };
 </script>

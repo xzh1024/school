@@ -12,6 +12,12 @@ export class CommonService extends BaseService {
     super();
   }
 
+  public getBase() {
+    return this.request({
+      url: "/whsc/base"
+    });
+  }
+
   public getUploadToken() {
     return this.request({
       module: moduleKeyMap.accounts,

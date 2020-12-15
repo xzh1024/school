@@ -40,16 +40,13 @@ router.beforeEach((to, from, next) => {
       loginService
         .tokenLogin(token)
         .then(() => {
-          console.log(222);
           sessionStorage.token = token;
           next();
         })
         .catch(() => {
-          console.log(333);
           next(false);
         });
     } else {
-      console.log(111);
       next(false);
     }
   } else {

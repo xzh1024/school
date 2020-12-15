@@ -151,7 +151,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .max-mark {
-  height: 120px;
+  // height: 120px;
 
   ::v-deep.el-upload__tip {
     margin-top: 0;

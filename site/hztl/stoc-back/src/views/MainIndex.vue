@@ -20,10 +20,6 @@
 import { Component, Vue } from "vue-property-decorator";
 import MenuAside from "@/components/layout/menuAside/index.vue";
 import HeaderAside from "@/components/layout/headerAside/index.vue";
-import { mainIndexRoutes } from "@/router";
-import { Getter, namespace } from "vuex-class";
-
-const UserStore = namespace("user");
 
 @Component({
   components: {
@@ -31,15 +27,7 @@ const UserStore = namespace("user");
     HeaderAside
   }
 })
-export default class MainIndex extends Vue {
-  @UserStore.Getter("userInfo") userInfo: any;
-  private routerList = mainIndexRoutes;
-
-  mounted() {
-    console.log(this.userInfo);
-    // this.login();
-  }
-}
+export default class MainIndex extends Vue {}
 </script>
 
 <style lang="scss" scoped>

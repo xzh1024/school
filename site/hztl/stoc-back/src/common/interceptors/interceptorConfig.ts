@@ -14,6 +14,52 @@ const service = axios.create({
   withCredentials: true
 });
 
+let currentLoading: any = null;
+let loadingCacheMap = {} as { [key: string]: boolean };
+
+function getUrl(httpConfig: AxiosRequestConfigEx): string {
+  if (!httpConfig) {
+    console.warn("interceptor.getUrl httpConfig Error, httpConfig is null!");
+  }
+  return httpConfig.url as string;
+}
+
+// 开启加载动画
+function openLoading(url: string) {
+  if (!url) {
+    console.error("interceptor.toggleLoading url Error, url is null!");
+  }
+  loadingCacheMap[url] = true;
+  if (currentLoading) return;
+  currentLoading = Loading.service({
+    text: "Loading",
+    spinner: "el-icon-loading",
+    background: "rgba(0, 0, 0, 0.1)"
+  });
+}
+
+// 关闭加载动画
+function closeLoading(url: string) {
+  if (!url) {
+    console.error("interceptor.toggleLoading url Error, url is null!");
+  }
+  if (currentLoading != null) {
+    let flag = true;
+    // 接口请求完毕置为false
+    loadingCacheMap[url] = false;
+    for (const item in loadingCacheMap) {
+      if (loadingCacheMap[item]) {
+        flag = false;
+        break;
+      }
+    }
+    if (!flag) return;
+    currentLoading.close();
+    currentLoading = null;
+    loadingCacheMap = {};
+  }
+}
+
 // 添加请求拦截器
 service.interceptors.request.use(
   (config: AxiosRequestConfigEx) => {
@@ -26,10 +72,12 @@ service.interceptors.request.use(
     } else {
       config.baseURL = "/united";
     }
-    // 在发送请求之前执行的操作
-    // 过滤掉xxxx有关的请求接口
-    // 配置token
-    // 如果需要加密数据，则加密config.data
+    // 增加全局遮罩
+    if (config.showLoad) {
+      openLoading(getUrl(config));
+      // 在这里清除掉showLoad配置, 不将此配置发送给后台
+      delete config.showLoad;
+    }
     return config;
   },
   error => {
@@ -40,6 +88,7 @@ service.interceptors.request.use(
 // 添加响应拦截器
 service.interceptors.response.use(
   (response: AxiosResponse) => {
+    closeLoading(getUrl(response.config));
     const res = response.data;
     // res.code = "token-err";
     if (res.code === "ok") {
@@ -64,7 +113,7 @@ service.interceptors.response.use(
     return response;
   },
   (error: AxiosError) => {
-    // 对响应错误执行的操作
+    closeLoading(getUrl(error.config));
     return Promise.reject(error);
   }
 );
