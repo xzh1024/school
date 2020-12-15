@@ -1,0 +1,358 @@
+/*分类+轮播*/
+#mainMenu
+{
+	width: 200px;
+	height: 420px;
+	background-color: #f3f3f3;
+}
+#mainMenu .main_menu_ul
+{
+	position: relative;
+}
+/*主菜单项*/
+#mainMenu .main_menu_text
+{
+	text-indent: 20px;
+	height: 28px;
+	line-height: 28px;
+	position: relative;
+	z-index: 100;
+	border: 1px solid #f3f3f3;
+}
+/*主菜单项鼠标悬浮时的样式*/
+#mainMenu .current
+{
+	width: 198px;
+	background-color: #fff;
+	border: 1px solid #f60;
+	border-right: 2px solid #fff;
+}
+#mainMenu .main_menu_text a
+{
+	font-size: 14px;
+}
+/*主菜单项的内容区*/
+#mainMenu .sub_menu
+{
+	padding: 0 30px 25px;
+	width: 518px;
+	min-height: 393px;
+	border: 1px solid #f60;
+	background-color: #fff;
+	position: absolute;
+	top: 0;
+	left: 200px;
+	z-index: 99;
+	/*默认隐藏*/
+	display: none;
+}
+/*一级菜单*/
+#mainMenu .sub_menu .top_sub_menu
+{
+	line-height: 30px;
+}
+#mainMenu .sub_menu .top_sub_menu p
+{
+	line-height: 24px;
+}
+#mainMenu .sub_menu .top_sub_menu a
+{
+	margin-right: 30px;
+}
+/*二级菜单*/
+#mainMenu .sub_menu .sub_menu_title
+{
+	margin-top: 4px;
+	line-height: 26px;
+	font-size: 14px;
+	color: #f60;
+	border-bottom: 2px solid #e6e6e6;
+}
+/*三级菜单*/
+#mainMenu .sub_menu .sub_menu_a a
+{
+	margin-right: 10px;
+	line-height: 22px;
+}
+/*推荐内容*/
+#recommendProduct
+{
+	padding: 0 5px;
+	letter-spacing: 1px;
+}
+#recommendProduct li
+{
+	float: left;
+	border-left: 2px solid #f60;
+	border-bottom: 2px solid #f60;
+	width: 182px;
+	height: 246px;
+	padding: 5px 7px;
+	position: relative;
+}
+/*6的倍数添加单独的样式*/
+#recommendProduct li:nth-child(6n)
+{
+	border-right: 2px solid #f60;
+}
+#recommendProduct li img:nth-child(1)
+{
+	display: block;
+	margin: 0 auto 30px;
+	width: 150px;
+	height: 150px;
+}
+#recommendProduct li img:nth-child(2)
+{
+	position: absolute;
+	top: 156px;
+	left: -2px;
+}
+#recommendProduct li p
+{
+	color: #f4290b;
+	margin-bottom: 6px;
+}
+#recommendProduct li span
+{
+	font-size: 20px;
+	color: #f4290b;
+}
+/*书的左侧内容*/
+#bookLeft
+{
+	width: 902px;
+}
+.book_aside
+{
+	width: 240px;
+	height: 436px;
+	border-right: 2px solid #ccc;
+	background-color: #f9f9f9;
+}
+.book_aside img
+{
+	width: 240px;
+	height: 286px;
+}
+
+
+#bookLeft .book_content .book_content_right>li
+{
+	float: left;
+	width: 163px;
+	height: 216px;
+	border-right: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	line-height: 38px;
+	font-size: 16px;
+}
+/*图书轮播*/
+#bookLeft .book_content .book_content_right
+{
+	display: none;
+}
+#bookLeft .book_content .book_content_right .book_banner
+{
+	width: 328px;
+	height: 216px;
+}
+#bookLeft .book_content .book_content_right li>img
+{
+	width: 163px;
+	height: 180px;
+}
+#bookLeft .book_content .book_content_right>li span
+{
+	color: #F4290B;
+}
+#bookLeft .book_content .book_content_right>li del
+{
+	color: #b3b3b3;
+}
+/*图书右侧*/
+#bookRight
+{
+	width: 280px;
+	height: 439px;
+	border: 1px solid #e6e6e6;
+	overflow-y: hidden;
+}
+#bookHot span
+{
+	line-height: 41px;
+	margin: 0 2px 0 8px;
+}
+#bookHot li p img
+{
+	margin-right: 8px;
+}
+#bookHot li p
+{
+	padding-right: 10px;
+	width: 248px;
+	border-bottom: 1px solid #e6e6e6;
+}
+#bookHot .book_hot_det
+{
+	height: 150px;
+	/*默认隐藏*/
+	display: none;
+}
+#bookHot .book_hot_sim
+{
+	height: 40px;
+	line-height: 40px;	
+	font-size: 16px;
+	text-indent: 8px;
+}
+#bookHot .dis_yes
+{
+	display: block;
+}
+#bookHot .dis_no
+{
+	display: none;
+}
+
+
+/*侧栏公共样式*/
+.aside
+{
+	width: 240px;
+	height: 500px;
+	background-color: #f9f9f9;
+}
+.aside img
+{
+	width: 240px;
+	height: 350px;
+}
+.coc .common_main
+{
+	width: 960px;
+	height: 500px;
+	display: none;
+}
+.common_banner,.box176,.box422,.box_h158
+{
+	border-right: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	overflow: hidden;
+}
+/*coc中的轮播*/
+.common_banner
+{
+	width: 422px;
+	height: 338px;
+	border-left: 2px solid #ccc;
+}
+/*coc中的产品*/
+.box176
+{
+	width: 176px;
+	height: 338px;
+}
+.box176 img
+{
+	margin-top: 18px;
+	width: 176px;
+	height: 338px;
+}
+.box422
+{
+	width: 422px;
+	height: 158px;
+	border-left: 2px solid #ccc;
+}
+.box422 img
+{
+	width: 422px;
+	height: 158px;
+}
+.box_h158
+{
+	width: 176px;
+	height: 158px;
+}
+.box_h158 img
+{
+	width: 176px;
+	height: 158px;
+}
+.coc_tail img
+{
+	width: 120px;
+	float: left;
+}
+.box484
+{
+	width: 484px;
+	height: 498px;
+	border: 2px solid #ccc;
+	border-top: none;
+}
+.box484 img
+{
+	width: 484px;
+	height: 498px;
+}
+/*家具日用+推广商品*/
+#fitting h2,#popularize h2
+{
+	height: 40px;
+}
+#popularize .pop_content li
+{
+	float: left;
+	width: 150px;
+	height: 275px;
+	padding: 25px 32px 0;
+	margin: 13px;
+}
+#popularize .pop_content li:hover
+{
+	background-color: #f2f2f2;
+}
+#popularize .pop_content li img
+{
+	width: 150px;
+	height: 150px;
+}
+#popularize .pop_content li p
+{
+	margin-top: 6px;
+	margin-left: 3px;
+}
+#popularize .pop_content .current
+{
+	background-color: transparent;
+	color: #FF6700;
+}
+#popularize li .comment
+{
+	background: url(../images/bgicon.png) no-repeat;
+	background-position: -5px -85px;
+	padding-left: 28px;
+}
+/*搜索框*/
+#topFixSearch
+{
+	height: 50px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	border-bottom: 2px solid #d92207;
+	background-color: rgba(0,0,0,0.6);
+	box-shadow: 0 3px 3px #7f0808;
+}
+#topFixSearch img
+{
+	height: 50px;
+}
+
+#topFixSearch #newSearch
+{
+	margin: 6px 0 0 300px;
+}

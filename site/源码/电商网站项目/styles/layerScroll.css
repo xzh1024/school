@@ -1,0 +1,81 @@
+/*楼层滚动样式*/
+#layerScroll
+{
+	position: fixed;
+	left: 5px;
+	top: 150px;
+	z-index: 999;
+	color: white;
+}
+#layerScroll li
+{
+	width: 0;
+	height: 28px;
+	overflow: hidden;
+	padding-left: 40px;
+	padding-top: 12px;
+	background-image: url(../images/fix_box_icon.png);
+	background-color: #F2F2F2;
+	background-repeat: no-repeat;
+}
+#layerScroll .icon2
+{
+	background-position: 0 -40px;
+}
+#layerScroll .icon3
+{
+	background-position: 0 -80px;
+}
+#layerScroll .icon4
+{
+	background-position: 0 -120px;
+}
+#layerScroll .icon5
+{
+	background-position: 0 -160px;
+}
+#layerScroll .icon6
+{
+	background-position: 0 -200px;
+}
+#layerScroll .icon7
+{
+	background-position: 0 -240px;
+}
+#layerScroll .icon8
+{
+	background-position: 0 -280px;
+}
+
+/*优惠券和二维码*/
+#discountQrcode
+{
+	position: fixed;
+	top: 380px;
+	right: 0px;
+}
+#Qrcode
+{
+	position: relative;
+}
+/*二维码*/
+#Qrcode #QrcodeICON
+{
+	position: absolute;
+	top: 0;
+	left: 39px;/*-100px*/
+}
+#discountQrcode #buyNum
+{
+	width: 16px;
+	height: 16px;
+	text-align: center;
+	line-height: 16px;
+	border-radius: 50%;
+	background-color: red;
+	color: #fff;
+	position: relative;
+	top: -39px;
+	left: 1px;
+}
+

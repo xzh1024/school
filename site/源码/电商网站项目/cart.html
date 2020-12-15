@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>乐购-购物车</title>
+		<meta name="keywords" content="乐购,服装,电子书"></meta>
+		<meta name="description" content="乐购商城"></meta>
+		<link rel="stylesheet" type="text/css" href="styles/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/public.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/header.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/cart.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/footer.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/remodal.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/remodal-default-theme.css"/>
+		<script src="scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/remodal.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/cart.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--页眉-->
+		<div id="header" class="autoBox">
+			<!--logo\登录-->
+			<div class="autoBox bgcolor_black">
+				<div id="loginTop" class="box1200">
+					<!--logo-->
+					<img id="logo" src="images/tpLogo.gif"/>
+					<p id="logoText">购物车</p>
+					<p class="lego_url float_left">legochina.cn</p>
+					<!--登录-->
+					欢迎光临<span class="text_color_f60">乐购</span>，请 <a href="login.html" class="text_color_f60">登录</a>\<a href="enroll.html" class="text_color_f60">注册</a>
+				</div>
+			</div>
+			<!--搜索-->
+			<div class="box1200 margin_top6">
+				<!--搜索框-->
+				<div id="search" class="float_right">
+					<form action="" method="get">
+						<input class="float_left font_size14" type="text" id="keywords" value="" placeholder="设计中的设计 原研哉" />
+						<input class="float_left" type="button" id="searchBtn" value="" />
+					</form>
+				</div>
+				<div class="clear">
+					<!--清除浮动-->
+				</div>
+			</div>
+			<div class="box1200 dispatching_site">
+				<p>
+					<select class="float_right">
+						<option value ="volvo">成都高新区三环内</option>
+						<option value ="saab">Saab</option>
+						<option value="opel">Opel</option>
+						<option value="audi">Audi</option>
+					</select>
+					<span class="float_right">配送至&nbsp;&nbsp;</span>
+				</p>
+			</div>
+		</div>
+
+		<div class="box1200">
+        	<!--全部商品-->
+        	<div class="box1200 font_size20 text_color_f60 margin_top15 title_h2">
+        		全部商品（<span id="cartTotalNum">4</span>）
+        	</div>
+        	<!--表头-->
+        	<div id="cartTitle" class="box1200 margin_top15">
+        		<div class="box90">
+        			<input type="checkbox" class="checkAll" value="" /> 全选
+        		</div>
+        		<div class="box550 text_center">
+        			商品
+        		</div>
+        		<div class="box130">
+        			单价
+        		</div>
+        		<div class="box170 text_center">
+        			数量
+        		</div>
+        		<div class="box130 text_center">
+        			小计
+        		</div>
+        		<div class="box130">
+        			操作
+        		</div>
+        		<div class="clear"></div>
+        	</div>
+        	<!--购物车的商品1-->
+        	<div class="box1200 cartContent">
+        		<div class="box90">
+        			<input type="checkbox" class="rowsCheck" name="rowsCheck" value="" />
+        		</div>
+        		<div class="box550">
+        			<img src="images/demo-book.jpg"/>从你的全世界路过
+        		</div>
+        		<div class="box130 rowsPrice">
+        			41.00
+        		</div>
+        		<div class="box170">
+        			<ul class="buyNumCon">
+        				<li class="minus">-</li>
+        				<li class="buyNumInput">
+        					<input class="buyNumber" type="text" name="buyNum" value="3" /><p class="errMessage">*数据不合法</p>
+        				</li>
+        				<li class="add">+</li>
+        			</ul>
+        		</div>
+        		<div class="box130 rowsSumPrice text_center">
+        			41.00
+        		</div>
+        		<div class="box130">
+        			<p class="delRows">删除</p>
+        			<p>收藏</p>
+        		</div>
+        		<div class="clear"></div>
+        	</div>
+        	<!--购物车的商品2-->
+        	<div class="box1200 cartContent">
+        		<div class="box90">
+        			<input type="checkbox" class="rowsCheck" name="rowsCheck" value="" />
+        		</div>
+        		<div class="box550">
+        			<img src="images/23206608-1_l.jpg"/>繁花
+        		</div>
+        		<div class="box130 rowsPrice">
+        			38.00
+        		</div>
+        		<div class="box170">
+        			<ul class="buyNumCon">
+        				<li class="minus">-</li>
+        				<li class="buyNumInput">
+        					<input class="buyNumber" type="text" name="buyNum" value="1" /><p class="errMessage">数据不合法</p>
+        				</li>
+        				<li class="add">+</li>
+        			</ul>
+        		</div>
+        		<div class="box130 rowsSumPrice text_center">
+        			38.00
+        		</div>
+        		<div class="box130">
+        			<p class="delRows">删除</p>
+        			<p>收藏</p>
+        		</div>
+        		<div class="clear"></div>
+        	</div>
+        	<!--购物车的商品3-->
+        	<div class="box1200 cartContent">
+        		<div class="box90">
+        			<input type="checkbox" class="rowsCheck" name="rowsCheck" value="" />
+        		</div>
+        		<div class="box550">
+        			<img src="images/23338636-1_l_5.jpg"/>疯狂经济学
+        		</div>
+        		<div class="box130 rowsPrice">
+        			139.00
+        		</div>
+        		<div class="box170">
+        			<ul class="buyNumCon">
+        				<li class="minus">-</li>
+        				<li class="buyNumInput">
+        					<input class="buyNumber" type="text" name="buyNum" value="2" /><p class="errMessage">数据不合法</p>
+        				</li>
+        				<li class="add">+</li>
+        			</ul>
+        		</div>
+        		<div class="box130 rowsSumPrice text_center">
+        			139.00
+        		</div>
+        		<div class="box130">
+        			<p class="delRows">删除</p>
+        			<p>收藏</p>
+        		</div>
+        		<div class="clear"></div>
+        	</div>
+        	<!--购物车的商品4-->
+        	<div class="box1200 cartContent">
+        		<div class="box90">
+        			<input type="checkbox" class="rowsCheck" name="rowsCheck" value="" />
+        		</div>
+        		<div class="box550">
+        			<img src="images/22913031-1_l.jpg"/>货币战争
+        		</div>
+        		<div class="box130 rowsPrice">
+        			52.00
+        		</div>
+        		<div class="box170">
+        			<ul class="buyNumCon">
+        				<li class="minus">-</li>
+        				<li class="buyNumInput">
+        					<input class="buyNumber" type="text" name="buyNum" value="1" /><p class="errMessage">数据不合法</p>
+        				</li>
+        				<li class="add">+</li>
+        			</ul>
+        		</div>
+        		<div class="box130 rowsSumPrice text_center">
+        			52.00
+        		</div>
+        		<div class="box130">
+        			<p class="delRows">删除</p>
+        			<p>收藏</p>
+        		</div>
+        		<div class="clear"></div>
+        	</div>
+        	<!--结算-->
+        	<div class="box1200 margin_top30">
+        		<div id="goPayLeft" class="float_left font_size16">
+        			<!--全选按钮-->
+        			<div class="float_left box90 ">
+	        			<input type="checkbox" class="checkAll" value="" /> 全选 
+	        		</div>
+	        		<!--删除按钮-->
+	        		<a href="javascrpt:void(0)" id="delSelectedProduct">删除选中的商品</a>
+	        		<div class="float_right box260">
+	        			已选择 <span id="selectedNum" class="font_size18 text_color_f60">0</span>件&nbsp;&nbsp;&nbsp;&nbsp;<span class="font_size20">总价：</span><span class="font_size18 text_color_f60" id="totalPrice">0</span>
+	        		</div>
+        		</div>
+        		<div class="float_left">
+        			<!--结算按钮-->
+        			<a href="#modal"><input type="button" id="goPay" value="去结算" /></a>
+        		</div>
+        		<div class="clear"></div>
+        	</div>
+        </div>
+        <!--猜你喜欢-->
+        <div class="box1200 margin_top40">
+        	<h2 class="guess">猜你喜欢</h2>
+        	<ul class="pop_content border_top5">
+				<li>
+					<img src="images/22935553-1_l.jpg"/>
+					<p class="font_size14">白夜行 东野上吾</p>
+					<p class="priceText font_size16 text_color_red">￥：48</p>
+					<p class="comment">已有<span class="text_color_red">2088</span>条评价</p>
+				</li>
+				<li>
+					<img src="images/22935553-1_l.jpg"/>
+					<p class="font_size14">白夜行 东野上吾</p>
+					<p class="priceText font_size16 text_color_red">￥：48</p>
+					<p class="comment">已有<span class="text_color_red">5088</span>条评价</p>
+				</li>
+				<li>
+					<img src="images/22935553-1_l.jpg"/>
+					<p class="font_size14">白夜行 东野上吾</p>
+					<p class="priceText font_size16 text_color_red">￥：48</p>
+					<p class="comment">已有<span class="text_color_red">5088</span>条评价</p>
+				</li>
+				<li>
+					<img src="images/22935553-1_l.jpg"/>
+					<p class="font_size14">白夜行 东野上吾</p>
+					<p class="priceText font_size16 text_color_red">￥：48</p>
+					<p class="comment">已有<span class="text_color_red">5088</span>条评价</p>
+				</li>
+				<li>
+					<img src="images/22935553-1_l.jpg"/>
+					<p class="font_size14">白夜行 东野上吾</p>
+					<p class="priceText font_size16 text_color_red">￥：48</p>
+					<p class="comment">已有<span class="text_color_red">5088</span>条评价</p>
+				</li>
+			</ul>
+			<div class="clear">
+				<!--清除浮动-->
+			</div>
+        </div>
+		
+		<!--页脚-->
+		<div id="footer" class="autoBox border_top5">
+			<!--服务-->
+			<div class="service autoBox">
+				<img src="images/222_11.png"/>
+				<img src="images/222_13.png"/>
+				<img src="images/222_15.png"/>
+				<img src="images/222_17.png"/>
+			</div>
+			<!--帮助-->
+			<div class="help">
+				<dl>
+					<dt>购物指南</dt>
+					<dd>购物流程</dd>
+					<dd>发票制度</dd>
+					<dd>账户管理</dd>
+					<dd>会员优惠</dd>
+				</dl>
+				<dl>
+					<dt>支付方式</dt>
+					<dd>货到付款</dd>
+					<dd>网上支付</dd>
+					<dd>礼品卡支付</dd>
+					<dd>银行转账</dd>
+				</dl>
+				<dl>
+					<dt>订单服务</dt>
+					<dd>订单配送查询</dd>
+					<dd>订单状态说明</dd>
+					<dd>自助取消订单</dd>
+					<dd>自助修改订单</dd>
+				</dl>
+				<dl>
+					<dt>退换货</dt>
+					<dd>退换货政策</dd>
+					<dd>自助申请退换货</dd>
+					<dd>退换货进度查询</dd>
+					<dd>退款方式和时间</dd>
+				</dl>
+				<dl>
+					<dt>商家服务</dt>
+					<dd>商家中心</dd>
+					<dd>运营服务</dd>
+					<dd>加入尾品汇</dd>
+				</dl>
+				<div class="clear">
+					
+				</div>
+				<img class="footerLogo" src="images/logo_00.png"/>
+			</div>
+			<!--版权-->
+			<div class="copyright">
+				<p class="copyright_links">
+					<a href="javascrpt:void(0)">公司简介</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">lnvestor Relations</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">网站联盟</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">乐购招商</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">机构销售</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">手机乐购</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">官方Blog</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">热词搜索</a>
+				</p>
+				<p class="margin_top20 margin_bottom100">
+					<span>Copyright&nbsp;©&nbsp;乐购网&nbsp;2004&nbsp;-&nbsp;2016&nbsp;&nbsp;AII&nbsp;Rights&nbsp;Reserved</span>
+				</p>
+			</div>
+		</div>
+		<!--蒙层的弹出样式-->
+		<div class="remodal-wrapper remodal-is-closed" style="display: none;"><div class="remodal remodal-is-initialized remodal-is-closed" data-remodal-id="modal" role="dialog" aria-labelledby="modal1Title" aria-describedby="modal1Desc" tabindex="-1">
+			<button data-remodal-action="close" class="remodal-close" aria-label="Close"></button>
+			<div>
+				<h2 id="modal1Title">支付确认？</h2>
+				<p id="modal1Desc">
+					确认要去支付吗？ 
+				</p>
+			</div>
+			<br>
+			<button data-remodal-action="cancel" class="remodal-cancel">取消</button>
+			<button data-remodal-action="confirm" class="remodal-confirm">确认</button>
+			</div>
+		</div>
+		</script>
+	</body>
+</html>

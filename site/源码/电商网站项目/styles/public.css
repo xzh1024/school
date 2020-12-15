@@ -1,0 +1,161 @@
+/*公共样式*/
+body
+{
+	color: #444;
+	overflow-x: hidden;
+}
+a
+{
+	color: #333;
+}
+a:hover
+{
+	color: #f60;
+	text-decoration: none;
+}
+/*改变placeholder属性设置文字的颜色*/
+input::-webkit-input-placeholder
+{
+	color: #aaa;
+}
+.autoBox
+{
+	width: 100%;
+}
+.box1200
+{
+	width: 1200px;
+	margin: auto;
+}
+.float_left
+{
+	float: left;
+}
+.float_right
+{
+	float: right;
+}
+.clear
+{
+	clear: both;
+}
+.margin_top6
+{
+	margin-top: 6px;
+}
+.margin_top15
+{
+	margin-top: 15px;
+}
+.margin_top20
+{
+	margin-top: 20px;
+}
+.margin_top30
+{
+	margin-top: 30px;
+}
+.margin_top40
+{
+	margin-top: 40px;
+}
+.margin_top50
+{
+	margin-top: 50px;
+}
+.margin_bottom100
+{
+	margin-bottom: 100px;
+}
+.border_top5
+{
+	border-top: 5px solid #f60;
+}
+/*标题*/
+.title_h2
+{
+	font-size: 26px;
+	text-indent: 10px;
+	letter-spacing: 1px;
+}
+/*滑动菜单的公共样式*/
+.sliding_menu li
+{
+	float: left;
+	padding: 10px 18px 6px;
+	font-size: 18px;
+}
+.sliding_menu .current
+{
+	background-color: #f60;
+	color: #fff;
+}
+/*所有子分类的公共样式*/
+.all_class_style li
+{
+	width: 80px;
+	margin-top: 18px;
+	float: left;
+	text-indent: 6px;
+}
+.text_center
+{
+	text-align: center;
+}
+/*加粗*/
+.text_strong
+{
+	font-weight: bold;
+}
+/*字号*/
+.font_size14
+{
+	font-size: 14px;
+}
+.font_size16
+{
+	font-size: 16px;
+}
+.font_size18
+{
+	font-size: 18px;
+}
+.font_size20
+{
+	font-size: 20px;
+}
+.font_size22
+{
+	font-size: 22px;
+}
+.font_size24
+{
+	font-size: 24px;
+}
+.font_size26
+{
+	font-size: 26px;
+}
+.text_color_f60
+{
+	color: #f60;
+}
+.text_color_red
+{
+	color: #F4290B;
+}
+.text_color_fff
+{
+	color: #fff;
+}
+/*显示样式*/
+.dis_yes
+{
+	display: block;
+}
+.dis_no
+{
+	display: none;
+}
+
+

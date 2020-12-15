@@ -1,0 +1,81 @@
+/*添加阴影边框*/
+#header
+{
+	box-shadow: 1px 2px 3px #e7e7e7;
+}
+/*注册*/
+#enrollForm
+{
+	border-bottom: 1px solid #e5e5e5;
+}
+#enrollForm .form_box
+{
+	width: 402px;
+	height: 90px;
+	margin: 0 auto;
+	position: relative;
+}
+#ProvingCode
+{
+	line-height: 40px;
+}
+#enrollForm .form_box span
+{
+	position: absolute;
+	top: 0;
+	left: 13px;
+	font-size: 20px;
+	line-height: 40px;
+	letter-spacing: 1px;
+	color: #555;
+	line-height: 40px;
+}
+/*表单元素*/
+#enrollForm .form_box .form_element
+{
+	width: 400px;
+	height: 38px;
+	line-height: 38px;
+	border: 1px solid #d9d9d9;
+	text-indent: 130px;
+	font-size: 16px;
+}
+/*验证码*/
+.validate_code_img,#msgBtn
+{
+	width: 125px;
+	height: 36px;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	cursor: pointer;
+}
+#msgBtn
+{
+	border: none;
+	background-color: #e5e5e5;
+}
+/*注册协议*/
+.enroll_agreement
+{
+	/*line-height: 30px;*/
+	letter-spacing: 1px;
+	font-size: 14px;
+	margin-top: 5px;
+}
+/*提交按钮*/
+#pushSubmit
+{
+	width: 402px;
+	height: 40px;
+	border: none;
+	background-color: #f60;
+	color: #fff;
+	font-size: 26px;
+	letter-spacing: 2px;
+	cursor: pointer;
+}
+/*提示文字*/
+label,.errMessage{
+	color: #D92207;
+}

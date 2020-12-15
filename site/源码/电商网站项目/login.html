@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>乐购（LT.COM）-欢迎登录</title>
+		<meta name="keywords" content="乐购,服装,电子书"></meta>
+		<meta name="description" content="乐购商城"></meta>
+		<link rel="stylesheet" type="text/css" href="styles/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/public.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/header.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/login.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/footer.css"/>
+		<script src="scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/login.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--页眉-->
+		<div id="header" class="autoBox">
+			<!--logo\登录-->
+			<div class="autoBox bgcolor_black">
+				<div id="loginTop" class="box1200">
+					<!--logo-->
+					<img id="logo" src="images/tpLogo.gif"/>
+					<p id="logoText">登录</p>
+					<p class="lego_url float_left">legochina.cn</p>
+					<!--登录-->
+					欢迎光临<span class="text_color_f60">乐购</span>，请 <a href="login.html" class="text_color_f60">登录</a>\<a href="enroll.html" class="text_color_f60">注册</a>
+				</div>
+			</div>
+			<div class="box1200">
+				<h2 class="title_h2 font_size24 float_left">欢迎登录</h2>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--登录-->
+		<div id="loginBanner">
+			<div class="box1200">
+				<div id="legoLogin" class="float_right margin_top40">
+					<!--滑动菜单-->
+					<ul id="loginTitle">
+						<li class="float_left font_size20 text_color_f60">扫码登录</li>
+						<li class="float_left font_size20">账户登录</li>
+						<div class="clear"></div>
+					</ul>
+					<!--二维码登录-->
+					<div id="qrcodeContent">
+						<img id="loginEqcodeICON" src="images/eqCodeShow.png"/>
+						<img id="loginPhoneICON" class="dis_no" src="images/phone.png"/>
+						<p>
+							打开手机版&nbsp;&nbsp;乐购APP&nbsp;&nbsp;扫一扫
+						</p>
+					</div>
+					<!--账户登录-->
+					<div id="pcContent" class="dis_no">
+						<!--用户名-->
+						<p>
+							<input type="text" id="userName" value="" placeholder="会员名/邮箱/手机" />
+							<span class="legoFont">&#xe601</span>
+						</p>
+						<!--密码-->
+						<p>
+							<input type="password" id="passWord" value="" placeholder="密码" />
+							<span class="legoFont">&#xe600</span>
+						</p>
+						<!--功能-->
+						<p class="pc_function">
+							<input type="checkbox" id="automaticLogin" />自动登录 <span class="float_right">忘记密码</span>
+						</p>
+						<!--登录按钮-->
+						<p>
+							<a href="index.html"><input type="submit" id="loginBtn" value="登录" /></a>
+						</p>
+						<!--立即注册-->
+						<p id="goEnroll">
+							<a href="enroll.html" class="text_color_f60"><img src="images/zc_03.gif"/>&nbsp;&nbsp;立即注册</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--页脚-->
+		<div id="footer" class="autoBox margin_top30">
+			<!--版权-->
+			<div class="copyright">
+				<p class="copyright_links">
+					<a href="javascrpt:void(0)">公司简介</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">lnvestor Relations</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">网站联盟</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">乐购招商</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">机构销售</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">手机乐购</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">官方Blog</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">热词搜索</a>
+				</p>
+				<p class="margin_top20 margin_bottom100">
+					<span>Copyright&nbsp;©&nbsp;乐购网&nbsp;2004&nbsp;-&nbsp;2016&nbsp;&nbsp;AII&nbsp;Rights&nbsp;Reserved</span>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

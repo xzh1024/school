@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>乐购-注册</title>
+		<meta name="keywords" content="乐购,服装,电子书"></meta>
+		<meta name="description" content="乐购商城"></meta>
+		<link rel="stylesheet" type="text/css" href="styles/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/public.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/header.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/enroll.css"/>
+		<link rel="stylesheet" type="text/css" href="styles/footer.css"/>
+		<script src="scripts/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--验证插件-->
+		<script src="scripts/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+		<!--消息提示插件-->
+		<script src="scripts/messages_cn.js" type="text/javascript" charset="utf-8"></script>
+		<script src="scripts/enroll.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--页眉-->
+		<div id="header" class="autoBox">
+			<!--logo\登录-->
+			<div class="autoBox bgcolor_black">
+				<div id="loginTop" class="box1200">
+					<!--logo-->
+					<img id="logo" src="images/tpLogo.gif"/>
+					<p id="logoText">注册</p>
+					<p class="lego_url float_left">legochina.cn</p>
+					<!--登录-->
+					欢迎光临<span class="text_color_f60">乐购</span>，请 <a href="login.html" class="text_color_f60">登录</a>\<a href="enroll.html" class="text_color_f60">注册</a>
+				</div>
+			</div>
+			<div class="box1200">
+				<h2 class="title_h2 font_size24 float_left">欢迎注册</h2>
+				<p class="float_right font_size18 margin_top40">已有账号,&nbsp;请&nbsp;&nbsp;<a href="login.html" class="exist_login" href="#">登录</a></p>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		<form id="enrollForm" action="cart.html" method="post" class="box1200 margin_top50">
+			<!--用户名-->
+			<div class="form_box">
+				<input type="text" name="enrollUserName" id="enrollUserName" class="form_element" value="" placeholder="您的账户名和登录名" />
+				<span>用户名</span>
+			</div>
+			<!--设置密码-->
+			<div class="form_box">
+				<input type="password" name="setPW" id="setPW" class="form_element" value="" placeholder="建议设置两种字符密码" />
+				<span>设置密码</span>
+			</div>
+			<!--校验密码-->
+			<div class="form_box">
+				<input type="password" name="checkPW" id="checkPW" class="form_element" value="" placeholder="再次输入密码" />
+				<span>校验密码</span>
+			</div>
+			<!--手机号-->
+			<div class="form_box">
+				<input type="text" name="cellPhone" id="cellPhone" class="form_element" value="" placeholder="建议使用常用手机号" />
+				<p class="errMessage dis_no">请输入以1开头11位非负数字</p>
+				<span>中国+86</span>
+			</div>
+			<!--验证码-->
+			<div class="form_box">
+				<input type="text" name="validateCode" id="validateCode" class="form_element" value="" placeholder="请输入验证码" />
+				<p class="errMessage dis_no">验证码错误</p>
+				<span>验证码</span>
+				<img src="images/06erweima_03.gif" class="validate_code_img"/>
+			</div>
+			<!--手机验证码-->
+			<div class="form_box">
+				<input type="text" name="ProvingCode" id="ProvingCode" class="form_element" value="" placeholder="请输入手机验证码" />
+				<span>手机验证码</span>
+				<!--注册协议-->
+				<p class="enroll_agreement">
+					<input type="checkbox" name="enrollAgreement" id="enrollAgreement" value="" />
+					<em>我已阅读并同意</em>
+					<em class="text_color_f60">《京东用户注册协议》</em>
+					<p class="errMessage dis_no">请阅读注册协议</p>
+					<input type="button" id="msgBtn" value="获取验证码" />
+				</p>
+			</div>
+			<!--提交按钮-->
+			<div class="form_box">
+				<input type="submit" value="立即注册" id="pushSubmit"/>
+			</div>
+		</form>
+		
+		<!--页脚-->
+		<div id="footer" class="autoBox margin_top30">
+			<!--版权-->
+			<div class="copyright">
+				<p class="copyright_links">
+					<a href="javascrpt:void(0)">公司简介</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">lnvestor Relations</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">网站联盟</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">乐购招商</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">机构销售</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">手机乐购</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">官方Blog</a>
+					<span class="copyright_split">|</span>
+					<a href="javascrpt:void(0)">热词搜索</a>
+				</p>
+				<p class="margin_top20 margin_bottom100">
+					<span>Copyright&nbsp;©&nbsp;乐购网&nbsp;2004&nbsp;-&nbsp;2016&nbsp;&nbsp;AII&nbsp;Rights&nbsp;Reserved</span>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

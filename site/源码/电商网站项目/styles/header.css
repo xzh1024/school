@@ -1,0 +1,106 @@
+/*页眉*/
+.bgcolor_black
+{
+	background-color: #101010
+}
+/*logoTop*/
+#loginTop
+{
+	height: 28px;
+	line-height: 28px;
+	text-align: right;
+	color: #bfbfbf;
+	position: relative;
+}
+#loginTop #logo
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+/*logo上的可改文字*/
+#loginTop #logoText
+{
+	width: 140px;
+	position: absolute;
+	top: 40px;
+	left: 118px;
+	text-align: center;
+	color: #fff;
+	font-size: 26px;
+	letter-spacing: 5px;
+}
+#loginTop .lego_url
+{
+	margin-left: 263px;
+}
+/*页面欢迎文字*/
+#header .title_h2
+{
+	margin-left: 270px;
+	line-height: 77px;
+	font-size: 26px;
+}
+/*已有登录*/
+.exist_login
+{
+	margin-right: 26px;
+}
+/*搜索*/
+#keywords
+{
+	border: 2px solid #f60;
+	width: 388px;
+	height: 32px;
+	text-indent: 6px;
+}
+#searchBtn
+{
+	border: none;
+	width: 50px;
+	height: 36px;
+	background: #FF6600 url(../images/bgicon.png) no-repeat;
+	cursor: pointer;
+}
+/*我的订单*/
+#shopCart .order
+{
+	width: 98px;
+	height: 34px;
+	border: 1px solid #ccc;
+	text-align: center;
+	line-height: 34px;
+	background-color: #ebebeb;
+}
+#shopCart .order a
+{
+	color: #808080;
+}
+/*购物车*/
+#shopCart .current
+{
+	width: 76px;
+	height: 34px;
+	padding-left: 22px;
+	border: 1px solid #f60;
+	text-align: center;
+	line-height: 34px;
+	color: #fff;
+	background: #FF6600 url(../images/bgicon.png) no-repeat 0 -44px;
+	margin-left: 40px;
+}
+#shopCart .current a
+{
+	color: white;
+}
+/*主菜单*/
+#mainNav
+{
+	margin-right: 100px;
+}
+#mainNav li
+{
+	float: left;
+	margin-left: 32px;
+	line-height: 30px;
+}

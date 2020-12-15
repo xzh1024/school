@@ -1,0 +1,117 @@
+/*支付页面*/
+/*订单号*/
+.order_number
+{
+	margin-top: 100px;
+	margin-bottom: 10px;
+}
+/*订单详情*/
+.order_particulars
+{
+	color: #0f80ea;
+	text-decoration: underline;
+}
+.order_particulars:hover
+{
+	text-decoration: underline;
+}
+/*支付时间*/
+.pay_time
+{
+	height: 60px;
+	line-height: 60px;
+	background-color: #f2f2f2;
+	font-size: 16px;
+	text-indent: 6px;
+}
+/*应付金额*/
+.pay_time .due
+{
+	margin-right: 70px;
+}
+/*乐购支付*/
+.lg_pay,.other_pay
+{
+	height: 66px;
+	line-height: 66px;
+	font-size: 16px;
+}
+.lg_pay .lg_pay_title,.other_pay .other_pay_title
+{
+	padding: 6px 36px;
+	color: #fff;
+	font-size: 20px;
+	background-color: #f60;
+}
+.creditcard_pay,.opt_pay
+{
+	height: 60px;
+	padding-top: 30px;
+	background-color: #F2F2F2;
+	font-size: 16px;
+}
+.creditcard
+{
+	margin-left: 50px;
+	padding: 0 50px;
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	border: 1px solid #f60;
+}
+.zs_bank,.add_bank
+{
+	margin-left: 50px;
+	padding: 0 10px;
+	height: 28px;
+	line-height: 28px;
+	border: 1px solid #ccc;
+}
+.zs_bank span
+{
+	margin: 0 20px;
+}
+/*添加银行卡*/
+.add_bank
+{
+	background-color: #999;
+	color: #fff;
+}
+.color_b3b3b3
+{
+	color: #B3B3B3;
+}
+.money47
+{
+	margin-right: 20px;
+}
+/*立即支付*/
+.now_pay
+{
+	width: 220px;
+	height: 54px;
+	line-height: 54px;
+	border: none;
+	background-color: #f60;
+	letter-spacing: 1px;
+	cursor: pointer;
+	margin: 20px 0;
+}
+/*其他支付*/
+.other_pay .other_pay_title
+{
+	background-color: #76aff6;
+}
+.opt_pay
+{
+	line-height: 28px;
+	margin-bottom: 60px;
+}
+.opt_pay .copyright_split
+{
+	margin: 0 8px;
+}
+.opt_pay .opt_pay_wx
+{
+	margin-left: 80px;
+}

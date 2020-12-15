@@ -1,0 +1,172 @@
+/*购物车*/
+
+/*配送地址*/
+.dispatching_site
+{
+	height: 25px;
+	line-height: 20px;
+}
+.dispatching_site p
+{
+	margin: 10px 16px 0 0;
+}
+.dispatching_site select
+{
+	width: 150px;
+}
+
+/*内容*/
+.box90
+{
+	width: 90px;
+}
+.box550
+{
+	width: 550px;
+}
+.box130
+{
+	width: 130px;
+}
+.box170
+{
+	width: 170px;
+}
+.box260
+{
+	width: 260px;
+}
+#cartTitle
+{
+	height: 60px;
+	line-height: 60px;
+	font-size: 16px;
+	background-color: #f2f2f2;
+}
+.cartContent
+{
+	border-bottom: 1px solid #e6e6e6;
+	height: 162px;
+	padding: 20px 0;
+}
+#cartTitle>div
+{
+	float: left;
+}
+.cartContent>div
+{
+	float: left;
+	line-height: 24px;
+}
+
+.cartContent>div img
+{
+	width: 100px;
+	height: 140px;
+	padding: 10px 20px;
+	border: 1px solid #e6e6e6;
+	margin: 0 58px;
+	float: left;
+}
+.buyNumCon li
+{
+	float: left;
+}
+.buyNumCon
+{
+	width: 168px;
+}
+.minus,.add
+{
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid #ccc;
+}
+.buyNumber
+{
+	width: 116px;
+	height: 24px;
+	border: none;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	text-align: center;
+}
+/*提示文字*/
+.errMessage
+{
+	color: red; 
+	font-size: 12px; 
+	text-align: center;
+	display: none;
+}
+
+#goPayLeft
+{
+	width: 1062px;
+	height: 58px;
+	line-height: 58px;
+	border: 1px solid #ccc;
+}
+/*结算按钮*/
+#goPay
+{
+	border: none;
+	width: 136px;
+	height: 60px;
+	background-color: #f60;
+	font-size: 22px;
+	color: #fff;
+}
+/*删除*/
+.delRows
+{
+	cursor: pointer;
+}
+
+.guess
+{
+	width: 140px;
+	height: 42px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 24px;
+	color: #fff;
+	background-color: #f60;
+	
+}
+.pop_content li
+{
+	float: left;
+	width: 150px;
+	height: 275px;
+	padding: 25px 32px 0;
+	margin: 13px;
+}
+.pop_content li:hover
+{
+	background-color: #f2f2f2;
+}
+.pop_content li img
+{
+	width: 150px;
+	height: 150px;
+}
+.pop_content li p
+{
+	margin-top: 6px;
+	margin-left: 3px;
+}
+.pop_content .current
+{
+	background-color: transparent;
+	color: #FF6700;
+}
+li .comment
+{
+	background: url(../images/bgicon.png) no-repeat;
+	background-position: -5px -85px;
+	padding-left: 28px;
+}
