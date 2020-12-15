@@ -1,3 +1,0 @@
-const StoreUserTypeEnum = {
-  userInfo: "userInfo",
-};
