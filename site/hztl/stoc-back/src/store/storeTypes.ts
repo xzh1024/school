@@ -1,0 +1,3 @@
+const StoreUserTypeEnum = {
+  userInfo: "userInfo",
+};
