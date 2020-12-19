@@ -1,0 +1,75 @@
+.icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+}
+
+.logo-60 {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  background-image: url("~@/assets/img/logo/logo60.png");
+  background-size: 100% 100%;
+}
+
+.logo-20 {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-image: url("~@/assets/img/logo/logo20.png");
+  background-size: 100% 100%;
+}
+
+.icon-user {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-user.png");
+  background-size: 100% 100%;
+}
+
+.icon-phone {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-phone.png");
+  background-size: 100% 100%;
+}
+
+.icon-house {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-house.png");
+  background-size: 100% 100%;
+}
+
+.icon-site {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-site.png");
+  background-size: 100% 100%;
+}
+
+.icon-soso {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-soso.png");
+  background-size: 100% 100%;
+}
+
+.icon-left {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-left.png");
+  background-size: 100% 100%;
+}
+
+.icon-right {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-right.png");
+  background-size: 100% 100%;
+}
+
+.icon-left-gray {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-left-gray.png");
+  background-size: 100% 100%;
+}
+
+.icon-right-gray {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-right-gray.png");
+  background-size: 100% 100%;
+}

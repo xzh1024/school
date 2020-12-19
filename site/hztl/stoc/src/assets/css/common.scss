@@ -1,0 +1,36 @@
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.strong {
+  font-weight: 600;
+}
+
+.m-t {
+  margin-top: 8px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.lip-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lip-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
