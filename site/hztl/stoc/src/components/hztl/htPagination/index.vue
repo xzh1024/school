@@ -31,7 +31,7 @@ export default class HtPagination extends Vue {
 
   // @Prop() protected small!: boolean;
 
-  @Prop() protected total!: boolean; // 总条目数
+  @Prop() protected total!: number; // 总条目数
 
   @Prop({ default: 1 }) protected pageCount!: number; // 总页数
 

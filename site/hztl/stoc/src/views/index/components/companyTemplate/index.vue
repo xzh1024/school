@@ -1,15 +1,17 @@
 <template>
   <ht-card title="推荐商家" describe="不光是品质还有服务">
     <div slot="after-title" class="title-right">
-      <HtPagination
+      <ht-pagination
         :currentPage.sync="queryParams.page"
         :total="total.size"
         :pageCount="total.page"
         @current-change="getCompanies"
-      ></HtPagination>
-      <HtButton size="mini">按钮</HtButton>
+      ></ht-pagination>
+      <ht-button type="primary" size="mini" round @click="handlePath"
+        >进入商家黄页</ht-button
+      >
     </div>
-    <div class="company-template clearfix">
+    <div class="company-list clearfix">
       <template v-for="(item, index) in list">
         <company-double
           v-if="index === 0"
@@ -392,13 +394,16 @@ export default class CompanyTemplate extends Vue {
     companyService
       .getCompanies(this.queryParams)
       .then((res: PageResponseResult<CompanyModel[]>) => {
-        // console.log(res);
         if (res) {
           this.list = res.rows || [];
           this.total.size = res.totalSize || 0;
           this.total.page = res.totalPage || 1;
         }
       });
+  }
+
+  protected handlePath() {
+    this.$router.push({ path: "/company" });
   }
 
   created() {
@@ -411,8 +416,11 @@ export default class CompanyTemplate extends Vue {
 .title-right {
   display: flex;
   align-items: center;
+  .ht-pagination {
+    margin-right: $margin-size-main;
+  }
 }
-.company-template {
+.company-list {
   box-sizing: border-box;
   width: 100%;
   height: 582px;
@@ -421,7 +429,7 @@ export default class CompanyTemplate extends Vue {
   .company-double {
     float: left;
     margin-right: 14px;
-    margin-bottom: 8px;
+    margin-bottom: $margin-size-main;
   }
 }
 </style>

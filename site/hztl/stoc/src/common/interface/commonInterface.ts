@@ -14,3 +14,7 @@ export interface BannerModel {
   name: string;
   url: string;
 }
+export interface FloorModel {
+  name: string;
+  value: string;
+}

@@ -12,6 +12,14 @@
   background-size: 100% 100%;
 }
 
+.logo-32 {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url("~@/assets/img/logo/logo32.png");
+  background-size: 100% 100%;
+}
+
 .logo-20 {
   display: inline-block;
   width: 20px;
@@ -71,5 +79,11 @@
 .icon-right-gray {
   @extend .icon;
   background-image: url("~@/assets/img/icon/icon-right-gray.png");
+  background-size: 100% 100%;
+}
+
+.icon-top-gray {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-top-gray.png");
   background-size: 100% 100%;
 }

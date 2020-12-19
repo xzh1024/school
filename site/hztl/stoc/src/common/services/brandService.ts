@@ -21,6 +21,13 @@ export class BrandService extends BaseService {
       url: "/open/whsc/brands"
     });
   }
+
+  public getBrandAll(params: BrandParams = {}): Promise<BrandModel[]> {
+    return this.request({
+      params: params,
+      url: "/open/whsc/brands/all"
+    });
+  }
 }
 
 if (!ServiceFactory.hasInit(serviceName)) {

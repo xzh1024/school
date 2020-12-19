@@ -9,6 +9,10 @@ export interface PartParams extends PageParams {
   insurCertTypes?: string; // 配件保险认证分类
   orderByAreas?: string; // 发货地排序
 }
+export interface PartAllParams {
+  keyword?: string; // 关键字
+  firstMnemonic?: string; // 首字母助记符
+}
 
 export interface PartModel {
   companyId: number; // 公司ID

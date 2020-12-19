@@ -15,20 +15,21 @@
           </div>
         </div>
       </div>
-      <div class="container company m-t">
+      <div class="floor m-t">
         <CompanyTemplate></CompanyTemplate>
       </div>
-      <div class="container goods m-t">
+      <div class="floor m-t">
         <GoodsTemplate></GoodsTemplate>
       </div>
-      <div class="container brand m-t">
+      <div class="floor m-t">
         <BrandTemplate></BrandTemplate>
       </div>
     </div>
     <div class="divider-end">
       <ht-divider>END</ht-divider>
     </div>
-    <FooterMain></FooterMain>
+    <footer-main></footer-main>
+    <LayerScroll :floors="floors"></LayerScroll>
   </div>
 </template>
 
@@ -37,8 +38,9 @@ import { Component, Vue } from "vue-property-decorator";
 import HeaderMain from "@/components/headerMain/index";
 import FooterMain from "@/components/footerMain/index";
 import Banner from "@/components/banner/index";
+import LayerScroll from "@/components/layerScroll/index";
 import { HtDivider } from "@/components/hztl";
-import { BannerModel } from "@/common/interface/commonInterface";
+import { BannerModel, FloorModel } from "@/common/interface/commonInterface";
 import CompanyTemplate from "./components/companyTemplate/index.vue";
 import GoodsTemplate from "./components/goodsTemplate/index.vue";
 import BrandTemplate from "./components/brandTemplate/index.vue";
@@ -51,6 +53,7 @@ const commonService = new CommonService();
     HeaderMain,
     FooterMain,
     Banner,
+    LayerScroll,
     CompanyTemplate,
     GoodsTemplate,
     BrandTemplate,
@@ -61,6 +64,21 @@ export default class Index extends Vue {
   protected mediumBanners: BannerModel[] = [];
   protected smallBanners: BannerModel[] = [];
   protected miniBanners: BannerModel[] = [];
+
+  protected floors: FloorModel[] = [
+    {
+      name: "推荐商家",
+      value: "company"
+    },
+    {
+      name: "优质好货",
+      value: "goods"
+    },
+    {
+      name: "热门品牌",
+      value: "brand"
+    }
+  ];
 
   protected banners: BannerModel[] = [
     {
@@ -85,7 +103,7 @@ export default class Index extends Vue {
 
   protected getInfoData() {
     commonService.getIndexInfo().then(res => {
-      console.log(res);
+      // console.log(res);
       const {
         banners
         // copyright,
@@ -108,6 +126,7 @@ export default class Index extends Vue {
       }
     });
   }
+
   created() {
     this.getInfoData();
   }
@@ -137,26 +156,9 @@ export default class Index extends Vue {
         }
       }
     }
-    .container {
-      // height: 300px;
-      // margin-top: 50px;
+    .floor {
       background: $color-white;
     }
-    .company {
-      // background: #66ffff;
-      // height: 582px;
-      overflow: hidden;
-    }
-    // .goods {
-    //   background: #ff66ff;
-    // }
-    // .brand {
-    //   background: #ffff66;
-    // }
-  }
-  .divider-end {
-    width: 500px;
-    margin: 0 auto;
   }
 }
 </style>

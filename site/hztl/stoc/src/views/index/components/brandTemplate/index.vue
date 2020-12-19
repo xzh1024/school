@@ -1,14 +1,17 @@
 <template>
   <ht-card title="热门品牌" describe="众多热门车型品牌来袭">
-    <div slot="after-title">
-      <HtPagination
+    <div slot="after-title" class="title-right">
+      <ht-pagination
         :currentPage.sync="queryParams.page"
         :total="total.size"
         :pageCount="total.page"
         @current-change="getBrands"
-      ></HtPagination>
+      ></ht-pagination>
+      <ht-button type="primary" size="mini" round @click="handlePath"
+        >查看全部</ht-button
+      >
     </div>
-    <div class="brand-template clearfix">
+    <div class="brand-list clearfix">
       <template v-for="(item, index) in list">
         <brand-double
           v-if="index === 0"
@@ -152,13 +155,16 @@ export default class BrandTemplate extends Vue {
     brandService
       .getBrands(this.queryParams)
       .then((res: PageResponseResult<BrandModel[]>) => {
-        console.log(res);
         if (res) {
           this.list = res.rows || [];
           this.total.size = res.totalSize || 0;
           this.total.page = res.totalPage || 1;
         }
       });
+  }
+
+  protected handlePath() {
+    this.$router.push({ path: "/brand" });
   }
 
   created() {
@@ -168,7 +174,14 @@ export default class BrandTemplate extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.brand-template {
+.title-right {
+  display: flex;
+  align-items: center;
+  .ht-pagination {
+    margin-right: $margin-size-main;
+  }
+}
+.brand-list {
   box-sizing: border-box;
   width: 100%;
   height: 264px;

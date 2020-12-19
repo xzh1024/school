@@ -18,7 +18,7 @@
     </div>
     <div class="header-content">
       <div class="ht-container">
-        <div class="logo-wrap">
+        <div class="logo-wrap" @click="$router.push({ path: '/' })">
           <i class="logo-60"></i>
           <div class="strong">信息展馆</div>
         </div>
@@ -50,7 +50,6 @@ $header-content-height: 116px;
 
 .header-main {
   .header-top {
-    // height: $header-top-height;
     background: $color-primary;
     color: $color-white;
     .ht-container {
@@ -89,15 +88,15 @@ $header-content-height: 116px;
 
   .header-content {
     background: $color-white;
-    // color: $color-white;
     .ht-container {
       height: $header-content-height;
       display: flex;
       align-items: center;
+      justify-content: space-between;
       .logo-wrap {
-        flex: 1;
         display: flex;
         align-items: center;
+        cursor: pointer;
         .strong {
           font-size: $font-size-20;
           color: $color-primary;

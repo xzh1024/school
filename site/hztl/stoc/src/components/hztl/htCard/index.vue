@@ -6,7 +6,6 @@
         {{ title }}
         <span class="card-title-describe">{{ describe }}</span>
       </div>
-      <!-- <div class="card-title-describe">{{ describe }}</div> -->
       <div class="after-title">
         <slot name="after-title" />
       </div>
@@ -43,11 +42,7 @@ export default class HtCard extends Vue {
     border-bottom: $border-primary;
     display: flex;
     align-items: center;
-    -moz-user-select: none; /*火狐*/
-    -webkit-user-select: none; /*webkit浏览器*/
-    -ms-user-select: none; /*IE10*/
-    -khtml-user-select: none; /*早期浏览器*/
-    user-select: none;
+    @extend .user-select-none;
     .card-title-text {
       flex: 1;
       margin-left: 4px;
@@ -59,10 +54,6 @@ export default class HtCard extends Vue {
         font-size: $font-size-12;
         color: $color-gray;
       }
-    }
-    .after-title {
-      // overflow: hidden;
-      // align-self: flex-end;
     }
   }
   .card-content {

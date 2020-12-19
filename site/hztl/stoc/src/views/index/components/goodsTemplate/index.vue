@@ -1,14 +1,15 @@
 <template>
   <ht-card title="优质好货" describe="深藏好货来这里挖掘">
-    <div slot="after-title">
-      <HtPagination
+    <div slot="after-title" class="title-right">
+      <ht-pagination
         :currentPage.sync="queryParams.page"
         :total="total.size"
         :pageCount="total.page"
         @current-change="goodsService"
-      ></HtPagination>
+      ></ht-pagination>
+      <ht-button type="primary" size="mini" round>查看全部</ht-button>
     </div>
-    <div class="goods-template clearfix">
+    <div class="goods-list clearfix">
       <template v-for="(item, index) in list">
         <goods-item
           v-if="index < 10"
@@ -54,7 +55,6 @@ export default class GoodsTemplate extends Vue {
     goodsService
       .getParts(this.queryParams)
       .then((res: PageResponseResult<PartModel[]>) => {
-        // console.log(res);
         if (res) {
           this.list = res.rows || [];
           this.total.size = res.totalSize || 0;
@@ -70,7 +70,14 @@ export default class GoodsTemplate extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.goods-template {
+.title-right {
+  display: flex;
+  align-items: center;
+  .ht-pagination {
+    margin-right: $margin-size-main;
+  }
+}
+.goods-list {
   box-sizing: border-box;
   width: 100%;
   height: 708px;

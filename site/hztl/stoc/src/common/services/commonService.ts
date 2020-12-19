@@ -1,7 +1,7 @@
 import { ServiceType } from "./base/serviceType";
 import { BaseService } from "./base/baseService";
 import { ServiceFactory } from "./ServiceFactory";
-// import { ModuleKeyEnum } from "@/common/config/config";
+// import { ModuleKeyEnum } from "@/common/utils/config";
 
 const serviceName = ServiceType.commonService;
 
