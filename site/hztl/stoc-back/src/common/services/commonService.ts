@@ -1,7 +1,7 @@
 import { ServiceType } from "./base/serviceType";
 import { BaseService } from "./base/baseService";
 import { ServiceFactory } from "./ServiceFactory";
-import { moduleKeyMap } from "@/common/config/config";
+import { ModuleKeyEnum } from "@/common/config/config";
 
 const serviceName = ServiceType.commonService;
 
@@ -20,7 +20,7 @@ export class CommonService extends BaseService {
 
   public getUploadToken() {
     return this.request({
-      module: moduleKeyMap.accounts,
+      module: ModuleKeyEnum.accounts,
       url: "/img/upToken"
     });
   }

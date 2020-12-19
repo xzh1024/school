@@ -31,6 +31,16 @@ moduleKeys.forEach(key => {
 
 module.exports = {
   productionSourceMap: false,
+  css: {
+    sourceMap: true,
+    loaderOptions: {
+      sass: {
+        prependData: `
+          @import "@/assets/css/main.scss";
+        `
+      }
+    }
+  },
   devServer: {
     open: true,
     port: 8080,

@@ -63,9 +63,6 @@ function closeLoading(url: string) {
 // 添加请求拦截器
 service.interceptors.request.use(
   (config: AxiosRequestConfigEx) => {
-    const module = config.module || "united";
-    config.baseURL = `/${module}`;
-    // 增加全局遮罩
     if (config.module) {
       config.baseURL = `/${config.module}`;
       delete config.module;
@@ -90,7 +87,6 @@ service.interceptors.response.use(
   (response: AxiosResponse) => {
     closeLoading(getUrl(response.config));
     const res = response.data;
-    // res.code = "token-err";
     if (res.code === "ok") {
       return Promise.resolve(res);
     } else if (res.code === "token-err") {
@@ -108,6 +104,7 @@ service.interceptors.response.use(
         duration: 3500,
         showClose: true
       });
+      router.push("/login");
       return Promise.reject(res);
     }
     return response;

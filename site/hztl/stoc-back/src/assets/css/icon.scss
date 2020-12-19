@@ -4,16 +4,16 @@
   width: 40px;
   height: 40px;
   background-size: 100% 100%;
-  background-image: url('./icons/menu-logo.png');
+  background-image: url('~@/assets/img/icons/menu-logo.png');
 }
 
 .icon-menu-base {
-	background-image: url('./icons/menu-base.png');
+	background-image: url('~@/assets/img/icons/menu-base.png');
 	background-size: 22px 22px;
 }
 
 .icon-menu-setup {
-	background-image: url('./icons/menu-setup.png');
+	background-image: url('~@/assets/img/icons/menu-setup.png');
 	background-size: 22px 22px;
 }
 
@@ -21,7 +21,7 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-	background-image: url('./icons/icon-edit.png');
+	background-image: url('~@/assets/img/icons/icon-edit.png');
   background-size: 100% 100%;
   cursor: pointer;
 }
@@ -31,12 +31,12 @@
   height: 18px;
 }
 .icon-check {
-	background-image: url('./icons/icon-check.png');
+	background-image: url('~@/assets/img/icons/icon-check.png');
   background-size: 100% 100%;
   cursor: pointer;
 }
 .icon-uncheck {
-	background-image: url('./icons/icon-uncheck.png');
+	background-image: url('~@/assets/img/icons/icon-uncheck.png');
   background-size: 100% 100%;
   cursor: pointer;
 }

@@ -1,7 +1,7 @@
 import { ServiceType } from "./base/serviceType";
 import { BaseService } from "./base/baseService";
 import { ServiceFactory } from "./ServiceFactory";
-import { moduleKeyMap } from "@/common/config/config";
+import { ModuleKeyEnum } from "@/common/config/config";
 
 const serviceName = ServiceType.loginService;
 
@@ -24,7 +24,7 @@ export class LoginService extends BaseService {
       },
       data: params,
       url: "/token-login",
-      module: moduleKeyMap.accounts
+      module: ModuleKeyEnum.accounts
     });
   }
 }

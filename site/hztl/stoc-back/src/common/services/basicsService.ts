@@ -2,7 +2,7 @@ import { ServiceType } from "./base/serviceType";
 import { BaseService } from "./base/baseService";
 import { ServiceFactory } from "./ServiceFactory";
 import { BaseFormParams } from "@/common/interface/baseInterface";
-import { moduleKeyMap } from "@/common/config/config";
+import { ModuleKeyEnum } from "@/common/config/config";
 
 const serviceName = ServiceType.basicsService;
 
@@ -35,7 +35,7 @@ export class BasicsService extends BaseService {
         type: 1
       },
       url: "/brands/group-category",
-      module: moduleKeyMap.basic
+      module: ModuleKeyEnum.basic
     });
   }
 
@@ -44,7 +44,7 @@ export class BasicsService extends BaseService {
     return this.request({
       method: "get",
       url: "/provinces",
-      module: moduleKeyMap.accounts
+      module: ModuleKeyEnum.accounts
     });
   }
   // 获取城市列表
@@ -54,7 +54,7 @@ export class BasicsService extends BaseService {
         provinceId
       },
       url: "/cities",
-      module: moduleKeyMap.accounts
+      module: ModuleKeyEnum.accounts
     });
   }
   // 获取区县列表
@@ -64,14 +64,14 @@ export class BasicsService extends BaseService {
         cityId
       },
       url: "/counties",
-      module: moduleKeyMap.accounts
+      module: ModuleKeyEnum.accounts
     });
   }
   // 地区
   public getAreas() {
     return this.request({
       url: "/open/areas/tree",
-      module: moduleKeyMap.basic
+      module: ModuleKeyEnum.basic
     });
   }
 }
