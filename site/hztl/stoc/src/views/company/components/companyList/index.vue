@@ -26,21 +26,6 @@
           :page-count="pageInfo.totalPage"
           @current-change="getCompanies"
         ></ht-pagination>
-        <!-- <el-pagination
-          @size-change="getCompanies"
-          @current-change="getCompanies"
-          :current-page.sync="pageInfo.page"
-          :page-sizes="[1, 20, 100, 200]"
-          :page-size.sync="pageInfo.pageSize"
-          layout="prev, slot, next"
-          :total="pageInfo.totalSize"
-        >
-          <span>
-            {{ this.pageInfo.page || 1 }}
-            /
-            {{ this.pageInfo.totalSize || 1 }}
-          </span>
-        </el-pagination> -->
       </div>
       <div class="company-list clearfix">
         <template v-for="item in list">
@@ -72,6 +57,7 @@ import { HtCard, HtPagination, HtDivider } from "@/components/hztl";
 import CompanyItem from "@/views/company/components/companyItem/index";
 import { PageResponseResult } from "@/common/interface/commonInterface";
 import { PageParams } from "@/common/interface/commonInterface";
+import { PAGE_SIZES } from "@/common/utils/config";
 import {
   CompanyModel,
   CompanyParams
@@ -94,25 +80,16 @@ const brandService = new BrandService();
 export default class CompanyList extends Vue {
   protected list: CompanyModel[] = [];
 
-  protected pageSizes = [10, 20, 100, 200];
+  protected pageSizes = PAGE_SIZES;
 
   protected pageInfo: PageParams = {
     page: 1,
-    pageSize: 10,
+    pageSize: PAGE_SIZES[0],
     totalSize: 0,
     totalPage: 1
   };
-  // protected queryParams: CompanyParams = {
-  //   vehBrands: "",
-  //   areas: ""
-  // };
   protected brands: string[] = [];
   protected checkBrands: string[] = [];
-
-  // protected total = {
-  //   size: 0,
-  //   page: 1
-  // };
 
   protected getCompanies() {
     const { page, pageSize } = this.pageInfo;
@@ -133,6 +110,7 @@ export default class CompanyList extends Vue {
         }
       });
   }
+  
   protected getBrandAll() {
     brandService
       .getBrandAll()
@@ -141,7 +119,6 @@ export default class CompanyList extends Vue {
         const list = res || [];
         this.brands = list.map(item => item.name);
       })
-      .catch(() => (this.list = []));
   }
 
   created() {
@@ -159,13 +136,10 @@ export default class CompanyList extends Vue {
     .company-search {
       margin-top: 20px;
       .brand-list {
-        // height: 98px;
-        // overflow-y: auto;
         ::v-deep .el-checkbox-group {
           .el-checkbox-button--small {
             margin-top: 8px;
             margin-right: 8px;
-            // cursor: pointer;
             .el-checkbox-button__inner {
               padding: 4px 10px;
               border: 1px solid transparent;

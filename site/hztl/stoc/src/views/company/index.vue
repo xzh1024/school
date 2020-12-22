@@ -24,8 +24,3 @@ import CompanyList from "./components/companyList/index.vue";
 })
 export default class Company extends Vue {}
 </script>
-
-<style lang="scss" scoped>
-.company-container {
-}
-</style>

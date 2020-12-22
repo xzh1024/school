@@ -7,7 +7,8 @@
         :pageCount="total.page"
         @current-change="goodsService"
       ></ht-pagination>
-      <ht-button type="primary" size="mini" round>查看全部</ht-button>
+      <ht-button type="primary" size="mini" round @click="handlePath">查看全部</ht-button
+      >
     </div>
     <div class="goods-list clearfix">
       <template v-for="(item, index) in list">
@@ -61,6 +62,10 @@ export default class GoodsTemplate extends Vue {
           this.total.page = res.totalPage || 1;
         }
       });
+  }
+
+  protected handlePath() {
+    this.$router.push({ path: "/goods" });
   }
 
   created() {

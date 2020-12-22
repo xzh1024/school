@@ -4,7 +4,9 @@ import {
   Popover,
   Pagination,
   CheckboxButton,
-  CheckboxGroup
+  CheckboxGroup,
+  Table,
+  TableColumn
 } from "element-ui";
 
 Vue.use(Button);
@@ -12,3 +14,5 @@ Vue.use(Popover);
 Vue.use(Pagination);
 Vue.use(CheckboxButton);
 Vue.use(CheckboxGroup);
+Vue.use(Table);
+Vue.use(TableColumn);

@@ -50,20 +50,25 @@ export default class HtPagination extends Vue {
     console.log(newVal);
     this.internalPageCount = newVal;
   }
-  @Watch("internalCurrentPage", { immediate: true })
-  protected wInternalCurrentPage(newVal: number) {
+  @Watch("currentPage")
+  protected changeCurrentPage(newVal: number) {
+    this.internalCurrentPage = newVal;
+  }
+  @Watch("internalCurrentPage")
+  protected changeInternalCurrentPage(newVal: number) {
     this.$emit("update:currentPage", newVal);
-    this.$emit("current-change", newVal);
   }
 
   protected prev() {
     if (this.internalCurrentPage > 1) {
       this.internalCurrentPage--;
+      this.$emit("current-change", this.internalCurrentPage);
     }
   }
   protected next() {
     if (this.internalPageCount > this.internalCurrentPage) {
       this.internalCurrentPage++;
+      this.$emit("current-change", this.internalCurrentPage);
     }
   }
 }

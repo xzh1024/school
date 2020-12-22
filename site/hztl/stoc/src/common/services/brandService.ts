@@ -2,7 +2,7 @@ import { ServiceType } from "./base/serviceType";
 import { BaseService } from "./base/baseService";
 import { ServiceFactory } from "./ServiceFactory";
 import { PageResponseResult } from "@/common/interface/commonInterface";
-import { BrandParams, BrandModel } from "@/common/interface/brandInterface";
+import { BrandParams, BrandModel, PartFilterModel } from "@/common/interface/brandInterface";
 
 const serviceName = ServiceType.brandService;
 
@@ -26,6 +26,13 @@ export class BrandService extends BaseService {
     return this.request({
       params: params,
       url: "/open/whsc/brands/all"
+    });
+  }
+
+  public getPartFilter(params: BrandParams = {}): Promise<PartFilterModel> {
+    return this.request({
+      params: params,
+      url: "/open/whsc/parts/filter"
     });
   }
 }

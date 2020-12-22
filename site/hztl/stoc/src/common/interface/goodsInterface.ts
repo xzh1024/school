@@ -4,9 +4,9 @@ import { PageParams } from "./commonInterface";
 export interface PartParams extends PageParams {
   keyword?: string; // 关键字
   areas?: string; // 发货地
-  brands?: string; // 品牌名称
-  companyIds?: string; // 公司ID
-  insurCertTypes?: string; // 配件保险认证分类
+  brands?: string | string[]; // 品牌名称
+  companyIds?: string | number[]; // 公司ID
+  insurCertTypes?: string | string[]; // 配件保险认证分类
   orderByAreas?: string; // 发货地排序
 }
 export interface PartAllParams {

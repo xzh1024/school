@@ -3,3 +3,5 @@ export enum ModuleKeyEnum {
   basic = "basic",
   accounts = "accounts"
 }
+
+export const PAGE_SIZES = [10, 20, 100, 200];

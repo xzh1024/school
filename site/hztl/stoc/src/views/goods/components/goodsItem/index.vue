@@ -34,7 +34,7 @@
           起
         </div>
         <el-popover placement="right" width="426" trigger="click">
-          <company-info :info="info.company">666</company-info>
+          <company-info :info="info.company"></company-info>
           <div class="cell-btn" slot="reference">快速询价</div>
         </el-popover>
       </div>

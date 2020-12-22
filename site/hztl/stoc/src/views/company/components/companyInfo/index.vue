@@ -1,6 +1,17 @@
 <template>
   <div class="company-info" v-if="info">
-    <div class="company-title" v-if="info.name">{{ info.name }}</div>
+    <div class="company-title" v-if="info.name">
+      <div class="company-title-text">{{ info.name }}</div>
+      <slot>
+        <el-button
+          type="primary"
+          size="mini"
+          round
+          @click="handlePath(info.companyId)"
+          >查看全部商品</el-button
+        >
+      </slot>
+    </div>
     <div
       class="company-description"
       v-if="(info.pics && info.pics.length) || info.description"
@@ -149,6 +160,11 @@ export default class CompanyInfo extends Vue {
     const areas = (this.info && this.info.areas) || [];
     return areas.map((area: AreaModel) => area.name);
   }
+
+  protected handlePath(companyIds: string) {
+    if (!companyIds) return;
+    this.$router.push({ path: "/goods", query: { companyIds } });
+  }
 }
 </script>
 
@@ -161,6 +177,8 @@ export default class CompanyInfo extends Vue {
     padding-left: $margin-size-main;
     font-size: $font-size-16;
     @extend .lip;
+    display: flex;
+    align-items: flex-end;
     &:first-child {
       margin-top: 0;
     }
@@ -172,6 +190,9 @@ export default class CompanyInfo extends Vue {
       position: absolute;
       left: 0;
       bottom: 3px;
+    }
+    .company-title-text {
+      flex: 1;
     }
   }
   .text-assist {

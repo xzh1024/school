@@ -1,5 +1,5 @@
 import Vue from "vue";
-import VueRouter, { RouteConfig } from "vue-router";
+import VueRouter, { RouteConfig, Location } from "vue-router";
 
 Vue.use(VueRouter);
 
@@ -33,6 +33,12 @@ const routes: Array<RouteConfig> = [
     redirect: "/"
   }
 ];
+
+// 处理重复点击同一路由控制台报错
+const originalReplace: any = VueRouter.prototype.replace;
+(VueRouter as any).prototype.replace = function(location: Location) {
+  return originalReplace.call(this, location).catch((err: any) => err);
+};
 
 const router = new VueRouter({
   mode: "history",

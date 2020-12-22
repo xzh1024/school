@@ -20,3 +20,7 @@ export interface FloorModel {
   name: string;
   value: string;
 }
+export interface NameModel {
+  id: number;
+  name: string;
+}
