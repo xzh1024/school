@@ -63,9 +63,9 @@ export default class LayerScroll extends Vue {
     if (floor) {
       const floorTop = floor.offsetTop;
       if (document.documentElement) {
-        document.documentElement.scrollTop = floorTop - 290;
+        document.documentElement.scrollTop = floorTop;
       } else {
-        document.body.scrollTop = floorTop - 290;
+        document.body.scrollTop = floorTop;
       }
     }
   }
@@ -136,6 +136,9 @@ export default class LayerScroll extends Vue {
       &:hover {
         color: $color-white !important;
         background: $gradients-primary !important;
+      }
+      &:hover .icon-top-gray {
+        @extend .icon-top-white;
       }
     }
     .layer-item.is-active {

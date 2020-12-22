@@ -33,7 +33,10 @@
           <span class="cell-price-num">{{ info.price }}</span>
           起
         </div>
-        <div class="cell-btn">快速询价</div>
+        <el-popover placement="right" width="426" trigger="click">
+          <company-info :info="info.company">666</company-info>
+          <div class="cell-btn" slot="reference">快速询价</div>
+        </el-popover>
       </div>
       <div class="cell cell-flex">
         <div class="cell-left"></div>
@@ -48,9 +51,10 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
+import CompanyInfo from "@/views/company/components/companyInfo";
 import { PartModel } from "@/common/interface/goodsInterface";
 
-@Component({ name: "GoodsItem" })
+@Component({ name: "GoodsItem", components: { CompanyInfo } })
 export default class GoodsItem extends Vue {
   @Prop() protected info!: PartModel;
 }

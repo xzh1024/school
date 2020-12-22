@@ -7,6 +7,8 @@ export interface PageResponseResult<T> {
 export interface PageParams {
   page?: number;
   pageSize?: number;
+  totalSize?: number;
+  totalPage?: number;
 }
 
 export interface BannerModel {

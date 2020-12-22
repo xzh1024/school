@@ -23,8 +23,8 @@
 import { Component, Vue } from "vue-property-decorator";
 import BrandItem from "@/views/brand/components/brandItem/index";
 import { BrandModel } from "@/common/interface/brandInterface";
-import { BrandService } from "@/common/services/brandService";
 import { checkCh } from "@/common/utils/queryFirstMnemonic.js";
+import { BrandService } from "@/common/services/brandService";
 const brandService = new BrandService();
 
 @Component({
@@ -102,7 +102,7 @@ export default class BrandList extends Vue {
     }
     .mnemonic.is-active {
       color: $color-white;
-      background: blue;
+      background: $color-primary;
     }
   }
   .brand-list {

@@ -13,7 +13,7 @@
     </ul>
     <div class="search-input">
       <input type="text" placeholder="输入配件名称/OE号、品牌等关键字查询" />
-      <button>搜索<i class="icon-soso"></i></button>
+      <button>搜索<i class="icon-soso-white"></i></button>
     </div>
   </div>
 </template>

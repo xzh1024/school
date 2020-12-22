@@ -1,5 +1,5 @@
-import {BaseService} from './base/baseService';
-import {ServiceType} from "./base/serviceType";
+import { BaseService } from "./base/baseService";
+import { ServiceType } from "./base/serviceType";
 
 /**
  * 获取service的工厂
@@ -7,8 +7,10 @@ import {ServiceType} from "./base/serviceType";
 export class ServiceFactory {
   public static getService<T extends BaseService>(name: ServiceType): T {
     const service = ServiceFactory.caches[name] as T;
-    if(!service) {
-      console.warn(`the service must be import its file before used, whose name is ${name}`);
+    if (!service) {
+      console.warn(
+        `the service must be import its file before used, whose name is ${name}`
+      );
     }
     return service;
   }
@@ -25,8 +27,10 @@ export class ServiceFactory {
    * @param name
    */
   public static hasInit(name: string) {
-    return !!ServiceFactory.caches[name]
+    return !!ServiceFactory.caches[name];
   }
 
-  private static caches: { [key: string]: BaseService } = {} as { [key: string]: BaseService };
+  private static caches: { [key: string]: BaseService } = {} as {
+    [key: string]: BaseService;
+  };
 }

@@ -27,6 +27,12 @@
   white-space: nowrap;
 }
 
+.lip {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .lip-1 {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -55,4 +61,9 @@
 .divider-end {
   width: 500px;
   margin: 0 auto;
+}
+
+.pagenation-wrap {
+  padding: 16px;
+  text-align: right;
 }

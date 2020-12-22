@@ -11,20 +11,20 @@
         {{ info.name }}
       </div>
       <div title="电话号码" class="company-cell nowrap">
-        <i class="icon-phone"></i>
+        <i class="icon-phone-gray"></i>
         <span class="cell-text">
           {{ info.phone }}
           asdadadadada就打算打算的撒大
         </span>
       </div>
       <div title="主营" class="company-cell nowrap">
-        <i class="icon-house"></i>
+        <i class="icon-house-gray"></i>
         <span class="cell-text cell-assist">
           {{ info.phone }}
         </span>
       </div>
       <div title="地址" class="company-cell">
-        <i class="icon-site"></i>
+        <i class="icon-site-gray"></i>
         <span class="cell-text-double cell-assist">
           大数据减肥咖啡是你克拉饭卡和康师傅哈看了法赫卡里舒服啦哈风飒风撒发生阿法更多
         </span>

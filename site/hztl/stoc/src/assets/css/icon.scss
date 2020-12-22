@@ -34,15 +34,15 @@
   background-size: 100% 100%;
 }
 
-.icon-phone {
+.icon-phone-gray {
   @extend .icon;
-  background-image: url("~@/assets/img/icon/icon-phone.png");
+  background-image: url("~@/assets/img/icon/icon-phone-gray.png");
   background-size: 100% 100%;
 }
 
-.icon-house {
+.icon-house-gray {
   @extend .icon;
-  background-image: url("~@/assets/img/icon/icon-house.png");
+  background-image: url("~@/assets/img/icon/icon-house-gray.png");
   background-size: 100% 100%;
 }
 
@@ -52,9 +52,15 @@
   background-size: 100% 100%;
 }
 
-.icon-soso {
+.icon-site-gray {
   @extend .icon;
-  background-image: url("~@/assets/img/icon/icon-soso.png");
+  background-image: url("~@/assets/img/icon/icon-site-gray.png");
+  background-size: 100% 100%;
+}
+
+.icon-soso-white {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-soso-white.png");
   background-size: 100% 100%;
 }
 
@@ -85,5 +91,23 @@
 .icon-top-gray {
   @extend .icon;
   background-image: url("~@/assets/img/icon/icon-top-gray.png");
+  background-size: 100% 100%;
+}
+
+.icon-top-white {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-top-white.png");
+  background-size: 100% 100%;
+}
+
+.icon-sedan {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-sedan.png");
+  background-size: 100% 100%;
+}
+
+.icon-trucks {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-trucks.png");
   background-size: 100% 100%;
 }

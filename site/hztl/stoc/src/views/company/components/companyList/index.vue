@@ -1,84 +1,198 @@
 <template>
-  <ht-card title="商家">
-    <div slot="after-title">
-      <ht-pagination
-        :currentPage.sync="queryParams.page"
-        :total="total.size"
-        :pageCount="total.page"
-        @current-change="getCompanies"
-      ></ht-pagination>
+  <div class="company-template">
+    <ht-card title="商家">
+      <div slot="after-title">
+        <el-button type="primary" size="mini" round>收起筛选</el-button>
+      </div>
+      <div class="company-search">
+        <div class="brand-list">
+          <el-checkbox-group v-model="checkBrands" size="small">
+            <el-checkbox-button
+              size="mini"
+              v-for="brand in brands"
+              :key="brand"
+              :label="brand"
+            ></el-checkbox-button>
+          </el-checkbox-group>
+        </div>
+        <el-button type="primary" size="mini" round @click="getCompanies"
+          >搜索</el-button
+        >
+      </div>
+      <div class="pagenation-wrap" v-if="this.pageInfo.totalSize">
+        <ht-pagination
+          :total="pageInfo.totalSize"
+          :current-page.sync="pageInfo.page"
+          :page-count="pageInfo.totalPage"
+          @current-change="getCompanies"
+        ></ht-pagination>
+        <!-- <el-pagination
+          @size-change="getCompanies"
+          @current-change="getCompanies"
+          :current-page.sync="pageInfo.page"
+          :page-sizes="[1, 20, 100, 200]"
+          :page-size.sync="pageInfo.pageSize"
+          layout="prev, slot, next"
+          :total="pageInfo.totalSize"
+        >
+          <span>
+            {{ this.pageInfo.page || 1 }}
+            /
+            {{ this.pageInfo.totalSize || 1 }}
+          </span>
+        </el-pagination> -->
+      </div>
+      <div class="company-list clearfix">
+        <template v-for="item in list">
+          <company-item :key="item.companyId" :info="item"></company-item>
+        </template>
+      </div>
+      <div class="pagenation-wrap">
+        <el-pagination
+          @size-change="getCompanies"
+          @current-change="getCompanies"
+          :current-page.sync="pageInfo.page"
+          :page-sizes="pageSizes"
+          :page-size.sync="pageInfo.pageSize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="pageInfo.totalSize"
+        >
+        </el-pagination>
+      </div>
+    </ht-card>
+    <div class="divider-end">
+      <ht-divider>END</ht-divider>
     </div>
-    <div class="company-list clearfix">
-      <template v-for="item in list">
-        <company-item :key="item.companyId" :info="item"></company-item>
-      </template>
-    </div>
-  </ht-card>
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { HtCard, HtPagination } from "@/components/hztl";
+import { HtCard, HtPagination, HtDivider } from "@/components/hztl";
 import CompanyItem from "@/views/company/components/companyItem/index";
 import { PageResponseResult } from "@/common/interface/commonInterface";
+import { PageParams } from "@/common/interface/commonInterface";
 import {
   CompanyModel,
   CompanyParams
 } from "@/common/interface/companyInterface";
+import { BrandModel } from "@/common/interface/brandInterface";
 import { CompanyService } from "@/common/services/companyService";
 const companyService = new CompanyService();
+import { BrandService } from "@/common/services/brandService";
+const brandService = new BrandService();
 
 @Component({
   name: "CompanyList",
   components: {
     HtCard,
     HtPagination,
+    HtDivider,
     CompanyItem
   }
 })
 export default class CompanyList extends Vue {
   protected list: CompanyModel[] = [];
 
-  protected queryParams: CompanyParams = {
-    page: 1,
-    pageSize: 9
-  };
+  protected pageSizes = [10, 20, 100, 200];
 
-  protected total = {
-    size: 0,
-    page: 1
+  protected pageInfo: PageParams = {
+    page: 1,
+    pageSize: 10,
+    totalSize: 0,
+    totalPage: 1
   };
+  // protected queryParams: CompanyParams = {
+  //   vehBrands: "",
+  //   areas: ""
+  // };
+  protected brands: string[] = [];
+  protected checkBrands: string[] = [];
+
+  // protected total = {
+  //   size: 0,
+  //   page: 1
+  // };
 
   protected getCompanies() {
+    const { page, pageSize } = this.pageInfo;
+    const params = {
+      page,
+      pageSize,
+      vehBrands: this.checkBrands.length ? this.checkBrands.join(",") : ""
+    };
     companyService
-      .getCompanies(this.queryParams)
+      .getCompanies(params)
       .then((res: PageResponseResult<CompanyModel[]>) => {
-        // console.log(res);
+        console.log(res);
         if (res) {
           this.list = res.rows || [];
-          this.total.size = res.totalSize || 0;
-          this.total.page = res.totalPage || 1;
+          this.pageInfo.totalSize = res.totalSize || 0;
+          this.pageInfo.totalPage = res.totalPage || 1;
+          console.log(this.pageInfo);
         }
       });
+  }
+  protected getBrandAll() {
+    brandService
+      .getBrandAll()
+      .then((res: BrandModel[]) => {
+        console.log(res);
+        const list = res || [];
+        this.brands = list.map(item => item.name);
+      })
+      .catch(() => (this.list = []));
   }
 
   created() {
     this.getCompanies();
+    this.getBrandAll();
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.company-list {
-  box-sizing: border-box;
-  width: 100%;
-  min-height: 582px;
-  padding: 16px 2px 8px 16px;
-  .company-item,
-  .company-double {
-    float: left;
-    margin-right: 14px;
-    margin-bottom: $margin-size-main;
+.company-template {
+  .ht-card {
+    margin-top: $margin-size-main;
+    background-color: $color-white;
+    .company-search {
+      margin-top: 20px;
+      .brand-list {
+        // height: 98px;
+        // overflow-y: auto;
+        ::v-deep .el-checkbox-group {
+          .el-checkbox-button--small {
+            margin-top: 8px;
+            margin-right: 8px;
+            // cursor: pointer;
+            .el-checkbox-button__inner {
+              padding: 4px 10px;
+              border: 1px solid transparent;
+              border-radius: 12px;
+            }
+          }
+          .el-checkbox-button.is-checked {
+            .el-checkbox-button__inner {
+              border-color: transparent;
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+    .company-list {
+      box-sizing: border-box;
+      width: 100%;
+      min-height: 582px;
+      padding: 16px 2px 8px 16px;
+      .company-item,
+      .company-double {
+        float: left;
+        margin-right: 14px;
+        margin-bottom: $margin-size-main;
+      }
+    }
   }
 }
 </style>

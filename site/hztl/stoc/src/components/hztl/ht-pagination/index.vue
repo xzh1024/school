@@ -4,11 +4,11 @@
       :class="internalCurrentPage > 1 ? 'icon-left' : 'icon-left-gray'"
       @click="prev"
     ></i>
-    <p class="ht-pager">
-      <span class="">{{ internalCurrentPage }}</span>
-      <span>/</span>
-      <span class="">{{ internalPageCount }}</span>
-    </p>
+    <span class="pagination-layout">
+      {{ internalCurrentPage }}
+      /
+      {{ internalPageCount }}
+    </span>
     <i
       :class="
         internalCurrentPage < internalPageCount
@@ -45,8 +45,9 @@ export default class HtPagination extends Vue {
   protected internalPageCount = 1;
   protected internalCurrentPage = 1;
 
-  @Watch("pageCount", { immediate: true })
+  @Watch("pageCount", { immediate: true, deep: true })
   protected changePageCount(newVal: number) {
+    console.log(newVal);
     this.internalPageCount = newVal;
   }
   @Watch("internalCurrentPage", { immediate: true })
@@ -75,10 +76,9 @@ export default class HtPagination extends Vue {
   i[class^="icon-"] {
     cursor: pointer;
   }
-  .ht-pager {
-    span {
-      line-height: 20px;
-    }
+  .pagination-layout {
+    line-height: 20px;
+    margin: 0 10px;
   }
 }
 </style>
