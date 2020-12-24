@@ -29,46 +29,41 @@ import { BannerModel } from "@/common/interface/commonInterface";
 })
 export default class Banner extends Vue {
   @Prop() protected banners!: BannerModel[];
-  @Prop() protected name!: string;
 
-  protected swiperOption = {
-    // 分页器配置
-    pagination: {
-      el: ".swiper-pagination",
-      // bulletClass : "bullet",
-      bulletActiveClass: "bullet-active",
-      clickable: true
-    },
-    // wrapperClass: this.name,
-    // 设定初始化时slide的索引
-    initialSlide: 0,
-    //Slides的滑动方向，可设置水平(horizontal)或垂直(vertical)
-    direction: "horizontal",
-    // 自动切换图配置
-    autoplay: {
-      delay: 3000,
-      stopOnLastSlide: false,
-      disableOnInteraction: false
-    },
-    // 箭头配置
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    },
-    // 环状轮播
-    loop: true,
-    slidesPerView: "auto",
-    loopedSlides: 3
-    // loopAdditionalSlides: 0,
-    // 一个屏幕展示的数量
-    // slidesPerView: 1,
-    // 间距
-    // spaceBetween: 26,
-    // 修改swiper自己或子元素时，自动初始化swiper
-    // observer: true,
-    // 修改swiper的父元素时，自动初始化swiper
-    // observeParents: true
-  };
+  @Prop({
+    default: () => {
+      return {
+        // 分页器配置
+        pagination: {
+          el: ".swiper-pagination",
+          // bulletClass : "bullet",
+          bulletActiveClass: "bullet-active",
+          clickable: true
+        },
+        // 设定初始化时slide的索引
+        initialSlide: 0,
+        //Slides的滑动方向，可设置水平(horizontal)或垂直(vertical)
+        direction: "horizontal",
+        // 自动切换图配置
+        autoplay: {
+          delay: 3000,
+          stopOnLastSlide: false,
+          disableOnInteraction: false
+        },
+        // 箭头配置
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        // 环状轮播
+        loop: true,
+        slidesPerView: "auto",
+        loopedSlides: 3
+        // loopAdditionalSlides: 0,
+      };
+    }
+  })
+  protected swiperOption!: any;
 }
 </script>
 
@@ -91,7 +86,7 @@ export default class Banner extends Vue {
       width: 24px;
       height: 24px;
       // background: $color-white;
-      transform: translatey(-50%);
+      transform: translateY(-50%);
     }
     .swiper-button-prev {
       left: 0;

@@ -47,7 +47,6 @@ export default class HtPagination extends Vue {
 
   @Watch("pageCount", { immediate: true, deep: true })
   protected changePageCount(newVal: number) {
-    console.log(newVal);
     this.internalPageCount = newVal;
   }
   @Watch("currentPage")

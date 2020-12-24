@@ -5,7 +5,7 @@
         :currentPage.sync="queryParams.page"
         :total="total.size"
         :pageCount="total.page"
-        @current-change="goodsService"
+        @current-change="getParts"
       ></ht-pagination>
       <ht-button type="primary" size="mini" round @click="handlePath">查看全部</ht-button
       >
@@ -23,13 +23,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import { HtCard, HtPagination } from "@/components/hztl";
 import GoodsItem from "@/views/goods/components/goodsItem/index";
-import { PageResponseResult } from "@/common/interface/commonInterface";
+import { PageResponseResult, AreaModel } from "@/common/interface/commonInterface";
 import { PartModel, PartParams } from "@/common/interface/goodsInterface";
 import { GoodsService } from "@/common/services/goodsService";
 const goodsService = new GoodsService();
+import { Getter, namespace } from "vuex-class";
+const CityStore = namespace("city");
 
 @Component({
   name: "GoodsTemplate",
@@ -40,11 +42,22 @@ const goodsService = new GoodsService();
   }
 })
 export default class GoodsTemplate extends Vue {
+  @CityStore.Getter("activeAreaCity")
+  protected activeAreaCity!: AreaModel;
+  @Watch("activeAreaCity", { deep: true, immediate: true })
+  protected activeAreaCityChange(newVal: AreaModel) {
+    if (newVal) {
+      this.queryParams.orderByAreas = `City:${newVal.id}`;
+    }
+    this.getParts();
+  }
+
   protected list: PartModel[] = [];
 
   protected queryParams: PartParams = {
     page: 1,
-    pageSize: 10
+    pageSize: 10,
+    orderByAreas: ""
   };
 
   protected total = {
@@ -52,7 +65,7 @@ export default class GoodsTemplate extends Vue {
     page: 1
   };
 
-  protected goodsService() {
+  protected getParts() {
     goodsService
       .getParts(this.queryParams)
       .then((res: PageResponseResult<PartModel[]>) => {
@@ -61,6 +74,12 @@ export default class GoodsTemplate extends Vue {
           this.total.size = res.totalSize || 0;
           this.total.page = res.totalPage || 1;
         }
+      })
+      .catch(() => {
+        this.list = [];
+        this.queryParams.page = 1;
+        this.total.size = 0;
+        this.total.page = 1;
       });
   }
 
@@ -68,9 +87,9 @@ export default class GoodsTemplate extends Vue {
     this.$router.push({ path: "/goods" });
   }
 
-  created() {
-    this.goodsService();
-  }
+  // created() {
+  //   this.getParts();
+  // }
 }
 </script>
 

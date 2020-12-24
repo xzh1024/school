@@ -46,22 +46,24 @@ export default class BrandList extends Vue {
     brandService
       .getBrandAll(params)
       .then((res: BrandModel[]) => {
-        console.log(res);
         const list = res || [];
-        const mnemonics: string[] = [];
-        list.forEach(item => {
-          if (item.name && item.name.length) {
-            if (item.name.charAt(0)) {
-              const mnemonic = checkCh(item.name.charAt(0));
-              if (!mnemonics.includes(mnemonic)) {
-                mnemonics.push(mnemonic);
+        if (!this.firstMnemonic) {
+          const mnemonics: string[] = [];
+          list.forEach(item => {
+            if (item.name && item.name.length) {
+              if (item.name.length) {
+                const keys = checkCh(item.name.charAt(0));
+                for (const key of keys) {
+                  if (!mnemonics.includes(key)) {
+                    mnemonics.push(key);
+                  }
+                }
               }
             }
-          }
-        });
-        this.mnemonics = mnemonics.sort();
+          });
+          this.mnemonics = mnemonics.sort();
+        }
         this.list = list;
-        console.log(this.mnemonics);
       })
       .catch(() => (this.list = []));
   }

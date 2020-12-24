@@ -40,6 +40,12 @@
   background-size: 100% 100%;
 }
 
+.icon-house {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-house.png");
+  background-size: 100% 100%;
+}
+
 .icon-house-gray {
   @extend .icon;
   background-image: url("~@/assets/img/icon/icon-house-gray.png");
@@ -61,6 +67,11 @@
 .icon-soso-white {
   @extend .icon;
   background-image: url("~@/assets/img/icon/icon-soso-white.png");
+  background-size: 100% 100%;
+}
+.icon-soso-gray {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-soso-gray.png");
   background-size: 100% 100%;
 }
 
@@ -88,9 +99,14 @@
   background-size: 100% 100%;
 }
 
-.icon-top-gray {
+.icon-up-gray {
   @extend .icon;
-  background-image: url("~@/assets/img/icon/icon-top-gray.png");
+  background-image: url("~@/assets/img/icon/icon-up-gray.png");
+  background-size: 100% 100%;
+}
+.icon-down-gray {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-down-gray.png");
   background-size: 100% 100%;
 }
 
@@ -109,5 +125,11 @@
 .icon-trucks {
   @extend .icon;
   background-image: url("~@/assets/img/icon/icon-trucks.png");
+  background-size: 100% 100%;
+}
+
+.icon-clear-circle-gray {
+  @extend .icon;
+  background-image: url("~@/assets/img/icon/icon-clear-circle-gray.png");
   background-size: 100% 100%;
 }

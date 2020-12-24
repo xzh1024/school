@@ -2,7 +2,7 @@ import { PageParams } from "./commonInterface";
 
 export interface CompanyParams extends PageParams {
   keyword?: string; // 关键字
-  vehBrands?: string; // 发货地
+  vehBrands?: string[]; // 发货地
   areas?: string; // 发货地
   orderByAreas?: string; // 发货地排序
 }

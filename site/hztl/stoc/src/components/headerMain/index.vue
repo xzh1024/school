@@ -18,9 +18,14 @@
     </div>
     <div class="header-content">
       <div class="ht-container">
-        <div class="logo-wrap" @click="$router.push({ path: '/' })">
-          <i class="logo-60"></i>
-          <div class="strong">信息展馆</div>
+        <div class="header-left">
+          <div class="logo-wrap" @click="$router.push({ path: '/' })">
+            <i class="logo-60"></i>
+            <div class="strong">信息展馆</div>
+          </div>
+          <div class="address-wrap">
+            <slot name="address"></slot>
+          </div>
         </div>
 
         <search-bar></search-bar>
@@ -93,14 +98,21 @@ $header-content-height: 116px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      .logo-wrap {
+      .header-left {
         display: flex;
-        align-items: center;
-        cursor: pointer;
-        .strong {
-          font-size: $font-size-20;
-          color: $color-primary;
-          margin-left: 5px;
+        align-items: flex-end;
+        .logo-wrap {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          .strong {
+            font-size: $font-size-20;
+            color: $color-primary;
+            margin-left: 5px;
+          }
+        }
+        .address-wrap {
+          margin-left: 24px;
         }
       }
     }

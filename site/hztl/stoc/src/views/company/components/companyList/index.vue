@@ -6,7 +6,11 @@
       </div>
       <div class="company-search">
         <div class="brand-list">
-          <el-checkbox-group v-model="checkBrands" size="small">
+          <el-checkbox-group
+            v-model="queryParams.vehBrands"
+            size="small"
+            @change="handleBrandChange"
+          >
             <el-checkbox-button
               size="mini"
               v-for="brand in brands"
@@ -15,11 +19,20 @@
             ></el-checkbox-button>
           </el-checkbox-group>
         </div>
-        <el-button type="primary" size="mini" round @click="getCompanies"
-          >搜索</el-button
-        >
       </div>
-      <div class="pagenation-wrap" v-if="this.pageInfo.totalSize">
+      <!-- <div class="pagenation-wrap" v-if="this.pageInfo.totalSize">
+        <ht-pagination
+          :total="pageInfo.totalSize"
+          :current-page.sync="pageInfo.page"
+          :page-count="pageInfo.totalPage"
+          @current-change="getCompanies"
+        ></ht-pagination>
+      </div> -->
+      <div class="pagenation-address-wrap">
+        <Address
+          :areaCity.sync="areaCity"
+          @areaCityChange="areaCityChange"
+        ></Address>
         <ht-pagination
           :total="pageInfo.totalSize"
           :current-page.sync="pageInfo.page"
@@ -52,11 +65,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import { HtCard, HtPagination, HtDivider } from "@/components/hztl";
 import CompanyItem from "@/views/company/components/companyItem/index";
+import Address from "@/components/address/index";
 import { PageResponseResult } from "@/common/interface/commonInterface";
-import { PageParams } from "@/common/interface/commonInterface";
+import { PageParams, AreaModel } from "@/common/interface/commonInterface";
 import { PAGE_SIZES } from "@/common/utils/config";
 import {
   CompanyModel,
@@ -67,6 +81,8 @@ import { CompanyService } from "@/common/services/companyService";
 const companyService = new CompanyService();
 import { BrandService } from "@/common/services/brandService";
 const brandService = new BrandService();
+import { Getter, namespace } from "vuex-class";
+const CityStore = namespace("city");
 
 @Component({
   name: "CompanyList",
@@ -74,30 +90,60 @@ const brandService = new BrandService();
     HtCard,
     HtPagination,
     HtDivider,
-    CompanyItem
+    CompanyItem,
+    Address
   }
 })
 export default class CompanyList extends Vue {
+  @CityStore.Getter("activeAreaCity")
+  protected activeAreaCity!: AreaModel;
+  protected areaCity: AreaModel | "" = "";
+  @Watch("activeAreaCity", { deep: true, immediate: true })
+  protected activeAreaCityChange(newVal: AreaModel) {
+    if (newVal) {
+      this.areaCity = newVal;
+    }
+    this.getCompanies();
+  }
   protected list: CompanyModel[] = [];
-
   protected pageSizes = PAGE_SIZES;
-
   protected pageInfo: PageParams = {
     page: 1,
     pageSize: PAGE_SIZES[0],
     totalSize: 0,
     totalPage: 1
   };
+  protected queryParams: CompanyParams = {
+    areas: "",
+    vehBrands: []
+  };
   protected brands: string[] = [];
   protected checkBrands: string[] = [];
+
+  protected areaCityChange(value: AreaModel) {
+    console.log(value);
+    // if (value && value.id) {
+    //   this.queryParams.areas = `City:${value.id}`;
+    // } else {
+    //   this.queryParams.areas = "";
+    // }
+    this.getCompanies();
+  }
+
+  protected handleBrandChange() {
+    this.getCompanies();
+  }
 
   protected getCompanies() {
     const { page, pageSize } = this.pageInfo;
     const params = {
       page,
       pageSize,
-      vehBrands: this.checkBrands.length ? this.checkBrands.join(",") : ""
+      ...this.queryParams
     };
+    if (this.areaCity) {
+      params.areas = `City:${this.areaCity.id}`;
+    }
     companyService
       .getCompanies(params)
       .then((res: PageResponseResult<CompanyModel[]>) => {
@@ -106,23 +152,20 @@ export default class CompanyList extends Vue {
           this.list = res.rows || [];
           this.pageInfo.totalSize = res.totalSize || 0;
           this.pageInfo.totalPage = res.totalPage || 1;
-          console.log(this.pageInfo);
         }
       });
   }
-  
+
   protected getBrandAll() {
-    brandService
-      .getBrandAll()
-      .then((res: BrandModel[]) => {
-        console.log(res);
-        const list = res || [];
-        this.brands = list.map(item => item.name);
-      })
+    brandService.getBrandAll().then((res: BrandModel[]) => {
+      console.log(res);
+      const list = res || [];
+      this.brands = list.map(item => item.name);
+    });
   }
 
   created() {
-    this.getCompanies();
+    // this.getCompanies();
     this.getBrandAll();
   }
 }
@@ -133,8 +176,14 @@ export default class CompanyList extends Vue {
   .ht-card {
     margin-top: $margin-size-main;
     background-color: $color-white;
+    ::v-deep .card-content {
+      padding: 16px;
+    }
+    .pagenation-address-wrap {
+      margin-top: 16px;
+    }
     .company-search {
-      margin-top: 20px;
+      // margin-top: 20px;
       .brand-list {
         ::v-deep .el-checkbox-group {
           .el-checkbox-button--small {
@@ -159,12 +208,15 @@ export default class CompanyList extends Vue {
       box-sizing: border-box;
       width: 100%;
       min-height: 582px;
-      padding: 16px 2px 8px 16px;
-      .company-item,
-      .company-double {
+      // padding: 16px 2px 8px 16px;
+      margin-top: 16px;
+      .company-item {
         float: left;
         margin-right: 14px;
         margin-bottom: $margin-size-main;
+        &:nth-child(5n + 0) {
+          margin-right: 0;
+        }
       }
     }
   }

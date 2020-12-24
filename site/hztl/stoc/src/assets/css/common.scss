@@ -78,3 +78,12 @@
 .color-gray {
   color: $color-gray;
 }
+
+.pagenation-address-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin-top: $margin-size-main;
+  background-color: #f8f8f8;
+}

@@ -58,4 +58,5 @@ export interface PartModel {
   company: CompanyModel;
   qty: string; // 库存
   price: string; // 价格，可能为null，null代表需要询价
+  popoverVisible?: boolean;
 }

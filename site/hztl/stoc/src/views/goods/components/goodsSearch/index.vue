@@ -4,7 +4,11 @@
       <div class="cell-left">配件品牌:</div>
       <div class="cell-right">
         <div class="check-list">
-          <el-checkbox-group v-model="queryParams.brands" size="small">
+          <el-checkbox-group
+            size="small"
+            v-model="queryParams.brands"
+            @change="handleSearch"
+          >
             <el-checkbox-button
               size="mini"
               v-for="brand in brands"
@@ -19,7 +23,11 @@
       <div class="cell-left">供应商:</div>
       <div class="cell-right">
         <div class="check-list">
-          <el-checkbox-group v-model="queryParams.companyIds" size="small">
+          <el-checkbox-group
+            size="small"
+            v-model="queryParams.companyIds"
+            @change="handleSearch"
+          >
             <el-checkbox-button
               size="mini"
               v-for="company in companys"
@@ -35,7 +43,11 @@
       <div class="cell-left">保险认证分类:</div>
       <div class="cell-right">
         <div class="check-list">
-          <el-checkbox-group v-model="queryParams.insurCertTypes" size="small">
+          <el-checkbox-group
+            size="small"
+            v-model="queryParams.insurCertTypes"
+            @change="handleSearch"
+          >
             <el-checkbox-button
               size="mini"
               v-for="type in insurCertTypes"
@@ -46,9 +58,6 @@
         </div>
       </div>
     </div>
-    <el-button size="mini" @click="$emit('search')">
-      搜索
-    </el-button>
   </div>
 </template>
 
@@ -74,15 +83,17 @@ export default class GoodsSearch extends Vue {
 
   protected getPartFilter() {
     brandService.getPartFilter().then((res: PartFilterModel) => {
-      console.log(res);
       if (res) {
         const { brands, companies, insurCertTypes } = res;
         this.brands = brands || [];
         this.companys = companies || [];
-        console.log(this.companys);
         this.insurCertTypes = insurCertTypes || [];
       }
     });
+  }
+
+  protected handleSearch() {
+    this.$emit("search");
   }
 
   created() {
@@ -93,7 +104,6 @@ export default class GoodsSearch extends Vue {
 
 <style lang="scss" scoped>
 .goods-search {
-  margin-bottom: $margin-size-main;
   border-top: $border-gray;
   border-left: $border-gray;
   .cell {
@@ -107,13 +117,13 @@ export default class GoodsSearch extends Vue {
     .cell-right {
       flex: 1;
       padding: $padding-size-main;
+      padding-bottom: 0;
       border-left: $border-gray;
       .check-list {
         ::v-deep .el-checkbox-group {
           .el-checkbox-button--small {
-            // margin-top: 8px;
-            margin-right: 8px;
-            margin-bottom: 8px;
+            margin-right: $margin-size-main;
+            margin-bottom: $margin-size-main;
             .el-checkbox-button__inner {
               color: $color-gray;
               padding: 4px 10px;

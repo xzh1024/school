@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: "app",
   provide() {
     return {
       reload: this.reload
@@ -15,6 +16,9 @@ export default {
     return {
       isRouterAlive: true
     };
+  },
+  created() {
+    this.$store.commit("city/setActiveAreaCity");
   },
   methods: {
     reload() {

@@ -19,7 +19,7 @@
           :info="item"
         ></brand-double>
         <brand-item
-          v-if="index > 0 && index < 15"
+          v-if="index > 0 && index < 29"
           :key="item.swPartId"
           :info="item"
         ></brand-item>
@@ -143,7 +143,7 @@ export default class BrandTemplate extends Vue {
 
   protected queryParams: BrandParams = {
     page: 1,
-    pageSize: 15
+    pageSize: 29
   };
 
   protected total = {
@@ -160,6 +160,12 @@ export default class BrandTemplate extends Vue {
           this.total.size = res.totalSize || 0;
           this.total.page = res.totalPage || 1;
         }
+      })
+      .catch(() => {
+        this.list = [];
+        this.queryParams.page = 1;
+        this.total.size = 0;
+        this.total.page = 1;
       });
   }
 
@@ -184,7 +190,8 @@ export default class BrandTemplate extends Vue {
 .brand-list {
   box-sizing: border-box;
   width: 100%;
-  height: 264px;
+  // height: 264px;
+  height: 528px;
   .brand-item,
   .brand-double {
     float: left;

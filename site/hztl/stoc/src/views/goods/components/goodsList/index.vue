@@ -6,14 +6,28 @@
           :currentPage.sync="pageInfo.page"
           :total="pageInfo.totalSize"
           :pageCount="pageInfo.totalPage"
-          @current-change="goodsService"
+          @current-change="getParts"
         ></ht-pagination>
       </div>
       <div class="goods-list">
         <GoodsSearch
           :queryParams="queryParams"
-          @search="goodsService"
+          @search="getParts"
         ></GoodsSearch>
+
+        <div class="pagenation-address-wrap">
+          <Address
+            :areaCity.sync="areaCity"
+            @areaCityChange="areaCityChange"
+          ></Address>
+          <ht-pagination
+            :total="pageInfo.totalSize"
+            :current-page.sync="pageInfo.page"
+            :page-count="pageInfo.totalPage"
+            @current-change="getParts"
+          ></ht-pagination>
+        </div>
+
         <el-table
           size="small"
           style="width: 100%"
@@ -23,6 +37,7 @@
             fontWeight: 700
           }"
           :data="list"
+          @row-click="showPartInfo"
         >
           <el-table-column prop="name" label="编码/名称" width="180">
             <template slot-scope="scope">
@@ -99,18 +114,27 @@
             label="规格"
             width="80"
           ></el-table-column>
-          <el-table-column
-            prop="price"
-            label="订货价"
-            width="70"
-          ></el-table-column>
+          <el-table-column prop="price" label="订货价" width="100">
+            <template slot-scope="scope">
+              <div class="cell-li color-primary">
+                <span class="font-size-12">¥</span>
+                <span class="cell-price">{{ scope.row.price }}</span>
+                <span class="font-size-12">/个</span>
+              </div>
+              <!-- <div class="cell-li cell-promotion">
+                <div class="font-size-12">促销价：</div>
+                <span>￥10.00/个 买10赠3</span>
+              </div> -->
+            </template>
+          </el-table-column>
           <el-table-column prop="name" label="商家信息" width="150">
             <template slot-scope="scope">
-              <div>
-                {{ scope.row.company.name }}
-              </div>
-              <div>
-                {{ scope.row.company.phone }}
+              <div class="cell-flex">
+                <i class="icon-house"></i>
+                <div class="cell-flex-right">
+                  <div>{{ scope.row.company.name }}</div>
+                  <div>{{ scope.row.company.phone }}</div>
+                </div>
               </div>
             </template>
           </el-table-column>
@@ -132,6 +156,7 @@
                   size="mini"
                   round
                   plain
+                  @click.native.stop="e => e.stopPropagation()"
                   >快速询价</el-button
                 >
               </el-popover>
@@ -142,8 +167,8 @@
       <div class="pagenation-wrap">
         <el-pagination
           background
-          @size-change="goodsService"
-          @current-change="goodsService"
+          @size-change="getParts"
+          @current-change="getParts"
           :current-page.sync="pageInfo.page"
           :page-sizes="pageSizes"
           :page-size.sync="pageInfo.pageSize"
@@ -156,21 +181,35 @@
     <div class="divider-end">
       <ht-divider>END</ht-divider>
     </div>
+
+    <GoodsInfoDialog
+      v-if="goodsInfoVisible"
+      :info="partInfo"
+      @hide="hidePartInfo"
+    ></GoodsInfoDialog>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Inject } from "vue-property-decorator";
+import { Component, Vue, Inject, Watch } from "vue-property-decorator";
 import { HtCard, HtPagination, HtDivider } from "@/components/hztl";
 import CompanyInfo from "@/views/company/components/companyInfo";
 import GoodsSearch from "../goodsSearch/index.vue";
-import { PageResponseResult } from "@/common/interface/commonInterface";
+import GoodsInfoDialog from "../goodsInfoDialog/index.vue";
+import Address from "@/components/address/index";
+import {
+  PageResponseResult,
+  AreaModel
+} from "@/common/interface/commonInterface";
 import { PageParams } from "@/common/interface/commonInterface";
 import { PAGE_SIZES } from "@/common/utils/config";
 import { PartModel, PartParams } from "@/common/interface/goodsInterface";
 import { PartFilterModel } from "@/common/interface/brandInterface";
 import { GoodsService } from "@/common/services/goodsService";
 const goodsService = new GoodsService();
+import { Getter, namespace } from "vuex-class";
+import { parse } from "qs";
+const CityStore = namespace("city");
 
 const queryParams = {
   keyword: "",
@@ -188,11 +227,24 @@ const queryParams = {
     HtPagination,
     HtDivider,
     CompanyInfo,
-    GoodsSearch
+    GoodsSearch,
+    GoodsInfoDialog,
+    Address
   }
 })
 export default class GoodsList extends Vue {
   @Inject("reload") reload: any;
+  @CityStore.Getter("activeAreaCity")
+  protected activeAreaCity!: AreaModel;
+  protected areaCity: AreaModel | "" = this.activeAreaCity;
+  @Watch("activeAreaCity", { deep: true, immediate: true })
+  protected activeAreaCityChange(newVal: AreaModel) {
+    if (newVal) {
+      this.areaCity = newVal;
+    }
+    this.getParts();
+  }
+  protected goodsInfoVisible = false;
 
   protected pageSizes = PAGE_SIZES;
   protected pageInfo: PageParams = {
@@ -202,16 +254,31 @@ export default class GoodsList extends Vue {
     totalPage: 1
   };
   protected list: PartModel[] = [];
+  protected partInfo = {} as PartModel;
 
   protected queryParams: PartParams = JSON.parse(JSON.stringify(queryParams));
 
-  protected goodsService() {
+  protected areaCityChange(value: AreaModel) {
+    console.log(value);
+    // console.log(this.areaCity);
+    // if (value && value.id) {
+    //   this.queryParams.areas = `City:${value.id}`;
+    // } else {
+    //   this.queryParams.areas = "";
+    // }
+    this.getParts();
+  }
+
+  protected getParts() {
     const { page, pageSize } = this.pageInfo;
     const params = {
       ...this.queryParams,
       page,
       pageSize
     };
+    if(this.areaCity) {
+      params.areas = `City:${this.areaCity.id}`;
+    }
     goodsService
       .getParts(params)
       .then((res: PageResponseResult<PartModel[]>) => {
@@ -221,17 +288,36 @@ export default class GoodsList extends Vue {
           this.pageInfo.totalSize = res.totalSize || 0;
           this.pageInfo.totalPage = res.totalPage || 1;
         }
+      })
+      .catch(() => {
+        this.list = [];
+        this.pageInfo.page = 1;
+        this.pageInfo.totalSize = 0;
+        this.pageInfo.totalPage = 1;
       });
   }
 
-  protected enquiry(companyIds: string) {
-    this.$router.replace({ path: "/goods", query: { companyIds } });
+  protected enquiry(companyId: string) {
+    this.$router.replace({ path: "/goods", query: { companyId } });
     this.reload();
+  }
+
+  protected showPartInfo(row: PartModel) {
+    console.log(row);
+    this.partInfo = row;
+    this.goodsInfoVisible = true;
+  }
+  protected hidePartInfo() {
+    this.goodsInfoVisible = false;
   }
 
   created() {
     Object.assign(this.queryParams, this.$route.query);
-    this.goodsService();
+    const { companyId } = this.$route.query;
+    if (companyId) {
+      this.queryParams.companyIds = [Number(companyId)];
+    }
+    // this.getParts();
   }
 }
 </script>
@@ -244,6 +330,7 @@ export default class GoodsList extends Vue {
     .goods-list {
       padding: 16px;
       .el-table {
+        margin-top: $margin-size-main;
         border-left: 1px solid #ebeef5;
         border-right: 1px solid #ebeef5;
         color: $color-base;
@@ -258,6 +345,23 @@ export default class GoodsList extends Vue {
           border-radius: 18px;
           line-height: 18px;
           padding: 0 6px;
+        }
+        .cell-flex {
+          display: flex;
+          line-height: 18px;
+          .cell-flex-right {
+            flex: 1;
+            padding-top: 2px;
+            padding-left: 2px;
+          }
+        }
+        .cell-price {
+          margin-left: 2px;
+          // font-size: $font-size-16;
+          font-weight: 600;
+        }
+        .cell-promotion {
+          color: $color-red;
         }
       }
     }

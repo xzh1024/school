@@ -39,7 +39,12 @@
         主营车型：{{ info.vehBrands.join("/") }}
       </p>
     </div>
-    <div class="cell" v-if="areas.length"></div>
+    <div class="cell" v-if="areas.length">
+      <i class="icon-trucks"></i>
+      <p class="cell-wrap cell-lip-2 text-assist">
+        发货地区：{{ info.areas.join("、") }}
+      </p>
+    </div>
     <div class="company-title">
       联系方式
     </div>
@@ -161,9 +166,9 @@ export default class CompanyInfo extends Vue {
     return areas.map((area: AreaModel) => area.name);
   }
 
-  protected handlePath(companyIds: string) {
-    if (!companyIds) return;
-    this.$router.push({ path: "/goods", query: { companyIds } });
+  protected handlePath(companyId: string) {
+    if (!companyId) return;
+    this.$router.push({ path: "/goods", query: { companyId } });
   }
 }
 </script>
@@ -257,11 +262,14 @@ export default class CompanyInfo extends Vue {
     .cell-img {
       width: 87px;
       height: 87px;
-      margin-right: $margin-size-main;
+      margin-left: $margin-size-main;
+      &:first-child {
+        margin-left: 0;
+      }
     }
-    &.cell-vertical-center {
-      justify-content: center;
-    }
+    // &.cell-vertical-center {
+    //   justify-content: center;
+    // }
   }
 }
 </style>

@@ -24,3 +24,8 @@ export interface NameModel {
   id: number;
   name: string;
 }
+export interface AreaModel {
+  id: number;
+  name: string;
+  children?: AreaModel[];
+}

@@ -1,17 +1,23 @@
 <template>
   <div class="index-container">
-    <header-main />
+    <header-main>
+      <Address
+        slot="address"
+        :areaCity.sync="areaCity"
+        @areaCityChange="areaCityChange"
+      ></Address>
+    </header-main>
     <div class="ht-container">
       <div class="layout-banner m-t clearfix">
         <div class="layout-banner-left">
-          <banner :banners="mediumBanners" name="medium" key="medium"></banner>
+          <banner :banners="mediumBanners"></banner>
         </div>
         <div class="layout-banner-right">
           <div class="layout-banner-small">
-            <banner :banners="smallBanners" name="small" key="small"></banner>
+            <banner :banners="smallBanners"></banner>
           </div>
           <div class="layout-banner-mini">
-            <banner :banners="miniBanners" name="mini" key="mini"></banner>
+            <banner :banners="miniBanners"></banner>
           </div>
         </div>
       </div>
@@ -34,24 +40,32 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import HeaderMain from "@/components/headerMain/index";
 import FooterMain from "@/components/footerMain/index";
+import Address from "@/components/address/index";
 import Banner from "@/components/banner/index";
 import LayerScroll from "@/components/layerScroll/index";
 import { HtDivider } from "@/components/hztl";
-import { BannerModel, FloorModel } from "@/common/interface/commonInterface";
+import {
+  AreaModel,
+  BannerModel,
+  FloorModel
+} from "@/common/interface/commonInterface";
 import CompanyTemplate from "./components/companyTemplate/index.vue";
 import GoodsTemplate from "./components/goodsTemplate/index.vue";
 import BrandTemplate from "./components/brandTemplate/index.vue";
 import { CommonService } from "@/common/services/commonService";
 const commonService = new CommonService();
+import { Getter, namespace } from "vuex-class";
+const CityStore = namespace("city");
 
 @Component({
   name: "Index",
   components: {
     HeaderMain,
     FooterMain,
+    Address,
     Banner,
     LayerScroll,
     CompanyTemplate,
@@ -61,6 +75,18 @@ const commonService = new CommonService();
   }
 })
 export default class Index extends Vue {
+  @CityStore.Getter("activeAreaCity")
+  protected activeAreaCity!: AreaModel;
+  @CityStore.Mutation("setActiveAreaCity")
+  protected setActiveAreaCity!: Function;
+
+  protected areaCity: AreaModel | "" = "";
+  @Watch("activeAreaCity", { deep: true, immediate: true })
+  protected activeAreaCityChange(newVal: AreaModel) {
+    if (newVal) {
+      this.areaCity = newVal;
+    }
+  }
   protected mediumBanners: BannerModel[] = [];
   protected smallBanners: BannerModel[] = [];
   protected miniBanners: BannerModel[] = [];
@@ -125,6 +151,19 @@ export default class Index extends Vue {
         });
       }
     });
+  }
+
+  protected areaCityChange(value: AreaModel) {
+    console.log(value);
+    sessionStorage.activeAreaCity = JSON.stringify(value);
+    this.setActiveAreaCity();
+    // activeAreaCity
+    // if (value && value.id) {
+    //   this.queryParams.areas = `City:${value.id}`;
+    // } else {
+    //   this.queryParams.areas = "";
+    // }
+    // this.getParts();
   }
 
   created() {

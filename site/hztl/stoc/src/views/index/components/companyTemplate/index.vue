@@ -29,17 +29,22 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Watch } from "vue-property-decorator";
 import { HtCard, HtPagination } from "@/components/hztl";
 import CompanyItem from "@/views/company/components/companyItem/index";
 import CompanyDouble from "@/views/company/components/companyItem/companyDouble";
-import { PageResponseResult } from "@/common/interface/commonInterface";
+import {
+  PageResponseResult,
+  AreaModel
+} from "@/common/interface/commonInterface";
 import {
   CompanyModel,
   CompanyParams
 } from "@/common/interface/companyInterface";
 import { CompanyService } from "@/common/services/companyService";
 const companyService = new CompanyService();
+import { Getter, namespace } from "vuex-class";
+const CityStore = namespace("city");
 
 @Component({
   name: "CompanyTemplate",
@@ -51,6 +56,16 @@ const companyService = new CompanyService();
   }
 })
 export default class CompanyTemplate extends Vue {
+  @CityStore.Getter("activeAreaCity")
+  protected activeAreaCity!: AreaModel;
+  @Watch("activeAreaCity", { deep: true, immediate: true })
+  protected activeAreaCityChange(newVal: AreaModel) {
+    if (newVal) {
+      this.queryParams.orderByAreas = `City:${newVal.id}`;
+    }
+    this.getCompanies();
+  }
+
   protected list: CompanyModel[] = [
     // {
     //   companyId: 1621,
@@ -382,7 +397,8 @@ export default class CompanyTemplate extends Vue {
 
   protected queryParams: CompanyParams = {
     page: 1,
-    pageSize: 9
+    pageSize: 9,
+    orderByAreas: ""
   };
 
   protected total = {
@@ -399,6 +415,12 @@ export default class CompanyTemplate extends Vue {
           this.total.size = res.totalSize || 0;
           this.total.page = res.totalPage || 1;
         }
+      })
+      .catch(() => {
+        this.list = [];
+        this.queryParams.page = 1;
+        this.total.size = 0;
+        this.total.page = 1;
       });
   }
 
@@ -406,9 +428,9 @@ export default class CompanyTemplate extends Vue {
     this.$router.push({ path: "/company" });
   }
 
-  created() {
-    this.getCompanies();
-  }
+  // created() {
+  //   this.getCompanies();
+  // }
 }
 </script>
 

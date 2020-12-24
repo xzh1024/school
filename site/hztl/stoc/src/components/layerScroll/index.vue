@@ -13,7 +13,7 @@
           {{ layer.name }}
         </li>
         <li class="layer-item" @click="goTop">
-          <i class="icon-top-gray"></i>
+          <i class="icon-up-gray"></i>
           <span class="layer-top-text">顶部</span>
         </li>
         <li class="layer-item">联系客服</li>
@@ -137,7 +137,7 @@ export default class LayerScroll extends Vue {
         color: $color-white !important;
         background: $gradients-primary !important;
       }
-      &:hover .icon-top-gray {
+      &:hover .icon-up-gray {
         @extend .icon-top-white;
       }
     }
