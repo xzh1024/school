@@ -5,7 +5,7 @@
         :currentPage.sync="queryParams.page"
         :total="total.size"
         :pageCount="total.page"
-        @current-change="getCompanies"
+        @current-change="getDatas"
       ></ht-pagination>
       <ht-button type="primary" size="mini" round @click="handlePath"
         >进入商家黄页</ht-button
@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue, Watch, Prop } from "vue-property-decorator";
 import { HtCard, HtPagination } from "@/components/hztl";
 import CompanyItem from "@/views/company/components/companyItem/index";
 import CompanyDouble from "@/views/company/components/companyItem/companyDouble";
@@ -43,8 +43,6 @@ import {
 } from "@/common/interface/companyInterface";
 import { CompanyService } from "@/common/services/companyService";
 const companyService = new CompanyService();
-import { Getter, namespace } from "vuex-class";
-const CityStore = namespace("city");
 
 @Component({
   name: "CompanyTemplate",
@@ -56,15 +54,7 @@ const CityStore = namespace("city");
   }
 })
 export default class CompanyTemplate extends Vue {
-  @CityStore.Getter("activeAreaCity")
-  protected activeAreaCity!: AreaModel;
-  @Watch("activeAreaCity", { deep: true, immediate: true })
-  protected activeAreaCityChange(newVal: AreaModel) {
-    if (newVal) {
-      this.queryParams.orderByAreas = `City:${newVal.id}`;
-    }
-    this.getCompanies();
-  }
+  @Prop() params!: CompanyParams;
 
   protected list: CompanyModel[] = [
     // {
@@ -406,9 +396,17 @@ export default class CompanyTemplate extends Vue {
     page: 1
   };
 
-  protected getCompanies() {
+  protected handlePath() {
+    this.$router.push({ path: "/company" });
+  }
+
+  public getDatas() {
+    const params = {
+      ...this.queryParams,
+      ...this.params
+    };
     companyService
-      .getCompanies(this.queryParams)
+      .getCompanies(params)
       .then((res: PageResponseResult<CompanyModel[]>) => {
         if (res) {
           this.list = res.rows || [];
@@ -422,10 +420,6 @@ export default class CompanyTemplate extends Vue {
         this.total.size = 0;
         this.total.page = 1;
       });
-  }
-
-  protected handlePath() {
-    this.$router.push({ path: "/company" });
   }
 
   // created() {

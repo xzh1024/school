@@ -29,10 +29,7 @@
         ></ht-pagination>
       </div> -->
       <div class="pagenation-address-wrap">
-        <Address
-          :areaCity.sync="areaCity"
-          @areaCityChange="areaCityChange"
-        ></Address>
+        <Address @areaCityChange="areaCityChange"></Address>
         <ht-pagination
           :total="pageInfo.totalSize"
           :current-page.sync="pageInfo.page"
@@ -81,8 +78,6 @@ import { CompanyService } from "@/common/services/companyService";
 const companyService = new CompanyService();
 import { BrandService } from "@/common/services/brandService";
 const brandService = new BrandService();
-import { Getter, namespace } from "vuex-class";
-const CityStore = namespace("city");
 
 @Component({
   name: "CompanyList",
@@ -95,16 +90,6 @@ const CityStore = namespace("city");
   }
 })
 export default class CompanyList extends Vue {
-  @CityStore.Getter("activeAreaCity")
-  protected activeAreaCity!: AreaModel;
-  protected areaCity: AreaModel | "" = "";
-  @Watch("activeAreaCity", { deep: true, immediate: true })
-  protected activeAreaCityChange(newVal: AreaModel) {
-    if (newVal) {
-      this.areaCity = newVal;
-    }
-    this.getCompanies();
-  }
   protected list: CompanyModel[] = [];
   protected pageSizes = PAGE_SIZES;
   protected pageInfo: PageParams = {
@@ -121,12 +106,8 @@ export default class CompanyList extends Vue {
   protected checkBrands: string[] = [];
 
   protected areaCityChange(value: AreaModel) {
-    console.log(value);
-    // if (value && value.id) {
-    //   this.queryParams.areas = `City:${value.id}`;
-    // } else {
-    //   this.queryParams.areas = "";
-    // }
+    this.queryParams.areas = value ? `City:${value.id}` : "";
+    // this.getParts();
     this.getCompanies();
   }
 
@@ -141,13 +122,9 @@ export default class CompanyList extends Vue {
       pageSize,
       ...this.queryParams
     };
-    if (this.areaCity) {
-      params.areas = `City:${this.areaCity.id}`;
-    }
     companyService
       .getCompanies(params)
       .then((res: PageResponseResult<CompanyModel[]>) => {
-        console.log(res);
         if (res) {
           this.list = res.rows || [];
           this.pageInfo.totalSize = res.totalSize || 0;
@@ -158,7 +135,6 @@ export default class CompanyList extends Vue {
 
   protected getBrandAll() {
     brandService.getBrandAll().then((res: BrandModel[]) => {
-      console.log(res);
       const list = res || [];
       this.brands = list.map(item => item.name);
     });

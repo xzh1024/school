@@ -5,7 +5,7 @@
         :currentPage.sync="queryParams.page"
         :total="total.size"
         :pageCount="total.page"
-        @current-change="getBrands"
+        @current-change="getDatas"
       ></ht-pagination>
       <ht-button type="primary" size="mini" round @click="handlePath"
         >查看全部</ht-button
@@ -151,9 +151,16 @@ export default class BrandTemplate extends Vue {
     page: 1
   };
 
-  protected getBrands() {
+  protected handlePath() {
+    this.$router.push({ path: "/brand" });
+  }
+
+  public getDatas() {
+    const params = {
+      ...this.queryParams,
+    };
     brandService
-      .getBrands(this.queryParams)
+      .getBrands(params)
       .then((res: PageResponseResult<BrandModel[]>) => {
         if (res) {
           this.list = res.rows || [];
@@ -169,12 +176,8 @@ export default class BrandTemplate extends Vue {
       });
   }
 
-  protected handlePath() {
-    this.$router.push({ path: "/brand" });
-  }
-
   created() {
-    this.getBrands();
+    this.getDatas();
   }
 }
 </script>

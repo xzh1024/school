@@ -3,7 +3,6 @@
     <header-main>
       <Address
         slot="address"
-        :areaCity.sync="areaCity"
         @areaCityChange="areaCityChange"
       ></Address>
     </header-main>
@@ -22,10 +21,10 @@
         </div>
       </div>
       <div class="floor m-t">
-        <CompanyTemplate></CompanyTemplate>
+        <CompanyTemplate ref="companyTemplate" :params="params"></CompanyTemplate>
       </div>
       <div class="floor m-t">
-        <GoodsTemplate></GoodsTemplate>
+        <GoodsTemplate ref="goodsTemplate" :params="params"></GoodsTemplate>
       </div>
       <div class="floor m-t">
         <BrandTemplate></BrandTemplate>
@@ -57,8 +56,6 @@ import GoodsTemplate from "./components/goodsTemplate/index.vue";
 import BrandTemplate from "./components/brandTemplate/index.vue";
 import { CommonService } from "@/common/services/commonService";
 const commonService = new CommonService();
-import { Getter, namespace } from "vuex-class";
-const CityStore = namespace("city");
 
 @Component({
   name: "Index",
@@ -75,18 +72,16 @@ const CityStore = namespace("city");
   }
 })
 export default class Index extends Vue {
-  @CityStore.Getter("activeAreaCity")
-  protected activeAreaCity!: AreaModel;
-  @CityStore.Mutation("setActiveAreaCity")
-  protected setActiveAreaCity!: Function;
-
-  protected areaCity: AreaModel | "" = "";
-  @Watch("activeAreaCity", { deep: true, immediate: true })
-  protected activeAreaCityChange(newVal: AreaModel) {
-    if (newVal) {
-      this.areaCity = newVal;
-    }
-  }
+  // protected areaCity: AreaModel | "" = {
+  //   id: 3,
+  //   name: "成都市"
+  // };
+  // @Watch("activeAreaCity", { deep: true, immediate: true })
+  // protected activeAreaCityChange(newVal: AreaModel) {
+  //   if (newVal) {
+  //     this.areaCity = newVal;
+  //   }
+  // }
   protected mediumBanners: BannerModel[] = [];
   protected smallBanners: BannerModel[] = [];
   protected miniBanners: BannerModel[] = [];
@@ -129,7 +124,6 @@ export default class Index extends Vue {
 
   protected getInfoData() {
     commonService.getIndexInfo().then(res => {
-      // console.log(res);
       const {
         banners
         // copyright,
@@ -153,17 +147,23 @@ export default class Index extends Vue {
     });
   }
 
+  protected params = {
+    orderByAreas: ""
+  };
+
+  get refCompanyTemplate(): CompanyTemplate {
+    return this.$refs.companyTemplate as CompanyTemplate;
+  }
+  get refGoodsTemplate(): GoodsTemplate {
+    return this.$refs.goodsTemplate as GoodsTemplate;
+  }
   protected areaCityChange(value: AreaModel) {
-    console.log(value);
-    sessionStorage.activeAreaCity = JSON.stringify(value);
-    this.setActiveAreaCity();
+    // sessionStorage.activeAreaCity = JSON.stringify(value);
+    // this.setActiveAreaCity();
     // activeAreaCity
-    // if (value && value.id) {
-    //   this.queryParams.areas = `City:${value.id}`;
-    // } else {
-    //   this.queryParams.areas = "";
-    // }
-    // this.getParts();
+    this.params.orderByAreas = value ? `City:${value.id}` : "";
+    this.refCompanyTemplate.getDatas();
+    this.refGoodsTemplate.getDatas();
   }
 
   created() {

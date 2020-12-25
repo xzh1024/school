@@ -8,8 +8,23 @@
     @closed="closed"
   >
     <div class="part-container">
-      <div class="part-imgs"></div>
-      <div class="part-content">
+      <div class="part-left">
+        <div class="img-big img-wrap">
+          <img :src="activePartImgUrl" />
+        </div>
+        <div class="img-list">
+          <div
+            class="img-item img-wrap"
+            v-for="(item, index) in partImgs"
+            :key="index"
+            :class="{ 'is-active': item.active }"
+            @mouseover="handlePartImg(item)"
+          >
+            <img :src="item.url" />
+          </div>
+        </div>
+      </div>
+      <div class="part-right">
         <el-row :gutter="16">
           <el-col :span="8">
             <div class="cell">
@@ -98,7 +113,7 @@
           v-if="companyInfo.pics && companyInfo.pics.length"
         >
           <Banner
-            :banners="pics || companyInfo.pics"
+            :banners="companyInfo.pics"
             :swiperOption="swiperOption"
           ></Banner>
         </div>
@@ -207,44 +222,77 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import { PartModel } from "@/common/interface/goodsInterface";
 import Banner from "@/components/banner/index";
 
+interface ImgModel {
+  url: string;
+  active: boolean;
+}
+
 @Component({ name: "GoodsInfoDialog", components: { Banner } })
 export default class GoodsInfoDialog extends Vue {
-  protected visible = true;
   @Prop() protected info!: PartModel;
 
+  protected visible = true;
+
   get companyInfo() {
+    console.log(this.info);
     if (this.info.company) {
       console.log(this.info.company.pics);
     }
     return this.info.company || {};
   }
 
-  pics = [
-    {
-      name: "name01",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-      url: ""
-    },
-    {
-      name: "name01",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-      url: ""
-    }
-  ];
+  protected activePartImgUrl = "";
+  get partImgs(): ImgModel[] {
+    const imgs = this.info.imageUrls || [];
+    return imgs.map((url: string, index: number) => {
+      let active = false;
+      if (index === 0) {
+        active = true;
+        this.activePartImgUrl = url;
+      }
+      return {
+        url,
+        active
+      };
+    });
+  }
+
+  // pics = [
+  //   {
+  //     name: "name01",
+  //     pic:
+  //       "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
+  //     url: ""
+  //   },
+  //   {
+  //     name: "name01",
+  //     pic:
+  //       "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=4113439481,1293517696&fm=26&gp=0.jpg",
+  //     url: ""
+  //   },
+  //   {
+  //     name: "name02",
+  //     pic:
+  //       "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201708%2F13%2F20170813133913_fPvky.jpeg&refer=http%3A%2F%2Fb-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611473915&t=b73cc4597c4a4a6e18880382087a94b2",
+  //     url: ""
+  //   },
+  //   {
+  //     name: "name03",
+  //     pic:
+  //       "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fblog%2F202011%2F18%2F20201118111426_55460.thumb.1000_0.jpg&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611473915&t=2c318cd3dc3dfff5d68716f0f5f468d6",
+  //     url: ""
+  //   }
+  // ];
 
   protected swiperOption = {
     // 分页器配置
     pagination: {
       el: ".swiper-pagination",
-      // bulletClass : "bullet",
       bulletActiveClass: "bullet-active",
       clickable: true
     },
     // 设定初始化时slide的索引
     initialSlide: 0,
-    //Slides的滑动方向，可设置水平(horizontal)或垂直(vertical)
     direction: "horizontal",
     // 自动切换图配置
     // autoplay: {
@@ -261,8 +309,17 @@ export default class GoodsInfoDialog extends Vue {
     loop: true,
     slidesPerView: "auto",
     loopedSlides: 3
-    // loopAdditionalSlides: 0,
   };
+
+  protected handlePartImg(data: ImgModel) {
+    if (!data.active) {
+      this.partImgs.forEach(item => {
+        item.active = false;
+      });
+      data.active = true;
+      this.activePartImgUrl = data.url;
+    }
+  }
 
   protected closed() {
     this.$emit("hide");
@@ -274,11 +331,46 @@ export default class GoodsInfoDialog extends Vue {
 .goods-info-dialog {
   .part-container {
     display: flex;
-    .part-imgs {
-      width: 168px;
+    .part-left {
+      width: 169px;
       margin-right: $margin-size-main;
+      .img-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        overflow: hidden;
+        img {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
+      .img-big {
+        width: 169px;
+        height: 169px;
+        box-sizing: border-box;
+        border: $border-gray;
+      }
+      .img-list {
+        margin-top: $margin-size-main;
+        display: flex;
+        .img-item {
+          box-sizing: border-box;
+          // display: inline-block;
+          width: 40px;
+          height: 40px;
+          cursor: pointer;
+          margin-left: 3px;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+        .img-item.is-active {
+          border: $border-primary;
+        }
+      }
     }
-    .part-content {
+    .part-right {
       box-sizing: border-box;
       flex: 1;
       min-height: 212px;

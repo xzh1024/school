@@ -22,7 +22,23 @@
     <div class="cell">
       <div class="cell-left">供应商:</div>
       <div class="cell-right">
-        <div class="check-list">
+        <el-select
+          v-model="queryParams.companyIds"
+          size="mini"
+          filterable
+          clearable
+          placeholder="请选择供应商"
+          @change="handleSearch"
+        >
+          <el-option
+            v-for="city in companys"
+            :key="city.id"
+            :label="city.name"
+            :value="city.id"
+          >
+          </el-option>
+        </el-select>
+        <!-- <div class="check-list">
           <el-checkbox-group
             size="small"
             v-model="queryParams.companyIds"
@@ -36,7 +52,7 @@
               >{{ company.name }}</el-checkbox-button
             >
           </el-checkbox-group>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="cell">
@@ -113,11 +129,12 @@ export default class GoodsSearch extends Vue {
     .cell-left {
       width: 114px;
       padding: $padding-size-main;
+      line-height: 28px;
     }
     .cell-right {
       flex: 1;
       padding: $padding-size-main;
-      padding-bottom: 0;
+      // padding-bottom: 0;
       border-left: $border-gray;
       .check-list {
         ::v-deep .el-checkbox-group {

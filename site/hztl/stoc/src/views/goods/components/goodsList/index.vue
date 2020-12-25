@@ -16,16 +16,32 @@
         ></GoodsSearch>
 
         <div class="pagenation-address-wrap">
-          <Address
-            :areaCity.sync="areaCity"
-            @areaCityChange="areaCityChange"
-          ></Address>
-          <ht-pagination
-            :total="pageInfo.totalSize"
-            :current-page.sync="pageInfo.page"
-            :page-count="pageInfo.totalPage"
-            @current-change="getParts"
-          ></ht-pagination>
+          <Address @areaCityChange="areaCityChange"></Address>
+          <div class="pagenation-address-right">
+            <!-- <div>
+              <el-select
+                v-model="queryParams.companyIds"
+                size="mini"
+                filterable
+                clearable
+                placeholder="请选择供应商"
+              >
+                <el-option
+                  v-for="city in cityOptions"
+                  :key="city.id"
+                  :label="city.name"
+                  :value="city"
+                >
+                </el-option>
+              </el-select>
+            </div> -->
+            <ht-pagination
+              :total="pageInfo.totalSize"
+              :current-page.sync="pageInfo.page"
+              :page-count="pageInfo.totalPage"
+              @current-change="getParts"
+            ></ht-pagination>
+          </div>
         </div>
 
         <el-table
@@ -39,7 +55,7 @@
           :data="list"
           @row-click="showPartInfo"
         >
-          <el-table-column prop="name" label="编码/名称" width="180">
+          <el-table-column prop="code" label="编码/名称" width="180" sortable>
             <template slot-scope="scope">
               <div
                 class="cell-li color-primary"
@@ -114,7 +130,7 @@
             label="规格"
             width="80"
           ></el-table-column>
-          <el-table-column prop="price" label="订货价" width="100">
+          <el-table-column prop="price" label="订货价" width="100" sortable>
             <template slot-scope="scope">
               <div class="cell-li color-primary">
                 <span class="font-size-12">¥</span>
@@ -207,9 +223,6 @@ import { PartModel, PartParams } from "@/common/interface/goodsInterface";
 import { PartFilterModel } from "@/common/interface/brandInterface";
 import { GoodsService } from "@/common/services/goodsService";
 const goodsService = new GoodsService();
-import { Getter, namespace } from "vuex-class";
-import { parse } from "qs";
-const CityStore = namespace("city");
 
 const queryParams = {
   keyword: "",
@@ -234,16 +247,7 @@ const queryParams = {
 })
 export default class GoodsList extends Vue {
   @Inject("reload") reload: any;
-  @CityStore.Getter("activeAreaCity")
-  protected activeAreaCity!: AreaModel;
-  protected areaCity: AreaModel | "" = this.activeAreaCity;
-  @Watch("activeAreaCity", { deep: true, immediate: true })
-  protected activeAreaCityChange(newVal: AreaModel) {
-    if (newVal) {
-      this.areaCity = newVal;
-    }
-    this.getParts();
-  }
+
   protected goodsInfoVisible = false;
 
   protected pageSizes = PAGE_SIZES;
@@ -259,13 +263,7 @@ export default class GoodsList extends Vue {
   protected queryParams: PartParams = JSON.parse(JSON.stringify(queryParams));
 
   protected areaCityChange(value: AreaModel) {
-    console.log(value);
-    // console.log(this.areaCity);
-    // if (value && value.id) {
-    //   this.queryParams.areas = `City:${value.id}`;
-    // } else {
-    //   this.queryParams.areas = "";
-    // }
+    this.queryParams.areas = value ? `City:${value.id}` : "";
     this.getParts();
   }
 
@@ -276,13 +274,9 @@ export default class GoodsList extends Vue {
       page,
       pageSize
     };
-    if(this.areaCity) {
-      params.areas = `City:${this.areaCity.id}`;
-    }
     goodsService
       .getParts(params)
       .then((res: PageResponseResult<PartModel[]>) => {
-        console.log(res);
         if (res) {
           this.list = res.rows || [];
           this.pageInfo.totalSize = res.totalSize || 0;
@@ -303,12 +297,15 @@ export default class GoodsList extends Vue {
   }
 
   protected showPartInfo(row: PartModel) {
-    console.log(row);
     this.partInfo = row;
     this.goodsInfoVisible = true;
   }
   protected hidePartInfo() {
     this.goodsInfoVisible = false;
+  }
+
+  protected sortChange(value: any) {
+    console.log(value);
   }
 
   created() {
@@ -323,12 +320,44 @@ export default class GoodsList extends Vue {
 </script>
 
 <style lang="scss" scoped>
+::v-deep .el-table {
+  .sort-caret.ascending {
+    top: -1px;
+  }
+  .sort-caret.descending {
+    bottom: 1px;
+  }
+  .caret-wrapper {
+    height: 22px;
+  }
+  .ascending {
+    .sort-caret.ascending {
+      border-bottom-color: #ffffff;
+    }
+    .sort-caret.descending {
+      border-top-color: #c0c4cc;
+    }
+  }
+  .descending {
+    .sort-caret.ascending {
+      border-bottom-color: #c0c4cc;
+    }
+    .sort-caret.descending {
+      border-top-color: #ffffff;
+    }
+  }
+}
+
 .goods-template {
   .ht-card {
     margin-top: $margin-size-main;
     background-color: $color-white;
     .goods-list {
       padding: 16px;
+      .pagenation-address-right {
+        display: flex;
+        align-items: center;
+      }
       .el-table {
         margin-top: $margin-size-main;
         border-left: 1px solid #ebeef5;

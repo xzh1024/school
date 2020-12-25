@@ -47,22 +47,6 @@
           >
         </div>
         <div class="address-list">
-          <!-- <div
-          class="address-province"
-          v-for="province in areas"
-          :key="province.id"
-        >
-          <div class="province-item">{{ province.name }}</div>
-          <div class="address-city">
-            <span
-              class="city-item"
-              v-for="city in province.children"
-              :key="city.id"
-            >
-              {{ city.name }}
-            </span>
-          </div>
-        </div> -->
           <div
             class="address-mnemonic"
             v-for="(provinces, letterKey) in letterMap"
@@ -93,7 +77,7 @@
       </div>
       <div class="address-button" slot="reference">
         <i class="icon-site"></i>
-        <span>{{ areaCity ? areaCity.name : "发货地" }}</span>
+        <span>{{ internalAreaCity ? internalAreaCity.name : "发货地" }}</span>
         <i :class="arrowClass"></i>
       </div>
     </el-popover>
@@ -105,7 +89,8 @@ import { Component, Vue, Prop, Emit, Watch } from "vue-property-decorator";
 import { AreaModel } from "@/common/interface/commonInterface";
 import { CommonService } from "@/common/services/commonService";
 const commonService = new CommonService();
-// import { checkCh } from "@/common/utils/queryFirstMnemonic.js";
+import { Getter, namespace } from "vuex-class";
+const CityStore = namespace("city");
 
 interface LetterMapModel<T> {
   [key: string]: T[];
@@ -117,20 +102,33 @@ interface LetterKeyModel {
 
 @Component({ name: "Address" })
 export default class Address extends Vue {
-  protected addressVisible = false;
-  protected areaCityValue: AreaModel | "" = "";
-  // protected areaCity: AreaModel | "" = "";
-  @Prop({ default: "" }) protected areaCity!: AreaModel | "";
-  // @Emit("areaCityChange") areaCityChange() {
-  //   this.addressVisible = !this.addressVisible;
-  //   return this.areaCity;
+  @CityStore.Getter("activeAreaCity")
+  protected activeAreaCity!: AreaModel;
+  @CityStore.Mutation("setActiveAreaCity")
+  protected setActiveAreaCity!: Function;
+
+  protected internalAreaCity: AreaModel | "" = "";
+  // @Prop({ default: "" })
+  // protected areaCity!: AreaModel | "";
+  // @Watch("areaCity", { immediate: true })
+  // protected areaCityWatch(newVal: AreaModel) {
+  //   this.internalAreaCity = newVal;
+  // }
+  // @Watch("internalAreaCity", { immediate: true })
+  // protected watchInternalAreaCity(newVal: AreaModel) {
+  //   this.$emit("update:areaCity", newVal);
   // }
 
-  @Emit("areaCityChange") areaCityChange() {
-    this.addressVisible = !this.addressVisible;
-    return this.areaCity;
+  @Emit("areaCityChange")
+  protected areaCityChange() {
+    sessionStorage.activeAreaCity = JSON.stringify(this.internalAreaCity);
+    this.setActiveAreaCity();
+    return this.internalAreaCity;
   }
+  protected addressVisible = false;
 
+  protected areaCityValue: AreaModel | "" = "";
+  // clear select value
   @Watch("addressVisible")
   protected addressVisibleChange(newVal: boolean) {
     if (newVal) {
@@ -143,9 +141,9 @@ export default class Address extends Vue {
   }
 
   protected handleCity(city: AreaModel) {
-    // this.areaCity = city;
-    this.$emit("update:areaCity", city);
+    this.internalAreaCity = city;
     this.$nextTick(() => {
+      this.addressVisible = !this.addressVisible;
       this.areaCityChange();
     });
   }
@@ -298,9 +296,23 @@ export default class Address extends Vue {
     this.letterMap = now;
   }
 
+  protected init() {
+    // if (this.activeAreaCity && !this.areaCity) {
+    //   console.log(this.activeAreaCity);
+    //   this.internalAreaCity = this.activeAreaCity;
+    //   this.$nextTick(() => this.areaCityChange());
+    // }
+    this.internalAreaCity = this.activeAreaCity;
+    this.$nextTick(() => this.areaCityChange());
+  }
+
   created() {
     this.initLetterMap();
     this.getAreas();
+  }
+
+  mounted() {
+    this.init();
   }
 }
 </script>

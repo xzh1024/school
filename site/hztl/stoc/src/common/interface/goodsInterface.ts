@@ -39,7 +39,7 @@ export interface PartModel {
   volume: string; // 体积（单位：m³）
   weight: string; // 重量（单位：kg）
   packingNum: string; // 包装数
-  imageUrls: string; // 图片存储路径
+  imageUrls: string[]; // 图片存储路径
   vehModel: string; // 车型名称
   vehMnemonic: string; // 车型助记符（拼音首字母）
   avaVehModel: string; // 适用车型名称

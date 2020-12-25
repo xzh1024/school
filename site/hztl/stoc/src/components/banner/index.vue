@@ -85,7 +85,7 @@ export default class Banner extends Vue {
       color: $color-primary;
       width: 24px;
       height: 24px;
-      // background: $color-white;
+      margin-top: 0;
       transform: translateY(-50%);
     }
     .swiper-button-prev {

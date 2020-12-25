@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar">
-    <ul class="search-tabs">
-      <li
+    <div class="search-tabs">
+      <div
         class="search-tab"
         v-for="tag in tabs"
         :key="tag.value"
@@ -9,8 +9,8 @@
         @click="changeType(tag.value)"
       >
         {{ tag.name }}
-      </li>
-    </ul>
+      </div>
+    </div>
     <div class="search-input">
       <input type="text" placeholder="输入配件名称/OE号、品牌等关键字查询" />
       <button>搜索<i class="icon-soso-white"></i></button>
