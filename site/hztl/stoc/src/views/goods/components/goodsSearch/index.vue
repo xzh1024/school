@@ -27,6 +27,8 @@
           size="mini"
           filterable
           clearable
+          multiple
+          collapse-tags
           placeholder="请选择供应商"
           @change="handleSearch"
         >

@@ -18,23 +18,6 @@
         <div class="pagenation-address-wrap">
           <Address @areaCityChange="areaCityChange"></Address>
           <div class="pagenation-address-right">
-            <!-- <div>
-              <el-select
-                v-model="queryParams.companyIds"
-                size="mini"
-                filterable
-                clearable
-                placeholder="请选择供应商"
-              >
-                <el-option
-                  v-for="city in cityOptions"
-                  :key="city.id"
-                  :label="city.name"
-                  :value="city"
-                >
-                </el-option>
-              </el-select>
-            </div> -->
             <ht-pagination
               :total="pageInfo.totalSize"
               :current-page.sync="pageInfo.page"
@@ -80,7 +63,7 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column prop="name" label="配件图片" width="100">
+          <el-table-column prop="name" label="配件图片" width="72">
             <template slot-scope="scope">
               <!-- <img
                 :src="(scope.row.imageUrls && scope.row.imageUrls[0]) || ''"
@@ -265,6 +248,7 @@ export default class GoodsList extends Vue {
   protected areaCityChange(value: AreaModel) {
     this.queryParams.areas = value ? `City:${value.id}` : "";
     this.getParts();
+    // console.log(this.queryParams.companyIds);
   }
 
   protected getParts() {
@@ -309,12 +293,11 @@ export default class GoodsList extends Vue {
   }
 
   created() {
-    Object.assign(this.queryParams, this.$route.query);
+    // Object.assign(this.queryParams, this.$route.query);
     const { companyId } = this.$route.query;
     if (companyId) {
-      this.queryParams.companyIds = [Number(companyId)];
+      this.queryParams.companyIds?.push(Number(companyId));
     }
-    // this.getParts();
   }
 }
 </script>

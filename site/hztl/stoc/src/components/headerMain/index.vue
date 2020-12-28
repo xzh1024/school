@@ -19,7 +19,7 @@
     <div class="header-content">
       <div class="ht-container">
         <div class="header-left">
-          <div class="logo-wrap" @click="$router.push({ path: '/' })">
+          <div class="logo-wrap" @click="handlePath">
             <i class="logo-60"></i>
             <div class="strong">信息展馆</div>
           </div>
@@ -46,7 +46,13 @@ import { HtDivider } from "@/components/hztl";
     HtDivider
   }
 })
-export default class HeaderMain extends Vue {}
+export default class HeaderMain extends Vue {
+  protected handlePath() {
+    if (this.$route.path !== "/") {
+      this.$router.push({ path: "/" });
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
