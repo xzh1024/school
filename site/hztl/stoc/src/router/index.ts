@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig, Location } from "vue-router";
-
 Vue.use(VueRouter);
+import store from "@/store";
+import { LoginService } from "@/common/services/loginService";
+const loginService = new LoginService();
 
 const routes: Array<RouteConfig> = [
   {
@@ -46,6 +48,29 @@ const router = new VueRouter({
   routes: [...routes],
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 };
+  }
+});
+
+router.beforeEach((to, from, next) => {
+  if (sessionStorage.token) {
+    next();
+  } else {
+    const token = to.query.token as string;
+    if (token) {
+      loginService
+        .tokenLogin(token)
+        .then(() => {
+          sessionStorage.token = token;
+          store.dispatch("base/loadBase");
+          next();
+        })
+        .catch(() => {
+          console.log(666);
+          next();
+        });
+    } else {
+      next();
+    }
   }
 });
 

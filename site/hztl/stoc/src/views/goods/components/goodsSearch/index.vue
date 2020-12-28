@@ -40,21 +40,6 @@
           >
           </el-option>
         </el-select>
-        <!-- <div class="check-list">
-          <el-checkbox-group
-            size="small"
-            v-model="queryParams.companyIds"
-            @change="handleSearch"
-          >
-            <el-checkbox-button
-              size="mini"
-              v-for="company in companys"
-              :key="company.id"
-              :label="company.id"
-              >{{ company.name }}</el-checkbox-button
-            >
-          </el-checkbox-group>
-        </div> -->
       </div>
     </div>
     <div class="cell">

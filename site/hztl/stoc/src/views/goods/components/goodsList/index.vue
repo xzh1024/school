@@ -248,7 +248,6 @@ export default class GoodsList extends Vue {
   protected areaCityChange(value: AreaModel) {
     this.queryParams.areas = value ? `City:${value.id}` : "";
     this.getParts();
-    // console.log(this.queryParams.companyIds);
   }
 
   protected getParts() {
@@ -293,9 +292,10 @@ export default class GoodsList extends Vue {
   }
 
   created() {
-    // Object.assign(this.queryParams, this.$route.query);
-    const { companyId } = this.$route.query;
-    if (companyId) {
+    const { keyword, companyId } = this.$route.query;
+    if (keyword) {
+      this.queryParams.keyword = keyword as string;
+    } else if (companyId) {
       this.queryParams.companyIds?.push(Number(companyId));
     }
   }

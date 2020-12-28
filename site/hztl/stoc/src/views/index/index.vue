@@ -1,10 +1,7 @@
 <template>
   <div class="index-container">
     <header-main>
-      <Address
-        slot="address"
-        @areaCityChange="areaCityChange"
-      ></Address>
+      <Address slot="address" @areaCityChange="areaCityChange"></Address>
     </header-main>
     <div class="ht-container">
       <div class="layout-banner m-t clearfix">
@@ -21,7 +18,10 @@
         </div>
       </div>
       <div class="floor m-t">
-        <CompanyTemplate ref="companyTemplate" :params="params"></CompanyTemplate>
+        <CompanyTemplate
+          ref="companyTemplate"
+          :params="params"
+        ></CompanyTemplate>
       </div>
       <div class="floor m-t">
         <GoodsTemplate ref="goodsTemplate" :params="params"></GoodsTemplate>
@@ -35,6 +35,8 @@
     </div>
     <footer-main></footer-main>
     <LayerScroll :floors="floors"></LayerScroll>
+
+    <GuideShade></GuideShade>
   </div>
 </template>
 
@@ -45,6 +47,7 @@ import FooterMain from "@/components/footerMain/index";
 import Address from "@/components/address/index";
 import Banner from "@/components/banner/index";
 import LayerScroll from "@/components/layerScroll/index";
+import GuideShade from "@/components/guideShade/index";
 import { HtDivider } from "@/components/hztl";
 import {
   AreaModel,
@@ -65,6 +68,7 @@ const commonService = new CommonService();
     Address,
     Banner,
     LayerScroll,
+    GuideShade,
     CompanyTemplate,
     GoodsTemplate,
     BrandTemplate,

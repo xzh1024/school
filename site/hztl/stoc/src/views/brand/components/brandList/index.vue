@@ -5,7 +5,7 @@
         class="mnemonic"
         v-for="mnemonic in mnemonics"
         :key="mnemonic"
-        :class="{ 'is-active': mnemonic === firstMnemonic }"
+        :class="{ 'is-active': mnemonic === queryParams.firstMnemonic }"
         @click="handleMnemonic(mnemonic)"
       >
         {{ mnemonic }}
@@ -22,7 +22,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import BrandItem from "@/views/brand/components/brandItem/index";
-import { BrandModel } from "@/common/interface/brandInterface";
+import { BrandParams, BrandModel } from "@/common/interface/brandInterface";
 import { checkCh } from "@/common/utils/queryFirstMnemonic.js";
 import { BrandService } from "@/common/services/brandService";
 const brandService = new BrandService();
@@ -34,20 +34,24 @@ const brandService = new BrandService();
   }
 })
 export default class BrandList extends Vue {
+  protected queryParams: BrandParams = {
+    keyword: "",
+    firstMnemonic: ""
+  };
+
   protected list: BrandModel[] = [];
 
   protected mnemonics: string[] = [];
-  protected firstMnemonic = "";
 
   protected getBrandAll() {
     const params = {
-      firstMnemonic: this.firstMnemonic
+      ...this.queryParams
     };
     brandService
       .getBrandAll(params)
       .then((res: BrandModel[]) => {
         const list = res || [];
-        if (!this.firstMnemonic) {
+        if (!this.queryParams.firstMnemonic) {
           const mnemonics: string[] = [];
           list.forEach(item => {
             if (item.name && item.name.length) {
@@ -69,15 +73,20 @@ export default class BrandList extends Vue {
   }
 
   protected handleMnemonic(mnemonic: string) {
-    if (mnemonic === this.firstMnemonic) {
-      this.firstMnemonic = "";
+    if (mnemonic === this.queryParams.firstMnemonic) {
+      this.queryParams.firstMnemonic = "";
     } else {
-      this.firstMnemonic = mnemonic;
+      this.queryParams.firstMnemonic = mnemonic;
     }
     this.getBrandAll();
   }
 
   created() {
+    const { keyword } = this.$route.query;
+    if (keyword) {
+      this.queryParams.keyword = keyword as string;
+    }
+
     this.getBrandAll();
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- <keep-alive> -->
-      <router-view v-if="isRouterAlive" />
+    <router-view v-if="isRouterAlive" />
     <!-- </keep-alive> -->
   </div>
 </template>
@@ -20,9 +20,15 @@ export default {
     };
   },
   created() {
-    this.$store.commit("city/setActiveAreaCity");
+    this.init();
   },
   methods: {
+    init() {
+      if (sessionStorage.token || this.$route.query.token) {
+        this.$store.dispatch("base/loadBase");
+      }
+      this.$store.commit("city/setActiveAreaCity");
+    },
     reload() {
       this.isRouterAlive = false;
       this.$nextTick(() => {

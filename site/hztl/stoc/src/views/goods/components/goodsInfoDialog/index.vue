@@ -234,7 +234,6 @@ export default class GoodsInfoDialog extends Vue {
   protected visible = true;
 
   get companyInfo() {
-    console.log(this.info);
     if (this.info.company) {
       console.log(this.info.company.pics);
     }

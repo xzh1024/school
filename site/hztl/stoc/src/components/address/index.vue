@@ -89,8 +89,10 @@ import { Component, Vue, Prop, Emit, Watch } from "vue-property-decorator";
 import { AreaModel } from "@/common/interface/commonInterface";
 import { CommonService } from "@/common/services/commonService";
 const commonService = new CommonService();
-import { Getter, namespace } from "vuex-class";
+import { namespace } from "vuex-class";
 const CityStore = namespace("city");
+import { BaseInfoModel } from "@/store/modules/base/interface";
+const BaseStore = namespace("base");
 
 interface LetterMapModel<T> {
   [key: string]: T[];
@@ -102,6 +104,8 @@ interface LetterKeyModel {
 
 @Component({ name: "Address" })
 export default class Address extends Vue {
+  @BaseStore.Getter("baseInfo")
+  protected baseInfo!: BaseInfoModel;
   @CityStore.Getter("activeAreaCity")
   protected activeAreaCity!: AreaModel;
   @CityStore.Mutation("setActiveAreaCity")
@@ -117,6 +121,11 @@ export default class Address extends Vue {
   // @Watch("internalAreaCity", { immediate: true })
   // protected watchInternalAreaCity(newVal: AreaModel) {
   //   this.$emit("update:areaCity", newVal);
+  // }
+
+  // @Watch("baseInfo", { deep: true, immediate: true })
+  // protected watchBaseInfo(val: BaseInfoModel) {
+  //   console.log(val);
   // }
 
   @Emit("areaCityChange")

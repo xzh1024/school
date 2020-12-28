@@ -103,6 +103,10 @@ export default class LayerScroll extends Vue {
   left: 50%;
   margin-left: 615px;
   z-index: 100;
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
   .layer-logo {
     display: block;
     margin: 0 auto;

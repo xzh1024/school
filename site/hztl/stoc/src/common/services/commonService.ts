@@ -13,6 +13,18 @@ export class CommonService extends BaseService {
     super();
   }
 
+  public getBase() {
+    return this.request({
+      url: "/whsc/base"
+    });
+  }
+  public updeteGuided() {
+    return this.request({
+      method: "put",
+      url: "/whsc/guided"
+    });
+  }
+
   public getIndexInfo() {
     return this.request({
       url: "/open/whsc/info"

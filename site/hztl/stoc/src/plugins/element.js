@@ -11,7 +11,8 @@ import {
   Row,
   Col,
   Select,
-  Option
+  Option,
+  Input
 } from "element-ui";
 
 Vue.use(Button);
@@ -26,3 +27,4 @@ Vue.use(Row);
 Vue.use(Col);
 Vue.use(Select);
 Vue.use(Option);
+Vue.use(Input);

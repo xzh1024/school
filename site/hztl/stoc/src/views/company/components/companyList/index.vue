@@ -99,6 +99,7 @@ export default class CompanyList extends Vue {
     totalPage: 1
   };
   protected queryParams: CompanyParams = {
+    keyword: "",
     areas: "",
     vehBrands: []
   };
@@ -141,7 +142,10 @@ export default class CompanyList extends Vue {
   }
 
   created() {
-    // this.getCompanies();
+    const { keyword } = this.$route.query;
+    if (keyword) {
+      this.queryParams.keyword = keyword as string;
+    }
     this.getBrandAll();
   }
 }
