@@ -86,20 +86,14 @@ export default class FooterMain extends Vue {
 </script>
 
 <style lang="scss" scoped>
-$footer-height: 158px;
-
 .footer-main {
-  // height: $footer-height;
-  padding: 16px 0;
+  padding: 40px 0;
   background-color: $color-white;
   .m-l-8 {
     margin-left: 8px;
   }
   .footer-contnet {
-    // padding-top: 16px;
-
     .footer-otherlink {
-      // padding: 10px 0;
       margin-bottom: 16px;
       text-align: center;
       a {
@@ -122,11 +116,7 @@ $footer-height: 158px;
     overflow: hidden;
     display: flex;
     justify-content: center;
-    // justify-content: space-between;
     .footer-img {
-      // display: inline-block;
-      // width: 114px;
-      // height: 32px;
       margin-left: 14px;
       img {
         display: inline-block;

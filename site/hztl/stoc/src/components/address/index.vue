@@ -27,13 +27,16 @@
               确定
             </button>
           </div>
-          <div class="search-history">
-            <span
-              class="search-history-item"
-              v-for="item in searchHistorys"
-              :key="item.id"
-              >{{ item.name }}</span
-            >
+          <div class="search-history-wrap">
+            <div class="search-history">
+              <span
+                class="search-history-item"
+                v-for="item in addressSearchHistory"
+                :key="item.id"
+                @click="handleCity(item)"
+                >{{ item.name }}</span
+              >
+            </div>
           </div>
         </div>
         <div class="address-letter">
@@ -132,7 +135,15 @@ export default class Address extends Vue {
   protected areaCityChange() {
     sessionStorage.activeAreaCity = JSON.stringify(this.internalAreaCity);
     this.setActiveAreaCity();
-    return this.internalAreaCity;
+    const areaCity = this.internalAreaCity;
+    // 记录地址
+    if (areaCity) {
+      this.updateAddressSearchHistory({
+        id: areaCity.id,
+        name: areaCity.name
+      });
+    }
+    return areaCity;
   }
   protected addressVisible = false;
 
@@ -160,44 +171,9 @@ export default class Address extends Vue {
     this.handleCity(this.areaCityValue as AreaModel);
   }
 
-  protected searchHistorys = [
-    {
-      name: "北京",
-      id: 1
-    },
-    {
-      name: "广州",
-      id: 2
-    },
-    {
-      name: "深圳",
-      id: 3
-    },
-    {
-      name: "南京",
-      id: 4
-    },
-    {
-      name: "上海",
-      id: 5
-    },
-    {
-      name: "杭州",
-      id: 6
-    },
-    {
-      name: "杭州",
-      id: 7
-    },
-    {
-      name: "杭州",
-      id: 8
-    },
-    {
-      name: "杭州",
-      id: 9
-    }
-  ];
+  // 地址历史
+  protected addressSearchHistory: AreaModel[] = [];
+
   protected baseLetterMap: LetterMapModel<AreaModel> = {};
   protected letterMap: LetterMapModel<AreaModel> = {};
 
@@ -305,7 +281,38 @@ export default class Address extends Vue {
     this.letterMap = now;
   }
 
+  protected updateAddressSearchHistory(data: AreaModel) {
+    let list = [...this.addressSearchHistory];
+    let deleteIndex = -1;
+    list.some((item: AreaModel, index: number) => {
+      const result = item.id === data.id;
+      if (result) {
+        deleteIndex = index;
+      }
+      return result;
+    });
+    if (deleteIndex > -1) {
+      list.splice(deleteIndex, 1);
+    }
+    list.unshift(data);
+    if (list.length > 10) {
+      list = list.slice(0, 10);
+    }
+    this.addressSearchHistory = list;
+
+    localStorage.addressSearchHistory = JSON.stringify(
+      this.addressSearchHistory
+    );
+  }
+
   protected init() {
+    const addressSearchHistory =
+      localStorage.addressSearchHistory &&
+      JSON.parse(localStorage.addressSearchHistory);
+    if (Array.isArray(addressSearchHistory)) {
+      this.addressSearchHistory = addressSearchHistory;
+    }
+
     // if (this.activeAreaCity && !this.areaCity) {
     //   console.log(this.activeAreaCity);
     //   this.internalAreaCity = this.activeAreaCity;
@@ -387,15 +394,21 @@ export default class Address extends Vue {
           border-radius: 0 14px 14px 0;
         }
       }
-      .search-history {
+      .search-history-wrap {
         flex: 1;
         overflow: hidden;
         display: flex;
         align-items: center;
-        .search-history-item {
-          margin-left: $margin-size-main;
-          white-space: nowrap;
-          cursor: pointer;
+        .search-history {
+          width: 100%;
+          font-size: $font-size-12;
+          color: $color-dim;
+          @extend .lip-1;
+          .search-history-item {
+            margin-left: $margin-size-main;
+            white-space: nowrap;
+            cursor: pointer;
+          }
         }
       }
     }
