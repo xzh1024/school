@@ -1,6 +1,6 @@
 <template>
-  <div class="company-double">
-    <img class="company-img" :src="info.pics ? info.pics[0] : ''" alt="" />
+  <div class="company-double" v-popover:companyDoublePopover>
+    <img class="company-img" :src="info.pics ? info.pics[0] : ''" />
     <div class="company-content">
       <div :title="info.name" class="company-name">
         {{ info.name }}
@@ -27,14 +27,23 @@
         </span>
       </div>
     </div>
+    <el-popover
+      ref="companyDoublePopover"
+      placement="right"
+      width="426"
+      trigger="hover"
+    >
+      <company-info :info="info"></company-info>
+    </el-popover>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { CompanyModel } from "@/common/interface/companyInterface";
+import CompanyInfo from "@/views/company/components/companyInfo";
 
-@Component({ name: "CompanyDouble" })
+@Component({ name: "CompanyDouble", components: { CompanyInfo } })
 export default class CompanyDouble extends Vue {
   @Prop() protected info!: CompanyModel;
 }
@@ -47,17 +56,16 @@ export default class CompanyDouble extends Vue {
   width: 458px;
   height: 272px;
   border: $border-gray;
+  &:hover {
+    border: $border-primary;
+  }
   .company-img {
     display: inline-block;
     width: 100%;
     height: 174px;
-    transition: all 0.15s ease-in 0.05s;
-    &:hover {
-      transform: scale(1.1);
-    }
   }
   .company-content {
-    padding: 8px;
+    padding: 0 8px;
     .company-name {
       @extend .lip-1;
       margin-bottom: 3px;
