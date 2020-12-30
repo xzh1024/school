@@ -1,7 +1,7 @@
 import { ServiceType } from "./base/serviceType";
 import { BaseService } from "./base/baseService";
 import { ServiceFactory } from "./ServiceFactory";
-import { BaseFormParams } from "@/common/interface/baseInterface";
+import { BaseFormParams, AreaModel } from "@/common/interface/baseInterface";
 import { ModuleKeyEnum } from "@/common/config/config";
 
 const serviceName = ServiceType.basicsService;
@@ -68,7 +68,7 @@ export class BasicsService extends BaseService {
     });
   }
   // 地区
-  public getAreas() {
+  public getAreas(): Promise<AreaModel[]> {
     return this.request({
       url: "/open/areas/tree",
       module: ModuleKeyEnum.basic

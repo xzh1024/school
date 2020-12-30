@@ -1,7 +1,7 @@
 <template>
   <div class="header-aside">
     <div class="header-left">
-      <div class="header-title">信息展馆-商家后台</div>
+      <div class="header-title">配修社区-商家后台</div>
       <div class="header-hint">
         * 这里是一排提示语这里是一排提示语
       </div>
@@ -16,7 +16,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { BaseInfoModel } from "@/store/modules/base/interface";
-import { Getter, namespace } from "vuex-class";
+import { namespace } from "vuex-class";
 
 const BaseStore = namespace("base");
 

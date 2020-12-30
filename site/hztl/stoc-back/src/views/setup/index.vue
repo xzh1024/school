@@ -193,7 +193,7 @@ export default class Setup extends Vue {
       }
       if (startQty && endQty) {
         if (Number(endQty) <= Number(startQty)) {
-          this.messageError("结束值不能小于开始值");
+          this.messageError("开始值需要小于结束值");
           return;
         }
       } else if (!startQty && !endQty) {

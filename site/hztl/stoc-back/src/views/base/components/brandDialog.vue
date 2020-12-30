@@ -3,6 +3,7 @@
     class="brand-dialog"
     title="主营车型品牌"
     :visible.sync="visible"
+    :close-on-click-modal="false"
     width="624px"
     @close="close"
   >

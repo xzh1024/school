@@ -206,7 +206,7 @@
                 <div class="base-row">
                   <div class="base-label">主营车型:</div>
                   <div class="base-content text-blue">
-                    {{ formData.vehBrands.join("，") }}
+                    {{ formData.vehBrands.join("、") }}
                     <i class="icon-edit" @click="showBrandDialog"></i>
                   </div>
                 </div>
@@ -215,7 +215,7 @@
                 <div class="base-row">
                   <div class="base-label">发货地区:</div>
                   <div class="base-content text-blue">
-                    {{ formData.areas.join("，") }}
+                    {{ areaNames.join("、") }}
                     <i class="icon-edit" @click="showAreaDialog"></i>
                   </div>
                 </div>
@@ -243,7 +243,7 @@
         ref="brandDialog"
         @updateVehBrands="updateVehBrands"
       ></brand-dialog>
-      <area-dialog ref="areaDialog"></area-dialog>
+      <area-dialog ref="areaDialog" @updateAreas="updateAreas"></area-dialog>
     </div>
   </layout-main>
 </template>
@@ -265,7 +265,7 @@ const basicsService = ServiceFactory.getService<BasicsService>(
 import {
   BaseFormParams,
   FileModel,
-  AreaItemModel
+  AreaModel
 } from "@/common/interface/baseInterface";
 
 @Component({
@@ -295,57 +295,11 @@ export default class Base extends Vue {
     areas: []
   };
 
-  protected areas = [];
-
-  public areaProps = {
-    clearable: true,
-    multiple: true,
-    checkStrictly: true,
-    lazy: true,
-    lazyLoad(node: any, resolve: any) {
-      const { level } = node;
-      console.log(node);
-      if (level === 0) {
-        basicsService.getProvinces().then((resp: AreaItemModel[]) => {
-          console.log(resp);
-          const nodes = resp.map((item: AreaItemModel) => {
-            return {
-              value: item.id,
-              label: item.name,
-              leaf: level >= 2
-            };
-          });
-          resolve(nodes);
-        });
-      } else if (level === 1) {
-        basicsService.getCities(node.value).then((resp: AreaItemModel[]) => {
-          console.log(resp);
-          const nodes = resp.map((item: AreaItemModel) => {
-            return {
-              value: item.id,
-              label: item.name,
-              leaf: level >= 2
-            };
-          });
-          resolve(nodes);
-        });
-      } else if (level === 2) {
-        basicsService.getCounties(node.value).then((resp: AreaItemModel[]) => {
-          console.log(resp);
-          const nodes = resp.map((item: AreaItemModel) => {
-            return {
-              value: item.id,
-              label: item.name,
-              leaf: true
-            };
-          });
-          resolve(nodes);
-        });
-      } else {
-        resolve();
-      }
-    }
-  };
+  get areaNames() {
+    return this.formData.areas.map((item: AreaModel) => {
+      return item.cascadeName || item.name;
+    });
+  }
 
   get validate() {
     const formData = this.formData;
@@ -645,15 +599,20 @@ export default class Base extends Vue {
     }
   ];
 
-  public showBrandDialog() {
+  protected showBrandDialog() {
     this.brandDialog.show(this.formData.vehBrands as string[]);
-  }
-  public showAreaDialog() {
-    this.areaDialog.show();
   }
 
   public updateVehBrands(list: string[]) {
     this.formData.vehBrands = list;
+  }
+
+  protected showAreaDialog() {
+    this.areaDialog.show(this.formData.areas);
+  }
+
+  public updateAreas(areas: AreaModel[]) {
+    this.formData.areas = [...areas];
   }
 
   protected getCompanies() {
@@ -697,22 +656,8 @@ export default class Base extends Vue {
       ...formData,
       pics: this.pics.map(item => item.origin),
       wechatPics: this.wechatPics.map(item => item.origin),
-      qqPics: this.qqPics.map(item => item.origin),
-      areas: this.areas.map((item: any[]) => {
-        const area = {
-          type: "",
-          id: 0,
-          name: ""
-        };
-        const len = item.length;
-        if (len === 1) {
-          area.type = "Province";
-        } else if (len === 2) {
-          area.type = "City";
-        }
-        return {};
-      })
-    };
+      qqPics: this.qqPics.map(item => item.origin)
+    } as BaseFormParams;
     basicsService.updateCompanies(params).then((resp: any) => {
       console.log(resp);
       this.$message.success("保存成功");
@@ -725,12 +670,7 @@ export default class Base extends Vue {
   }
 
   public phoneValidate(value: string) {
-    value = value.replace(/[^\d]/g, "");
-    value = value.replace(/^(0|2|3|4|5|6|7|8|9)/g, "");
-    if (value.length > 11) {
-      value = value.slice(0, 11);
-    }
-    return value;
+    return value.replace(/[^\d-]/g, "");
   }
 
   created() {

@@ -1,3 +1,10 @@
+export interface AreaModel {
+  id: number;
+  name: string;
+  children?: AreaModel[];
+  type?: string;
+  cascadeName?: string;
+}
 export interface BaseFormParams {
   pics?: any[];
   description: string;
@@ -14,9 +21,8 @@ export interface BaseFormParams {
   qq: string;
   qqPics?: any[];
   vehBrands: string[];
-  areas: any[];
+  areas: AreaModel[];
 }
-
 export interface ScopeModel {
   code: string;
   name: string;
@@ -25,14 +31,12 @@ export interface BrandModel {
   category: string;
   scopes: ScopeModel[];
 }
-
 export interface FileModel {
   name: string;
   url: string;
   origin: string;
 }
-
-export interface AreaItemModel {
+export interface AreaModel {
   id: number;
   name: string;
 }

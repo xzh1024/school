@@ -52,7 +52,7 @@ module.exports = {
   },
   chainWebpack: config => {
     config.plugin("html").tap(args => {
-      args[0].title = "信息展馆-商家后台";
+      args[0].title = "配修社区-商家后台";
       return args;
     });
   }
