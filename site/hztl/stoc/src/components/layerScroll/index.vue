@@ -142,7 +142,7 @@ export default class LayerScroll extends Vue {
         background: $gradients-primary !important;
       }
       &:hover .icon-up-gray {
-        @extend .icon-top-white;
+        @extend .icon-up-white;
       }
     }
     .layer-item.is-active {

@@ -2,17 +2,24 @@
   <div class="goods-template">
     <ht-card title="优质好货">
       <div slot="after-title">
-        <ht-pagination
-          :currentPage.sync="pageInfo.page"
-          :total="pageInfo.totalSize"
-          :pageCount="pageInfo.totalPage"
-          @current-change="getParts"
-        ></ht-pagination>
+        <el-button
+          type="primary"
+          size="mini"
+          round
+          @click="handleScreenVisible"
+        >
+          {{ screenVisible ? "收起筛选" : "展开筛选" }}
+          <i
+            style="color: #FFFFFF"
+            :class="screenVisible ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"
+          ></i>
+        </el-button>
       </div>
       <div class="goods-list">
         <GoodsSearch
           :queryParams="queryParams"
           @search="getParts"
+          v-show="screenVisible"
         ></GoodsSearch>
 
         <div class="pagenation-address-wrap">
@@ -231,6 +238,8 @@ const queryParams = {
 export default class GoodsList extends Vue {
   @Inject("reload") reload: any;
 
+  protected screenVisible = true;
+
   protected goodsInfoVisible = false;
 
   protected pageSizes = PAGE_SIZES;
@@ -291,6 +300,10 @@ export default class GoodsList extends Vue {
     console.log(value);
   }
 
+  protected handleScreenVisible() {
+    this.screenVisible = !this.screenVisible;
+  }
+
   created() {
     const { keyword, companyId } = this.$route.query;
     if (keyword) {
@@ -335,8 +348,14 @@ export default class GoodsList extends Vue {
   .ht-card {
     margin-top: $margin-size-main;
     background-color: $color-white;
+    .goods-search {
+      margin-bottom: $margin-size-main;
+    }
     .goods-list {
       padding: 16px;
+      .pagenation-address-wrap {
+        margin-bottom: $margin-size-main;
+      }
       .pagenation-address-right {
         display: flex;
         align-items: center;
@@ -369,7 +388,6 @@ export default class GoodsList extends Vue {
         }
         .cell-price {
           margin-left: 2px;
-          // font-size: $font-size-16;
           font-weight: 600;
         }
         .cell-promotion {

@@ -55,7 +55,10 @@ export default class SearchBar extends Vue {
   protected handleSearch() {
     this.$router.push({
       path: this.type,
-      query: { keyword: this.keyword }
+      query: {
+        keyword: this.keyword,
+        version: new Date().getTime().toString()
+      }
     });
     this.reload();
   }

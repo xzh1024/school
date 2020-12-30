@@ -4,11 +4,17 @@
   height: 18px;
 }
 
-.logo-60 {
+.icon-14 {
   display: inline-block;
-  width: 60px;
+  width: 14px;
+  height: 14px;
+}
+
+.logo-main {
+  display: inline-block;
+  width: 156px;
   height: 60px;
-  background-image: url("~@/assets/img/logo/logo60.png");
+  background-image: url("~@/assets/img/logo/logo-main.png");
   background-size: 100% 100%;
 }
 
@@ -69,6 +75,7 @@
   background-image: url("~@/assets/img/icon/icon-soso-white.png");
   background-size: 100% 100%;
 }
+
 .icon-soso-gray {
   @extend .icon;
   background-image: url("~@/assets/img/icon/icon-soso-gray.png");
@@ -104,15 +111,16 @@
   background-image: url("~@/assets/img/icon/icon-up-gray.png");
   background-size: 100% 100%;
 }
+
 .icon-down-gray {
   @extend .icon;
   background-image: url("~@/assets/img/icon/icon-down-gray.png");
   background-size: 100% 100%;
 }
 
-.icon-top-white {
+.icon-up-white {
   @extend .icon;
-  background-image: url("~@/assets/img/icon/icon-top-white.png");
+  background-image: url("~@/assets/img/icon/icon-up-white.png");
   background-size: 100% 100%;
 }
 

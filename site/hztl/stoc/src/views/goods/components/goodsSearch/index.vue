@@ -3,7 +3,7 @@
     <div class="cell">
       <div class="cell-left">配件品牌:</div>
       <div class="cell-right">
-        <div class="check-list">
+        <div class="check-list" :class="{ 'max-height-60': !brandVisible }">
           <el-checkbox-group
             size="small"
             v-model="queryParams.brands"
@@ -16,6 +16,13 @@
               :label="brand"
             ></el-checkbox-button>
           </el-checkbox-group>
+        </div>
+
+        <div class="button-plus" @click="handleScreenVisible">
+          <span>{{ brandVisible ? "收起" : "更多" }}</span>
+          <i
+            :class="brandVisible ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"
+          ></i>
         </div>
       </div>
     </div>
@@ -80,6 +87,8 @@ const companyService = new CompanyService();
 export default class GoodsSearch extends Vue {
   @Prop() protected queryParams!: PartParams;
 
+  protected brandVisible = false;
+
   protected brands: string[] = [];
   protected companys: NameModel[] = [];
   protected insurCertTypes: string[] = [];
@@ -97,6 +106,10 @@ export default class GoodsSearch extends Vue {
 
   protected handleSearch() {
     this.$emit("search");
+  }
+
+  protected handleScreenVisible() {
+    this.brandVisible = !this.brandVisible;
   }
 
   created() {
@@ -120,14 +133,16 @@ export default class GoodsSearch extends Vue {
     }
     .cell-right {
       flex: 1;
+      box-sizing: border-box;
       padding: $padding-size-main;
-      // padding-bottom: 0;
       border-left: $border-gray;
+      display: flex;
+      align-items: flex-start;
       .check-list {
+        flex: 1;
         ::v-deep .el-checkbox-group {
           .el-checkbox-button--small {
-            margin-right: $margin-size-main;
-            margin-bottom: $margin-size-main;
+            margin: 4px 8px 4px 0;
             .el-checkbox-button__inner {
               color: $color-gray;
               padding: 4px 10px;
@@ -144,6 +159,16 @@ export default class GoodsSearch extends Vue {
             }
           }
         }
+      }
+      .max-height-60 {
+        max-height: 60px;
+        overflow: hidden;
+      }
+      .button-plus {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
       }
     }
   }

@@ -2,10 +2,21 @@
   <div class="company-template">
     <ht-card title="商家">
       <div slot="after-title">
-        <el-button type="primary" size="mini" round>收起筛选</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          round
+          @click="handleScreenVisible"
+        >
+          {{ screenVisible ? "收起筛选" : "展开筛选" }}
+          <i
+            style="color: #FFFFFF"
+            :class="screenVisible ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"
+          ></i>
+        </el-button>
       </div>
-      <div class="company-search">
-        <div class="brand-list">
+      <div class="company-search" v-show="screenVisible">
+        <div class="brand-list" :class="{ 'max-height-30': !brandVisible }">
           <el-checkbox-group
             v-model="queryParams.vehBrands"
             size="small"
@@ -18,6 +29,12 @@
               :label="brand"
             ></el-checkbox-button>
           </el-checkbox-group>
+        </div>
+        <div class="button-plus" @click="handleBrandVisible">
+          <span>{{ brandVisible ? "收起" : "更多" }}</span>
+          <i
+            :class="brandVisible ? 'el-icon-arrow-up' : 'el-icon-arrow-down'"
+          ></i>
         </div>
       </div>
       <!-- <div class="pagenation-wrap" v-if="this.pageInfo.totalSize">
@@ -90,6 +107,8 @@ const brandService = new BrandService();
   }
 })
 export default class CompanyList extends Vue {
+  protected screenVisible = true;
+  protected brandVisible = true;
   protected list: CompanyModel[] = [];
   protected pageSizes = PAGE_SIZES;
   protected pageInfo: PageParams = {
@@ -108,7 +127,6 @@ export default class CompanyList extends Vue {
 
   protected areaCityChange(value: AreaModel) {
     this.queryParams.areas = value ? `City:${value.id}` : "";
-    // this.getParts();
     this.getCompanies();
   }
 
@@ -141,6 +159,13 @@ export default class CompanyList extends Vue {
     });
   }
 
+  protected handleScreenVisible() {
+    this.screenVisible = !this.screenVisible;
+  }
+  protected handleBrandVisible() {
+    this.brandVisible = !this.brandVisible;
+  }
+
   created() {
     const { keyword } = this.$route.query;
     if (keyword) {
@@ -160,15 +185,18 @@ export default class CompanyList extends Vue {
       padding: 16px;
     }
     .pagenation-address-wrap {
-      margin-top: 16px;
+      margin-bottom: 16px;
     }
     .company-search {
-      // margin-top: 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
       .brand-list {
+        flex: 1;
+        box-sizing: border-box;
         ::v-deep .el-checkbox-group {
           .el-checkbox-button--small {
-            margin-top: 8px;
-            margin-right: 8px;
+            margin: 4px 8px 4px 0;
             .el-checkbox-button__inner {
               padding: 4px 10px;
               border: 1px solid transparent;
@@ -183,13 +211,21 @@ export default class CompanyList extends Vue {
           }
         }
       }
+      .max-height-30 {
+        max-height: 30px;
+        overflow: hidden;
+      }
+      .button-plus {
+        height: 30px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+      }
     }
     .company-list {
       box-sizing: border-box;
       width: 100%;
-      min-height: 582px;
-      // padding: 16px 2px 8px 16px;
-      margin-top: 16px;
+      // min-height: 582px;
       .company-item {
         float: left;
         margin-right: 14px;

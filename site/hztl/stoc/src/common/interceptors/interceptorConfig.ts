@@ -36,20 +36,11 @@ service.interceptors.response.use(
       return Promise.resolve(res);
     } else if (res.code === "token-err") {
       sessionStorage.clear();
-      router.push("/login");
       return Promise.reject(res);
     } else if (res.code === "no-login") {
       sessionStorage.clear();
-      router.push("/login");
       return Promise.reject(res);
     } else if (res.code !== "ok") {
-      // Message({
-      //   message: res.message,
-      //   type: "error",
-      //   duration: 3500,
-      //   showClose: true
-      // });
-      router.push("/login");
       return Promise.reject(res);
     }
     return response;

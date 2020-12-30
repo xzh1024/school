@@ -9,10 +9,6 @@
           <div class="header-top-company">
             {{ baseInfo.companyName }}
           </div>
-          <!-- <div class="header-top-user">
-            <i class="icon-user"></i>
-            <span>潘金莲</span>
-          </div> -->
           <ht-divider :direction="'vertical'"></ht-divider>
           <div class="header-top-btn" @click="openBackStage">
             管理中心 <i class="icon-right"></i>
@@ -23,15 +19,11 @@
     <div class="header-content">
       <div class="ht-container">
         <div class="header-left">
-          <div class="logo-wrap" @click="handlePath">
-            <i class="logo-60"></i>
-            <div class="strong">配修社区</div>
-          </div>
+          <div class="logo-main" @click="handlePath"></div>
           <div class="address-wrap">
             <slot name="address"></slot>
           </div>
         </div>
-
         <search-bar></search-bar>
       </div>
     </div>
@@ -65,7 +57,8 @@ export default class HeaderMain extends Vue {
 
   protected openBackStage() {
     if (sessionStorage.token) {
-      const url = "http://localhost:8080/?token=" + sessionStorage.token;
+      // const url = "http://localhost:8080/?token=" + sessionStorage.token;
+      const url = "http://192.168.3.50:8080/?token=" + sessionStorage.token;
       window.open(url);
     }
   }
@@ -87,14 +80,6 @@ $header-content-height: 116px;
       .header-top-hint {
         flex: 1;
         font-size: $font-size-12;
-      }
-      .header-top-user {
-        display: flex;
-        align-items: center;
-        margin-left: 16px;
-        .icon-user {
-          margin-right: 4px;
-        }
       }
       .ht-divider-vertical {
         margin: 0 16px;
@@ -124,15 +109,8 @@ $header-content-height: 116px;
       .header-left {
         display: flex;
         align-items: flex-end;
-        .logo-wrap {
-          display: flex;
-          align-items: center;
+        .logo-main {
           cursor: pointer;
-          .strong {
-            font-size: $font-size-20;
-            color: $color-primary;
-            margin-left: 5px;
-          }
         }
         .address-wrap {
           margin-left: 24px;
