@@ -18,11 +18,23 @@
         placeholder="输入配件名称/OE号、品牌等关键字查询"
         clearable
         v-model.trim="keyword"
+        v-on:keyup.enter.native="handleSearch"
       />
       <button class="search-button" @click="handleSearch">
         搜索<i class="icon-soso-white"></i>
       </button>
     </div>
+    <!-- <div class="search-history-wrap"> -->
+    <div class="search-history">
+      <span
+        class="search-history-item"
+        v-for="item in historyKeywords"
+        :key="item"
+        @click="handleKeyword(item)"
+        >{{ item }}</span
+      >
+    </div>
+    <!-- </div> -->
   </div>
 </template>
 
@@ -36,6 +48,7 @@ export default class SearchBar extends Vue {
   // goods、brand、company
   protected type = "/goods";
   protected keyword = "";
+  protected historyKeywords: string[] = [];
 
   protected tabs = [
     {
@@ -53,6 +66,7 @@ export default class SearchBar extends Vue {
   ];
 
   protected handleSearch() {
+    this.updateHistoryKeywords(this.keyword);
     this.$router.push({
       path: this.type,
       query: {
@@ -66,13 +80,37 @@ export default class SearchBar extends Vue {
   private handleType(value: string) {
     this.type = value;
   }
+  private handleKeyword(value: string) {
+    this.keyword = value;
+    this.handleSearch();
+  }
+  protected updateHistoryKeywords(value: string) {
+    if (!value) return;
+    let list = [...this.historyKeywords];
+    const deleteIndex = list.findIndex(item => value === item);
+    if (deleteIndex > -1) {
+      list.splice(deleteIndex, 1);
+    }
+    list.unshift(value);
+    const maxLength = 30;
+    if (list.length > maxLength) {
+      list = list.slice(0, maxLength);
+    }
+    this.historyKeywords = list;
+
+    localStorage.historyKeywords = JSON.stringify(this.historyKeywords);
+  }
 
   private init() {
+    const historyKeywords =
+      localStorage.historyKeywords && JSON.parse(localStorage.historyKeywords);
+    if (Array.isArray(historyKeywords)) {
+      this.historyKeywords = historyKeywords;
+    }
     const { keyword } = this.$route.query;
     if (keyword) {
       this.keyword = keyword as string;
     }
-
     const path = this.$route.path;
     this.tabs.some(tab => {
       const result = path === tab.type;
@@ -91,6 +129,7 @@ export default class SearchBar extends Vue {
 
 <style lang="scss" scoped>
 .search-bar {
+  width: 486px;
   .search-tabs {
     display: flex;
     font-size: $font-size-12;
@@ -139,6 +178,30 @@ export default class SearchBar extends Vue {
       align-items: center;
       i {
         margin-left: 4px;
+      }
+    }
+  }
+  .search-history {
+    width: 100%;
+    margin-top: $margin-size-main;
+    font-size: $font-size-12;
+    color: $color-dim;
+    @extend .lip-1;
+    .search-history-item {
+      display: inline-block;
+      margin-left: $margin-size-main;
+      padding: 0 8px;
+      line-height: 22px;
+      border-radius: 11px 11px;
+      color: $color-gray;
+      background-color: $bg-color-gray;
+      cursor: pointer;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:hover {
+        color: $color-primary;
+        background-color: rgba($color: $color-primary, $alpha: 0.2);
       }
     }
   }

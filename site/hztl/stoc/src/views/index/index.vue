@@ -134,7 +134,6 @@ export default class Index extends Vue {
         // customerService,
         // logoUrl
       } = res;
-      console.log(res);
       if (Array.isArray(banners)) {
         banners.forEach((item: BannerModel[], index) => {
           if (index === 0) {
