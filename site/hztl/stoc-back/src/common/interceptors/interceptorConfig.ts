@@ -104,7 +104,6 @@ service.interceptors.response.use(
         duration: 3500,
         showClose: true
       });
-      router.push("/login");
       return Promise.reject(res);
     }
     return response;

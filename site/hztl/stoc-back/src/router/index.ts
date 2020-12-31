@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
+import store from "@/store";
 import base from "./base";
 import setup from "./setup";
 
@@ -41,6 +42,7 @@ router.beforeEach((to, from, next) => {
         .tokenLogin(token)
         .then(() => {
           sessionStorage.token = token;
+          store.dispatch("base/loadBase");
           next();
         })
         .catch(() => {
