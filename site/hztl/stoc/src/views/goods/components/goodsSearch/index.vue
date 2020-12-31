@@ -50,6 +50,17 @@
       </div>
     </div>
     <div class="cell">
+      <div class="cell-left">车型：</div>
+      <div class="cell-right">
+        <el-cascader
+          size="mini"
+          :props="vehProps"
+          @change="handleVehModelChange"
+          clearable
+        ></el-cascader>
+      </div>
+    </div>
+    <div class="cell">
       <div class="cell-left">保险认证分类:</div>
       <div class="cell-right">
         <div class="check-list">
@@ -74,14 +85,16 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { NameModel } from "@/common/interface/commonInterface";
-import { BrandModel, PartFilterModel } from "@/common/interface/brandInterface";
+import { PartFilterModel } from "@/common/interface/brandInterface";
 import { BrandService } from "@/common/services/brandService";
 const brandService = new BrandService();
-import { PageResponseResult } from "@/common/interface/commonInterface";
-import { CompanyModel } from "@/common/interface/companyInterface";
-import { PartParams } from "@/common/interface/goodsInterface";
-import { CompanyService } from "@/common/services/companyService";
-const companyService = new CompanyService();
+import {
+  PartParams,
+  VehModelParams,
+  VehModelEnergy
+} from "@/common/interface/goodsInterface";
+import { GoodsService } from "@/common/services/goodsService";
+const goodsService = new GoodsService();
 
 @Component({ name: "GoodsSearch" })
 export default class GoodsSearch extends Vue {
@@ -102,6 +115,126 @@ export default class GoodsSearch extends Vue {
         this.insurCertTypes = insurCertTypes || [];
       }
     });
+  }
+
+  protected vehProps = {
+    // multiple: true,
+    checkStrictly: true,
+    lazy: true,
+    lazyLoad(node: any, resolve: Function) {
+      const { level } = node;
+      if (level === 0) {
+        const params: VehModelParams = {
+          type: "factoryBrand"
+        };
+        goodsService
+          .getVehModels(params)
+          .then((resp: string[]) => {
+            const nodes = resp.map((item: string) => {
+              return {
+                value: item,
+                label: item,
+                leaf: false
+              };
+            });
+            resolve(nodes);
+          })
+          .catch(() => {
+            resolve();
+          });
+      } else if (level === 1) {
+        const params: VehModelParams = {
+          type: "series",
+          factoryBrand: node.value
+        };
+        goodsService
+          .getVehModels(params)
+          .then((resp: string[]) => {
+            const nodes = resp.map((item: string) => {
+              return {
+                value: item,
+                label: item,
+                leaf: false
+              };
+            });
+            resolve(nodes);
+          })
+          .catch(() => {
+            resolve();
+          });
+      } else if (level === 2) {
+        const params: VehModelParams = {
+          type: "year",
+          factoryBrand: node.parent.value,
+          series: node.value
+        };
+        goodsService
+          .getVehModels(params)
+          .then((resp: string[]) => {
+            const nodes = resp.map((item: string) => {
+              return {
+                value: item,
+                label: item,
+                leaf: false
+              };
+            });
+            resolve(nodes);
+          })
+          .catch(() => {
+            resolve();
+          });
+      } else if (level === 3) {
+        goodsService
+          .getVehModels({
+            type: "combine",
+            factoryBrand: node.parent.parent.value,
+            series: node.parent.value,
+            year: node.value
+          })
+          .then((resp: VehModelEnergy[]) => {
+            const nodes = resp.map((item: VehModelEnergy) => {
+              const data = `${item.displacement} ${item.gearbox}`;
+              return {
+                value: data,
+                label: data,
+                leaf: true
+              };
+            });
+            resolve(nodes);
+          })
+          .catch(() => {
+            resolve();
+          });
+      } else {
+        resolve();
+      }
+    }
+  };
+  protected handleVehModelChange(value: string[]) {
+    const vehModelParams = {
+      factoryBrand: "",
+      series: "",
+      year: "",
+      displacement: "",
+      gearbox: ""
+    };
+    value.forEach((item: string, index: number) => {
+      if (index === 0) {
+        vehModelParams.factoryBrand = item || "";
+      } else if (index === 1) {
+        vehModelParams.series = item || "";
+      } else if (index === 2) {
+        vehModelParams.year = item || "";
+      } else if (index === 3) {
+        const arr = item.split(" ");
+        vehModelParams.displacement = arr[0] || "";
+        vehModelParams.gearbox = arr[1] || "";
+      }
+    });
+
+    Object.assign(this.queryParams, vehModelParams);
+
+    this.handleSearch();
   }
 
   protected handleSearch() {

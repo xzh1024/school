@@ -12,7 +12,8 @@ import {
   Col,
   Select,
   Option,
-  Input
+  Input,
+  Cascader
 } from "element-ui";
 
 Vue.use(Button);
@@ -28,3 +29,4 @@ Vue.use(Col);
 Vue.use(Select);
 Vue.use(Option);
 Vue.use(Input);
+Vue.use(Cascader);

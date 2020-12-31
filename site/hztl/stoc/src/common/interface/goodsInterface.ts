@@ -8,12 +8,16 @@ export interface PartParams extends PageParams {
   companyIds?: number[]; // 公司ID
   insurCertTypes?: string[]; // 配件保险认证分类
   orderByAreas?: string; // 发货地排序
+  factoryBrand?: string; // 汽车厂牌
+  series?: string; // 车系
+  year?: number | string; // 年款
+  displacement?: string; // 排量
+  gearbox?: string; // 变速箱
 }
 export interface PartAllParams {
   keyword?: string; // 关键字
   firstMnemonic?: string; // 首字母助记符
 }
-
 export interface PartModel {
   companyId: number; // 公司ID
   swPartId: number; // 软件内配件ID
@@ -59,4 +63,15 @@ export interface PartModel {
   qty: string; // 库存
   price: string; // 价格，可能为null，null代表需要询价
   popoverVisible?: boolean;
+}
+export interface VehModelParams {
+  type: string; // 查询数据类型
+  brand?: string; // 汽车品牌
+  factoryBrand?: string; // 汽车厂牌
+  series?: string; // 车系
+  year?: string; // 年款
+}
+export interface VehModelEnergy {
+  displacement: string;
+  gearbox: string;
 }

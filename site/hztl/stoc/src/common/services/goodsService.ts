@@ -2,7 +2,12 @@ import { ServiceType } from "./base/serviceType";
 import { BaseService } from "./base/baseService";
 import { ServiceFactory } from "./ServiceFactory";
 import { PageResponseResult } from "@/common/interface/commonInterface";
-import { PartModel, PartParams } from "@/common/interface/goodsInterface";
+import {
+  PartModel,
+  PartParams,
+  VehModelParams,
+  VehModelEnergy
+} from "@/common/interface/goodsInterface";
 
 const serviceName = ServiceType.goodsService;
 
@@ -19,6 +24,13 @@ export class GoodsService extends BaseService {
     return this.request({
       params: params,
       url: "/open/whsc/parts"
+    });
+  }
+
+  public getVehModels(params: VehModelParams) {
+    return this.request({
+      params: params,
+      url: "/open/veh-models"
     });
   }
 }

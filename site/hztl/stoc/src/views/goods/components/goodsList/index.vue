@@ -197,7 +197,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Inject, Watch } from "vue-property-decorator";
+import { Component, Vue, Inject } from "vue-property-decorator";
 import { HtCard, HtPagination, HtDivider } from "@/components/hztl";
 import CompanyInfo from "@/views/company/components/companyInfo";
 import GoodsSearch from "../goodsSearch/index.vue";
@@ -210,7 +210,6 @@ import {
 import { PageParams } from "@/common/interface/commonInterface";
 import { PAGE_SIZES } from "@/common/utils/config";
 import { PartModel, PartParams } from "@/common/interface/goodsInterface";
-import { PartFilterModel } from "@/common/interface/brandInterface";
 import { GoodsService } from "@/common/services/goodsService";
 const goodsService = new GoodsService();
 
@@ -220,7 +219,12 @@ const queryParams = {
   brands: [],
   companyIds: [],
   insurCertTypes: [],
-  orderByAreas: ""
+  orderByAreas: "",
+  factoryBrand: "",
+  series: "",
+  year: "",
+  displacement: "",
+  gearbox: ""
 };
 
 @Component({
@@ -294,10 +298,6 @@ export default class GoodsList extends Vue {
   }
   protected hidePartInfo() {
     this.goodsInfoVisible = false;
-  }
-
-  protected sortChange(value: any) {
-    console.log(value);
   }
 
   protected handleScreenVisible() {
