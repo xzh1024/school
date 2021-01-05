@@ -219,20 +219,6 @@
                     <i class="icon-edit" @click="showAreaDialog"></i>
                   </div>
                 </div>
-                <!-- <el-form-item label="发货地区:"> -->
-                <!-- <el-cascader
-                    v-model="formData.areas"
-                    :options="areaOptions"
-                    :props="{ multiple: true, checkStrictly: true }"
-                    clearable
-                    @change="getCheckedNodes"
-                  ></el-cascader> -->
-                <!-- <el-cascader
-                    v-model="areas"
-                    :props="areaProps"
-                    @change="changeAreas"
-                  ></el-cascader> -->
-                <!-- </el-form-item> -->
               </ht-card>
             </el-row>
           </div>
@@ -250,7 +236,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import layoutMain from "@/components/layout/layoutMain.vue";
+import LayoutMain from "@/components/layout/layoutMain.vue";
 import SrImgUpload from "@/components/base/SrImgUpload";
 import HtCard from "@/components/ht-card";
 import BrandDialog from "./components/brandDialog.vue";
@@ -271,7 +257,7 @@ import {
 @Component({
   name: "Base",
   components: {
-    layoutMain,
+    LayoutMain,
     "srimg-upload": SrImgUpload,
     HtCard,
     BrandDialog,
@@ -311,15 +297,12 @@ export default class Base extends Vue {
   protected qqPics: FileModel[] = [];
 
   protected getFileList(fileList: FileModel[]) {
-    console.log(fileList);
     this.pics = fileList;
   }
   protected getWechatFileList(fileList: FileModel[]) {
-    console.log(fileList);
     this.wechatPics = fileList;
   }
   protected getQqFileList(fileList: FileModel[]) {
-    console.log(fileList);
     this.qqPics = fileList;
   }
 
@@ -617,7 +600,6 @@ export default class Base extends Vue {
 
   protected getCompanies() {
     basicsService.getCompanies().then((resp: BaseFormParams) => {
-      console.log(resp);
       if (resp) {
         const pics = resp.pics || [];
         this.pics = pics.map(origin => {
@@ -658,15 +640,10 @@ export default class Base extends Vue {
       wechatPics: this.wechatPics.map(item => item.origin),
       qqPics: this.qqPics.map(item => item.origin)
     } as BaseFormParams;
-    basicsService.updateCompanies(params).then((resp: any) => {
-      console.log(resp);
+    basicsService.updateCompanies(params).then(() => {
       this.$message.success("保存成功");
       this.getCompanies();
     });
-  }
-
-  changeAreas(val: any) {
-    console.log(val);
   }
 
   public phoneValidate(value: string) {

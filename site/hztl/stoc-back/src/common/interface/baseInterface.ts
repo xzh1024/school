@@ -36,7 +36,3 @@ export interface FileModel {
   url: string;
   origin: string;
 }
-export interface AreaModel {
-  id: number;
-  name: string;
-}

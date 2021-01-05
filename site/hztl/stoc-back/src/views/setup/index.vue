@@ -126,7 +126,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import layoutMain from "@/components/layout/layoutMain.vue";
+import LayoutMain from "@/components/layout/layoutMain.vue";
 import HtCard from "@/components/ht-card";
 import { skuTypeEnum, priceTypeEnum } from "@/common/enum/setupEnum";
 import {
@@ -146,7 +146,7 @@ const skuModel: SkuSettingModel = {
 @Component({
   name: "Setup",
   components: {
-    layoutMain,
+    LayoutMain,
     HtCard
   }
 })
@@ -165,7 +165,6 @@ export default class Setup extends Vue {
 
   protected getSettings() {
     setupService.getSettings().then((res: SetupFormParams<SkuSettingModel>) => {
-      console.log(res);
       const data = {
         priceSetting: res.priceSetting,
         skuSetting: res.skuSetting || []

@@ -7,7 +7,7 @@
       class="el-menu-vertical-demo"
       :default-active="activePath"
       :router="true"
-      :collapse="true"
+      :collapse="false"
       text-color="#fff"
       active-text-color="#fff"
     >
@@ -20,12 +20,7 @@
         >
           <!-- 虚拟分组节点-名称 -->
           <template slot="title">
-            <div class="menu-item-wrap">
-              <i v-if="item.icon" :class="item.icon" class="util-icon"></i>
-              <div class="menu-item-name">
-                {{ item.meta ? item.meta.title : "" }}
-              </div>
-            </div>
+            <i v-if="item.icon" :class="item.icon" class="util-icon"></i>
             <span>{{ item.meta ? item.meta.title : "" }}</span>
           </template>
           <!-- 无分组项 -->
@@ -34,21 +29,16 @@
             :key="subItem.name"
             :index="subItem.path"
           >
-            <i v-if="subItem.icon" :class="subItem.icon"></i>
-            <span class="color-text-base">{{
-              subItem.meta ? subItem.meta.title : ""
-            }}</span>
+            <span v-if="subItem.icon" :class="subItem.icon"></span>
+            <span>{{ item.meta ? item.meta.title : "" }}</span>
           </el-menu-item>
         </el-submenu>
         <!-- 无分组 -->
         <el-menu-item v-else :key="item.name" :index="item.path">
           <div class="menu-item-wrap">
             <i v-if="item.icon" :class="item.icon" class="util-icon"></i>
-            <div class="menu-item-name">
-              {{ item.meta ? item.meta.title : "" }}
-            </div>
+            <span>{{ item.meta ? item.meta.title : "" }}</span>
           </div>
-          <!-- <span slot="title">{{ item.meta ? item.meta.title : "" }}</span> -->
         </el-menu-item>
       </template>
     </el-menu>
@@ -75,25 +65,6 @@ export default class MenuAside extends Vue {
   width: 100%;
   // min-height: 300px;
 }
-.el-menu--vertical {
-  .el-menu {
-    .el-menu-item {
-      box-sizing: border-box;
-      border-left: 4px solid transparent;
-      .color-text-base {
-        color: $color-text-base;
-      }
-      &.is-active {
-        position: relative;
-        background: #c0e3ff;
-        border-left: 4px solid $color-primary;
-        .color-text-base {
-          color: $color-primary;
-        }
-      }
-    }
-  }
-}
 .menu-aside {
   width: 100%;
   height: 100%;
@@ -108,27 +79,12 @@ export default class MenuAside extends Vue {
     justify-content: center;
     margin-bottom: 4px;
   }
-  ::v-deep .el-menu {
+  .el-menu {
     height: calc(100% - 64px);
     background: transparent;
-    .el-menu--horizontal {
-      .el-submenu {
-        .el-submenu__title {
-          &:hover {
-            background-color: #338fcc !important;
-          }
-        }
-      }
-    }
-    .el-submenu {
-      &.is-active {
-        background: #338fcc;
-      }
-    }
-    .el-menu-item,
-    .el-submenu__title {
-      // position: relative;
-      // padding: 0;
+    .el-menu-item {
+      position: relative;
+      padding: 0;
       &:hover {
         background: #338fcc;
       }
@@ -136,45 +92,23 @@ export default class MenuAside extends Vue {
         position: absolute;
         left: 0;
         top: 0;
-        width: 60px;
+        width: 100%;
         height: 100%;
-        // overflow: hidden;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        span {
+          width: 100%;
+          height: 20px;
+          line-height: 20px;
+          text-align: center;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
-      .menu-item-name {
-        height: 20px;
-        line-height: 20px;
-        // position: absolute;
-        // top: 40px;
-      }
-      // .util-icon {
-      //   position: absolute;
-      //   top: 40px;
-      // }
-      // .menu-item-wrap {
-      //   position: absolute;
-      //   left: 0;
-      //   top: 0;
-      //   width: 100%;
-      //   height: 100%;
-      //   overflow: hidden;
-      //   display: flex;
-      //   flex-direction: column;
-      //   align-items: center;
-      //   justify-content: center;
-      //   span {
-      //     width: 100%;
-      //     height: 20px;
-      //     line-height: 20px;
-      //     text-align: center;
-      //     overflow: hidden;
-      //     text-overflow: ellipsis;
-      //     white-space: nowrap;
-      //   }
-      // }
       &.is-active {
         background: #338fcc;
       }

@@ -15,7 +15,6 @@
         ref="areaTree"
         :default-checked-keys="checkedKeys"
         :props="defaultProps"
-        @node-click="handleNodeClick"
       >
       </el-tree>
     </div>
@@ -31,7 +30,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch, Emit } from "vue-property-decorator";
+import { Component, Vue, Emit } from "vue-property-decorator";
 import { AreaModel } from "@/common/interface/baseInterface";
 import { BasicsService } from "@/common/services/basicsService";
 const basicsService = new BasicsService();
@@ -55,7 +54,7 @@ export default class AreadDialog extends Vue {
     children: "children",
     label: "name"
   };
-  protected checkedKeys: any = [];
+  protected checkedKeys: number[] = [];
 
   protected setAreaTreeNodeType(tree: AreaModel[], parent?: AreaModel) {
     tree.forEach((item: AreaModel) => {
@@ -120,10 +119,6 @@ export default class AreadDialog extends Vue {
       this.setAreaTreeNodeType(tree);
       this.areas = tree;
     });
-  }
-
-  protected handleNodeClick(data: any) {
-    console.log(data);
   }
 
   get refAreaTree(): Tree {

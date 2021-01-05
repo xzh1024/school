@@ -3,6 +3,7 @@ import VueRouter, { RouteConfig } from "vue-router";
 import store from "@/store";
 import base from "./base";
 import setup from "./setup";
+import commodity from "./commodity";
 
 // import { ServiceFactory } from "@/common/services/ServiceFactory";
 // import { ServiceType } from "@/common/services/base/serviceType";
@@ -12,7 +13,7 @@ const loginService = new LoginService();
 
 Vue.use(VueRouter);
 
-export const mainIndexRoutes = [...base, ...setup];
+export const mainIndexRoutes = [...base, ...setup, ...commodity];
 
 const routes: Array<RouteConfig> = [
   { path: "/", redirect: "/base" },

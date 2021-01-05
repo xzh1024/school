@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-aside width="60px">
-      <MenuAside :routerList="routerList"></MenuAside>
+      <MenuAside></MenuAside>
     </el-aside>
     <el-container>
       <el-header height="64px" class="shadow">

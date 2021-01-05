@@ -6,7 +6,13 @@ const commonService = new CommonService();
 export default {
   namespaced: true,
   state: {
-    companyName: ""
+    areaId: 0,
+    areaName: "",
+    cityId: 0,
+    companyId: 0,
+    companyName: "",
+    erpType: 0,
+    needGuide: false
   },
   getters: {
     baseInfo: (state: BaseInfoModel) => {
