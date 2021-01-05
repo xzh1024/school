@@ -2,9 +2,9 @@
   <div class="header-aside">
     <div class="header-left">
       <div class="header-title">配修社区-商家后台</div>
-      <div class="header-hint">
+      <!-- <div class="header-hint">
         * 这里是一排提示语这里是一排提示语
-      </div>
+      </div> -->
     </div>
     <div class="header-right">
       <div class="header-company">
@@ -56,7 +56,7 @@ export default class HeaderAside extends Vue {
       text-overflow: ellipsis;
       white-space: nowrap;
       margin-top: 12px;
-      color: #3aa7ff;
+      color: $color-primary;
     }
     .header-hint {
       width: 100%;
@@ -65,7 +65,7 @@ export default class HeaderAside extends Vue {
       white-space: nowrap;
       margin-top: 4px;
       font-size: 12px;
-      color: #f58423;
+      color: $color-warning;
     }
   }
   .header-right {
