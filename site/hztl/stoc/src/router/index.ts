@@ -1,5 +1,5 @@
 import Vue from "vue";
-import VueRouter, { RouteConfig, Location } from "vue-router";
+import VueRouter, { RouteConfig, Location, Route } from "vue-router";
 Vue.use(VueRouter);
 import store from "@/store";
 import { LoginService } from "@/common/services/loginService";
@@ -51,7 +51,7 @@ const router = new VueRouter({
   }
 });
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to: Route, from: Route, next: () => void): void => {
   if (sessionStorage.token) {
     next();
   } else {
@@ -65,7 +65,6 @@ router.beforeEach((to, from, next) => {
           next();
         })
         .catch(() => {
-          console.log(666);
           next();
         });
     } else {

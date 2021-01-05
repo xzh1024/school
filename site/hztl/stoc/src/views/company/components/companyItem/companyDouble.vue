@@ -10,20 +10,21 @@
           <i class="icon-phone-gray"></i>
           <span class="cell-text">
             {{ info.phone }}
-            asdadadadada就打算打算的撒大
           </span>
         </div>
         <div title="主营" class="company-cell nowrap">
           <i class="icon-house-gray"></i>
           <span class="cell-text cell-assist">
-            {{ info.phone }}
+            主营：
+            {{ info.vehBrands ? info.vehBrands.join("、") : "" }}
           </span>
         </div>
       </div>
       <div title="地址" class="company-cell">
         <i class="icon-site-gray"></i>
         <span class="cell-text-double cell-assist">
-          大数据减肥咖啡是你克拉饭卡和康师傅哈看了法赫卡里舒服啦哈风飒风撒发生阿法更多
+          地址：
+          {{ info.address }}
         </span>
       </div>
     </div>
@@ -65,7 +66,7 @@ export default class CompanyDouble extends Vue {
     height: 174px;
   }
   .company-content {
-    padding: 0 8px;
+    padding: 0 $margin-size-main;
     .company-name {
       @extend .lip-1;
       margin-bottom: 3px;

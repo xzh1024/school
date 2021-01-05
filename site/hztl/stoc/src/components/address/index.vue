@@ -5,8 +5,6 @@
         <i class="icon-clear-circle-gray" @click="addressVisible = false"></i>
         <div class="address-search">
           <div class="search-wrap">
-            <!-- <i class="icon-soso-gray"></i> -->
-            <!-- <input class="search-input" type="text" placeholder="请输入城市名…" /> -->
             <el-select
               v-model="areaCityValue"
               value-key="id"
@@ -88,7 +86,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Emit, Watch } from "vue-property-decorator";
+import { Component, Vue, Emit, Watch } from "vue-property-decorator";
 import { AreaModel } from "@/common/interface/commonInterface";
 import { CommonService } from "@/common/services/commonService";
 const commonService = new CommonService();
@@ -115,21 +113,6 @@ export default class Address extends Vue {
   protected setActiveAreaCity!: Function;
 
   protected internalAreaCity: AreaModel | "" = "";
-  // @Prop({ default: "" })
-  // protected areaCity!: AreaModel | "";
-  // @Watch("areaCity", { immediate: true })
-  // protected areaCityWatch(newVal: AreaModel) {
-  //   this.internalAreaCity = newVal;
-  // }
-  // @Watch("internalAreaCity", { immediate: true })
-  // protected watchInternalAreaCity(newVal: AreaModel) {
-  //   this.$emit("update:areaCity", newVal);
-  // }
-
-  // @Watch("baseInfo", { deep: true, immediate: true })
-  // protected watchBaseInfo(val: BaseInfoModel) {
-  //   console.log(val);
-  // }
 
   @Emit("areaCityChange")
   protected areaCityChange() {
@@ -312,12 +295,6 @@ export default class Address extends Vue {
     if (Array.isArray(addressSearchHistory)) {
       this.addressSearchHistory = addressSearchHistory;
     }
-
-    // if (this.activeAreaCity && !this.areaCity) {
-    //   console.log(this.activeAreaCity);
-    //   this.internalAreaCity = this.activeAreaCity;
-    //   this.$nextTick(() => this.areaCityChange());
-    // }
     this.internalAreaCity = this.activeAreaCity;
     this.$nextTick(() => this.areaCityChange());
   }

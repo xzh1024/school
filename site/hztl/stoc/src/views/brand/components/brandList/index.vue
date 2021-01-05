@@ -12,9 +12,16 @@
       </div>
     </div>
     <div class="brand-list clearfix">
-      <template v-for="item in list">
-        <brand-item :key="item.swPartId" :info="item"></brand-item>
+      <template v-if="list.length">
+        <brand-item
+          v-for="item in list"
+          :key="item.swPartId"
+          :info="item"
+        ></brand-item>
       </template>
+      <div class="no-data" v-if="!list.length">
+        暂无数据
+      </div>
     </div>
   </div>
 </template>
@@ -120,9 +127,16 @@ export default class BrandList extends Vue {
     min-height: 396px;
     box-sizing: border-box;
     width: 100%;
-    .brand-item,
-    .brand-double {
+    .brand-item {
       float: left;
+    }
+    .no-data {
+      color: $color-dim;
+      width: 100%;
+      height: 396px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

@@ -9,29 +9,19 @@
       <div :title="info.name" class="cell-double-wrap">
         <div class="cell-double">
           {{ info.name }}
-          {{ info.name }}
-          {{ info.name }}
-          {{ info.name }}
-          {{ info.name }}
-          {{ info.name }}
-          {{ info.name }}
         </div>
       </div>
       <div :title="info.company.name" class="cell cell-assist">
         {{ info.company.name }}
-        {{ info.company.name }}
-        {{ info.company.name }}
-        {{ info.company.name }}
-        {{ info.company.name }}
-        {{ info.company.name }}
-        {{ info.company.name }}
-        {{ info.company.name }}
       </div>
       <div class="cell cell-flex">
-        <div class="cell-price">
+        <div class="cell-price" v-if="info.price">
           ¥
           <span class="cell-price-num">{{ info.price }}</span>
           起
+        </div>
+        <div class="cell-price" v-if="info.price === null">
+          请询价
         </div>
         <el-popover placement="right" width="426" trigger="click">
           <company-info :info="info.company"></company-info>
@@ -71,10 +61,10 @@ export default class GoodsItem extends Vue {
     display: inline-block;
     width: 100%;
     height: 207px;
-    transition: all 0.15s ease-in 0.05s;
-    &:hover {
-      transform: scale(1.1);
-    }
+    // transition: all 0.15s ease-in 0.05s;
+    // &:hover {
+    //   transform: scale(1.1);
+    // }
   }
   .content {
     padding: 0 8px;
@@ -85,7 +75,7 @@ export default class GoodsItem extends Vue {
     }
     .cell-base {
       box-sizing: border-box;
-      padding: 3px 0;
+      margin-bottom: 3px;
       line-height: 18px;
     }
     .cell {

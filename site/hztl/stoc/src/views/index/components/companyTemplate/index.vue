@@ -7,8 +7,8 @@
         :pageCount="total.page"
         @current-change="getDatas"
       ></ht-pagination>
-      <ht-button type="primary" size="mini" round @click="handlePath"
-        >进入商家黄页</ht-button
+      <el-button type="primary" size="mini" round @click="handlePath"
+        >进入商家黄页</el-button
       >
     </div>
     <div class="company-list clearfix">
@@ -29,14 +29,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch, Prop } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import { HtCard, HtPagination } from "@/components/hztl";
 import CompanyItem from "@/views/company/components/companyItem/index";
 import CompanyDouble from "@/views/company/components/companyItem/companyDouble";
-import {
-  PageResponseResult,
-  AreaModel
-} from "@/common/interface/commonInterface";
+import { PageResponseResult } from "@/common/interface/commonInterface";
 import {
   CompanyModel,
   CompanyParams

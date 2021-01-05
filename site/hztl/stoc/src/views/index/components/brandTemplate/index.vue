@@ -7,8 +7,8 @@
         :pageCount="total.page"
         @current-change="getDatas"
       ></ht-pagination>
-      <ht-button type="primary" size="mini" round @click="handlePath"
-        >查看全部</ht-button
+      <el-button type="primary" size="mini" round @click="handlePath"
+        >查看全部</el-button
       >
     </div>
     <div class="brand-list clearfix">
@@ -48,98 +48,7 @@ const brandService = new BrandService();
   }
 })
 export default class BrandTemplate extends Vue {
-  protected list: BrandModel[] = [
-    {
-      name: "test1",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 1 //商家数
-    },
-    {
-      name: "test2",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-      companyCount: 5
-    },
-    {
-      name: "test3",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-      companyCount: 100
-    },
-    {
-      name: "test4",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test5",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test6",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test7",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test8",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test9",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test10",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test11",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test12",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test13",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test14",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    },
-    {
-      name: "test15",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg", // 品牌图片
-      companyCount: 10000
-    }
-  ];
+  protected list: BrandModel[] = [];
 
   protected queryParams: BrandParams = {
     page: 1,
@@ -157,7 +66,7 @@ export default class BrandTemplate extends Vue {
 
   public getDatas() {
     const params = {
-      ...this.queryParams,
+      ...this.queryParams
     };
     brandService
       .getBrands(params)

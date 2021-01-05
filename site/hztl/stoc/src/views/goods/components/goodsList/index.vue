@@ -72,10 +72,16 @@
           </el-table-column>
           <el-table-column prop="name" label="配件图片" width="72">
             <template slot-scope="scope">
-              <!-- <img
-                :src="(scope.row.imageUrls && scope.row.imageUrls[0]) || ''"
-              /> -->
-              <el-popover
+              <div
+                class="img-wrap"
+                v-if="scope.row.imageUrls && scope.row.imageUrls.length"
+              >
+                <img class="img-item" :src="scope.row.imageUrls[0]" />
+                <span class="img-count">
+                  共{{ scope.row.imageUrls.length }}张
+                </span>
+              </div>
+              <!-- <el-popover
                 placement="right"
                 trigger="hover"
                 v-if="scope.row.imageUrls && scope.row.imageUrls[0]"
@@ -91,7 +97,7 @@
                   slot="reference"
                   style="border-radius: 5px; border: 1px solid #cdcdcd;"
                 />
-              </el-popover>
+              </el-popover> -->
             </template>
           </el-table-column>
           <el-table-column
@@ -122,10 +128,16 @@
           ></el-table-column>
           <el-table-column prop="price" label="订货价" width="100" sortable>
             <template slot-scope="scope">
-              <div class="cell-li color-primary">
+              <div class="cell-li color-primary" v-if="scope.row.price">
                 <span class="font-size-12">¥</span>
                 <span class="cell-price">{{ scope.row.price }}</span>
                 <span class="font-size-12">/个</span>
+              </div>
+              <div
+                class="cell-li color-primary"
+                v-if="scope.row.price === null"
+              >
+                <span class="cell-price">请询价</span>
               </div>
               <!-- <div class="cell-li cell-promotion">
                 <div class="font-size-12">促销价：</div>
@@ -392,6 +404,31 @@ export default class GoodsList extends Vue {
         }
         .cell-promotion {
           color: $color-red;
+        }
+        .img-wrap {
+          width: 50px;
+          height: 50px;
+          position: relative;
+          .img-item {
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: $border-primary;
+            border-radius: 4px;
+          }
+          .img-count {
+            display: block;
+            width: 100%;
+            height: 16px;
+            line-height: 16px;
+            font-size: $font-size-12;
+            text-align: center;
+            color: $color-white;
+            background-color: rgba($color: #000000, $alpha: 0.2);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+          }
         }
       }
     }

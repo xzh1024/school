@@ -50,16 +50,20 @@ export default class LayerScroll extends Vue {
 
     // 定义变量存放.floor相对于文档的高度
     let floorTop = 0;
-    document.querySelectorAll(".floor").forEach((floor: any, index: number) => {
-      floorTop = floor.offsetTop;
-      if (topValue > floorTop - 300) {
-        this.activeIndex = index;
-      }
-    });
+    document
+      .querySelectorAll<HTMLDivElement>(".floor")
+      .forEach((floor: HTMLDivElement, index: number) => {
+        floorTop = floor.offsetTop;
+        if (topValue > floorTop - 300) {
+          this.activeIndex = index;
+        }
+      });
   }
 
   protected layerChange(index: number) {
-    const floor: any = document.querySelectorAll(".floor")[index];
+    const floor: HTMLDivElement = document.querySelectorAll<HTMLDivElement>(
+      ".floor"
+    )[index];
     if (floor) {
       const floorTop = floor.offsetTop;
       if (document.documentElement) {
@@ -103,7 +107,8 @@ export default class LayerScroll extends Vue {
   left: 50%;
   margin-left: 615px;
   z-index: 100;
-  ul, li {
+  ul,
+  li {
     margin: 0;
     padding: 0;
   }

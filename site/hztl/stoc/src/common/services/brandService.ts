@@ -2,7 +2,11 @@ import { ServiceType } from "./base/serviceType";
 import { BaseService } from "./base/baseService";
 import { ServiceFactory } from "./ServiceFactory";
 import { PageResponseResult } from "@/common/interface/commonInterface";
-import { BrandParams, BrandModel, PartFilterModel } from "@/common/interface/brandInterface";
+import {
+  BrandParams,
+  BrandModel,
+  PartFilterModel
+} from "@/common/interface/brandInterface";
 
 const serviceName = ServiceType.brandService;
 

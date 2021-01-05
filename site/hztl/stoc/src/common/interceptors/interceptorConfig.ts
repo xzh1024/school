@@ -1,5 +1,4 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
-import router from "@/router";
 
 export interface AxiosRequestConfigEx extends AxiosRequestConfig {
   showLoad?: boolean;

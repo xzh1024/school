@@ -23,8 +23,18 @@
           :params="params"
         ></CompanyTemplate>
       </div>
+      <div class="advertisement-wrap">
+        <a class="advertisement">
+          <img src="../../assets/img/advertisement01.png" />
+        </a>
+      </div>
       <div class="floor m-t">
         <GoodsTemplate ref="goodsTemplate" :params="params"></GoodsTemplate>
+      </div>
+      <div class="advertisement-wrap">
+        <a class="advertisement">
+          <img src="../../assets/img/advertisement02.png" />
+        </a>
       </div>
       <div class="floor m-t">
         <BrandTemplate></BrandTemplate>
@@ -76,16 +86,6 @@ const commonService = new CommonService();
   }
 })
 export default class Index extends Vue {
-  // protected areaCity: AreaModel | "" = {
-  //   id: 3,
-  //   name: "成都市"
-  // };
-  // @Watch("activeAreaCity", { deep: true, immediate: true })
-  // protected activeAreaCityChange(newVal: AreaModel) {
-  //   if (newVal) {
-  //     this.areaCity = newVal;
-  //   }
-  // }
   protected mediumBanners: BannerModel[] = [];
   protected smallBanners: BannerModel[] = [];
   protected miniBanners: BannerModel[] = [];
@@ -105,28 +105,7 @@ export default class Index extends Vue {
     }
   ];
 
-  protected banners: BannerModel[] = [
-    {
-      name: "name01",
-      pic:
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3475570381,2768348736&fm=26&gp=0.jpg",
-      url: ""
-    },
-    {
-      name: "name02",
-      pic:
-        "https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1486271666,307393547&fm=26&gp=0.jpg",
-      url: ""
-    },
-    {
-      name: "name03",
-      pic:
-        "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3936997076,709579838&fm=26&gp=0.jpg",
-      url: ""
-    }
-  ];
-
-  protected getInfoData() {
+  protected loadData() {
     commonService.getIndexInfo().then(res => {
       const {
         banners
@@ -138,14 +117,11 @@ export default class Index extends Vue {
         banners.forEach((item: BannerModel[], index) => {
           if (index === 0) {
             this.mediumBanners = item || [];
-            // this.mediumBanners = this.banners;
           } else if (index === 1) {
             this.smallBanners = item || [];
           } else if (index === 2) {
             this.miniBanners = item || [];
           }
-          this.smallBanners = this.banners;
-          this.miniBanners = this.banners;
         });
       }
     });
@@ -162,16 +138,13 @@ export default class Index extends Vue {
     return this.$refs.goodsTemplate as GoodsTemplate;
   }
   protected areaCityChange(value: AreaModel) {
-    // sessionStorage.activeAreaCity = JSON.stringify(value);
-    // this.setActiveAreaCity();
-    // activeAreaCity
     this.params.orderByAreas = value ? `City:${value.id}` : "";
     this.refCompanyTemplate.getDatas();
     this.refGoodsTemplate.getDatas();
   }
 
   created() {
-    this.getInfoData();
+    this.loadData();
   }
 }
 </script>
@@ -201,6 +174,18 @@ export default class Index extends Vue {
     }
     .floor {
       background: $color-white;
+    }
+    .advertisement-wrap {
+      margin-top: $margin-size-main;
+      .advertisement {
+        display: block;
+        width: $width-main;
+        height: 80px;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 }

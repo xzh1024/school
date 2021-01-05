@@ -5,8 +5,7 @@ import { PageResponseResult } from "@/common/interface/commonInterface";
 import {
   PartModel,
   PartParams,
-  VehModelParams,
-  VehModelEnergy
+  VehModelParams
 } from "@/common/interface/goodsInterface";
 
 const serviceName = ServiceType.goodsService;

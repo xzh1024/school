@@ -37,14 +37,6 @@
           ></i>
         </div>
       </div>
-      <!-- <div class="pagenation-wrap" v-if="this.pageInfo.totalSize">
-        <ht-pagination
-          :total="pageInfo.totalSize"
-          :current-page.sync="pageInfo.page"
-          :page-count="pageInfo.totalPage"
-          @current-change="getCompanies"
-        ></ht-pagination>
-      </div> -->
       <div class="pagenation-address-wrap">
         <Address @areaCityChange="areaCityChange"></Address>
         <ht-pagination
@@ -79,7 +71,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import { HtCard, HtPagination, HtDivider } from "@/components/hztl";
 import CompanyItem from "@/views/company/components/companyItem/index";
 import Address from "@/components/address/index";
@@ -225,7 +217,6 @@ export default class CompanyList extends Vue {
     .company-list {
       box-sizing: border-box;
       width: 100%;
-      // min-height: 582px;
       .company-item {
         float: left;
         margin-right: 14px;

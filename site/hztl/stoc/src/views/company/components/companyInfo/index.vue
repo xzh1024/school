@@ -29,20 +29,18 @@
     </div>
     <div class="cell" v-if="info.address">
       <i class="icon-site"></i>
-      <p class="cell-wrap cell-lip-1 text-assist">
-        地址：{{ info.address + info.address + info.address }}
-      </p>
+      <p class="cell-wrap cell-lip-1 text-assist">地址：{{ info.address }}</p>
     </div>
     <div class="cell" v-if="info.vehBrands && info.vehBrands.length">
       <i class="icon-sedan"></i>
       <p class="cell-wrap cell-lip-2 text-assist">
-        主营车型：{{ info.vehBrands.join("/") }}
+        主营车型：{{ info.vehBrands.join("、") }}
       </p>
     </div>
-    <div class="cell" v-if="areas.length">
+    <div class="cell" v-if="areaNames.length">
       <i class="icon-trucks"></i>
       <p class="cell-wrap cell-lip-2 text-assist">
-        发货地区：{{ info.areas.join("、") }}
+        发货地区：{{ areaNames.join("、") }}
       </p>
     </div>
     <div class="company-title">
@@ -109,59 +107,8 @@ import { CompanyModel, AreaModel } from "@/common/interface/companyInterface";
 @Component({ name: "CompanyInfo" })
 export default class CompanyInfo extends Vue {
   @Prop() protected info!: CompanyModel;
-  // protected info: CompanyModel = {
-  //   name: "上海优士汽车零部件有限公司",
-  //   pics: [
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg"
-  //   ],
-  //   description:
-  //     "这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍这里是公司介绍",
-  //   address: "四川省/成都市/高新区/人民南路北段37号301房间",
-  //   vehBrands: [""],
-  //   areas: [
-  //     {
-  //       type: "County",
-  //       id: 1,
-  //       name:
-  //         "区域名称1区域名称1区域名称1区域名称1区域名称1区域名称1区域名称1区域名称1区域名称1"
-  //     },
-  //     {
-  //       type: "County",
-  //       id: 2,
-  //       name: "区域名称2"
-  //     },
-  //     {
-  //       type: "County",
-  //       id: 3,
-  //       name:
-  //         "区域名称3区域名称3区域名称3区域名称3区域名称3区域名称3区域名称3区域名称3区域名称3区域名称3区域名称3区域名称3"
-  //     }
-  //   ],
-  //   contacts: "欧阳围墙",
-  //   phone: "12345678900",
-  //   contacts1: "xxx1",
-  //   phone1: "12345678901",
-  //   contacts2: "xxx2",
-  //   phone2: "12345678902",
-  //   contacts3: "xxx3",
-  //   phone3: "12345678903",
-  //   wechat: "13800087877，8767665，82672877，13800087877，8767665，82672877，13800087877，8767665，82672877，13800087877，8767665，82672877",
-  //   wechatPics: [
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg"
-  //   ],
-  //   qq: "13800087877，8767665，82672877，13800087877，8767665，82672877，13800087877，8767665，82672877，13800087877，8767665，82672877",
-  //   qqPics: [
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg",
-  //     "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2449931680,3849919497&fm=26&gp=0.jpg"
-  //   ]
-  // } as CompanyModel;
 
-  get areas() {
+  get areaNames() {
     const areas = (this.info && this.info.areas) || [];
     return areas.map((area: AreaModel) => area.name);
   }
@@ -221,7 +168,6 @@ export default class CompanyInfo extends Vue {
       overflow: hidden;
       .description-text {
         width: 100%;
-        // line-height: 18px;
         @extend .lip;
         -webkit-line-clamp: 6;
       }
@@ -267,9 +213,6 @@ export default class CompanyInfo extends Vue {
         margin-left: 0;
       }
     }
-    // &.cell-vertical-center {
-    //   justify-content: center;
-    // }
   }
 }
 </style>
