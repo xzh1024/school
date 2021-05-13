@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="throttling">函数节流</button>
+  <script>
+    window.onload = function () {
+      console.log("load");
+      var obj = {
+        name: "张三",
+        age: 17,
+        getName: function (p1, p2) {
+          console.log("p1:" + p1);
+          console.log("p2:" + p2);
+          console.log(this.name);
+        }
+      }
+      console.log(obj["name"]);
+      console.log(obj["age"]);
+      console.log(obj["sex"]);
+      console.log(obj.name);
+      console.log(obj.sex);
+
+      console.log(Number(null));
+      console.log(Number(undefined));
+
+      var obj2 = {
+        name: "李四",
+        age: 5,
+        getName: function (p1, p2) {
+          console.log("p1:" + p1);
+          console.log("p2:" + p2);
+          console.log(this.name);
+        },
+        getAge: function () {
+          console.log(age);
+        }
+      }
+
+      console.log(Object.call);
+      Object.prototype.myCall = function (context) {
+        context = context || window;
+        context.fn = this;
+        var arr = [];
+        for (let index = 1; index < arguments.length; index++) {
+          arr.push(arguments[index]);
+        }
+        var result = context.fn(...arr);
+        delete context.fn;
+        return result;
+      }
+      // console.log(obj);
+      obj.getName.myCall(obj2, "参数1", "参数2");
+
+
+      var throttlei = 0;
+      function show() {
+          console.log(++throttlei);
+      }
+
+      function throttle(fn, interval) {
+        var last = 0;
+        return function() {
+          var _now = Date.now();
+          if(_now - last >= interval) {
+            last = _now;
+            fn.apply(this, arguments);
+          }
+        }
+      }
+
+      const better = throttle(show, 2000);
+      document.getElementById('throttling').addEventListener('click', better);
+    }
+  </script>
+</body>
+</html>

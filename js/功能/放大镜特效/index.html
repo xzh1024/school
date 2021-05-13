@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>放大镜特效</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #demo {
+      display: block;
+      /* width: 400px;
+      height: 255px; */
+      margin: 50px;
+      position: relative;
+      border: 1px;
+    }
+
+    #smallBox {
+      width: 300px;
+      height: 300px;
+      /* border: 1px solid #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center; */
+      position: relative;
+      z-index: 1;
+    }
+
+    #floatBox {
+      display: none;
+      width: 160px;
+      height: 120px;
+      position: absolute;
+      background-color: #ffffcc;
+      border: 1px solid #ccc;
+      filter: alpha(opacity=50);
+      opacity: 0.5;
+      cursor: move;
+    }
+
+    #smallBox img {
+      /* max-width: 100%;
+      max-height: 100%; */
+      width: 100%;
+      height: 100%;
+    }
+
+    #bigBox {
+      display: none;
+      position: absolute;
+      left: 460px;
+      top: 0;
+      z-index: 1;
+      width: 600px;
+      height: 600px;
+      overflow: hidden;
+      border: 1px solid #ccc;
+      /* display: flex;
+      align-items: center;
+      justify-content: center; */
+    }
+
+    #bigBox img {
+      position: absolute;
+      z-index: 5;
+      /* max-width: 100%;
+      max-height: 100%; */
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="demo">
+    <div id="smallBox">
+      <div id="mark"></div>
+      <div id="floatBox"></div>
+      <img src="./mac.jpg" alt="">
+    </div>
+    <div id="bigBox">
+      <img src="./mac.jpg" alt="">
+    </div>
+  </div>
+  <script>
+    window.onload = function () {
+      var objDemo = document.getElementById("demo");
+      var objSmallBox = document.getElementById("smallBox");
+      var objFloatBox = document.getElementById("floatBox");
+      var objBigBox = document.getElementById("bigBox");
+      var objBigBoxImage = objBigBox.getElementsByTagName("img")[0];
+      var objMark = document.getElementById("mark");
+
+      // 鼠标移入
+      objSmallBox.onmouseover = function () {
+        objFloatBox.style.display = "block";
+        objBigBox.style.display = "block";
+      }
+
+      // 鼠标移出
+      objSmallBox.onmouseout = function () {
+        objFloatBox.style.display = "none";
+        objBigBox.style.display = "none";
+      }
+
+      // 鼠标移动
+      objSmallBox.onmousemove = function (event) {
+        var _event = event || windows.event;
+        var target = _event.target || _event.srcElement;
+
+        var left = _event.clientX - objDemo.offsetLeft - objSmallBox.offsetLeft - objFloatBox.offsetWidth / 2;
+        var top = _event.clientY - objDemo.offsetTop - objSmallBox.offsetTop - objFloatBox.offsetHeight / 2;
+
+        if (left < 0) {
+          left = 0;
+        } else if (left > (objSmallBox.offsetWidth - objFloatBox.offsetWidth)) {
+          left = objSmallBox.offsetWidth - objFloatBox.offsetWidth;
+        }
+
+        if (top < 0) {
+          top = 0;
+        } else if (top > (objSmallBox.offsetHeight - objFloatBox.offsetHeight)) {
+          top = objSmallBox.offsetHeight - objFloatBox.offsetHeight;
+        }
+
+        objFloatBox.style.left = left + "px";
+        objFloatBox.style.top = top + "px";
+
+        var percentX = left / (objSmallBox.offsetWidth - objFloatBox.offsetWidth);
+        var percentY = top / (objSmallBox.offsetHeight - objFloatBox.offsetHeight);
+
+        objBigBoxImage.style.left = -percentX * (objBigBoxImage.offsetWidth - objBigBox.offsetWidth) + "px";
+        objBigBoxImage.style.top = -percentX * (objBigBoxImage.offsetHeight - objBigBox.offsetHeight) + "px";
+      }
+
+      objMark.onmousemove = function (event) {
+        var _event = event || windows.event;
+        var target = _event.target || _event.srcElement;
+
+        var left = _event.clientX - objDemo.offsetLeft - objSmallBox.offsetLeft - objFloatBox.offsetWidth / 2;
+        var top = _event.clientY - objDemo.offsetTop - objSmallBox.offsetTop - objFloatBox.offsetHeight / 2;
+
+        objFloatBox.style.left = left + "px";
+        objFloatBox.style.top = top + "px";
+
+        var percentX = left / (objMark.offsetWidth - objFloatBox.offsetWidth);
+        var percentY = top / (objMark.offsetHeight - objFloatBox.offsetHeight);
+
+        objBigBoxImage.style.left = -percentX * (objBigBoxImage.offsetWidth - objBigBox.offsetWidth) + "px";
+        objBigBoxImage.style.top = -percentY * (objBigBoxImage.offsetHeight - objBigBox.offsetHeight) + "px";
+      }
+
+
+      // var smallBox = document.getElementById("smallBox");
+      // smallBox.addEventListener("mouseover", function (event) {
+      //   console.log("移入");
+      // })
+      // smallBox.addEventListener("mousemove", function (event) {
+      //   console.log("移动");
+      //   var e = event || windows.event;
+      //   var target = e.target || e.srcElement;
+      //   console.log(e);
+      //   console.dir(target);
+      //   console.log("target.offsetTop：" + target.offsetTop);
+      //   console.log("target.offsetLeft：" + target.offsetLeft);
+      //   console.log("target.offsetWidth：" + target.offsetWidth);
+      //   console.log("target.offsetHeight：" + target.offsetHeight);
+      //   console.log("e.clientX：" + e.clientX);
+      //   console.log("e.clientY：" + e.clientY);
+      //   // var maskX = e.clientX - left - mask / 2;
+      //   // var maskY = e.clientY - top - mask / 2;
+      //   // console.log(maskX);
+      //   // console.log(maskY);
+      // })
+      // smallBox.addEventListener("mouseout", function (event) {
+      //   console.log("移出");
+      // })
+    }
+  </script>
+</body>
+
+</html>

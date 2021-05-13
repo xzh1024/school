@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    var treeData = [
+      {
+        name: "10000",
+        children: [
+          {
+            name: "10100",
+            children: [
+              {
+                name: "10101"
+              }
+            ]
+          },
+          {
+            name: "10200",
+            children: [
+              {
+                name: "10201"
+              },
+              {
+                name: "10202"
+              },
+              {
+                name: "10203"
+              }
+            ]
+          }
+        ],
+        children: [
+          {
+            name: "20100",
+            children: [
+              {
+                name: "20101"
+              },
+              {
+                name: "20102"
+              }
+            ]
+          },
+          {
+            name: "20200",
+            children: [
+              {
+                name: "20202"
+              }
+            ]
+          }
+        ]
+      }
+    ];
+    // 深度优先遍历的递归写法
+    function deepTraversal(node) {
+      console.log(node);
+      let nodes = [];
+      if (node != null) {
+        nodes.push(node);
+        let childrens = node.children || [];
+        for (let i = 0; i < childrens.length; i++) {
+          deepTraversal(childrens[i]);
+        }
+        return nodes;
+      }
+    }
+
+
+    treeData.forEach(item => {
+      const node = deepTraversal(item);
+    });
+
+    // 深度优先遍历的非递归写法
+    function deepTraversal2(node) {
+      let nodes = [];
+      if (node != null) {
+        let stack = [];
+        // 用来存放将来要访问的节点
+        stack.push(node);
+        while (stack.length != 0) {
+          let item = stack.pop();
+          // 正在访问的节点
+          nodes.push(item);
+          let childrens = item.children || [];
+          for (let i = childrens.length - 1; i >= 0; i--) {
+            // 将现在访问点的节点的子节点存入stack，供将来访问
+            stack.push(childrens[i]);
+          }
+        }
+        return nodes;
+      }
+    }
+
+    treeData.forEach(item => {
+      const node = deepTraversal2(item);
+      console.log(node);
+    });
+  </script>
+</body>
+
+</html>

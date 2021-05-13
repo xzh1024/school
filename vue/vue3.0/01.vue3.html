@@ -1,0 +1,71 @@
+<!-- 
+  1.Vue3.0六大亮点
+  - Preformance：性能比Vue 2.x快1.2~2倍
+  - Tree shaking suport：按需编译，体积比Vue2.x更小
+  - Composition API：组合API（类似React Hooks）
+  - Better TypeScript support：更好的 Ts 支持
+  - Custom Renderer API：暴露了自定义渲染API
+  - Fragment，Teleport（Protal），Suspense：更先进的组件
+
+  2.Vue3.0是如何变快的？
+  - diff方法优化  https://vue-next-template-explorer.netlify.app/
+    + Vue2中的虚拟dom是进行全量的对比
+    + Vue3新增了静态标记（PatchFlag）,在与上次虚拟节点进行对比的时候，只对比带有patch flag的节点，并且可以通过flag的信息得知当前节点要对比的具体内容。TEXT
+  - hoistStatic 静态提升
+    + Vue2中无论元素是否参与更新，每次都会重新创建
+    + Vue3中对于不参与更新的元素，只会被创建一次，之后会在每次渲染时候被不停的复用
+  - cacheHandlers 事件监听器缓存
+    + 默认情况下onClick会被视为动态绑定，所以每次都会去追踪它的变化
+      但是因为是同一个函数，所以没有追踪变化，直接缓存起来复用即可
+  - ssr渲染
+    + 当有大量静态的内容时候，这些内容会被当作纯字符串推进一个buffer里面，
+      即使存在动态的绑定，会通过模板插值嵌入进去。这样会比通过虚拟dom来渲染的快上很多很多。
+    + 当静态内容大到一定量级时候，会用_createStaticVNode方法在客户端去生成一个static node，
+      这些静态node，会被直接innerHtml，就不需要创建对象，然后根据对象渲染。
+-->
+<!--
+  1.Vue3.0-快速上手
+  - 常见Vue3的3种方式
+    + Vue-Cli
+    + Webpack
+    + Vite
+  2.什么是Vite？
+  - Vite是Vue作者开发的一款意图取代webpack的工具
+  - 其实现原理是利用ES6的import会发送请求去加载文件的特性，拦截这些请求，做一些预编译，省去webpack冗长的打包时间
+
+  - 安装Vite
+    npm install -g create-vite-app
+  - 利用Vite创建Vue3项目
+    create-vite-app projectName
+  - 安装依赖运行项目
+    cd projectName
+    npm install
+    npm run dev
+
+  2.Vue3.0兼容Vue2.X
+
+  3.Vue3.0-Custom Renderer API
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    123{{code}}
+    <p :class="red">a</p>
+    <p :key="index">{{b}}</p>
+    <p>c</p>
+    <p>{{msg}}</p>
+    <p>{{name}}</p>
+    <span>{{age}}</span>
+    <button @click="onClick">按钮</button>
+  </div>
+</body>
+
+</html>
