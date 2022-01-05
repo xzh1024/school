@@ -21,8 +21,8 @@
             Father.apply(this, arguments);
         }
 
-        // Child.prototype = Object.create(Father.prototype);
-        Child.prototype = new Father('小明', 18);
+        Child.prototype = Object.create(Father.prototype);
+        // Child.prototype = new Father('小明', 18);
 
         Child.prototype.constructor = Child;
 
@@ -31,8 +31,10 @@
         console.dir(Father.prototype === person1.__proto__);
         console.dir(Father === Child.prototype.__proto__.constructor);
         console.dir(Child);
+        console.dir(person);
         person.showName();
-        console.log(person);
+        console.dir(Father.prototype);
+        console.dir(person1.__proto__);
 
         /////////////////////////////
         var object1 = {

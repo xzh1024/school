@@ -18,8 +18,20 @@
         obj2.age = 16;
         obj2.colors.push('blue');
 
+        var obj3 = JSON.parse(JSON.stringify(obj1));
+        obj3.name = '小李';
+        obj3.age = 100;
+        obj3.colors.push('black');
+
+        var obj4 = obj1;
+        obj4.name = '小红';
+        obj4.age = 50;
+        obj4.colors.push('white');
+
         console.log(obj1);
         console.log(obj2);
+        console.log(obj3);
+        console.log(obj4);
     </script>
 </body>
 </html>

@@ -12,6 +12,7 @@
             let count = 0;
             return function() {
                 if(count++ < 3) {
+                    console.log(this);
                     fn.apply(this, arguments);
                 }
             }
@@ -28,9 +29,10 @@
         function child2(time) {
             console.log(time);
         }
-        var means2 = parent(child2);
+        var obj = {};
+        obj.means2 = parent(child2);
         for (let i = 10; i > 0; i--) {
-            means2(i);
+            obj.means2(i);
         }
     </script>
 </body>

@@ -85,6 +85,8 @@ class KVue {
 // Dep: 用来管理Watcher
 /*
     4.实现一个订阅器 Dep：订阅器采用 发布-订阅 设计模式，用来收集订阅者 Watcher，对监听器 Observer 和 订阅者 Watcher 进行统一管理。
+    Dep和响应式的属性key之间有一一对应关系
+    负责通知watchers更新
 */
 class Dep {
     constructor() {
@@ -106,6 +108,7 @@ class Dep {
 // Watcher(观察者：用来调用更新的对象)
 /*
     3.实现一个订阅者 Watcher：Watcher 订阅者是 Observer 和 Compile 之间通信的桥梁 ，主要的任务是订阅 Observer 中的属性值变化的消息，当收到属性值变化的消息时，触发解析器 Compile 中对应的更新函数。
+    负责具体节点更新
 */
 class Watcher {
     constructor(vm, key, callback) {
@@ -117,6 +120,7 @@ class Watcher {
         this.vm = vm;
         this.key = key;
         this.callback = callback;
+        console.log(this);
         // 将当前watcher实例指定到Dep静态属性target
         Dep.target = this;
         this.vm[this.key]; // 触发getter，添加依赖  this.vm.$data[this.key]

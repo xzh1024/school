@@ -7,6 +7,7 @@ class Compile {
     constructor(el, vm) {
         // 要遍历的宿主节点
         this.$el = document.querySelector(el);
+        console.dir(this.$el);
 
         // k-vue实例
         this.$vm = vm;
