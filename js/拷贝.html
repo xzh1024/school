@@ -23,8 +23,24 @@
       re: new RegExp('\\w+'),
       set: new Set([2, 5, 8]),
     };
-    console.log(obj);
     console.log(JSON.parse(JSON.stringify(obj)));
+    /*
+      {
+        "name": "拷贝",
+        "age": 18,
+        "arr": [
+          "k",
+          "k",
+          "q"
+        ],
+        "ob": {
+          "a": "1",
+          "b": "2"
+        },
+        "re": {},
+        "set": {}
+      }
+    */
   </script>
 </body>
 

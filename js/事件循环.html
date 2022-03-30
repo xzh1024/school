@@ -40,49 +40,53 @@
     // 4
     // 6
 
-    console.log('script start');
+    console.log('script start'); // 1
 
     setTimeout(() => {
-      console.log('setTimeout');
+      console.log('setTimeout'); // 8
     }, 0);
 
     Promise.resolve()
       .then(function() {
-        console.log('promise1');
+        console.log('promise1'); // 3
         setTimeout(() => {
-          console.log('000');
+          console.log('000'); // 9
         }, 0);
         new Promise((resolve) => {
-          console.log("100");
+          console.log("100");  // 4
           resolve("200");
-          console.log("300");
+          console.log("300");  // 5
           setTimeout(() => {
-            console.log('600');
+            console.log('600'); // 10
           }, 0);
         }).then((res) => {
-          console.log(res);
+          console.log(res); // 6
           setTimeout(() => {
-            console.log('500');
+            console.log('500'); // 12
           }, 0);
         })
         setTimeout(() => {
-          console.log('400');
+          console.log('400'); // 11 
         }, 0);
       })
       .then(function() {
-        console.log('promise2');
+        console.log('promise2'); // 7
       })
 
-    console.log('script end');
+    console.log('script end'); // 2
     /*
-      1.script start
-      2.script end
-      3.promise1
-      4.100
-      5.300
-      6.promise2
-      7.setTimeout
-      8.200
+      1:script start
+      2:script end
+      3:promise1
+      4:100
+      5:300
+      6:200
+      7:promise2
+      8:setTimeout
+      9:000
+      10:600
+      11:400
+      12:500
     */
   </script>
 </body>
