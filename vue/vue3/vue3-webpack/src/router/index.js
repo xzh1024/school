@@ -9,7 +9,7 @@ const routes = [
   // },
   {
     path: '/',
-    name: 'home',
+    name: '/',
     component: layout,
     redirect: '/users',
     children: [
