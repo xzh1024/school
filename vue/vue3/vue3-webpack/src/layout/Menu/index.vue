@@ -40,15 +40,12 @@
       <span>Navigator Four</span>
     </el-menu-item> -->
 
-    <el-sub-menu
-      v-for="(item, index) in menuList"
-      :index="item.id"
-      :key="item.id"
-    >
+    <el-sub-menu v-for="item in menuList" :index="item.id" :key="item.id">
       <template #title>
         <el-icon :size="iconSize">
           <!-- <location /> -->
-          <component :is="iconList[index]"></component>
+          <component :is="item.icon"></component>
+          <!-- <User></User> -->
         </el-icon>
         <span>{{ item.authName }}</span>
       </template>
@@ -61,7 +58,7 @@
         <!-- {{ it.authName }} -->
         <template #title>
           <el-icon :size="iconSize">
-            <component :is="iconMenu"></component>
+            <component :is="item.icon"></component>
           </el-icon>
           <span>{{ it.authName }}</span>
         </template>
@@ -77,9 +74,10 @@
 <script setup>
 import { ref } from 'vue';
 import variables from '@/assets/css/variables.scss';
+// import { User, Setting, Shop, Tickets, PieChart } from '@element-plus/icons-vue';
 
-const iconList = ref(['user', 'setting', 'shop', 'tickets', 'pie-chart']);
-const iconMenu = ref('menu');
+// const iconList = ref(['User', 'Setting', 'Shop', 'Tickets', 'PieChart']);
+// const iconMenu = ref('menu');
 const iconSize = ref(20);
 
 const defaultActive = ref(sessionStorage.getItem('path') || '/users');
@@ -96,7 +94,7 @@ const menuList = ref([
     id: 125,
     authName: '用户管理',
     path: 'users',
-    icon: 'user',
+    icon: 'UserFilled',
     children: [
       {
         id: 12501,
@@ -118,7 +116,7 @@ const menuList = ref([
     id: 103,
     authName: '权限管理',
     path: 'rights',
-    icon: 'setting',
+    icon: 'Setting',
     children: [
       {
         id: 10301,
@@ -134,7 +132,7 @@ const menuList = ref([
     id: 101,
     authName: '商品管理',
     path: 'goods',
-    icon: 'shop',
+    icon: 'Shop',
     children: [
       {
         id: 10101,
@@ -150,7 +148,7 @@ const menuList = ref([
     id: 102,
     authName: '订单管理',
     path: 'orders',
-    icon: 'ticktes',
+    icon: 'Tickets',
     children: [
       {
         id: 10201,
@@ -166,7 +164,7 @@ const menuList = ref([
     id: 145,
     authName: '数据统计',
     path: 'reports',
-    icon: 'pie-chart',
+    icon: 'PieChart',
     children: [
       {
         id: 14501,

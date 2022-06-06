@@ -2,6 +2,9 @@
   <div class="navbar">
     <Hamburger />
     <Breadcrumb />
+    <div class="navbar-right">
+      <Avatar />
+    </div>
   </div>
 </template>
 
@@ -11,11 +14,12 @@ export default { name: 'headersContainer' };
 <script setup>
 import Hamburger from './components/hamburger.vue';
 import Breadcrumb from './components/breadcrumb.vue';
+import Avatar from './components/avatar.vue';
 </script>
 
 <style lang="scss" scoped>
 .navbar {
-  width: 100%;
+  // width: 100%;
   height: 60px;
   overflow: hidden;
   background-color: #fff;
@@ -23,6 +27,7 @@ import Breadcrumb from './components/breadcrumb.vue';
   padding: 0 16px;
   display: flex;
   align-items: center;
+  position: relative;
   // justify-content: center;
   ::v-deep .navbar-item {
     display: inline-block;
@@ -31,6 +36,10 @@ import Breadcrumb from './components/breadcrumb.vue';
     color: #5a5e66;
     box-sizing: border-box;
     cursor: pointer;
+  }
+  .navbar-right {
+    position: absolute;
+    right: 16px;
   }
 }
 </style>

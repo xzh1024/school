@@ -37,6 +37,7 @@ export default {
       });
     },
     logout({ commit }) {
+      console.log(123);
       commit('setToken', '');
       localStorage.clear();
       router.replace('/login');

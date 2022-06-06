@@ -1,6 +1,7 @@
 <template>
   <div class="login-container">
     <el-form ref="formRef" :model="form" :rules="rules" label-width="120px">
+      <h3>{{ $t('msg.title') }}</h3>
       <el-form-item label="用户名" prop="username">
         <el-icon :size="20">
           <user />

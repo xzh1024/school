@@ -1,7 +1,7 @@
 <template>
   <el-container class="app-wrapper">
     <el-aside class="sidebar-container"><Menu /></el-aside>
-    <el-container class="container">
+    <el-container class="layout-container">
       <el-header class="header-main">
         <Headers />
       </el-header>
@@ -24,11 +24,12 @@ import Headers from './headers';
 .app-wrapper {
   width: 100%;
   height: 100%;
+  // overflow: hidden;
   .sidebar-container {
     flex: none;
     width: auto;
   }
-  .container {
+  .layout-container {
     flex: 1;
     .header-main {
       padding: 0;

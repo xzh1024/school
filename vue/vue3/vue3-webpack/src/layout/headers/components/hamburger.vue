@@ -5,14 +5,14 @@
       @click="changeSiderType"
       v-show="$store.getters.siderType"
     >
-      <fold />
+      <Fold />
     </el-icon>
     <el-icon
       :size="20"
       @click="changeSiderType"
       v-show="!$store.getters.siderType"
     >
-      <expand />
+      <Expand />
     </el-icon>
   </div>
 </template>
