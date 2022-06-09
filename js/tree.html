@@ -51,11 +51,11 @@
         console.log(toTree(data))
 
         // 递归
-        function arrToTree(list, rootValue) {
+        function arrToTree(list, pid) {
             let treeData = []; // 新建数组，用来储存当前对象的子对象
             list.forEach(item => {
                 // 遍历寻找子对象
-                if (item.pid === rootValue) {
+                if (item.pid === pid) {
                     // 递归 返回对象的children列表
                     const children = arrToTree(list, item.id);
                     // 如果有children就将数组添加给对象
