@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proxy</title>
+</head>
+<body>
+  <script>
+    var proxy = new Proxy({
+      title: 'xxx',
+      obj: {
+        keep: 111
+      }
+    }, {
+      get: function(target, propKey, receiver) {
+        console.log(propKey);
+        return target[propKey];
+      },
+      set: function(target, prop, value, receiver) {
+        console.log(prop);
+        console.log(value);
+
+        // 对于满足条件的 age 属性以及其他属性，直接保存
+        target[prop] = value;
+        return true;
+      }
+    });
+    console.log(proxy.obj.keep);
+    proxy.title = 'ccc';
+    proxy.obj.keep = '222';
+    console.log(proxy.obj);
+    console.log(proxy.name);
+    console.log(proxy.title);
+    // person.age = 100;
+    // console.log(person.age);
+    // person.age = 'young' // 报错
+    // person.age = 300 // 报错
+
+
+    // var arr = new Proxy([], {
+    //   set: function(target, index, value) {
+    //     console.log(index);
+    //     // if (prop === 'age') {
+    //     //   if (!Number.isInteger(value)) {
+    //     //     throw new TypeError('The age is not an integer');
+    //     //   }
+    //     //   if (value > 200) {
+    //     //     throw new RangeError('The age seems invalid');
+    //     //   }
+    //     // }
+
+    //     // 对于满足条件的 age 属性以及其他属性，直接保存
+    //     target[index] = value;
+    //     return true;
+    //   }
+    // });
+    // console.log(arr[4]);
+    // console.log(arr.length);
+    // arr[4] = 50;
+    // console.log(arr[4]);
+    // console.log(arr.length);
+  </script>
+</body>
+</html>
