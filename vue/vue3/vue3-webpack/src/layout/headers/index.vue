@@ -3,6 +3,10 @@
     <Hamburger />
     <Breadcrumb />
     <div class="navbar-right">
+      <!-- 引导页 -->
+      <Driver></Driver>
+      <!-- 全屏 -->
+      <ScreenFull></ScreenFull>
       <Avatar />
     </div>
   </div>
@@ -12,9 +16,12 @@
 export default { name: 'headersContainer' };
 </script>
 <script setup>
+import { ref, onMounted, onBeforeMount } from 'vue';
 import Hamburger from './components/hamburger.vue';
 import Breadcrumb from './components/breadcrumb.vue';
 import Avatar from './components/avatar.vue';
+import ScreenFull from './components/screenFull.vue';
+import Driver from './components/driver';
 </script>
 
 <style lang="scss" scoped>
@@ -40,6 +47,8 @@ import Avatar from './components/avatar.vue';
   .navbar-right {
     position: absolute;
     right: 16px;
+    display: flex;
+    align-items: center;
   }
 }
 </style>

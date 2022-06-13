@@ -1,5 +1,5 @@
 <template>
-  <div class="hamburger-container">
+  <div id="hamburger" class="hamburger-container">
     <el-icon
       :size="20"
       @click="changeSiderType"

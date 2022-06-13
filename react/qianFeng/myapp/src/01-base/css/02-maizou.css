@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 ul {
   list-style: none;
   display: flex;
@@ -7,10 +12,9 @@ ul {
   height: 50px;
   line-height: 50px;
   width: 100%;
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   border-top: 1px solid #eee;
+  background-color: white;
 }
 
 ul li {
@@ -20,4 +24,25 @@ ul li {
 
 ul li.active {
   color: brown;
+}
+
+dl {
+  height: 50px;
+  border-bottom: 1px solid gray;
+}
+
+dl dt {
+  font-size: 20px;
+}
+
+dl dd {
+  font-size: 12px;
+  color: gray;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
 }
