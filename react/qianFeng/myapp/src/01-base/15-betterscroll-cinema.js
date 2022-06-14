@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import BetterScroll from "better-scroll";
 
 export default class Cinema extends Component {
   constructor() {
@@ -32,12 +33,11 @@ export default class Cinema extends Component {
           const data = res.data.data;
           this.setState(
             {
-              cinemaList: data.cinemas || [],
+              // cinemaList: data.cinemas || [],
               backCinemaList: data.cinemas || [],
             },
             () => {
-              // this.filterList();
-              console.log(this.state);
+              this.filterList();
             }
           );
         }
@@ -57,9 +57,17 @@ export default class Cinema extends Component {
     } else {
       newList = backCinemaList || [];
     }
-    this.setState({
-      cinemaList: newList,
-    });
+    this.setState(
+      {
+        cinemaList: newList,
+      },
+      () => {
+        new BetterScroll(".wrapper", {
+          movable: true,
+          zoom: true,
+        });
+      }
+    );
   };
 
   handleInput = (event) => {
@@ -73,12 +81,22 @@ export default class Cinema extends Component {
     return (
       <div>
         <input onInput={this.handleInput} />
-        {cinemaList.map((item) => (
-          <dl className="cinema-item" key={item.cinemaId}>
-            <dt>{item.name}</dt>
-            <dd>{item.address}</dd>
-          </dl>
-        ))}
+        <div
+          className="wrapper"
+          style={{
+            height: "400px",
+            overflow: "hidden",
+          }}
+        >
+          <div>
+            {cinemaList.map((item) => (
+              <dl className="cinema-item" key={item.cinemaId}>
+                <dt>{item.name}</dt>
+                <dd>{item.address}</dd>
+              </dl>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

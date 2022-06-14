@@ -11,7 +11,11 @@ import ReactDom from "react-dom";
 // import App from "./01-base/09-循环渲染.js";
 // import App from "./01-base/10-todolist.js";
 // import App from "./01-base/11-dangerouslySetInnerHTML.js";
-import App from "./01-base/12-卖座选项卡.js";
+// import App from "./01-base/12-卖座选项卡.js";
+// import App from "./01-base/13-setState同步异步.js";
+// import App from "./01-base/14-betterScroll.js";
+// import App from "./01-base/15-betterscroll-cinema.js";
+import App from "./01-base/16-props.js";
 import "./index.css";
 
 ReactDom.render(<App></App>, document.getElementById("root"));
