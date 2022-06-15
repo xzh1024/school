@@ -19,8 +19,10 @@ import ReactDom from "react-dom";
 // import App from "./01-base/17-props函数式组件.js";
 // import App from "./01-base/19-非受控.js";
 // import App from "./01-base/20-受控.js";
-// import App from "./01-base/21-受控Cinema.js";
-import App from "./01-base/22-受控todolist.js";
+// import App from "./01-base/21-受控cinema.js";
+// import App from "./01-base/22-受控todolist.js";
+// import App from "./02-advanced/01-子传父.js";
+import App from "./02-advanced/02-非受控卖座选项卡.js";
 import "./index.css";
 
 ReactDom.render(<App></App>, document.getElementById("root"));
