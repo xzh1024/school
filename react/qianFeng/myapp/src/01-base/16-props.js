@@ -5,10 +5,14 @@ import "./css/03-layout.scss";
 
 export default class App extends Component {
   render() {
+    const obj = {
+      title: "首页",
+      leftShow: false,
+    };
     return (
       <div className="container">
         <div className="main">App</div>
-        <Navbar title="首页" leftShow={false}></Navbar>
+        <Navbar {...obj}></Navbar>
       </div>
     );
   }
