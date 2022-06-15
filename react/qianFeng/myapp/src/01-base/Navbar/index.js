@@ -8,6 +8,11 @@ export default class Navbar extends Component {
   static propTypes = {
     title: propTypes.string.isRequired,
   };
+  // 指定props的默认值
+  // static defaultProps = {
+  //   title: "购物车",
+  //   leftShow: true,
+  // };
 
   state = {
     list: [
