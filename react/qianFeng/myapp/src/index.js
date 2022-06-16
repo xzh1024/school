@@ -22,7 +22,9 @@ import ReactDom from "react-dom";
 // import App from "./01-base/21-受控cinema.js";
 // import App from "./01-base/22-受控todolist.js";
 // import App from "./02-advanced/01-子传父.js";
-import App from "./02-advanced/03-受控卖座选项卡.js";
+// import App from "./02-advanced/03-受控卖座选项卡.js";
+// import App from "./02-advanced/04-父子通信版-表单域组件.js";
+import App from "./02-advanced/05-ref版-表单域组件.js";
 import "./index.css";
 
 ReactDom.render(<App></App>, document.getElementById("root"));
