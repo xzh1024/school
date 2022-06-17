@@ -24,7 +24,10 @@ import ReactDom from "react-dom";
 // import App from "./02-advanced/01-子传父.js";
 // import App from "./02-advanced/03-受控卖座选项卡.js";
 // import App from "./02-advanced/04-父子通信版-表单域组件.js";
-import App from "./02-advanced/05-ref版-表单域组件.js";
+// import App from "./02-advanced/05-ref版-表单域组件.js";
+// import App from "./02-advanced/06-中间人模式.js";
+// import App from "./02-advanced/07-发布订阅模式.js";
+import App from "./02-advanced/08-订阅发布模式案例.js";
 import "./index.css";
 
 ReactDom.render(<App></App>, document.getElementById("root"));
