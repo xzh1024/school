@@ -27,7 +27,10 @@ import ReactDom from "react-dom";
 // import App from "./02-advanced/05-ref版-表单域组件.js";
 // import App from "./02-advanced/06-中间人模式.js";
 // import App from "./02-advanced/07-发布订阅模式.js";
-import App from "./02-advanced/08-订阅发布模式案例.js";
+// import App from "./02-advanced/08-订阅发布模式案例.js";
+// import App from "./02-advanced/09-context.js";
+// import App from "./02-advanced/10-插槽.js";
+import App from "./02-advanced/11-插槽抽屉.js";
 import "./index.css";
 
 ReactDom.render(<App></App>, document.getElementById("root"));
