@@ -30,7 +30,13 @@ import ReactDom from "react-dom";
 // import App from "./02-advanced/08-订阅发布模式案例.js";
 // import App from "./02-advanced/09-context.js";
 // import App from "./02-advanced/10-插槽.js";
-import App from "./02-advanced/11-插槽抽屉.js";
+// import App from "./02-advanced/11-插槽抽屉.js";
+// import App from "./02-advanced/12-生命周期-初始化.js";
+// import App from "./02-advanced/13-生命周期-初始化案例.js";
+// import App from "./02-advanced/14-生命周期-更新阶段1.js";
+// import App from "./02-advanced/15-生命周期-更新阶段2.js";
+// import App from "./02-advanced/16-生命周期-更新阶段2-案例.js";
+import App from "./02-advanced/17-生命周期-更新阶段3.js";
 import "./index.css";
 
 ReactDom.render(<App></App>, document.getElementById("root"));

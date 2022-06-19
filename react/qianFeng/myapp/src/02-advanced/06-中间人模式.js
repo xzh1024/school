@@ -9,7 +9,9 @@ export default class App extends Component {
       filmList: [],
       filmInfo: null,
     };
-
+  }
+  
+  componentDidMount() {
     axios.get("./test.json").then((res) => {
       console.log(res.data);
       this.setState({
