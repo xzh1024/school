@@ -37,7 +37,10 @@ import ReactDom from "react-dom";
 // import App from "./02-advanced/15-生命周期-更新阶段2.js";
 // import App from "./02-advanced/16-生命周期-更新阶段2-案例.js";
 // import App from "./02-advanced/17-生命周期-更新阶段3.js";
-import App from "./02-advanced/18-生命周期-更新阶段3-案例.js";
+// import App from "./02-advanced/18-生命周期-更新阶段3-案例.js";
+// import App from "./02-advanced/19-生命周期-销毁.js";
+// import App from "./02-advanced/20-新生命周期-1.js";
+import App from "./02-advanced/21-新生命周期-1-案例.js";
 import "./index.css";
 
 ReactDom.render(<App></App>, document.getElementById("root"));
