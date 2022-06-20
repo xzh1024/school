@@ -1,6 +1,6 @@
 // console.log("hello world kerwin");
-import React from "react";
-import ReactDom from "react-dom";
+import React from 'react';
+import ReactDom from 'react-dom';
 // import App from "./01-base/01-class组件";
 // import App from "./01-base/02-函数式组件";
 // import App from "./01-base/04-组件的样式";
@@ -40,10 +40,12 @@ import ReactDom from "react-dom";
 // import App from "./02-advanced/18-生命周期-更新阶段3-案例.js";
 // import App from "./02-advanced/19-生命周期-销毁.js";
 // import App from "./02-advanced/20-新生命周期-1.js";
-import App from "./02-advanced/21-新生命周期-1-案例.js";
-import "./index.css";
+// import App from "./02-advanced/21-新生命周期-1-案例.js";
+// import App from "./02-advanced/22-新生命周期-2.js";
+import App from './02-advanced/23-新生命周期-2-案例.js';
+import './index.css';
 
-ReactDom.render(<App></App>, document.getElementById("root"));
+ReactDom.render(<App></App>, document.getElementById('root'));
 
 // ReactDom.render(
 //   React.createElement('div', {
