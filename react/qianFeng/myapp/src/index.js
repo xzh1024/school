@@ -42,7 +42,9 @@ import ReactDom from 'react-dom';
 // import App from "./02-advanced/20-新生命周期-1.js";
 // import App from "./02-advanced/21-新生命周期-1-案例.js";
 // import App from "./02-advanced/22-新生命周期-2.js";
-import App from './02-advanced/23-新生命周期-2-案例.js';
+// import App from './02-advanced/23-新生命周期-2-案例.js';
+// import App from './02-advanced/24-性能优化.js';
+import App from './02-advanced/25-swiper-同步.js';
 import './index.css';
 
 ReactDom.render(<App></App>, document.getElementById('root'));
