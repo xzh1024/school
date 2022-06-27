@@ -47,7 +47,8 @@ import ReactDom from 'react-dom';
 // import App from './02-advanced/25-swiper-同步.js';
 // import App from './02-advanced/27-swiper-组件.js';
 // import App from './03-hooks/01-useState.js';
-import App from './03-hooks/02-todolist.js';
+// import App from './03-hooks/02-todolist.js';
+import App from './03-hooks/03-useEffect.js';
 import './index.css';
 
 ReactDom.render(<App></App>, document.getElementById('root'));
