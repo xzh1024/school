@@ -4,17 +4,28 @@ import 'swiper/css';
 
 export default class App extends Component {
   state = {
-    list: ['111', '222', '333'],
+    list: [],
   };
 
   componentDidMount() {
-    console.log(Swiper);
-    new Swiper('.swiper', {
-      // direction: 'vertical', // 垂直切换选项
-      loop: true, // 循环模式选项
-      autoplay: 3000,
-    });
+    setTimeout(() => {
+      this.setState({
+        list: ['111', '222', '333'],
+      });
+      new Swiper('.swiper', {
+        autoplay: 3000,
+        // direction: 'vertical', // 垂直切换选项
+        loop: true, // 循环模式选项
+      });
+    }, 0);
   }
+
+  // componentDidUpdate() {
+  //   new Swiper('.swiper', {
+  //     autoplay: 3000,
+  //     loop: true, // 循环模式选项
+  //   });
+  // }
 
   render() {
     return (
@@ -24,6 +35,7 @@ export default class App extends Component {
           style={{
             width: '600px',
             height: '200px',
+            backgroundColor: 'red',
           }}
         >
           <div className="swiper-wrapper">
