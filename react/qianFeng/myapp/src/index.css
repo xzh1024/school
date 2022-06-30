@@ -8,3 +8,6 @@ html, body, #root {
 button {
     cursor: pointer;
 }
+.hidden {
+    display: none;
+}

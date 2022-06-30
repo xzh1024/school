@@ -48,7 +48,15 @@ import ReactDom from 'react-dom';
 // import App from './02-advanced/27-swiper-组件.js';
 // import App from './03-hooks/01-useState.js';
 // import App from './03-hooks/02-todolist.js';
-import App from './03-hooks/03-useEffect.js';
+// import App from './03-hooks/03-useEffect.js';
+// import App from './03-hooks/04-useEffect2.js';
+// import App from './03-hooks/05-useEffect2-案例.js';
+// import App from './03-hooks/06-useEffect.js';
+// import App from './03-hooks/07-useCallback1.js';
+// import App from './03-hooks/08-useCallback2.js';
+// import App from './03-hooks/09-useMemo.js';
+// import App from './03-hooks/10-useRef.js';
+import App from './03-hooks/11-useRef-保存值.js';
 import './index.css';
 
 ReactDom.render(<App></App>, document.getElementById('root'));
