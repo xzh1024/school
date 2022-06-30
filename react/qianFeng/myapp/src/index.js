@@ -56,7 +56,8 @@ import ReactDom from 'react-dom';
 // import App from './03-hooks/08-useCallback2.js';
 // import App from './03-hooks/09-useMemo.js';
 // import App from './03-hooks/10-useRef.js';
-import App from './03-hooks/11-useRef-保存值.js';
+// import App from './03-hooks/11-useRef-保存值.js';
+import App from './03-hooks/12-useContext.js';
 import './index.css';
 
 ReactDom.render(<App></App>, document.getElementById('root'));
