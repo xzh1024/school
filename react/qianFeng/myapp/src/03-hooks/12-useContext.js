@@ -1,4 +1,4 @@
-import React, { Component, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import './css/index.scss';
 
@@ -12,7 +12,7 @@ export default function App() {
     axios.get('./test.json').then((res) => {
       setfilmList(res.data || []);
     });
-  }, filmList.length);
+  }, []);
 
   const changeFilmInfo = (item) => {
     setfilmInfo(item);
