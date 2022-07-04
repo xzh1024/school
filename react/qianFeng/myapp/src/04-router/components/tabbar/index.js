@@ -8,13 +8,13 @@ export default function Tabbar() {
       <ul>
         <li>
           {/* <a href="#/films">电影</a> */}
-          <NavLink to="/films" activeClassName="k-active">
+          <NavLink to="/films" activeClassName="active">
             电影
           </NavLink>
         </li>
         <li>
           {/* <a href="#/cinemas">影院</a> */}
-          <NavLink to="/cinemas" activeClassName="k-active">
+          <NavLink to="/cinemas" activeClassName="active">
             影院
           </NavLink>
         </li>
