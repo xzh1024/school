@@ -5,12 +5,15 @@ import React, { Component } from 'react';
 // import Cinemas from './views/Cinemas';
 // import Center from './views/Center';
 import MRouter from './router/IndexRouter.js';
+import Tabbar from './components/tabbar';
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <MRouter></MRouter>
+        <MRouter>
+          <Tabbar></Tabbar>
+        </MRouter>
       </div>
     );
   }
