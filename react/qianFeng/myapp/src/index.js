@@ -62,7 +62,8 @@ import ReactDom from 'react-dom';
 // import App from './03-hooks/14-useReducer2.js';
 // import App from './03-hooks/15-useReducer3.js';
 // import App from './03-hooks/16-自定义hooks.js';
-import App from './04-router/App.js';
+// import App from './04-router/App.js';
+import App from './05-redux/App.js';
 import './index.css';
 
 ReactDom.render(<App></App>, document.getElementById('root'));

@@ -20,7 +20,7 @@ export default function Tabbar() {
         </li>
         <li>
           {/* <a href="#/center">我的</a> */}
-          <NavLink to="/center" activeClassName="k-active">
+          <NavLink to="/center" activeClassName={style.active}>
             我的
           </NavLink>
         </li>
