@@ -22,6 +22,38 @@ const reducer = (
   }
 };
 
-const store = createStore(reducer);
+// const store = createStore(reducer);
+const store = createMyStore(reducer);
+
+/*
+  store.dispatch
+  store.subscribe
+  store.getState
+*/
+function createMyStore(reducer) {
+  var list = [];
+  var state = reducer(undefined, {});
+
+  function subscribe(callback) {
+    list.push(callback);
+  }
+
+  function dispatch(action) {
+    state = reducer(state, action);
+    for (var i in list) {
+      list[i] && list[i]();
+    }
+  }
+
+  function getState() {
+    return state;
+  }
+
+  return {
+    subscribe,
+    dispatch,
+    getState,
+  };
+}
 
 export default store;

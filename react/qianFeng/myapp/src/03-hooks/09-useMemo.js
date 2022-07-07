@@ -1,6 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 
+/*
+  useMemo 记忆组件
+    useCallback的功能完全可以由useMemo所取代，如果你想通过使用useMemo返回一个记忆函数也是完全可以的。
+      useCallback(fn, inputs) is equivalent to useMemo(() => fn, inputs).
+    唯一的区别是：useCallback不会执行第一个参数函数，而是将它返回给你，而useMemo会执行第一个函数并且将函数执行结果返回给你。
+*/
+
 export default function Cinema() {
   const [keyword, setkeyword] = useState('');
   const [cinemaList, setcinemaList] = useState([]);

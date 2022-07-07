@@ -53,7 +53,7 @@ import ReactDom from 'react-dom';
 // import App from './03-hooks/05-useEffect2-案例.js';
 // import App from './03-hooks/06-useEffect.js';
 // import App from './03-hooks/07-useCallback1.js';
-// import App from './03-hooks/08-useCallback2.js';
+import App from './03-hooks/08-useCallback2.js';
 // import App from './03-hooks/09-useMemo.js';
 // import App from './03-hooks/10-useRef.js';
 // import App from './03-hooks/11-useRef-保存值.js';
@@ -63,7 +63,7 @@ import ReactDom from 'react-dom';
 // import App from './03-hooks/15-useReducer3.js';
 // import App from './03-hooks/16-自定义hooks.js';
 // import App from './04-router/App.js';
-import App from './05-redux/App.js';
+// import App from './05-redux/App.js';
 import './index.css';
 
 ReactDom.render(<App></App>, document.getElementById('root'));

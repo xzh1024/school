@@ -16,12 +16,19 @@ export default function App() {
       isChecked: true,
     },
   ]);
+  const [myname, setmyname] = useState('hahaha');
 
+  /*
+    useCallback(记忆函数)
+    防止因为组件重新渲染，导致方法被重新创建，起到缓存作用；
+    只有第二个参数变化了，才重新声明一次
+  */
   const handleChange = useCallback((e) => {
     setText(e.target.value);
   }, []);
 
   const handleAdd = useCallback(() => {
+    console.log('add');
     if (text) {
       setList([...list, { text, isChecked: false }]);
       // 调用清除输入值的方法
@@ -31,16 +38,16 @@ export default function App() {
 
   const handleClear = useCallback(() => {
     setText('');
-  }, [text])
+  }, [text]);
 
-  const handleDelete = useCallback((index) => {
-    const arr = [...list];
-    arr.splice(index, 1);
-    setList(arr);
-  },
-    [list.length],
-  )
-  
+  const handleDelete = useCallback(
+    (index) => {
+      const arr = [...list];
+      arr.splice(index, 1);
+      setList(arr);
+    },
+    [list]
+  );
 
   function handleFinished(index) {
     const newList = [...list];
@@ -50,10 +57,20 @@ export default function App() {
 
   return (
     <div>
+      <div>
+        {myname} -{' '}
+        <button
+          onClick={() => {
+            setmyname('heiheih');
+          }}
+        >
+          change-name
+        </button>
+      </div>
+
       <input value={text} onChange={handleChange}></input>
       <button onClick={handleAdd}>add</button>
       <button onClick={handleClear}>清除</button>
-
       <ul>
         {list.map((item, index) => (
           <li key={index}>
