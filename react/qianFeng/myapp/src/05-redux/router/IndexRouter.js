@@ -12,6 +12,7 @@ import Center from '../views/Center';
 import NotFound from '../views/NotFound';
 import Detail from '../views/films/detail';
 import Login from '../views/Login';
+import City from '../views/City';
 
 export default function IndexRouter(props) {
   function isAuth() {
@@ -37,6 +38,7 @@ export default function IndexRouter(props) {
           }}
         />
         <Route path="/login" component={Login} />
+        <Route path="/city" component={City} />
         <Route path="/detail/:id" component={Detail} />
         {/* <Route path="/detail" component={Detail} /> */}
         <Redirect exact from="/" to="/films" />

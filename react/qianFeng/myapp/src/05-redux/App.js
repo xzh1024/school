@@ -10,7 +10,7 @@ import store from './redux/store';
 
 export default class App extends Component {
   state = {
-    isShow: store.getState().show,
+    isShow: store.getState().TabbarReducer.show,
   };
 
   // store.subsribe  订阅
@@ -18,14 +18,13 @@ export default class App extends Component {
     store.subscribe(() => {
       console.log('app中订阅');
       this.setState({
-        isShow: store.getState().show,
+        isShow: store.getState().TabbarReducer.show,
       });
-      console.log(store.getState().show);
-      console.log(this.state.isShow);
     });
   }
 
   render() {
+    console.log(store.getState());
     return (
       <div>
         <MRouter>

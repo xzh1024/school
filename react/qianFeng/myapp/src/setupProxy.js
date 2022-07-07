@@ -6,6 +6,9 @@ module.exports = function (app) {
     createProxyMiddleware({
       target: 'https://i.maoyan.com',
       changeOrigin: true,
+      // pathRewrite: {
+      //   '^/ajax': '',
+      // },
     })
   );
 };
