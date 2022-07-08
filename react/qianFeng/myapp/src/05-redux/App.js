@@ -26,7 +26,7 @@ export default class App extends Component {
   render() {
     console.log(store.getState());
     return (
-      <div>
+      <div style={{ height: '100%' }}>
         <MRouter>
           {/* <Tabbar></Tabbar> */}
           {this.state.isShow && <Tabbar></Tabbar>}

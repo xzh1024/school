@@ -3,8 +3,8 @@ import store from '../../../redux/store';
 import { show, hide } from '../../../redux/actionCreator/TabbarActionCreator';
 
 export default function Detail(props) {
-  console.log(props);
   useEffect(() => {
+    console.log(props);
     console.log('create');
     // store.dispath  通知
     // store.dispatch({

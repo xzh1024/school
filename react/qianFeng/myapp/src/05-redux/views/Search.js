@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import store from '../redux/store';
 import { getCinemaListAction } from '../redux/actionCreator/getCinemaListAction';
+import './css/search.scss';
 
-export default function Cinemas(props) {
-  const [cityName] = useState(store.getState().CityReducer.cityName);
-
+export default function Search() {
+  const [keyword, setkeyword] = useState('');
   const [cinemaList, setCinemaList] = useState(
     store.getState().CinemaListReducer.list
   );
-
   useEffect(() => {
-    console.log(111);
     if (cinemaList.length === 0) {
       // 去后台取数据
       store.dispatch(getCinemaListAction());
@@ -19,7 +17,7 @@ export default function Cinemas(props) {
     }
     // 订阅
     const unsubscribe = store.subscribe(() => {
-      console.log('Cinema 订阅');
+      console.log('Search 订阅');
       setCinemaList(store.getState().CinemaListReducer.list);
     });
 
@@ -29,24 +27,33 @@ export default function Cinemas(props) {
     };
   }, []);
 
+  const handleChange = (event) => {
+    setkeyword(event.target.value);
+  };
+
+  const handleClear = () => {
+    setkeyword('');
+  };
+
+  const getCinemaList = useMemo(
+    () =>
+      cinemaList.filter((item) => {
+        return (
+          item.name.toUpperCase().includes(keyword.toUpperCase()) ||
+          item.address.toUpperCase().includes(keyword.toUpperCase())
+        );
+      }),
+    [keyword, cinemaList]
+  );
+
   return (
-    <div>
-      <div style={{ overflow: 'hidden' }}>
-        <div
-          style={{ float: 'left' }}
-          onClick={() => props.history.push('./city')}
-        >
-          Cinemas-{cityName}
-        </div>
-        <div
-          style={{ float: 'right' }}
-          onClick={() => props.history.push('/cinemas/search')}
-        >
-          搜索
-        </div>
+    <div className="search">
+      <div className="search-input">
+        <input value={keyword} onChange={handleChange} />
+        <button onClick={handleClear}>清空</button>
       </div>
-      <ul>
-        {cinemaList.map((item) => (
+      <ul className="search-content">
+        {getCinemaList.map((item) => (
           <dl
             key={item.cinemaId}
             style={{

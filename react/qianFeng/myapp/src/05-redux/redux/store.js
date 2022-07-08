@@ -1,7 +1,13 @@
-import { combineReducers, createStore } from 'redux';
-import { TabbarReducer, CityReducer } from './reducers';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { TabbarReducer, CityReducer, CinemaListReducer } from './reducers';
+import reduxThunk from 'redux-thunk';
+import reduxPromise from 'redux-promise';
 
-const reducer = combineReducers({ TabbarReducer, CityReducer });
+const reducer = combineReducers({
+  TabbarReducer,
+  CityReducer,
+  CinemaListReducer,
+});
 // const reducer = (
 //   prevState = {
 //     show: true,
@@ -27,7 +33,7 @@ const reducer = combineReducers({ TabbarReducer, CityReducer });
 //   }
 // };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(reduxThunk, reduxPromise));
 // const store = createMyStore(reducer);
 
 /*
