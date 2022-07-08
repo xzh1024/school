@@ -1,4 +1,4 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 import { TabbarReducer, CityReducer, CinemaListReducer } from './reducers';
 import reduxThunk from 'redux-thunk';
 import reduxPromise from 'redux-promise';
@@ -33,7 +33,14 @@ const reducer = combineReducers({
 //   }
 // };
 
-const store = createStore(reducer, applyMiddleware(reduxThunk, reduxPromise));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducer,
+  /* preloadedState, */ composeEnhancers(
+    applyMiddleware(reduxThunk, reduxPromise)
+  )
+);
+// const store = createStore(reducer, applyMiddleware(reduxThunk, reduxPromise));
 // const store = createMyStore(reducer);
 
 /*
