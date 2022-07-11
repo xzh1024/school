@@ -68,11 +68,14 @@ import App from './06-react-redux/App.js';
 import './index.css';
 
 import { Provider } from 'react-redux';
-import store from './06-react-redux/redux/store';
+import { store, persistor } from './06-react-redux/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDom.render(
   <Provider store={store}>
-    <App />
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );

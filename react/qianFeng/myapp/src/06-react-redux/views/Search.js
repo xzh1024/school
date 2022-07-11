@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import store from '../redux/store';
+import { store } from '../redux/store';
 import { getCinemaListAction } from '../redux/actionCreator/getCinemaListAction';
 import './css/search.scss';
 

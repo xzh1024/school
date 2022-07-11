@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 // import Center from './views/Center';
 import MRouter from './router/IndexRouter.js';
 import Tabbar from './components/tabbar';
-import store from './redux/store';
+// import store from './redux/store';
 
 class App extends Component {
   // state = {

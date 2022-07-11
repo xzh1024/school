@@ -2,12 +2,24 @@ import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 import { TabbarReducer, CityReducer, CinemaListReducer } from './reducers';
 import reduxThunk from 'redux-thunk';
 import reduxPromise from 'redux-promise';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  whitelist: ['CityReducer'],
+  blacklist: ['TabbarReducer'],
+};
 
 const reducer = combineReducers({
   TabbarReducer,
   CityReducer,
   CinemaListReducer,
 });
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+
 // const reducer = (
 //   prevState = {
 //     show: true,
@@ -35,7 +47,8 @@ const reducer = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
-  reducer,
+  // reducer,
+  persistedReducer,
   /* preloadedState, */ composeEnhancers(
     applyMiddleware(reduxThunk, reduxPromise)
   )
@@ -74,7 +87,10 @@ const store = createStore(
 //   };
 // }
 
-export default store;
+const persistor = persistStore(store);
+
+// export default store;
+export { store, persistor };
 
 /*
   var obj = {
