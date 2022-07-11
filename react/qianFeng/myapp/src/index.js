@@ -64,18 +64,30 @@ import ReactDom from 'react-dom';
 // import App from './03-hooks/16-自定义hooks.js';
 // import App from './04-router/App.js';
 // import App from './05-redux/App.js';
-import App from './06-react-redux/App.js';
+// import App from './06-react-redux/App.js';
+// import App from './07-antd/01-antd引入';
+// import App from './07-antd/02-栅格系统';
+// import App from './07-antd/03-layout';
+// import App from './07-antd/04-下拉菜单';
+// import App from './07-antd/05-步骤条';
+// import App from './07-antd/06-轮播';
+// import App from './07-antd/07-table';
+// import App from './07-antd/08-树形控件';
+import App from './07-antd/09-modal';
+
 import './index.css';
+import 'antd/dist/antd.css';
 
 import { Provider } from 'react-redux';
-import { store, persistor } from './06-react-redux/redux/store';
-import { PersistGate } from 'redux-persist/integration/react';
+// import { store, persistor } from './06-react-redux/redux/store';
+import { store } from './06-react-redux/redux/store';
+// import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDom.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <App />
-    </PersistGate>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
+    <App />
+    {/* </PersistGate> */}
   </Provider>,
   document.getElementById('root')
 );
