@@ -73,21 +73,22 @@ import ReactDom from 'react-dom';
 // import App from './07-antd/06-轮播';
 // import App from './07-antd/07-table';
 // import App from './07-antd/08-树形控件';
-import App from './07-antd/09-modal';
+// import App from './07-antd/09-modal';
+import App from './08-antd-mobile/App';
 
 import './index.css';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css'; // pc的样式
 
 import { Provider } from 'react-redux';
-// import { store, persistor } from './06-react-redux/redux/store';
-import { store } from './06-react-redux/redux/store';
-// import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './08-antd-mobile/redux/store';
+// import { store } from './06-react-redux/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDom.render(
   <Provider store={store}>
-    {/* <PersistGate loading={null} persistor={persistor}> */}
-    <App />
-    {/* </PersistGate> */}
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
   </Provider>,
   document.getElementById('root')
 );
