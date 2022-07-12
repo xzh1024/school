@@ -1,12 +1,8 @@
 .search {
   height: calc(100% - 50px);
   margin-bottom: 50px;
-  // height: 100%;
-  // box-sizing: border-box;
-  // padding-bottom: 50px;
-  // display: flex;
-  // flex-direction: column;
-  // overflow: hidden;
+  display: flex;
+  flex-direction: column;
   .search-input {
     flex: none;
     height: 50px;
