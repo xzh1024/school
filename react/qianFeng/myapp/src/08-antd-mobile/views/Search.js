@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
+import { SearchBar } from 'antd-mobile';
 import { store } from '../redux/store';
 import { getCinemaListAction } from '../redux/actionCreator/getCinemaListAction';
 import './css/search.scss';
@@ -27,8 +28,8 @@ export default function Search() {
     };
   }, [cinemaList.length]);
 
-  const handleChange = (event) => {
-    setkeyword(event.target.value);
+  const handleChange = (value) => {
+    setkeyword(value);
   };
 
   const handleClear = () => {
@@ -49,8 +50,14 @@ export default function Search() {
   return (
     <div className="search">
       <div className="search-input">
-        <input value={keyword} onChange={handleChange} />
-        <button onClick={handleClear}>清空</button>
+        {/* <input value={keyword} onChange={handleChange} />
+        <button onClick={handleClear}>清空</button> */}
+        <SearchBar
+          placeholder="请输入内容"
+          showCancelButton={() => true}
+          value={keyword}
+          onChange={handleChange}
+        />
       </div>
       <ul className="search-content">
         {getCinemaList.map((item) => (
