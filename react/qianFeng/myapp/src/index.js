@@ -80,8 +80,15 @@ import ReactDom from 'react-dom';
 // import App from './09-immutable/04-List';
 // import App from './09-immutable/05-个人信息修改';
 // import App from './09-immutable/05-个人信息修改2';
-import App from './09-immutable/redux/App';
-
+// import App from './09-immutable/redux/App';
+import App from './10-mobx/04-router/App';
+import { Provider } from 'mobx-react';
 import './index.css';
+import store from './10-mobx/04-router/mobx/store';
 
-ReactDom.render(<App />, document.getElementById('root'));
+ReactDom.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
