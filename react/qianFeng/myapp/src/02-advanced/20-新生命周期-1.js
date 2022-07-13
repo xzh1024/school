@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+// getDerivedStateFromProps是为了替代componentWillReceiveProps存在的
 class Child extends Component {
   state = {
     title: "111",

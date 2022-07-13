@@ -47,7 +47,7 @@ class FilmList extends Component {
     }
   };
   
-  // componentWillReceiveProps
+  // 替代componentWillReceiveProps
   static getDerivedStateFromProps(nextProps, nextState) {
     console.log(nextProps);
     return {

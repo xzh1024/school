@@ -1,3 +1,4 @@
+// console.log("hello world kerwin");
 import React from 'react';
 import ReactDom from 'react-dom';
 // import App from "./01-base/01-class组件";
@@ -73,15 +74,29 @@ import ReactDom from 'react-dom';
 // import App from './07-antd/07-table';
 // import App from './07-antd/08-树形控件';
 // import App from './07-antd/09-modal';
-// import App from './08-antd-mobile/App';
-// import App from './09-immutable/01-base';
-// import App from './09-immutable/02-map';
-// import App from './09-immutable/03-map2';
-// import App from './09-immutable/04-List';
-// import App from './09-immutable/05-个人信息修改';
-// import App from './09-immutable/05-个人信息修改2';
-import App from './09-immutable/redux/App';
+import App from './08-antd-mobile/App';
 
 import './index.css';
+// import 'antd/dist/antd.css'; // pc的样式
 
-ReactDom.render(<App />, document.getElementById('root'));
+import { Provider } from 'react-redux';
+import { store, persistor } from './08-antd-mobile/redux/store';
+// import { store } from './06-react-redux/redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
+
+ReactDom.render(
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>,
+  document.getElementById('root')
+);
+
+// ReactDom.render(
+//   React.createElement('div', {
+//     id: 'aaa',
+//     class: 'bbb'
+//   }, 111111),
+//   document.getElementById("root")
+// );

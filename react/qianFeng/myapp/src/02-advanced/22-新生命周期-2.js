@@ -10,14 +10,21 @@ class Child extends Component {
   //   console.log(nextState);
   // }
 
-  getSnapshotBeforeUpdate(...arg) {
-    console.log("getSnapshotBeforeUpdate:");
-    console.log(arg);
+  /*
+    getSnapshotBeforeUpdate()方法在呈现DOM之前被调用。用于在DOM更新后存储状态的先前值。
+    getSnapshotBeforeUpdate()方法返回的任何值都将用作componentDidUpdate()方法的参数。
+    此函数始终与componentDidUpdate()方法一起使用，反之亦然。
+  */
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('getSnapshotBeforeUpdate:');
+    console.log(prevProps);
+    console.log(prevState);
     return 100;
   }
-  componentDidUpdate(...arg) {
-    console.log("componentDidUpdate:");
-    console.log(arg);
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate:');
+    console.log(prevProps);
+    console.log(prevState);
   }
 
   render() {
