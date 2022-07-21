@@ -86,7 +86,10 @@ import ReactDom from 'react-dom';
 // import App from './11-styled-components/01-透传props';
 // import App from './11-styled-components/02-样式化组件';
 // import App from './11-styled-components/03-样式扩展';
-import App from './11-styled-components/04-动画';
+// import App from './11-styled-components/04-动画';
+// import App from './13-redux-saga/App';
+import App from './13-redux-saga/05-redux/App';
+
 import { Provider } from 'mobx-react';
 import './index.css';
 import store from './10-mobx/04-router/mobx/store';
