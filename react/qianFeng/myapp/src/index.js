@@ -88,7 +88,8 @@ import ReactDom from 'react-dom';
 // import App from './11-styled-components/03-样式扩展';
 // import App from './11-styled-components/04-动画';
 // import App from './13-redux-saga/App';
-import App from './13-redux-saga/05-redux/App';
+// import App from './13-redux-saga/05-redux/App';
+import App from './14-react-补充/portal/App';
 
 import { Provider } from 'mobx-react';
 import './index.css';

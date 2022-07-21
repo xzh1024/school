@@ -1,0 +1,18 @@
+.box {
+  display: flex;
+  height: 100%;
+}
+
+.left {
+  width: 200px;
+  background: yellow;
+  position: relative;
+  z-index: 10;
+}
+
+.right {
+  flex: 1;
+  background: blue;
+  position: relative;
+  z-index: 5;
+}
