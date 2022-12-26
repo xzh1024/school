@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>promise手写</title>
+</head>
+
+<body>
+  <script>
+    window.onload = function () {
+      class PromiseNew {
+        constructor(fn) {
+          // [PENDING-进行中 RESOLVED-成功 REJECTED-失败]
+          this.state = 'PENDING'
+          this.doneList = [];
+          this.failList = [];
+          fn(this.resolve.bind(this), this.reject.bind(this))
+        }
+
+        done(callback) {
+          if (typeof (callback) === 'function') {
+            this.doneList.push(callback)
+          } else {
+            throw new Error('缺少回调函数');
+          }
+          return this;
+        }
+
+        fail(callback) {
+          if (typeof (callback) === 'function') {
+            this.failList.push(callback)
+          } else {
+            throw new Error('缺少回调函数');
+          }
+          return this;
+        }
+
+        then(success, fail) {
+          this.done(success || function () { }).fail(fail || function () { })
+          return this
+        }
+
+        resolve() {
+          this.state = 'RESOLVED'
+          // if (this.doneList.length) {
+          //   this.doneList.forEach(fn => fn())
+          // }
+          let args = Array.prototype.slice.call(arguments);
+          setTimeout(function () {
+            this.doneList.forEach((item, key, arr) => {
+              item.apply(null, args);
+              arr.shift();
+            });
+          }.bind(this), 0);
+        }
+
+        reject() {
+          this.state = 'REJECTED'
+          // if (this.failList.length) {
+          //   this.failList.forEach(fn => fn())
+          // }
+          let args = Array.prototype.slice.call(arguments);
+          setTimeout(function () {
+            this.failList.forEach((item, key, arr) => {
+              item.apply(null, args);
+              arr.shift();
+            });
+          }.bind(this), 0);
+        }
+      }
+
+      // 下面一波骚操作
+      new PromiseNew((resolve, reject) => {
+        // setTimeout(() => {
+        resolve('hello world');
+        reject('you are err');
+        // }, 200)
+      }).then((res) => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      })
+      // .done((res) => {
+      //   console.log(res);
+      // }).fail((res) => {
+      //   console.log(res);
+      // });
+    }
+  </script>
+</body>
+
+</html>

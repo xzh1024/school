@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>冒泡排序与选择排序</title>
+</head>
+
+<body>
+  <script>
+    //冒泡排序  时间复杂度：O(n2)
+    function bubbleSort(arr) {
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr.length; j++) {
+          if (arr[j] > arr[j + 1]) {
+            var temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
+      return arr;
+    }
+    var arr = [38, 26, 89, 56, 17, 44];
+    console.log("冒泡排序前的数组是：", arr);
+    arr = bubbleSort(arr);
+    console.log("冒泡排序后的数组是：", arr);
+
+    
+    //选择排序  时间复杂度：O(n2)
+    function selectSort(arr) {
+      var min, temp;
+      for (var i = 0; i < arr.length; i++) {
+        min = i;
+        for (var j = i + 1; j < arr.length; j++) {
+          if (arr[j] < arr[min]) {
+            min = j;
+          }
+        }
+        temp = arr[i];
+        arr[i] = arr[min];
+        arr[min] = temp;
+      }
+      return arr;
+    }
+    var arr2 = [38, 26, 89, 56, 17, 44];
+    console.log("选择排序前的数组是：", arr2);
+    arr2 = selectSort(arr);
+    console.log("选择排序后的数组是：", arr2);
+  </script>
+</body>
+
+</html>

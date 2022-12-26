@@ -43,7 +43,7 @@ class Compile {
         // console.log(Object.prototype.toString.call(childNodes));  // [object NodeList]
         Array.from(childNodes).forEach(node => {
             // 判断类型
-            if (this.isElement(node)) {
+            if (this.isElement(node)) { // 节点
                 // 元素 node.nodeType === 1
                 // console.log('编译元素：' + node.nodeName);
                 // 查找k-，@，:
@@ -53,7 +53,7 @@ class Compile {
                     const attrName = attr.name; // 属性名
                     const exp = attr.value; // 属性值
                     if(this.isDirective(attrName)) {
-                        // k-text
+                        // k-text k-html
                         const dir = attrName.substring(2); // text
                         // 执行指令
                         this[dir] && this[dir](node, this.$vm, exp);
@@ -63,7 +63,7 @@ class Compile {
                         this.eventHandler(node, this.$vm, exp, dir)
                     }
                 })
-            } else if(this.isInterpolation(node)) {
+            } else if(this.isInterpolation(node)) { // 文本
                 // 文本 node.nodeType === 3
                 // console.log('编译文本：' + node.textContent);
                 this.compileText(node);
