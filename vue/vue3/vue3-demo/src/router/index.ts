@@ -1,7 +1,8 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
+  // history: createWebHashHistory(import.meta.env.BASE_URL), // hash模式
   history: createWebHistory(import.meta.env.BASE_URL), // vite.config文件中的base设置值
   // history: createWebHistory('/mode'),
   routes: [

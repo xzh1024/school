@@ -4,19 +4,19 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "首页"
       }
     },
     {
       "path": "pages/commodity/commodity",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "商品"
       }
     },
     {
       "path": "pages/order/order",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "订单"
       }
     }
   ],
