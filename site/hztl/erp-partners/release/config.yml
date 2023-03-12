@@ -1,0 +1,19 @@
+name: erp-partners
+envs:
+  dev:
+    domain: partners.dev.hztl3.com
+    timeZone: { name: China, offset: 28800 }
+  qa:
+    https: true
+    domain: partners.qa.hztl3.com
+    timeZone: { name: China, offset: 28800 }
+  qa2:
+    https: true
+    domain: partners.qa2.hztl3.com
+    timeZone: { name: China, offset: 28800 }
+  production:
+    https: true
+    domain: partners.threesoft.cn
+    timeZone: { name: China, offset: 28800 }
+
+

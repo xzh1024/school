@@ -1,0 +1,16 @@
+defaults: &defaults
+  timeZone: { name: China, offset: 28800 }
+name: store-h5
+envs:
+  dev:
+    externalURL: http://wxmall-b.dev.hztl3.com
+    <<: *defaults
+  qa:
+    externalURL: https://wxmall-b-test.hztl3.com
+    <<: *defaults
+  qa2:
+    externalURL: https://wxmall-b-test2.hztl3.com
+    <<: *defaults
+  production:
+    externalURL: https://wxmall-b.hztl3.com
+    <<: *defaults

@@ -1,0 +1,41 @@
+@import './var.scss';
+
+.store-tree-node {
+    display: flex;
+    align-items: center;
+
+    .disabledTips {
+        color: orange;
+    }
+
+    .label-icon {
+        display: inline-block;
+        color: #FFF;
+        padding: 0 2px;
+        margin-right: 5px;
+        font-size: 10px;
+        border-radius: 2px;
+        background-color: $color-bg-primary-dark;
+        @include background_color("color-bg-primary-dark");
+    }
+
+    &.warehouses {
+        opacity: 1;
+    }
+
+    &.wareareas {
+        opacity: 0.85;
+    }
+
+    &.shelves {
+        opacity: 0.7;
+    }
+
+    &.layers {
+        opacity: 0.55;
+    }
+
+    &.positions {
+        opacity: 0.4;
+    }
+}

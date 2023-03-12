@@ -1,0 +1,11 @@
+.ht-autocomplete .ht-arrow-icon {
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &.is-reverse {
+        transform: rotate(180deg);
+    }
+}
+.el-autocomplete-suggestion li.highlighted {
+    background: rgba(224, 241, 255, 1) !important;
+}

@@ -1,0 +1,75 @@
+@import "./var";
+
+.ht-invoice-tem-warp {
+    width: 808px;
+    padding: 30px;
+    background-color: #fff;
+    min-height: 100%;
+    margin: auto;
+    position: relative;
+
+    * {
+        color: #000;
+        background-color: #fff;
+        font-family: "PingFang-SC-Medium";
+    }
+
+    .ht-invoice-logo {
+        background: transparent;
+    }
+
+    .el-table {
+        .cell.el-tooltip {
+            white-space: nowrap;
+            min-width: 10px;
+        }
+        tr {
+            font-size: inherit;
+        }
+    }
+
+    .ht-invoice-tem-content {
+        position: relative;
+        color: #000;
+        background-color: #fff;
+        min-height: 100%;
+    }
+
+    .el-table--scrollable-x .el-table__body-wrapper {
+        overflow-x: hidden;
+    }
+}
+
+.ht-invoice-tem-table {
+
+    .el-table .cell,
+    .el-table th div,
+    .el-table--border td:first-child .cell,
+    .el-table--border th:first-child .cell {
+        padding: 0 5px;
+    }
+
+    .el-table {
+
+        td,
+        th {
+            font-weight: 400;
+            border-color: #000 !important;
+        }
+        .el-table__header .cell {
+            word-break: keep-all;
+        }
+    }
+
+    .el-table--border {
+        border-color: #000 !important;
+        border-right: 1px;
+        border-bottom: 1px;
+    }
+
+    .el-table--border::after,
+    .el-table--group::after,
+    .el-table::before {
+        content: none;
+    }
+}

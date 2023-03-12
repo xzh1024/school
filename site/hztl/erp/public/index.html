@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <base href="/" />
+    <link rel="icon" href="/favicon.ico" />
+    <title id="title">
+      思锐云配管家--卖配件，用云配管家！全力打造的下一代智能轻量汽配SAAS系统
+    </title>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        background: #e7ebed;
+        position: relative;
+      }
+
+      @keyframes turn {
+        0% {
+          transform: rotate(0deg);
+        }
+
+        25% {
+          transform: rotate(90deg);
+        }
+
+        50% {
+          transform: rotate(180deg);
+        }
+
+        75% {
+          transform: rotate(270deg);
+        }
+
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 90, 150;
+        }
+
+        25% {
+          stroke-dasharray: 67.5, 112.5;
+        }
+
+        50% {
+          stroke-dasharray: 45, 75;
+        }
+
+        75% {
+          stroke-dasharray: 22.5, 37.5;
+        }
+
+        100% {
+          stroke-dasharray: 0, 0;
+        }
+      }
+
+      @font-face {
+        font-family: "YSHST";
+        src: url("./font/YSHaoShenTi-2.ttf");
+      }
+
+      .browser-tips {
+        display: none;
+        font-size: 18px;
+        color: #171f24;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        min-width: 1200px;
+        min-height: 700px;
+        background: rgba(255, 255, 255);
+        z-index: 999;
+        text-align: center;
+      }
+
+      .browser-tips .down-chrome-bg {
+        display: block;
+        margin: 20vh auto 0;
+        background-image: url("./down-chrome.png");
+        width: 297px;
+        height: 305px;
+        background-size: 297px;
+      }
+
+      .browser-tips .link {
+        color: #00a7fb;
+        cursor: pointer;
+      }
+
+      .browser-tips .btn {
+        margin-top: 25px;
+        display: inline-block;
+        width: 100px;
+        height: 34px;
+        line-height: 34px;
+        background: #3f9eff;
+        border-radius: 6px;
+        font-size: 14px;
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .browser-tips .tips-close {
+        cursor: pointer;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+      }
+    </style>
+    <script>
+      if (!location.pathname.startsWith("/Print/")) {
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src =
+            "https://hm.baidu.com/hm.js?c8e0b076e51e271062cc8a560ffe043b";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+        })();
+      }
+    </script>
+  </head>
+
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but erp doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong
+      >
+    </noscript>
+    <div class="browser-tips">
+      <i class="down-chrome-bg"></i>
+      <div>
+        当前浏览器不兼容，部分功能无法正常使用，请下载云配管家指定新版
+        <a target="_blank" href="https://www.google.cn/chrome/" class="link">
+          chrome
+        </a>
+        浏览器。
+      </div>
+      <a class="btn" target="_blank" href="https://www.google.cn/chrome/"
+        >去下载</a
+      >
+      <i class="tips-close">X</i>
+    </div>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+    <script>
+      var ua = navigator.userAgent.toLowerCase();
+      var pattern = /chrome\/([0-9]+)\./;
+      var matched = pattern.exec(ua);
+      var version = Number(matched && matched[1]);
+      var tipsWarp = document.querySelector(".browser-tips");
+      var curDate = new Date();
+      curDate.setHours(0, 0, 0, 0);
+      var curTimes = curDate.getTime();
+      var lastTimes = Number(localStorage.getItem("browserValidation"));
+      //  兼容chrome浏览器75版本之后
+      if (version < 75) {
+        tipsWarp.style.display = "block";
+        function closeTips() {
+          tipsWarp.style.display = "none";
+          window.removeEventListener("keydown", keydownCloseTips);
+          localStorage.setItem("browserValidation", curTimes);
+        }
+        function keydownCloseTips(e) {
+          if (e && e.keyCode == 27) {
+            closeTips();
+          }
+        }
+        document
+          .querySelector(".browser-tips .tips-close")
+          .addEventListener("click", closeTips);
+        window.addEventListener("keydown", keydownCloseTips);
+      }
+    </script>
+  </body>
+</html>

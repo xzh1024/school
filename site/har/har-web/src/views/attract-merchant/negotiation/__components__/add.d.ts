@@ -1,0 +1,41 @@
+type UserItem = {
+  userId: number;
+  name: string;
+};
+export type EditForm = {
+  recordId?: number;
+  projectId?: number;
+  planId?: number;
+  merchantId?: number;
+  merchantName: string;
+  brandId?: number;
+  brandName: string;
+  negotiateMode?: number;
+  negotiateDate: string;
+  negotiateStime: string;
+  negotiateEtime: string;
+  leaseType?: number;
+  estateId?: number;
+  expectMinArea?: number;
+  expectMaxArea?: number;
+  expectLeaseDate: string;
+  expectLeaseMonth?: number;
+  expectMinRent?: number;
+  expectMaxRent?: number;
+  negotiateContent: string;
+  negotiateAnnexList: string[];
+  negotiateTime?: string[];
+  attendeeList: UserItem[];
+  customerList: UserItem[];
+};
+export type BrandForm = {
+  id?: number | string;
+  projectId?: number | string;
+  projectName?: string;
+  code?: string;
+  name?: string;
+  formatId?: number | string;
+  formatName?: string;
+  status?: number;
+  remarks?: string;
+};

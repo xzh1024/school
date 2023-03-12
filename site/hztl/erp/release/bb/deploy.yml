@@ -1,0 +1,22 @@
+qa:
+  services:
+    web:
+      image: registry.threesoft.cn/bb-front/erp/web/qa
+      ports: [10093]
+      options: [-v, "front-logs:/var/log/nginx/erp"]
+  volumesToCreate: [front-logs]
+qa2:
+  services:
+    web:
+      image: registry.threesoft.cn/bb-front/erp/web/qa2
+      ports: [11093]
+      options: [-v, "front-logs:/var/log/nginx/erp"]
+  volumesToCreate: [front-logs]
+production:
+  accessNodes: { nginx: true }
+  services:
+    web:
+      image: registry.threesoft.cn/bb-front/erp/web/production
+      ports: [11093]
+      options: [-v, "front-logs:/var/log/nginx/erp"]
+  volumesToCreate: [front-logs]

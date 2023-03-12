@@ -1,0 +1,40 @@
+@import './var.scss';
+
+.info-group {
+    padding: 0;
+    width: 100%;
+
+    li {
+        display: flex;
+        border: 1px solid $border-color-table;
+        @include border_color("border-color-table");
+        height: 30px;
+        line-height: 30px;
+        border-bottom-width: 0;
+
+        &:last-child {
+            border-bottom-width: 1px;
+        }
+
+        .info-cell {
+            display: block;
+            padding: 0 5px;
+            border-right: 1px solid $border-color-table;
+            @include border_right_color("border-color-table");
+
+            &:last-child {
+                border-right-width: 0;
+            }
+        }
+
+        .info-label {
+            width: 30%;
+            background: $color-bg-grey;
+            @include background_color("color-primary", 0.1);
+        }
+
+        .info-value {
+            width: 70%;
+        }
+    }
+}

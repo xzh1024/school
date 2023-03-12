@@ -1,0 +1,15 @@
+allDomains:
+  - zjqcs.hztl3.com: "" # 浙江勤昌盛汽车部件有限公司
+  - wxmall-b.hztl3.com: "" # 测试商城
+  - jndm.hztl3.com: "" # 济南大铭
+  - lsxfs.hztl3.com: "" # 乐山鑫富盛
+  - dk.hztl3.com: "" # 北京迪科
+  - lcwy.hztl3.com: "" # 天津隆程伟业
+  - dgjy.hztl3.com: "" # 北京德广嘉业
+  - xjac.hztl3.com: "" # 新疆奥驰
+  - company-7830.srgou.com: "" # 济南半岛零车服
+  - company-3303.srgou.com: "" # 济南昌信
+  - company-7812.srgou.com: "" # 北京轮途晟誉网络科技有限公司
+  - jnbdlcf.hztl3.com: "" # 济南半岛零车服云智仓
+  - store.srgou.com: '~^company-(\d+)\.srgou\.com$'
+  - store.hztl3.com: ""

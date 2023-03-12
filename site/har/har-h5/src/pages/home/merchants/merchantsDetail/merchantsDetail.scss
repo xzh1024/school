@@ -1,0 +1,154 @@
+.container-header {
+		display: flex;
+    justify-content: space-between;
+		align-items: center;
+		padding: 0 30rpx;
+		width: 60%;
+		height: 88rpx;
+		box-sizing: border-box;
+
+		.container-header-location {
+      image{
+        width: 36rpx;
+        height: 36rpx;
+        transform: rotate(180deg);
+      }
+    }
+
+		.container-screening {}
+    }
+.container {
+		.container-detail-top {
+			padding: 32rpx;
+			background-color: #ffffff;
+      margin-bottom: 28rpx;
+
+			.detail-top-title {
+				margin-bottom: 16rpx;
+				font-size: 40rpx;
+				font-family: PingFang SC-中等, PingFang SC;
+				font-weight: normal;
+				color: #222222;
+			}
+
+			.detail-top-box {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.detail-top-type {
+					font-size: 24rpx;
+					font-family: PingFang SC-中等, PingFang SC;
+					font-weight: normal;
+					color: #3E4958;
+				}
+
+				.detail-top-status {
+					font-size: 24rpx;
+					font-family: PingFang SC-中等, PingFang SC;
+					font-weight: normal;
+					color: #FF5F00;
+				}
+			}
+		}
+
+		.container-detail-footer {
+			padding: 32rpx;
+			background-color: #ffffff;
+
+      .special-serve-box {
+        margin-bottom: 16rpx !important;
+      }
+
+			.detail-footer-box {
+				margin-bottom: 32rpx;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+				.detail-footer-business {
+					margin-bottom: 16rpx;
+
+					.footer-business-tips {
+						display: inline-block;
+						margin-right: 8rpx;
+						width: 8rpx;
+						height: 24rpx;
+						background: #FF5F00;
+						border-radius: 8rpx;
+					}
+
+					.detail-footer-title {
+						display: inline-block;
+						font-size: 28rpx;
+						font-family: PingFang SC-常规, PingFang SC;
+						font-weight: normal;
+						color: #333333;
+					}
+				}
+
+				.detail-footer-date {
+					font-size: 24rpx;
+					font-family: PingFang SC-常规, PingFang SC;
+					font-weight: normal;
+					color: #3E4958;
+				}
+
+				.detail-footer-tag {
+          display: inline-block;
+        }
+
+        .tag-box {
+          display: flex;
+          flex-wrap: wrap;
+          .i-tag {
+            margin-right: 16rpx;
+            margin-bottom: 16rpx;
+          }
+        }
+
+				.detail-footer-address {
+          display: flex;
+          align-items: center;
+					image {
+						margin-right: 8rpx;
+						width: 24rpx;
+						height: 26rpx;
+					}
+
+					.detail-footer-addresss {
+						font-size: 24rpx;
+						font-family: PingFang SC-常规, PingFang SC;
+						font-weight: normal;
+						color: #333333;
+					}
+
+				}
+
+				.detail-footer-box {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					.detail-footer-phone {
+						font-size: 24rpx;
+						font-family: PingFang SC-常规, PingFang SC;
+						font-weight: normal;
+						color: #333333;
+					}
+
+					.detail-footer-call {
+						font-size: 24rpx;
+						font-family: PingFang SC-常规, PingFang SC;
+						font-weight: normal;
+						color: #FF5F00;
+
+						image {
+							width: 10rpx;
+							height: 16rpx;
+						}
+					}
+				}
+			}
+		}
+	}

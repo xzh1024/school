@@ -1,0 +1,22 @@
+.i-page {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .page-body {
+    flex: 1;
+    padding-top: calc(var(--status-bar-height) + 88rpx + 32rpx);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.zp-empty-view {
+  flex: none !important;
+}
+::-webkit-scrollbar {
+  display: none;
+}

@@ -1,0 +1,13 @@
+qa:
+  user: three
+  nodes:
+    - { addr: 127.0.0.1, labels: {} }
+qa2:
+  user: three
+  nodes:
+    - { addr: 127.0.0.1, labels: {} }
+production:
+  user: jinfu
+  nodes:
+    - { addr: erp-01, labels: { nginx: true } }
+    - { addr: erp-02, labels: {} }

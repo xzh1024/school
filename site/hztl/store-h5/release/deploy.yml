@@ -1,0 +1,49 @@
+dev:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/h5/web/dev
+      ports: [8095]
+      options: [-v, "front-logs:/var/log/nginx/store-h5"]
+  volumesToCreate: [front-logs]
+
+qa:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/h5/web/qa
+      ports: [8095]
+      options: [-v, "front-logs:/var/log/nginx/store-h5"]
+  volumesToCreate: [front-logs]
+qa2:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/h5/web/qa2
+      ports: [9095]
+      options: [-v, "front-logs:/var/log/nginx/store-h5"]
+  volumesToCreate: [front-logs]
+uat:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/h5/web/uat
+      ports: [10095]
+      options: [-v, "front-logs:/var/log/nginx/store-h5"]
+  volumesToCreate: [front-logs]
+preview:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/h5/web/preview
+      ports: [9095]
+      options: [-v, "front-logs:/var/log/nginx/store-h5"]
+  volumesToCreate: [front-logs]
+
+production:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/h5/web/production
+      ports: [8095]
+      options: [-v, "front-logs:/var/log/nginx/store-h5"]
+  volumesToCreate: [front-logs]
+
+denso.qa:
+  services:
+    web:
+      image: ccr.ccs.tencentyun.com/dnst-store/store-h5

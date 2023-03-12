@@ -1,0 +1,45 @@
+dev:
+  services:
+    web:
+      image: registry.threesoft.cn/front/repair/web/dev
+      ports: [8088]
+      options: [ -v, "front-logs:/var/log/nginx/repair" ]
+  volumesToCreate: [ front-logs ]
+
+qa:
+  services:
+    web:
+      image: registry.threesoft.cn/front/repair/web/qa
+      ports: [8088]
+      options: [ -v, "front-logs:/var/log/nginx/repair" ]
+  volumesToCreate: [ front-logs ]
+qa2:
+  services:
+    web:
+      image: registry.threesoft.cn/front/repair/web/qa2
+      ports: [9088]
+      options: [ -v, "front-logs:/var/log/nginx/repair" ]
+  volumesToCreate: [ front-logs ]
+uat:
+  services:
+    web:
+      image: registry.threesoft.cn/front/repair/web/uat
+      ports: [10088]
+      options: [ -v, "front-logs:/var/log/nginx/repair" ]
+  volumesToCreate: [ front-logs ]
+preview:
+  services:
+    web:
+      image: registry.threesoft.cn/front/repair/web/preview
+      ports: [9088]
+      options: [ -v, "front-logs:/var/log/nginx/repair" ]
+  volumesToCreate: [ front-logs ]
+
+production:
+  services:
+    web:
+      image: registry.threesoft.cn/front/repair/web/production
+      ports: [8088]
+      options: [ -v, "front-logs:/var/log/nginx/repair" ]
+  volumesToCreate: [ front-logs ]
+

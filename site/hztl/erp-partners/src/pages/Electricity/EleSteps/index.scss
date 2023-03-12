@@ -1,0 +1,6 @@
+.container {
+    :global(.ant-steps-item-description) {
+        font-size: 12px;
+        max-width: 180px !important;
+    }
+}

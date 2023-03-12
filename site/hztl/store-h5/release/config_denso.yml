@@ -1,0 +1,8 @@
+defaults: &defaults
+  timeZone: { name: China, offset: 28800 }
+
+name: store-h5
+envs:
+  qa:
+    externalURL: https://dmtest.cuiot.cn/store/h5
+    <<: *defaults

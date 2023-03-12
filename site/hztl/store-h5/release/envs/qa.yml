@@ -1,0 +1,3 @@
+allDomains:
+  - wxmall-b-test.hztl3.com: ""
+  - store.qa.hztl3.com: '~^company-(\d+)\.qa\.hztl3\.com$'

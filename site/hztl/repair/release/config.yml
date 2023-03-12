@@ -1,0 +1,23 @@
+name: repair
+envs:
+  dev:
+    domain: px.dev.threesoft.cn
+    timeZone: { name: China, offset: 28800 }
+  qa:
+    https: true
+    domain: px.qa.threesoft.cn
+    timeZone: { name: China, offset: 28800 }
+  qa2:
+    https: true
+    domain: px.qa2.threesoft.cn
+    timeZone: { name: China, offset: 28800 }
+  preview:
+    https: true
+    domain: px.preview.threesoft.cn
+    timeZone: { name: China, offset: 28800 }
+  production:
+    https: true
+    domain: px.threesoft.cn
+    timeZone: { name: China, offset: 28800 }
+
+

@@ -1,0 +1,66 @@
+{
+  "name": "store-back",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "yarn && vue-cli-service serve",
+    "build": "yarn && vue-cli-service build",
+    "buildtest": "vue-cli-service build  --mode test",
+    "lint": "vue-cli-service lint",
+    "install-from-taobao": "npm --registry=https://registry.npm.taobao.org --cache=$HOME/.npm/.cache/cnpm --disturl=https://npm.taobao.org/dist --userconfig=$HOME/.cnpmrc install"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "core-js": "^3.6.5",
+    "dayjs": "^1.10.4",
+    "element-ui": "^2.15.1",
+    "html2canvas": "^1.0.0-rc.7",
+    "qiniu-js": "^3.1.2",
+    "qrcodejs2": "^0.0.2",
+    "qs": "^6.10.1",
+    "vue": "^2.6.11",
+    "vue-clipboard2": "^0.3.1",
+    "vue-img-cutter": "^2.2.2",
+    "vue-router": "^3.2.0",
+    "vuedraggable": "^2.24.3",
+    "vuex": "^3.4.0",
+    "wangeditor": "^4.6.10"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "jquery": "^3.6.0",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^7.3.1",
+    "style-resources-loader": "^1.4.1",
+    "vue-cli-plugin-style-resources-loader": "^0.1.5",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+    "input": "./packages/input/index.js",
+    "input-number": "./packages/input-number/index.js",
+    "radio":  "./packages/radio/index.js",
+    "radio-group":  "./packages/radio-group/index.js",
+    "select":  "./packages/select/index.js",
+    "dialog":  "./packages/dialog/index.js",
+    "autocomplete": "./packages/autocomplete/index.js",
+    "autoselect": "./packages/autoselect/index.js",
+    "base64-img": "./packages/base64-img/index.js",
+    "custom-invoice":  "./packages/custom-invoice/index.js",
+    "tem-invoice": "./packages/tem-invoice/index.js",
+    "resize-box": "./packages/resize-box/index.js",
+    "resize-columns": "./packages/resize-columns/index.js",
+    "menu-aside":  "./packages/menu-aside/index.js",
+    "tags-view":  "./packages/tags-view/index.js",
+    "date-range": "./packages/date-range/index.js",
+    "tabs": "./packages/tabs/index.js",
+    "promise-dialog": "./packages/promise-dialog/index.js",
+    "table": "./packages/table/index.js",
+    "sidebar-box": "./packages/sidebar-box/index.js"
+}
+  

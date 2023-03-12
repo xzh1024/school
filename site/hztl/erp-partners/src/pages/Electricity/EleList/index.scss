@@ -1,0 +1,18 @@
+@import "../../../assets/scss/theme.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .headGroup {
+    padding: 24px;
+    background: $error-color;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+  }
+  .flexauto {
+    margin-top: 10px;
+    flex: 1;
+    padding: 0;
+  }
+}

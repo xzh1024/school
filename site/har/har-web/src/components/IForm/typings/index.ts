@@ -1,0 +1,16 @@
+export type ComponentType = string;
+// | 'groupTitle'
+// | 'inputNumber'
+// | 'select'
+// | 'cascader'
+// | 'textarea'
+// | 'date'
+// | 'month'
+// | 'year'
+// | 'quarter'
+// | 'week'
+// | 'dateRange'
+// | 'upload'
+// | 'radio'
+// | 'checkbox'
+// | 'customUpload';

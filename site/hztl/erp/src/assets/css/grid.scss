@@ -1,0 +1,151 @@
+@for $i from -10 through 50 {
+  //padding
+  .p-a-#{$i} {
+    padding: #{$i}px;
+  }
+  .p-b-#{$i} {
+    padding-bottom: #{$i}px;
+  }
+  .p-t-#{$i} {
+    padding-top: #{$i}px;
+  }
+  .p-tb-#{$i} {
+    padding-top: #{$i}px;
+    padding-bottom: #{$i}px;
+  }
+  .p-l-#{$i} {
+    padding-left: #{$i}px;
+  }
+  .p-r-#{$i} {
+    padding-right: #{$i}px;
+  }
+  .p-lr-#{$i} {
+    padding-left: #{$i}px;
+    padding-right: #{$i}px;
+  }
+  //margin
+  .m-a-#{$i} {
+    margin: #{$i}px;
+  }
+  .m-b-#{$i} {
+    margin-bottom: #{$i}px;
+  }
+  .m-t-#{$i} {
+    margin-top: #{$i}px;
+  }
+  .m-tb-#{$i} {
+    margin-top: #{$i}px;
+    margin-bottom: #{$i}px;
+  }
+  .m-l-#{$i} {
+    margin-left: #{$i}px;
+  }
+  .m-r-#{$i} {
+    margin-right: #{$i}px;
+  }
+  .m-lr-#{$i} {
+    margin-left: #{$i}px;
+    margin-right: #{$i}px;
+  }
+}
+.bg-gray100 {
+  background-color: #f2f2f2 !important;
+}
+@for $i from 8 through 36 {
+  .font-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+@for $i from 1 through 5 {
+  .font-line-#{$i} {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: #{$i};
+    line-clamp: #{$i};
+  }
+}
+.inline-block {
+  display: inline-block;
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+.flex-space {
+  flex-grow: 1;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+.flex-col-start {
+  align-items: flex-start;
+}
+.flex-row-center {
+  align-items: center;
+}
+.flex-col-center {
+  justify-content: center;
+}
+.flex-row-start {
+  justify-content: flex-start;
+}
+.flex-col-end {
+  justify-content: flex-end;
+}
+.height-full {
+  height: 100%;
+}
+.width-full {
+  width: 100%;
+}
+.text-bold {
+  font-weight: bold;
+}
+.box-shadow {
+  box-shadow: 0 0 6px;
+}
+.text-shadow {
+  text-shadow: 0.5px 0.5px #b7b7b7;
+}
+.cricle {
+  border-radius: 50%;
+}
+.text-link {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: 0.3s ease;
+  user-select: none;
+}
+.text-link:hover {
+  opacity: 0.8;
+}
+.text-link.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.text-no-underline {
+  text-decoration: none;
+}
+.text-normal {
+  font-weight: normal;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.hover-opacity:hover {
+  opacity: 0.8;
+  transition: 0.3s ease;
+}

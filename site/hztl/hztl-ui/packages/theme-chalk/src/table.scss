@@ -1,0 +1,80 @@
+@import "./var";
+
+.ht-table {
+  width: 100%;
+  height: 100%;
+  .table {
+    background-color: $color-content-bg;
+    @include background_color("color-content-bg");
+
+    .table-setting {
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .table-header-text-align-right {
+      text-align: right;
+    }
+
+    .el-checkbox__inner {
+      border-radius: 7.5px;
+      width: 15px;
+      height: 15px;
+    }
+
+    .selected-row {
+      // color: rgba(58, 167, 255, 0.7) !important;
+      // background: rgba(224, 241, 255, 0.5) !important;
+      color: rgba($table-color-active, 0.5);
+      background-color: rgba($table-color-bg-active, 0.5);
+      @include font_color("table-color-active", 0.7);
+      @include background_color("table-color-bg-active", 0.5);
+
+      &.base-selected-row {
+        // color: rgba(58, 167, 255, 1) !important;
+        // background: rgba(224, 241, 255, 1) !important;
+        color: rgba($table-color-active, 1);
+        background-color: rgba($table-color-bg-active, 1);
+        @include font_color("table-color-active");
+        @include background_color("table-color-bg-active");
+      }
+
+      td {
+        background: transparent !important;
+      }
+    }
+
+    .el-table__expanded-cell {
+      padding: 0 0 0 60px;
+    }
+
+    .el-table__footer-wrapper {
+      tbody {
+        td {
+          // color: #3aa7ff;
+          color: $color-primary;
+          @include font_color("color-primary");
+          text-align: right;
+          font-weight: bolder;
+        }
+      }
+    }
+  }
+  .pagination {
+    background-color: $color-content-bg;
+    @include background_color("color-content-bg");
+    display: flex;
+    justify-content: flex-end;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $border-color-table;
+    @include border_color("border-color-table");
+    border-top: 0px;
+
+    .el-pagination * {
+      flex: none;
+      background-color: $color-content-bg;
+      @include background_color("color-content-bg");
+    }
+  }
+}

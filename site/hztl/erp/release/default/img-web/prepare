@@ -1,0 +1,8 @@
+#!/bin/bash
+cd $(dirname $0)
+
+if test -d public; then
+    test $ProENV_Minor = "production" && days=7 || days=0
+    find public -type f -mtime +$days -exec rm {} +
+fi
+yarn build

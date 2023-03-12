@@ -1,0 +1,2 @@
+allDomains:
+  - store.qa2.hztl3.com: '~^company-(\d+)\.qa2\.hztl3\.com$'

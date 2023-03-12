@@ -1,0 +1,32 @@
+dev:
+  services:
+    web:
+      image: registry.threesoft.cn/front/erp-partners/web/dev
+      ports: [8097]
+      options: [ -v, "front-logs:/var/log/nginx/erp-partners" ]
+  volumesToCreate: [ front-logs ]
+
+qa:
+  services:
+    web:
+      image: registry.threesoft.cn/front/erp-partners/web/qa
+      ports: [8097]
+      options: [ -v, "front-logs:/var/log/nginx/erp-partners" ]
+  volumesToCreate: [ front-logs ]
+
+qa2:
+  services:
+    web:
+      image: registry.threesoft.cn/front/erp-partners/web/qa
+      ports: [9097]
+      options: [ -v, "front-logs:/var/log/nginx/erp-partners" ]
+  volumesToCreate: [ front-logs ]
+
+production:
+  services:
+    web:
+      image: registry.threesoft.cn/front/erp-partners/web/production
+      ports: [8097]
+      options: [ -v, "front-logs:/var/log/nginx/erp-partners" ]
+  volumesToCreate: [ front-logs ]
+

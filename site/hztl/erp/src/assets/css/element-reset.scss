@@ -1,0 +1,112 @@
+@import './var.scss';
+
+.el-button {
+    border-radius: 6px;
+}
+
+.el-date-editor .el-range__close-icon {
+    width: 10px;
+}
+
+.el-range-editor.el-input__inner {
+    padding: 3px 5px;
+}
+
+.el-autocomplete {
+    display: block;
+}
+
+.normal-checkbox {
+    .el-checkbox__label {
+        display: inline;
+        white-space: normal;
+    }
+}
+
+.el-form-item {
+    .el-form-item__label {
+        padding-right: 3px;
+    }
+    .ht-autocomplete {
+        width: 100%;
+    }
+}
+
+.el-table .cell.el-tooltip{
+    white-space: pre;
+}
+
+// 换肤处理
+.el-table {
+    @include font_color("table-color-primary");
+    thead {
+        @include font_color("table-header-color");
+    }
+    th {
+        @include background_color("table-header-color-bg");
+    }
+    td, th {
+        padding: 2px 0 !important;
+    }
+    // 覆盖表格边框颜色
+    &::before, &::after {
+        @include background_color("border-color-table"); 
+    }
+}
+
+// 覆盖表格边框颜色
+.el-table td, .el-table th.is-leaf,.el-table--border, .el-table--group{
+    @include border_color("border-color-table");
+}
+.el-table--border th, .el-table__fixed-right-patch {
+    @include border_color("border-color-table");
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+    @include background_color("table-color-bg-striped");
+}
+
+.el-button--primary {
+    @include background_color("color-light");
+    @include border_color("color-light");
+    &:hover, &:focus, &:active {
+        @include background_color("button-primary-hover");
+        @include border_color("button-primary-hover");
+    }
+    &.is-disabled, &.is-disabled:active, &.is-disabled:focus, &.is-disabled:focus, &.is-disabled:hover {
+        @include font_color("button-primary-plain-disabled");
+        @include background_color("button-primary-plain-disabled-bg");
+        @include border_color("button-primary-plain-disabled-border");
+    }
+    &.is-plain {
+        @include font_color("color-light");
+        @include background_color("button-primary-plain-bg");
+        @include border_color("button-primary-plain-border");
+        &:hover, &:focus, &:active {
+            color: #FFFFFF;
+            @include background_color("color-light");
+            @include border_color("color-light");
+        }
+    }
+}
+
+.el-button--primary.is-plain.is-disabled,
+.el-button--primary.is-plain.is-disabled:active,
+.el-button--primary.is-plain.is-disabled:focus,
+.el-button--primary.is-plain.is-disabled:hover {
+    @include font_color("button-primary-plain-disabled");
+    @include background_color("button-primary-plain-disabled-bg");
+    @include border_color("button-primary-plain-disabled-border");
+}
+
+.el-form {
+    .el-form-item.is-success .el-input__inner,
+    .el-form-item.is-success .el-textarea__inner {
+        border-color: #DCDFE6;
+    }
+    .el-form-item.is-success .el-input__inner:focus,
+    .el-form-item.is-success .el-textarea__inner:focus {
+        border-color: $color-primary;
+        @include border_color("color-primary");
+    }
+}

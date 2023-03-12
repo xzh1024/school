@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" width="120px" height="144px" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask fill="white" id="clip39">
+      <path d="M 0 128.36974789916  L 0 15.7647058823529  C 0 12.6117647058824  2.20000000000005 10.1344537815126  5 11  L 77.5197740112994 11  L 83.1694915254237 1.11332668660683  L 88.819209039548 11  L 105 11  C 107.8 10.1344537815126  110 12.6117647058824  110 15.7647058823529  L 110 128.36974789916  C 110 131.52268907563  107.8 134  105 134  L 5 134  C 2.20000000000005 134  0 131.52268907563  0 128.36974789916  Z " fill-rule="evenodd" />
+    </mask>
+    <filter x="1060px" y="504px" width="120px" height="144px" filterUnits="userSpaceOnUse" id="filter40">
+      <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetInner" />
+      <feGaussianBlur stdDeviation="2.5" in="shadowOffsetInner" result="shadowGaussian" />
+      <feComposite in2="shadowGaussian" operator="atop" in="SourceAlpha" result="shadowComposite" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.349019607843137 0  " in="shadowComposite" />
+    </filter>
+    <g id="widget41">
+      <path d="M 0 128.36974789916  L 0 15.7647058823529  C 0 12.6117647058824  2.20000000000005 10.1344537815126  5 11  L 77.5197740112994 11  L 83.1694915254237 1.11332668660683  L 88.819209039548 11  L 105 11  C 107.8 10.1344537815126  110 12.6117647058824  110 15.7647058823529  L 110 128.36974789916  C 110 131.52268907563  107.8 134  105 134  L 5 134  C 2.20000000000005 134  0 131.52268907563  0 128.36974789916  Z " fill-rule="nonzero" fill="#ffffff" stroke="none" transform="matrix(1 0 0 1 1065 509 )" />
+      <path d="M 0 128.36974789916  L 0 15.7647058823529  C 0 12.6117647058824  2.20000000000005 10.1344537815126  5 11  L 77.5197740112994 11  L 83.1694915254237 1.11332668660683  L 88.819209039548 11  L 105 11  C 107.8 10.1344537815126  110 12.6117647058824  110 15.7647058823529  L 110 128.36974789916  C 110 131.52268907563  107.8 134  105 134  L 5 134  C 2.20000000000005 134  0 131.52268907563  0 128.36974789916  Z " stroke-width="2" stroke="#dee1e7" fill="none" transform="matrix(1 0 0 1 1065 509 )" mask="url(#clip39)" />
+    </g>
+  </defs>
+  <g transform="matrix(1 0 0 1 -1060 -504 )">
+    <use xlink:href="#widget41" filter="url(#filter40)" />
+    <use xlink:href="#widget41" />
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+export type EditForm = {
+  id?: number;
+  projectId?: number;
+  code: string;
+  planName: string;
+  estateType?: number;
+  buildingId?: number;
+  floorId?: number;
+  estateId?: number[];
+  merchantId: number[];
+  expenseItems: number[];
+  brandId: number[];
+  channelId?: number;
+  settleMode?: number;
+  startDate: string;
+  endDate: string;
+  ratioType?: number;
+  ratio?: number;
+  billGenType1?: number;
+  billGenType2?: number;
+  taxIncluded?: number;
+  taxFee?: number;
+  amount?: number;
+  billGenDate?: number;
+  remark: string;
+};
+export type BrandForm = {
+  id?: number | string;
+  projectId?: number | string;
+  projectName?: string;
+  code?: string;
+  name?: string;
+  formatId?: number | string;
+  formatName?: string;
+  status?: number;
+  remarks?: string;
+};

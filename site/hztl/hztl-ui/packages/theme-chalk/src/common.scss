@@ -1,0 +1,180 @@
+
+@import "./var";
+
+* {
+ font-family: "PingFang-SC-Medium";
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    outline: none;
+}
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: $color-base-background;
+    @include background_color("color-base-background");
+    color: $color-text-primary;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-weight: 200;
+}
+
+img {
+    max-width: 100%;
+}
+
+.text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+//flex-container 布局处理
+.flex-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .flex-block-bg {
+        background: #fbfbfb;
+    }
+
+    .flex-block-padding {
+        padding: 10px;
+    }
+
+    >.flex-block-margin {
+        margin: 5px;
+        border-radius: 6px;
+        overflow: hidden;
+        & + .flex-block-margin {
+            margin-left: 0;
+        }
+    }
+
+    >.auto-block {
+        flex: auto;
+        width: 1px;
+    }
+
+    &.column-flex {
+        height: 100%;
+        flex-direction: column;
+        >.auto-block {
+            height: 1px; 
+            width: auto;
+        }
+        >.flex-block-margin {
+            & + .flex-block-margin {
+                margin-left: 5px;
+                margin-top: 0;
+            }
+        }
+    }
+    >.column-flex {
+        height: auto;
+    }
+}
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.ht-link {
+    color: $color-primary;
+    @include font_color("color-primary");
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.ht-page-title {
+    position: relative;
+    padding-left: 10px;
+    &.page-title-divider {
+        padding: 5px 5px 5px 15px;
+        border-bottom: 1px solid $border-color-base;
+        margin-bottom: 5px;
+        &::before {
+            top: 5px;
+            height: calc(100% - 10px);
+        }
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 5px;
+        width: 5px;
+        display: inline-block;
+        background: #3aa7ff;
+        @include background_color("color-primary");
+        color: $color-primary;
+        @include font_color("color-primary");
+        height: 100%;
+        vertical-align: middle;
+        border-radius: 100px;
+    }
+    &.title-padding {
+      padding-left: 15px;
+      &::before {
+        left: 5px;
+      }
+    }
+
+    .title-small-tip {
+        padding-left: 10px;
+        color: $color-text-secondary;
+        font-size: 12px;
+        .title-tip-icon::before {
+        content: "*";
+        color: $color-danger;
+        margin-right: 3px;
+        vertical-align: top;
+        }
+    }
+}
+.ht-single-tree {
+    .el-tree-node.is-checked>.el-tree-node__content {
+        background-color: #f0f7ff;
+    }
+}
+
+.border-box * {
+    box-sizing: border-box;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    content: '';
+}
+
+.clearfix:after {
+    clear: both;
+}

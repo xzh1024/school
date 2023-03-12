@@ -1,0 +1,19 @@
+@import './var.scss';
+.set-price-type {
+  width: 180px !important;
+
+  .el-input__inner {
+    height: 20px;
+    line-height: 20px;
+    border: 0;
+    background-color: #fbfbfb;
+    padding: 0 0 0 3px;
+    color: #3aa7ff;
+    @include font_color("color-primary");
+    font-size: 14px;
+  }
+
+  .el-input__suffix {
+    display: none;
+  }
+}

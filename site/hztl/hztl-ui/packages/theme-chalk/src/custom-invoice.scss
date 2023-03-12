@@ -1,0 +1,366 @@
+@import "./var";
+
+.ht-invoice-side {
+    margin-bottom: 20px;
+    width: 230px;
+
+    .inline-box {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+
+        .el-select {
+            width: 80px;
+        }
+    }
+
+    .block-box {
+        margin-bottom: 5px;
+        .el-select, .el-input-number {
+            width: 100%;
+        }
+    }
+
+    .page-title {
+        margin-bottom: 5px;
+    }
+
+    .sub-title {
+        margin: 10px 0 5px;
+    }
+
+    .page-container {
+        margin-bottom: 20px;
+    }
+
+
+    .ht-invoice-alternative-box {
+        margin-bottom: 5px;
+        .ht-other-group {
+            padding-left: 30px;
+        }
+    }
+
+    .ht-alternative-files {
+        overflow: auto;
+
+        .ht-invoice-data-group {
+            padding-left: 30px;
+        }
+
+        .list-group-item {
+            width: 100% !important;
+        }
+    }
+}
+
+.ht-invoice-alternative {
+    width: 240px;
+    margin-right: 10px;
+}
+
+.ht-tem-setting {
+    width: 200px;
+    margin-left: 10px;
+
+    .ht-tabs {
+        margin-bottom: 10px;
+    }
+
+    .ht-base64-img {
+        .el-upload-list--picture-card .el-upload-list__item,
+        .el-upload--picture-card {
+            width: 40px;
+            height: 40px;
+            line-height: 46px;
+        }
+    }
+}
+
+.ht-invoice-edit-details {
+    min-height: 30px;
+
+    .ht-invoice-data-group {
+        .list-group-item {
+            border: 1px dashed $border-color-light;
+        }
+    }
+
+    .no-data {
+        flex: auto;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        border: 1px dashed $border-color-light;
+    }
+}
+
+.ht-invoice-table {
+    border: solid #000;
+    border-width: 0 1px;
+}
+
+.ht-invoice-body-box {
+    margin: 5px 0;
+
+    .ht-invoice-body-block:first-child {
+        .ht-invoice-table {
+            border-top: 1px solid #000;
+        }
+    }
+}
+
+.ht-invoice-edit-table {
+    min-height: 50px;
+    position: relative;
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        border-right: 1px dashed $border-color-light;
+        pointer-events: none;
+    }
+
+    &.no-data-content {
+        .ht-alternative-files, .ht-invoice-data-group {
+            width: 100%;
+            .no-data {
+                height: 57px;
+                line-height: 57px;
+                flex: auto;
+                text-align: center;
+                border: 1px dashed $border-color-light;
+            }
+        }
+    }
+
+
+    .ht-invoice-data-group {
+        display: block;
+        white-space: nowrap;
+        position: relative;
+
+        .list-group-item {
+            display: inline-block;
+            border: 0 solid #000;
+            border-top-width: 1px;
+            border-bottom-width: 1px;
+        }
+
+        :first-child.list-group-item {
+            border-left-width: 1px;
+        }
+
+        .file-item {
+            padding: 0 5px;
+        }
+
+        .file-name {
+            border-bottom: 1px solid #000;
+        }
+    }
+}
+
+.ht-invoice-edit-warp {
+    background-color: #000;
+    width: 100%;
+    padding: 20px;
+
+    .ht-invoice-edit-box {
+        padding: 10px;
+        height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        color: #000;
+        background-color: #fff;
+
+        &::-webkit-scrollbar {
+            width: 0 !important
+        }
+    }
+
+    .ht-invoice-edit-content-box {
+        border: 2px dashed $border-color-light;
+        min-height: 100%;
+        padding: 30px;
+        position: relative;
+    }
+
+    .ht-invoice-edit-content {
+        position: relative;
+    }
+}
+
+// 回收自定义，拖拽到回收区域不显示
+.ht-trashzone>.list-group-item {
+    display: none;
+}
+
+.ht-custom-invoice {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+
+    * {
+        font-family: "PingFang-SC-Medium";
+    }
+
+    .color-gray {
+        color: $color-text-secondary;
+    }
+
+    .invoice-warp-content {
+        width: 871px;
+        flex: none;
+    }
+
+    .button-group {
+        text-align: center;
+        margin-bottom: 10px;
+
+        .link {
+            margin-left: 10px;
+        }
+    }
+}
+
+.ht-invoice-sample-class,
+.ht-invoice-sample-class * {
+    color: $color-primary;
+    @include font_color("color-primary");
+}
+
+
+.ht-tem-setting {
+    .style-icon-group {
+        border: 1px solid $border-color-base;
+        border-radius: 5px;
+        padding: 5px;
+
+        .style-icon-box {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+    }
+
+    .ql-stroke {
+        fill: none;
+        stroke: #444;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2;
+    }
+
+    .active .ql-stroke {
+        stroke: #06c;
+    }
+}
+
+.ht-invoice-data-group {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 20px;
+
+    .list-group-item {
+        min-height: 10px;
+        cursor: move;
+
+        &[draggable=true] {
+            background-color: rgba($color-bg-primary, 0.3);
+            @include background_color("color-bg-primary", 0.3);
+        }
+        &.active {
+            color: #fff;
+            background-color: $color-bg-primary;
+            @include background_color("color-bg-primary");
+    
+            .ht-invoice-sample-class {
+                color: #fff !important;
+            }
+        }
+    }
+
+}
+
+.ht-invoice-file {
+    display: flex;
+    position: relative;
+    .file-item {
+        white-space: nowrap;
+        &.file-value {
+            flex: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            padding-right: 5px;
+
+            &.signature-file {
+                border-bottom: 1px solid #000;
+            }
+        }
+    }
+
+    .file-divider {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        border-top: 1px dashed #000;
+    }
+
+    pre.file-item {
+        margin: 0;
+        white-space: pre;
+    }
+
+
+    &.item-flex-1 {
+        width: 25%;
+    }
+
+    &.item-flex-2 {
+        width: 50%;
+    }
+
+    &.item-flex-3 {
+        width: 75%;
+    }
+
+    &.item-flex-4 {
+        width: 100%;
+    }
+}
+
+
+.ht-invoice-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events:none;
+    .invoice-img {
+        cursor: move;
+        position: absolute;
+        height: 60px;
+        width: 60px;
+        background-size: 60px 60px;
+        background-repeat: no-repeat;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        pointer-events:auto;
+    }
+}
+
+.ht-invoice-page-footer {
+    .print-copy-right {
+        font-size: 12px;
+        color: #000;
+        margin-top: 10px;
+        text-align: right;
+    }
+}

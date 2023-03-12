@@ -1,0 +1,9 @@
+.ht-promise-dialog {
+    .btns-group {
+        margin-top: 15px;
+        text-align: center;
+        .el-button + .el-button {
+            margin-left: 20px;
+        }
+    }
+}

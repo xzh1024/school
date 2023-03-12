@@ -1,0 +1,30 @@
+@import "./var.scss";
+@import "./reset.scss";
+@import "./icon.scss";
+@import "./common.scss";
+@import "./color.scss";
+@import "./size.scss";
+
+body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  background: $color-dark-bg;
+  color: $color-text-base;
+}
+
+
+#app {
+  width: 100%;
+  height: 100vh;
+}

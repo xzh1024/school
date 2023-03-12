@@ -1,0 +1,355 @@
+.icon-box {
+  height: 20rpx;
+  width: 20rpx;
+}
+.image-style {
+  height: 100%;
+  width: 100%;
+}
+
+.container-header-location {
+  font-size: 28rpx;
+  padding-left: 32rpx;
+  font-weight: normal;
+  color: #666666;
+}
+
+  .cart-box {
+    padding: 32rpx 32rpx 170rpx 32rpx;
+    //padding: 32rpx 32rpx 90rpx 32rpx;
+    //margin-bottom: 80rpx;
+
+    .no-data-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 28rpx;
+      color: #333333;
+      .noData-image {
+        height: 272rpx;
+        width: 384rpx;
+        margin-bottom: 22rpx;
+      }
+    }
+
+    .cart-shop {
+      background-color: #FFFFFF;
+      padding-bottom: 20rpx;
+      margin-bottom: 20rpx;
+      //overflow: hidden;
+      border-radius: 16rpx;
+
+      .cart-name {
+        //height: 112rpx;
+        //font-size: 29rpx;
+        //color: #333333;
+        //display: flex;
+        //align-items: center;
+        padding: 24rpx 32rpx;
+        border-bottom: 2rpx solid #EAEAEA;
+        font-size: 32rpx;
+        color: #333333;
+        display: flex;
+        align-items: center;
+        width: stretch;
+
+        .cart-name-box {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          margin-left: 10rpx;
+          overflow: hidden;
+
+          .cart-name-image {
+            width: 56rpx;
+            height: 56rpx;
+            margin: 0 18rpx;
+            border-radius: 50%;
+          }
+
+          .cart-name-storeName {
+            flex: 1;
+            overflow: hidden;
+            width: 100%;
+            .name-box {
+              width: stretch;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+
+            image {
+              width: 16rpx;
+              height: 16rpx;
+            }
+          }
+        }
+
+        .cart-name-go {
+          width: 16rpx;
+          height: 27rpx;
+        }
+      }
+
+      .cart-line {
+        height: 2rpx;
+        background-color: #e5e5e5;
+      }
+
+      .cart-goods-box {
+        padding: 0 32rpx;
+      }
+      .cart-cont {
+        //margin: 0 26rpx;
+        border-bottom: 2rpx dashed #EEEEEE;
+        padding: 24rpx 0;
+        width: 100%;
+        &:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+
+        .cart-detail-box {
+          display: flex;
+          width: 100%;
+          //margin-top: 22rpx;
+
+          .detail-box-left {
+            display: flex;
+            align-items: center;
+
+            image {
+              border-radius: 10rpx;
+              width: 148rpx;
+              height: 148rpx;
+            }
+          }
+
+          .detail-box-right {
+            margin-left: 24rpx;
+            width: 100%;
+            overflow: hidden;
+
+            .right-top {
+              margin-bottom: 16rpx;
+              font-size: 32rpx;
+              font-family: PingFang SC-中等, PingFang SC;
+              font-weight: normal;
+              color: #333333;
+              width: 100%;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+
+            .right-mid-sku {
+              margin-bottom: 16rpx;
+              font-size: 24rpx;
+              font-family: PingFang SC-常规, PingFang SC;
+              font-weight: normal;
+              color: #666666;
+            }
+
+            .right-footer {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              .footer-left {
+                .footer-left-price {
+                  font-size: 24rpx;
+                  font-family: PingFang SC-中等, PingFang SC;
+                  font-weight: normal;
+                  color: #D93044;
+                }
+              }
+
+              .footer-right {
+                .input {
+                  float: left;
+                  display: block;
+                  width: 64rpx;
+                  height: 60rpx;
+                  line-height: 60rpx;
+                  box-sizing: border-box;
+                  text-align: center;
+                  font-size: 30rpx;
+                  -webkit-border-radius: 0;
+                  border: 1px solid #e5e5e5;
+                  border-left: none;
+                  border-right: none;
+                }
+
+                .link {
+                  float: left;
+                  width: 60rpx;
+                  height: 57rpx;
+                  line-height: 60rpx;
+                  text-align: center;
+                  font-size: 32rpx;
+                  color: #666;
+                  border: #e5e5e5 solid 1px;
+                  background-color: #F8F8F8;
+
+                  .aj {
+                    color: #fe0909;
+                    border: #e5e5e5 solid 1px;
+                    background: #fff;
+                  }
+
+                  .jj {
+                    color: #666;
+                    border: #e5e5e5 solid 1px;
+                    background-color: #F8F8F8;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+
+    .cart-total {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      z-index: 10;
+      width: stretch;
+      background-color: #FFFFFF;
+      font-size: 28rpx;
+      color: #333333;
+      height: 160rpx;
+      padding: 0 32rpx;
+      box-shadow: 0 6rpx 12rpx 2rpx rgba(0,0,0,0.16);
+
+      .cart-total-box {
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        .cart-choose {
+          margin: 0 21rpx 0 14rpx;
+          font-size: 32rpx;
+          font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+          font-weight: 400;
+          color: #999999;
+        }
+
+        .logo-box {
+          height: 112rpx;
+          width: 112rpx;
+          position: relative;
+          .shop-num {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 36rpx;
+            height: 36rpx;
+            background: #EA3D41;
+            color: #FFFFFF;
+            font-size: 20rpx;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .cart-num {
+        font-size: 31rpx;
+        color: #ff2d52;
+        padding-right: 21rpx;
+        margin-left: 12rpx;
+
+        .cart-num-forecast {
+          font-size: 20rpx;
+          font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+          font-weight: 400;
+          color: #666666;
+
+          .cart-num-price {
+            font-size: 20rpx;
+            font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+            font-weight: 400;
+            color: #333333;
+          }
+        }
+
+        .cart-num-preferential {
+          font-size: 20rpx;
+          font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+          font-weight: 400;
+          color: #EA3D41;
+        }
+
+      }
+
+      .cart-total-btn {
+        width: 172rpx;
+        line-height: 76rpx;
+        text-align: center;
+        font-size: 28rpx;
+        font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+        font-weight: 400;
+        color: #FFFFFF;
+        background: #FB5F05;
+        border-radius: 100rpx;
+      }
+    }
+
+    .cart-total-han {
+      width: stretch;
+      height: 160rpx;
+      background-color: #FFFFFF;
+      font-size: 28rpx;
+      color: #333333;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      height: 160rpx;
+      padding: 0 32rpx;
+      box-shadow: 0 6rpx 12rpx 2rpx rgba(0,0,0,0.16);
+
+      .cart-total-box {
+        //padding: 32rpx;
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .total-box-num {
+          display: flex;
+          align-items: center;
+
+          image {
+            width: 120rpx;
+            height: 120rpx;
+          }
+
+          .cart-choose {}
+        }
+
+        .total-box-btn {
+          display: flex;
+        }
+      }
+    }
+
+    .cart-pad {
+      margin: 0 26rpx;
+    }
+  }

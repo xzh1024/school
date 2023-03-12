@@ -1,0 +1,60 @@
+variables:
+  cc: "cc自动化部署"
+cache:
+  untracked: true
+
+stages:
+  - dev
+  - stg
+  - prod
+  - dev-ci
+#before_script:
+#  - export Date=`date +'%Y-%m-%d %H-%M-%s'`
+
+
+####开发环境
+cbd-web-dev:
+  variables:
+    CI_PROJECT_NAME: ${CI_PROJECT_NAME}
+    DeployHost: ${DeployHost_Dev}
+    Host_web_path: ${Host_web_path_Dev}
+    DeployTag: ${DeployTag_Dev}
+    RunnerStg: 'dev'
+  stage: dev
+  trigger:
+    include: .gitlab/Deploy/deploy.yml
+  only:
+    - dev
+  when: manual
+
+
+####预发环境
+cbd-web-stg:
+  variables:
+    CI_PROJECT_NAME: ${CI_PROJECT_NAME}
+    DeployHost: ${DeployHost_Stg}
+    Host_web_path: ${Host_web_path_Stg}
+    DeployTag: ${DeployTag_Stg}
+    RunnerStg: 'stg'
+  stage: stg
+  trigger:
+    include: .gitlab/Deploy/deploy.yml
+  only:
+    - test
+  when: manual
+
+###-------------------------------------------------------------------------------------------------------------
+####生产环境
+cbd-web-prod:
+  variables:
+    CI_PROJECT_NAME: ${CI_PROJECT_NAME}
+    DeployHost: ${DeployHost_Prod}
+    Host_web_path: ${Host_web_path_Prod}
+    DeployTag: ${DeployTag_Prod}
+    RunnerStg: 'prod'
+  stage: prod
+  trigger:
+    include: .gitlab/Deploy/deploy.yml
+  only:
+    - master
+  when: manual

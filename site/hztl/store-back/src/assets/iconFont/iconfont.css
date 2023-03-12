@@ -1,0 +1,299 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 2469937 */
+  src: url('iconfont.woff2?t=1638323505237') format('woff2'),
+       url('iconfont.woff?t=1638323505237') format('woff'),
+       url('iconfont.ttf?t=1638323505237') format('truetype');
+}
+
+.iconfont, [class^="icon-"], [class*=" icon-"] {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-coupons-basics:before {
+  content: "\e758";
+}
+
+.icon-voice:before {
+  content: "\e738";
+}
+
+.icon-outdent2:before {
+  content: "\e737";
+}
+
+.icon-menu:before {
+  content: "\e736";
+}
+
+.icon-zoomin:before {
+  content: "\e735";
+}
+
+.icon-select-radio:before {
+  content: "\e733";
+}
+
+.icon-nor-radio:before {
+  content: "\e734";
+}
+
+.icon-nor-checkbox:before {
+  content: "\e731";
+}
+
+.icon-select-checkbox:before {
+  content: "\e732";
+}
+
+.icon-element:before {
+  content: "\e730";
+}
+
+.icon-caret-right:before {
+  content: "\e72d";
+}
+
+.icon-caret-up:before {
+  content: "\e72e";
+}
+
+.icon-caret-left:before {
+  content: "\e72f";
+}
+
+.icon-banner-basics:before {
+  content: "\e725";
+}
+
+.icon-prefecture-basics:before {
+  content: "\e726";
+}
+
+.icon-announcement-basics:before {
+  content: "\e727";
+}
+
+.icon-directory-basics:before {
+  content: "\e728";
+}
+
+.icon-merchant-basics:before {
+  content: "\e729";
+}
+
+.icon-search-basics:before {
+  content: "\e72a";
+}
+
+.icon-dynamic-basics:before {
+  content: "\e72b";
+}
+
+.icon-quote-basics:before {
+  content: "\e72c";
+}
+
+.icon-commodity-menu:before {
+  content: "\e724";
+}
+
+.icon-attachment:before {
+  content: "\e6f3";
+}
+
+.icon-Check:before {
+  content: "\e6f4";
+}
+
+.icon-bell:before {
+  content: "\e6f5";
+}
+
+.icon-Calendar:before {
+  content: "\e6f6";
+}
+
+.icon-Check-Circle:before {
+  content: "\e6f7";
+}
+
+.icon-doubleleft:before {
+  content: "\e6f8";
+}
+
+.icon-Down:before {
+  content: "\e6f9";
+}
+
+.icon-Container:before {
+  content: "\e6fa";
+}
+
+.icon-doubleright:before {
+  content: "\e6fb";
+}
+
+.icon-Close-Circle:before {
+  content: "\e6fc";
+}
+
+.icon-Close:before {
+  content: "\e6fd";
+}
+
+.icon-Info-Circle:before {
+  content: "\e6fe";
+}
+
+.icon-Minus-Square:before {
+  content: "\e6ff";
+}
+
+.icon-Exclaimination:before {
+  content: "\e700";
+}
+
+.icon-left:before {
+  content: "\e701";
+}
+
+.icon-Download:before {
+  content: "\e702";
+}
+
+.icon-Eye-Close:before {
+  content: "\e703";
+}
+
+.icon-message:before {
+  content: "\e704";
+}
+
+.icon-Save:before {
+  content: "\e705";
+}
+
+.icon-Plus:before {
+  content: "\e706";
+}
+
+.icon-plus-square:before {
+  content: "\e707";
+}
+
+.icon-Search:before {
+  content: "\e708";
+}
+
+.icon-Question-Circle-Line:before {
+  content: "\e709";
+}
+
+.icon-Reload:before {
+  content: "\e70a";
+}
+
+.icon-outdent:before {
+  content: "\e70b";
+}
+
+.icon-Time:before {
+  content: "\e70c";
+}
+
+.icon-Up:before {
+  content: "\e70d";
+}
+
+.icon-Right:before {
+  content: "\e70e";
+}
+
+.icon-Warning-Circle:before {
+  content: "\e70f";
+}
+
+.icon-Upload:before {
+  content: "\e710";
+}
+
+.icon-User:before {
+  content: "\e711";
+}
+
+.icon-Setting:before {
+  content: "\e712";
+}
+
+.icon-ellipsis:before {
+  content: "\e713";
+}
+
+.icon-caret-down:before {
+  content: "\e714";
+}
+
+.icon-Check-Circle-Fill:before {
+  content: "\e715";
+}
+
+.icon-client-menu:before {
+  content: "\e716";
+}
+
+.icon-Info--Circle-Fill:before {
+  content: "\e717";
+}
+
+.icon-data-menu:before {
+  content: "\e718";
+}
+
+.icon-delete:before {
+  content: "\e719";
+}
+
+.icon-Warning-Circle-Fill:before {
+  content: "\e71a";
+}
+
+.icon-promotion-menu:before {
+  content: "\e71b";
+}
+
+.icon-marketing-menu:before {
+  content: "\e71c";
+}
+
+.icon-Sort:before {
+  content: "\e71d";
+}
+
+.icon-workbench-menu:before {
+  content: "\e71e";
+}
+
+.icon-deal-menu:before {
+  content: "\e71f";
+}
+
+.icon-Question-Circle-Fill:before {
+  content: "\e720";
+}
+
+.icon-Close-Circle-Fill:before {
+  content: "\e721";
+}
+
+.icon-set-menu:before {
+  content: "\e722";
+}
+
+.icon-shop-menu:before {
+  content: "\e723";
+}
+

@@ -1,0 +1,94 @@
+
+html, body  {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+}
+
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.logo-icon {
+    width: 80px;
+    height: 80px;
+    background-image: url("/products/icons/logo-40.png");
+    border-radius: 10px;
+}
+
+.arrow-icon {
+    width: 36px;
+    height: 30px;
+    background-image: url("/products/icons/arrow-icon.svg");
+}
+
+.block-warp {
+    width: 100%;
+    padding-top: 15vh;
+    text-align: center;
+}
+
+
+.block-warp .logo-text {
+    margin-top: 10px;
+    color: #26ADF5;
+}
+
+.block-warp .download-btn {
+    cursor: pointer;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 10px;
+    margin-top: 8vh;
+    background-color: #00a5ff;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.block-warp .tips {
+    margin-top: 12px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.copyright {
+    position: fixed;
+    width: 100%;
+    bottom: 15vh;
+    text-align: center;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay .arrow-icon {
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    transform: rotate(125deg);
+}
+
+.overlay .overlay-text {
+    color: #fff;
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 10px;
+}

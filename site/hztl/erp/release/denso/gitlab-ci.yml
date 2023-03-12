@@ -1,0 +1,12 @@
+deploy-denso.qa:
+  stage: deploy
+  tags:
+    - shell-xiaomei-qa # match shell runner for qa that has xiaomei command.
+  script:
+    - xiaomei.20211101 web build -P $CI_ENVIRONMENT_NAME
+  environment:
+    name: $CI_COMMIT_REF_NAME
+    url: https://dmtest.cuiot.cn/erp
+  only:
+    refs: [branches]
+    variables: ['$CI_COMMIT_REF_NAME == "denso.qa"']

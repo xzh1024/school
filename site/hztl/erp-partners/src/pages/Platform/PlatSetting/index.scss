@@ -1,0 +1,37 @@
+.headerNoPadding {
+  padding: 0;
+  height: 46px;
+}
+
+.putaway {
+  position: absolute;
+  right: 23px;
+  top: 0;
+  cursor: pointer;
+  color: #3caae8;
+  line-height: 46px;
+}
+
+.marginb_10 {
+  margin-bottom: 5px;
+}
+
+.setting_tips {
+  padding-left: 40px;
+  text-indent: -10px;
+  .tip_logo{
+    display: inline-block;
+    background: #ee9d03;
+    color: #d9d9d9;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    line-height: 17px;
+    text-align: center;
+    margin-left: -20px;
+    padding-left: 11px;
+  }
+}
+.collection-create-form_last-form-item {
+  margin-bottom: 0;
+}

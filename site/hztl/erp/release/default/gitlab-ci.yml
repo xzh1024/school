@@ -1,0 +1,33 @@
+deploy-qa:
+  stage: deploy
+  tags:
+    - shell-xiaomei-qa # match shell runner for qa that has xiaomei command.
+  script:
+    - xiaomei.20211101 web deploy $CI_ENVIRONMENT_NAME -W -u gitlab-ci-token -p $CI_JOB_TOKEN
+  environment:
+    name: $CI_COMMIT_REF_NAME
+    url: https://erp.$CI_COMMIT_REF_NAME.threesoft.cn
+  only:
+    refs: [branches]
+    variables: ['$CI_COMMIT_REF_NAME == "qa"']
+
+deploy-qa2:
+  extends: deploy-qa
+  only:
+    variables: ['$CI_COMMIT_REF_NAME == "qa2"']
+
+deploy-preview:
+  extends: deploy-qa
+  tags:
+    - shell-xiaomei-production # match shell runner for production that has xiaomei command.
+  only:
+    variables: ['$CI_COMMIT_REF_NAME == "preview"']
+
+deploy-production:
+  extends: deploy-preview
+  environment:
+    name: production
+    url: https://erp.threesoft.cn
+  only:
+    variables: ['$CI_COMMIT_REF_NAME == "master"']
+  when: manual

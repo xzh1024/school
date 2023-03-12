@@ -1,0 +1,57 @@
+
+@import "./var";
+
+.el-table {
+    background: #F6FAFD;
+
+    th {
+        background: #F9FDFF;
+    }
+
+    tr {
+        background: #FFFFFF;
+        font-size: 12px;
+    }
+}
+
+.el-table td, .el-table th {
+    padding: 2px 0;
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+    background: #F9FDFF;
+}
+
+.el-table__body tr.current-row>td {
+    background: #E0F1FF;
+    // color: #3AA7FF;
+    color: $color-primary;
+    @include font_color("color-primary");
+}
+
+.el-table td, .el-table th.is-leaf {
+    border-color: #E8EAEF;
+}
+
+.el-table--border, .el-table--group {
+    border-color: #E8EAEF;
+}
+
+.el-table--border::after, .el-table--group::after, .el-table::before {
+    background: #F8F8FF;
+}
+
+.el-dialog {
+	.el-dialog__header {
+		background: #F6FAFD;
+	}
+
+	.el-dialog__body {
+		padding: 10px;
+	}
+}
+
+// 支持\n换行
+.el-message-box__message p {
+    white-space: break-spaces;
+}
