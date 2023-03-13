@@ -12,8 +12,8 @@
   <script>
     //冒泡排序  时间复杂度：O(n2)
     function bubbleSort(arr) {
-      for (var i = 0; i < arr.length; i++) {
-        for (var j = 0; j < arr.length; j++) {
+      for (var i = 0; i < arr.length-1; i++) {
+        for (var j = 0; j < arr.length-i-1; j++) {
           if (arr[j] > arr[j + 1]) {
             var temp = arr[j];
             arr[j] = arr[j + 1];
@@ -32,9 +32,9 @@
     //选择排序  时间复杂度：O(n2)
     function selectSort(arr) {
       var min, temp;
-      for (var i = 0; i < arr.length; i++) {
+      for (var i = 0; i < arr.length-1; i++) {
         min = i;
-        for (var j = i + 1; j < arr.length; j++) {
+        for (var j = i + 1; j < arr.length-2; j++) {
           if (arr[j] < arr[min]) {
             min = j;
           }

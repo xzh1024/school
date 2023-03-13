@@ -29,6 +29,20 @@ watch(count, (count, prevCount) => {
   console.log(prevCount)
 })
 
+// 监听多个数据
+// watch(
+//   [message.foo, count],
+//   (newVal, oldVal) => {
+//     console.log(newVal)
+//     console.log(oldVal)
+//   },
+//   {
+//     deep: true,
+//     immediate: true,
+//     flush: "pre" //pre-组件更新之前调用 sync-同步执行 post-组件更新之后执行
+//   }
+// )
+
 const changeMessage = () => {
   message.foo.bar.name = "大满贯"
 }

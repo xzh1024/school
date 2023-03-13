@@ -4,7 +4,7 @@
     <!-- <PageReactive /> -->
     <!-- <PageToRef /> -->
     <!-- <PageComputed /> -->
-    <!-- <PageWatch /> -->
+    <PageWatch />
     <!-- <PageWatchEffect /> -->
     <!-- <PageCallBack /> -->
     <!-- <PageRender /> -->
@@ -19,7 +19,7 @@
       </template>
       <template #fallback> 加载中 </template>
     </Suspense> -->
-    <PageTeleport />
+    <!-- <PageTeleport /> -->
   </div>
 </template>
 
@@ -30,8 +30,8 @@ import { defineAsyncComponent } from 'vue'
 // import PageReactive from './views/02-reactive.vue'
 // import PageToRef from './views/03-toRef.vue'
 // import PageComputed from './views/04-computed.vue'
-// import PageWatch from './views/05-watch.vue'
-// import PageWatchEffect from './views/06-watchEffect.vue'
+import PageWatch from './views/05-watch.vue'
+import PageWatchEffect from './views/06-watchEffect.vue'
 import PageCallBack from './views/07-生命周期钩子.vue'
 import PageRender from './views/08-render.vue'
 import PageDefineProps from './views/09-defineProps.vue'
