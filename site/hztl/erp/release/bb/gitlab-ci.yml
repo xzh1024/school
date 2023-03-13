@@ -1,0 +1,35 @@
+deploy-bb.qa:
+  stage: deploy
+  tags:
+    - shell-xiaomei-qa # match shell runner for qa that has xiaomei command.
+  environment:
+    name: $CI_COMMIT_REF_NAME
+    url: https://bberp.$CI_COMMIT_REF_NAME.threesoft.cn
+  script:
+    - xiaomei.20211101 web deploy $CI_ENVIRONMENT_NAME -W -u gitlab-ci-token -p $CI_JOB_TOKEN
+  only:
+    refs: [branches]
+    variables: ['$CI_COMMIT_REF_NAME == "bb.qa"']
+
+deploy-bb.qa2:
+  extends: deploy-bb.qa
+  only:
+    variables: ['$CI_COMMIT_REF_NAME == "bb.qa2"']
+
+deploy-bb.preview:
+  extends: deploy-bb.qa
+  tags:
+    - bb-shell-xiaomei-production # match shell runner for production that has xiaomei command.
+  environment:
+    url: https://erp-preview.bangbangas.com
+  only:
+    variables: ['$CI_COMMIT_REF_NAME == "bb.preview"']
+
+deploy-bb.production:
+  extends: deploy-bb.preview
+  environment:
+    url: https://erp.bangbangas.com
+  only:
+    variables:
+      - '$CI_COMMIT_REF_NAME == "bb.production" && $CI_PROJECT_NAMESPACE == "bb-front"'
+  when: manual

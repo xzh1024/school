@@ -1,0 +1,32 @@
+{
+  "cSpell.words": [
+    "adcode",
+    "alipay",
+    "amap",
+    "arcoblue",
+    "axios",
+    "cascader",
+    "cill",
+    "composables",
+    "ctitle",
+    "doption",
+    "emits",
+    "Geocoder",
+    "geocodes",
+    "inject",
+    "jsapi",
+    "jsencrypt",
+    "lnglat",
+    "mockjs",
+    "modeler",
+    "popconfirm",
+    "props",
+    "regeocode",
+    "Shop"
+  ],
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "prettier.requireConfig": true,
+  "eslint.format.enable": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

@@ -1,0 +1,149 @@
+
+
+@import "./var.less";
+@import "./reset.less";
+@import "./icon.less";
+@import "./common.less";
+
+* {
+  margin: 0;
+}
+body {
+  color: @text-color-base;
+}
+@primary-color:#6589F8;
+@primary-color2:#6589f8d2;
+@grey-color:#999;
+@danger-color:#FF4D4F;
+@danger-color2:#ff4d4fd2;
+
+// .el-tabs--card>.el-tabs__header .el-tabs__item.is-active{
+//   color: #f2f6fc;
+//   background-color: @primary-color;
+// }
+.el-message--warning{
+  background: #FAEEE1;
+  border-color:#FA8C16;
+}
+.more_search_box{
+  width: 100%;
+  margin:10px 0;
+  padding:10px;
+  background: #f5f5f5;
+  .search_item span{
+    text-align: right;
+  }
+}
+
+/deep/.el-input>input::-webkit-input-placeholder {
+  color:@text-color-hint;
+}
+
+.page_footer{
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.primaryColor{
+  color: @primary-color;
+}
+.greyColor{
+  color: @grey-color;
+}
+
+.el-menu--vertical .el-menu-item{
+  height: 48px;
+  line-height: 48px;
+  &:hover{
+    background: @primary-color;
+    color:#fff;
+  }
+}
+
+.tip_ptn{
+  .flex{
+    display: flex;
+    margin-top: 10px;
+  }
+  .tip_label{
+    width: 145px;
+  }
+  .tip_stock{
+    .tip_content p{
+      margin:  0;
+    }
+  }
+}
+.xtable{
+  th {
+    font-size: 14px;
+    color: @text-color-base;
+    background-color: #f0f0f0;
+  }
+  td {
+    font-size: 14px;
+    color: @text-color-base;
+    border-bottom: 1px solid @border-color-base;
+  }
+  /deep/tr.el-table__row--striped td {
+    background: @bg-color-table-striped;
+  }
+  /deep/th.is-leaf,
+  /deep/.el-table td {
+    border-bottom: 1px solid @border-color-base;
+  }
+  /deep/.caret-wrapper{
+      height: 22px;
+  }
+  /deep/.sort-caret.ascending {
+    top: 0px;
+  }
+  /deep/.sort-caret.descending {
+    bottom: 0px;
+  }
+  /deep/.el-button--text{
+    padding: 4px;
+  }
+}
+/deep/.el-table--border th, 
+/deep/.el-table--border td {
+  border-right: 1px solid @border-color-base;
+  border-bottom: 1px solid @border-color-base;
+}
+/deep/.el-table--border {
+  border: 1px solid @border-color-base;
+
+}
+/deep/.el-pagination span:not([class*=suffix]){
+  line-height: 27px;
+}
+.logo_out{
+  color: red;
+}
+
+.text_btn{
+  color:@primary-color;
+  cursor: pointer;
+  padding: 0 6px; 
+  font-weight: 500;
+  &:hover{
+    color:@primary-color2;
+  }
+}
+.text_danger_btn{
+  color: @danger-color;
+  &:hover{
+    color:@danger-color2;
+  }
+}
+
+.v-modal {
+  background-color: rgba(26, 34, 49, 0.4);
+  z-index: 999 !important;
+}
+/deep/.el-drawer__wrapper {
+  z-index: 1000 !important;
+}

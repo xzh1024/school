@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+    <link href="/products/css/download.css" type="text/css" rel="stylesheet">
+    </style>
+    <title>思锐云配管家APP下载</title>
+</head>
+
+<body>
+    <div class="block-warp">
+        <i class="icon logo-icon"></i>
+        <div class="logo-text">思锐云配管家APP</div>
+        <a class="btn download-btn">点击下载</a>
+        <div class="tips"></div>
+    </div>
+    <div class="copyright">
+        <div>©北京东方思锐科技有限责任公司</div>
+        <div>京ICP备05054864号</div>
+    </div>
+    <div class="overlay">
+        <i class="icon arrow-icon"></i>
+        <div class="overlay-text">请点击右上角按钮，选择“在浏览器打开”</div>
+    </div>
+    <script>
+
+        identifyOS();
+
+        function identifyOS() {
+            const btnDom = document.querySelector(".btn");
+            const tipsDom = document.querySelector(".tips");
+            const overlayDom = document.querySelector(".overlay");
+            const overlayText = document.querySelector(".overlay-text");
+            const ua = navigator.userAgent;
+
+            if (ua.match(/(Alipay|QQ|MicroMessenger)/i) && !ua.match(/MQQBrowser/i)) {
+                overlayDom.style.display = "block";
+            } else if (ua.indexOf('Android') > -1 || ua.indexOf('Adr') > -1) {
+                btnDom.setAttribute("href", "https://dl.hztl3.com/android/sr/SR-erp.apk")
+                tipsDom.innerText = "若需下载IOS APP，请使用苹果手机访问！"
+            } else if (!!ua.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+                btnDom.setAttribute("href", "http://itunes.apple.com/app/id1500409600?mt=8")
+                tipsDom.innerText = "若需下载安卓APP，请使用安卓手机访问！"
+                overlayText.innerText = "请点击右上角按钮，选择“在Safari打开”"
+            } else {
+                btnDom.style.display = "none"
+                tipsDom.innerText = "请使用手机浏览器访问本页面！"
+            }
+        }
+    </script>
+</body>
+
+</html>

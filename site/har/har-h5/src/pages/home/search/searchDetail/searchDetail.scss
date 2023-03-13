@@ -1,0 +1,248 @@
+ .container-header {
+      padding: 20rpx 20rpx 0 20rpx;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 53%;
+
+      .container-header-location {
+        font-size: 24rpx;
+        font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+        font-weight: 400;
+        image{
+         margin-top: 6rpx;
+          margin-left: 10rpx;
+         width: 38rpx;
+         height: 38rpx;
+          color: #000000;
+          // transform: rotate(180deg);
+        }
+      }
+
+      .container-header-title {
+        font-size: 34rpx;
+        font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+        font-weight: 400;
+      }
+    }
+    .container-main{
+      padding: 32rpx;
+      .segmented-box-subscribe {
+        padding: 32rpx;
+        margin-bottom: 32rpx;
+        border-radius: 10rpx;
+        background-color: #FFFFFF;
+
+        .subscribe-top {
+          display: flex;
+
+          .subscribe-top-left {
+            .subscribe-left-image {
+              width: 116rpx;
+              height: 142rpx;
+              border-radius: 10rpx;
+            }
+          }
+
+          .subscribe-top-right {
+            margin-left: 30rpx;
+            width: 100%;
+
+            .top-right-title {
+              margin-bottom: 16rpx;
+              font-size: 32rpx;
+              font-family: Source Han Sans CN-Medium, Source Han Sans CN;
+              font-weight: 500;
+              color: #333333;
+            }
+
+            .top-right-box {
+              display: flex;
+              justify-content: space-between;
+
+              .right-box-title {
+                margin-bottom: 16rpx;
+                font-size: 24rpx;
+                font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+                font-weight: 400;
+                color: #999999;
+              }
+
+              .right-box-pin {
+                font-size: 24rpx;
+                font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+                font-weight: 400;
+                color: #999999;
+
+                .right-box-num {
+                  font-size: 24rpx;
+                  font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+                  font-weight: 400;
+                  color: #333333;
+                }
+              }
+
+            }
+
+            .right-box-date {
+              font-size: 24rpx;
+              font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+              font-weight: 400;
+              color: #999999;
+            }
+          }
+        }
+
+        .subscribe-footer {
+          display: flex;
+          justify-content: space-between;
+
+          .subscribe-footer-left {
+            width: 19%;
+          }
+
+          .subscribe-footer-right {
+            width: 76%;
+
+            .footer-right-box {
+              display: flex;
+
+              .footer-right-archone {
+                margin-right: 8rpx;
+
+                .right-arch-one {
+                  position: relative;
+                  width: 222rpx;
+                  height: 48rpx;
+                }
+
+                .arch-one-fold {
+                  position: absolute;
+                  margin-top: 8rpx;
+                  margin-left: -170rpx;
+                  font-size: 24rpx;
+                  font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+                  font-weight: 400;
+                  color: #FFFFFF;
+                }
+
+                .arch-one-go {
+                  position: absolute;
+                  margin-top: 8rpx;
+                  margin-left: -30rpx;
+                  font-size: 24rpx;
+                  font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+                  font-weight: 400;
+                  color: #FFFFFF;
+                }
+              }
+
+              .footer-right-archtwo {
+                .right-arch-two {
+                  position: relative;
+                  width: 188rpx;
+                  height: 48rpx;
+                }
+
+                .right-arch-fold {
+                  position: absolute;
+                  margin-top: -48rpx;
+                  margin-left: 10rpx;
+                  font-size: 24rpx;
+                  font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+                  font-weight: 400;
+                  color: #FFFFFF;
+                }
+
+                .right-arch-go {
+                  position: absolute;
+                  margin-top: 8rpx;
+                  margin-left: -30rpx;
+                  font-size: 24rpx;
+                  font-family: Source Han Sans CN-Regular, Source Han Sans CN;
+                  font-weight: 400;
+                  color: #FFFFFF;
+                }
+              }
+            }
+
+            .footer-right-scroll {
+
+              .right-scroll-list {
+                display: flex;
+                align-items: center;
+
+                .right-scroll-item {
+                  background-color: #fff;
+                  width: 150rpx;
+                  height: 230rpx;
+                  border-radius: 6rpx;
+                  box-sizing: border-box;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  flex-direction: column;
+                  flex-shrink: 0;
+                  margin-right: 18rpx;
+
+                  .right-scroll-imgbox {
+                    width: 150rpx;
+                    height: 150rpx;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-sizing: border-box;
+
+                    .right-scroll-img {
+                      max-width: 158rpx;
+                      max-height: 116rpx;
+                      display: block;
+                    }
+                  }
+
+                  .right-scroll-box {
+                    max-width: 150rpx;
+
+                    .right-scroll-name{
+                      font-size: 28rpx;
+                      font-family: Source Han Sans CN-Medium, Source Han Sans CN;
+                      font-weight: 500;
+                      color: #333333;
+                    }
+
+                    .right-scroll-pri {
+                      display: flex;
+                      align-items: flex-end;
+                      padding: 10rpx 0 8rpx;
+                      box-sizing: border-box;
+                      font-size: 28rpx;
+                      line-height: 28rpx;
+                      color: #eb0909;
+                      white-space: nowrap;
+                      text-overflow: ellipsis;
+                      overflow: hidden;
+
+                      .right-scroll-sm {
+                        font-size: 24rpx;
+                      }
+                    }
+                  }
+
+                  .right-scroll-pri {
+                   font-size: 24rpx;
+                   line-height: 24rpx;
+                   color: #999999;
+                   transform-origin: center 10%;
+                   transform: scale(0.8);
+                   display: flex;
+                   align-items: center;
+                   justify-content: center;
+                   // text-decoration: line-through;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }

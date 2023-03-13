@@ -1,0 +1,41 @@
+@import "./var.scss";
+@import "./icon.scss";
+@import "./resetcss.scss";
+@import "./color.scss";
+@import "./margin.scss";
+@import "./control.scss";
+@import "./colorBox.scss";
+@import "./search.scss";
+@import "./element-reset.scss";
+@import "./info-group.scss";
+@import "./beyond-max-login-number-tips.scss";
+@import "./authorize-parts-tips.scss";
+@import "./messge-box-tips.scss";
+@import "./ht-detail-form.scss";
+@import "./dialong.scss";
+@import "./store-tree.scss";
+@import "./selects-bar.scss";
+@import "./common.scss";
+@import "./set-price-type.scss";
+@import "./grid.scss";
+body {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: $color-base-background;
+  @include background_color("color-base-background");
+  font-weight: 400;
+}
+
+#app {
+  width: 100%;
+  height: 100vh;
+}

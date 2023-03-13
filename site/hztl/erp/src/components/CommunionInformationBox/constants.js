@@ -1,0 +1,2 @@
+export const MIN_ACCOUNT_PERIOD = 30;
+export const MIN_AGENCY_RECEIPT_RETURN_DAYS = 0;

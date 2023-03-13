@@ -1,0 +1,92 @@
+.m-main {
+  margin: $main-margin-size;
+}
+
+.ht-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .ht-header {
+    display: block;
+    box-sizing: border-box;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 0 10px;
+    border-radius: 4px;
+    // margin-bottom: 1px;
+  }
+
+  .ht-main {
+    display: block;
+    flex: 1;
+    flex-basis: auto;
+    overflow: auto;
+    // overflow-x: hidden;
+    // overflow-y: auto;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+
+    &.no-padding {
+      padding: 0;
+    }
+  }
+}
+
+.layout-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .layout-header {
+    height: 40px;
+  }
+
+  .layout-main {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+.text-cut {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+// 表格-固定表头
+::v-deep .el-table-primary {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .el-table__body-wrapper {
+    flex: 1;
+    overflow-y: auto;
+  }
+}
+
+.gradients-button {
+  border: none;
+  background-color: transparent;
+  background-image: $gradients-primary;
+}

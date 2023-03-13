@@ -1,0 +1,47 @@
+dev:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/back/web/dev
+      ports: [8085]
+      options: [-v, "front-logs:/var/log/nginx/store-back"]
+  volumesToCreate: [front-logs]
+
+qa:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/back/web/qa
+      ports: [8085]
+      options: [-v, "front-logs:/var/log/nginx/store-back"]
+  volumesToCreate: [front-logs]
+qa2:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/back/web/qa2
+      ports: [9085]
+      options: [-v, "front-logs:/var/log/nginx/store-back"]
+  volumesToCreate: [front-logs]
+uat:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/back/web/uat
+      ports: [10085]
+      options: [-v, "front-logs:/var/log/nginx/store-back"]
+  volumesToCreate: [front-logs]
+preview:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/back/web/preview
+      ports: [9085]
+      options: [-v, "front-logs:/var/log/nginx/store-back"]
+  volumesToCreate: [front-logs]
+production:
+  services:
+    web:
+      image: registry.threesoft.cn/front/store/back/web/production
+      ports: [8085]
+      options: [-v, "front-logs:/var/log/nginx/store-back"]
+  volumesToCreate: [front-logs]
+denso.qa:
+  services:
+    web:
+      image: ccr.ccs.tencentyun.com/dnst-store/store-back

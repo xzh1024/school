@@ -1,0 +1,9 @@
+# vim: ft=nginx
+
+upstream {{ .DeployName }}.web {
+  {{- range .Web.Addrs }}
+  server {{ . }};
+  {{- end }}
+  keepalive 1;
+}
+

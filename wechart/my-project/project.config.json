@@ -41,19 +41,15 @@
   "projectname": "my-project",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
-  "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "game": {
-      "currentL": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "list": []
-    }
+  "condition": {},
+  "libVersion": "2.30.2",
+  "srcMiniprogramRoot": "dist/wx/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
   }
 }

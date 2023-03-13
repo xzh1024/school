@@ -1,0 +1,20 @@
+defaults: &defaults
+  timeZone: { name: China, offset: 28800 }
+
+name: store-back
+envs:
+  dev:
+    externalURL: http://my-back.dev.threesoft.cn
+    <<: *defaults
+  qa:
+    externalURL: https://my-back.qa.threesoft.cn
+    <<: *defaults
+  qa2:
+    externalURL: https://my-back.qa2.threesoft.cn
+    <<: *defaults
+  preview:
+    externalURL: https://my-back.preview.threesoft.cn
+    <<: *defaults
+  production:
+    externalURL: https://my-store.threesoft.cn
+    <<: *defaults

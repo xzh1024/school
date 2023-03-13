@@ -1,0 +1,14 @@
+@import "../../../assets/scss/theme.scss";
+
+.auth_manage {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 8px;
+  .button_back {
+    position: fixed;
+    right: 24px;
+    top: 12px;
+    z-index: 1;
+    cursor: pointer;
+  }
+}

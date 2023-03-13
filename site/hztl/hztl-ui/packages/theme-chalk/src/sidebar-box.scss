@@ -1,0 +1,118 @@
+@import './var.scss';
+
+.ht-sidebar-content {
+    height: 80vh;
+    position: fixed;
+    top: 52.5%;
+    right: 0;
+    background-color: $color-content-bg;
+    @include background_color("color-content-bg");
+    border: 1px solid $border-color-base;
+    transition: transform 0.5s;
+    width: 0;
+    // 避免被table border遮挡
+    z-index: 2;
+
+    &.sidebar-show {
+        transform: translateY(-50%) translateX(0px);
+    }
+
+    &.sidebar-hide {
+        transform: translateY(-50%) translateX(100%);
+    }
+
+    .sidebar-main {
+        height: 100%;
+        width: 100%;
+        display: none;
+        overflow-x: hidden;
+        overflow-y: auto;
+        background: #f9f9f9;
+
+        &.active {
+            display: block;
+        }
+    }
+
+    .sidebar-button-warp {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%) translateX(-100%);
+
+        .sidebar-button-box {
+            text-align: center;
+            +.sidebar-button-box {
+                margin-top: 70px;
+            }
+            .sidebar-button-container {
+
+                position: relative;
+                font-size: 16px;
+                color: #fff;
+                background-color: rgba(23, 31, 36, 0.54);
+
+                &.active {
+                    background-color: $color-primary;
+                    @include background_color("color-primary");
+
+                    &::before {
+                        border-color: transparent $color-primary $color-primary transparent;
+                        @include border_right_color("color-primary");
+                        @include border_bottom_color("color-primary");
+                    }
+
+                    &::after {
+                        border-color: $color-primary $color-primary transparent transparent;
+                        @include border_top_color("color-primary");
+                        @include border_right_color("color-primary");
+                    }
+                }
+
+                &::before {
+                    content: "";
+                    border: 15px solid;
+                    position: absolute;
+                    top: -30px;
+                    right: 0;
+                    width: 0;
+                    height: 0;
+                    border-color: transparent rgba(23, 31, 36, 0.54) rgba(23, 31, 36, 0.54) transparent;
+                    z-index: -1;
+                }
+
+                &::after {
+                    content: "";
+                    border: 15px solid;
+                    position: absolute;
+                    bottom: -30px;
+                    right: 0;
+                    width: 0;
+                    height: 0;
+                    border-color: rgba(23, 31, 36, 0.54) rgba(23, 31, 36, 0.54) transparent transparent;
+                    z-index: -1;
+                }
+            }
+
+            .sidebar-button {
+                cursor: pointer;
+                width: 30px;
+                padding: 8px 8px 40px;
+
+                .sidebar-key {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+
+    .sidebar-card {
+        .el-tabs__item {
+            padding: 0 10px;
+        }
+
+        .el-tabs__active-bar {
+            height: 1px;
+        }
+    }
+}

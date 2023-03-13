@@ -1,0 +1,9 @@
+{
+  "indexTitle": "资产管理和数字化运营平台",
+  "projectIco": "/src/assets/images/har.ico",
+  "loginFormBtnBgColor": "#2E2E2E",
+  "loginFormDesc": "资产管理和数字化运营平台",
+  "loginFormLogoShow": false,
+  "homeTile": false,
+  "menuItemHoverColor": "#C82520"
+}

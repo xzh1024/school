@@ -1,0 +1,71 @@
+// 不再使用，已有地方之后移除
+.search-box, .form-box {
+    max-width: 1200px;
+
+    &.compact-form {
+        .el-form-item {
+            margin-bottom: 4px;
+        }
+
+        .el-form-item__label {
+            padding: 0;
+        }
+    }
+
+    .el-form-item__label {
+        text-indent: 1em;
+    }
+
+    .button-group {
+        flex: auto;
+        max-width: 380px;
+        text-align: right;
+        height: 1px;
+    }
+
+    .custom-form {
+        position: relative;
+
+        &::after {
+            display: block;
+            content: '';
+            clear: both;
+        }
+
+        .form-label {
+            position: absolute;
+            width: 100px;
+
+            .el-input__inner {
+                font-size: 14px;
+                border: none;
+                padding: 0 0 0 1em;
+                color: unset;
+                font-weight: unset;
+                background: transparent;
+            }
+        }
+    }
+
+    .right {
+        text-align: right;
+        align-self: flex-end;
+    }
+
+    .flex-row {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .el-form-item {
+        margin-bottom: 12px;
+    }
+
+    .el-col-6 .el-form-item {
+        max-width: 380px;
+    }
+
+    .el-form-item.el-form-item--mini {
+        height: 29px;
+    }
+}

@@ -1,0 +1,11 @@
+defaults: &defaults
+  timeZone: { name: China, offset: 28800 }
+
+name: store-back
+envs:
+  qa:
+    externalURL: https://dmtest.cuiot.cn/store/back
+    <<: *defaults
+  production:
+    externalURL: https://xxx.cn/store/back
+    <<: *defaults

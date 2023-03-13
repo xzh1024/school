@@ -1,0 +1,1 @@
+虽然bb的分支上只有bb的配置生效，但是为了让master代码往bb合并时容易一些，仍然采用bb/default/denso独立配置的设计。

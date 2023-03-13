@@ -1,0 +1,52 @@
+{
+    "code": "ok",
+    "message": "success",
+    "data": {
+        "id": 1,
+        "companyId": 2,
+        "name": "大众大灯组合包",
+        "originalPrice": "888.88",
+        "discountPrice": "666.66",
+        "vehModel": "一汽大众 2019款|一汽大众 2019款",
+        "cartQty": 1,
+        "qty": null,
+        "details": [
+            {
+                "partName": "大灯左前",
+                "partCode": "ABC123",
+                "vehModel": "一汽大众 2019款",
+                "brand": "大众",
+                "productionPlace": "原厂件",
+                "price": "888.88",
+                "qty": "1"
+            },
+            {
+                "partName": "大灯右前",
+                "partCode": "ABC321",
+                "vehModel": "一汽大众 2019款",
+                "brand": "大众",
+                "productionPlace": "原厂件",
+                "price": "888.88",
+                "qty": "1"
+            },
+            {
+                "partName": "大灯左后",
+                "partCode": "123ABC",
+                "vehModel": "一汽大众 2019款",
+                "brand": "大众",
+                "productionPlace": "原厂件",
+                "price": "888.88",
+                "qty": "1"
+            },
+            {
+                "partName": "大灯右后",
+                "partCode": "321ABC",
+                "vehModel": "一汽大众 2019款",
+                "brand": "大众",
+                "productionPlace": "原厂件",
+                "price": "888.88",
+                "qty": "1"
+            }
+        ]
+    }
+}

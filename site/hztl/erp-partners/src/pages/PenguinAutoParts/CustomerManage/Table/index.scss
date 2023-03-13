@@ -1,0 +1,52 @@
+@import "@/assets/scss/theme.scss";
+
+.table_bottom {
+  display: flex;
+  align-items: center;
+  .table_bottom_operate {
+    flex: 1;
+  }
+}
+.color_danger {
+  color: $error-color;
+}
+.button_danger {
+  margin-right: 12px;
+  color: $error-color;
+  cursor: pointer;
+}
+.button_success {
+  color: green;
+  cursor: pointer;
+}
+
+.hint {
+  color: $text-color-secondary;
+}
+.cell_list {
+  max-height: 380px;
+  overflow-y: auto;
+  margin-top: 10px;
+  .cell {
+    padding: 10px 0;
+    border-bottom: 1px solid $border-color-base;
+    .cell_content {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      :global(.ant-input) {
+        flex: 1;
+      }
+    }
+  }
+}
+.bind_container {
+  display: flex;
+  align-items: center;
+  .bind_label {
+    margin-right: 8px;
+  }
+  .bind_content {
+    flex: 1;
+  }
+}

@@ -1,0 +1,502 @@
+{
+  "pages": [
+    // #ifdef H5
+    {
+      "path": "pages/card/tabbar/home",
+      "style": {
+        "navigationBarTitleText": "储值卡",
+        "enablePullDownRefresh": false,
+        "navigationBarTextStyle": "black"
+      }
+    },
+    {
+      "path": "pages/card/cardRecord/cardRecord",
+      "style": {
+        "navigationBarTitleText": "历史记录",
+        "enablePullDownRefresh": false,
+        "navigationBarTextStyle": "black"
+      }
+    },
+    // #endif
+
+    // #ifndef H5
+    {
+      "path": "pages/home/home",
+      "style": {
+        "navigationBarTitleText": "首页",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 50
+      }
+    },
+    {
+      "path": "pages/business/business",
+      "style": {
+        "navigationBarTitleText": "商圈",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 50
+      }
+    },
+    {
+      "path": "pages/cart/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/user/index",
+      "style": {
+        "navigationBarTitleText": "",
+        "enablePullDownRefresh": false
+      }
+    }
+    // #endif
+  ],
+  // #ifndef H5
+  "subPackages": [
+    {
+      "root": "pages/home/location",
+      "pages": [
+        {
+          "path": "location",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/home/search",
+      "pages": [
+        {
+          "path": "search",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "searchDetail/searchDetail",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/order",
+      "pages": [
+        {
+          "path": "index",
+          "style": {
+            "navigationBarTitleText": "我的订单",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "detail",
+          "style": {
+            "navigationBarTitleText": "订单详情",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "order-preview",
+          "style": {
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "pay-result",
+          "style": {
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "payment-method",
+          "style": {
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "card-offer-preview",
+          "style": {
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/place",
+      "pages": [
+        {
+          "path": "detail",
+          "style": {
+            "navigationBarTitleText": "预约",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/user/sub",
+      "pages": [
+        {
+          "path": "member-center",
+          "style": {
+            "navigationBarTitleText": "会员中心",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "member-center-detail",
+          "style": {
+            "navigationBarTitleText": "我的会员",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "membership-code",
+          "style": {
+            "navigationBarTitleText": "我的会员码",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "collect-list",
+          "style": {
+            "navigationBarTitleText": "收藏",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "integral-center",
+          "style": {
+            "navigationBarTitleText": "积分中心",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "coupon-list",
+          "style": {
+            "navigationBarTitleText": "优惠券",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "user-info",
+          "style": {
+            "navigationBarTitleText": "用户信息",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/coupon",
+      "pages": [
+        {
+          "path": "list",
+          "style": {
+            "navigationBarTitleText": "优惠券列表",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "detail",
+          "style": {
+            "navigationBarTitleText": "优惠券详情",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "apply-store",
+          "style": {
+            "navigationBarTitleText": "优惠券详情",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/home/merchants",
+      "pages": [
+        {
+          "path": "merchants",
+          "style": {
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "goodsDetail/goodsDetail",
+          "style": {
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "merchantsDetail/merchantsDetail",
+          "style": {
+            "navigationBarTitleText": "店铺详情",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "search",
+          "style": {
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "search-result",
+          "style": {
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "album/album",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/card",
+      "pages": [
+        {
+          "path": "timeCard/index",
+          "style": {
+            "navigationBarTitleText": "限期卡",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "timeCardInfo/index",
+          "style": {
+            "navigationBarTitleText": "限期卡",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "cardPurchase/index",
+          "style": {
+            "navigationBarTitleText": "购买",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "pay/payment",
+          "style": {
+            "navigationBarTitleText": "支付方式",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "tabbar/home",
+          "style": {
+            "navigationBarTitleText": "储值卡",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "cardRecord/cardRecord",
+          "style": {
+            "navigationBarTitleText": "历史记录",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "agreement/agreement",
+          "style": {
+            "navigationBarTitleText": "单用途商业预付卡管理办法",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "webview/webview",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "tabbar/mine",
+          "style": {
+            "navigationBarTitleText": "我的",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "white"
+          }
+        },
+        {
+          "path": "card/card",
+          "style": {
+            "navigationBarTitleText": "我的储值卡",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "help/help",
+          "style": {
+            "navigationBarTitleText": "帮助中心",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "message/message",
+          "style": {
+            "navigationBarTitleText": "活动消息",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "message/detail",
+          "style": {
+            "navigationBarTitleText": "活动详情",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "pay/pay",
+          "style": {
+            "navigationBarTitleText": "支付",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "white"
+          }
+        },
+        {
+          "path": "pay/result",
+          "style": {
+            "navigationBarTitleText": "支付结果",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "recharge/recharge",
+          "style": {
+            "navigationBarTitleText": "购卡",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "white"
+          }
+        },
+        {
+          "path": "recharge/result",
+          "style": {
+            "navigationBarTitleText": "购卡结果",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "notice/list",
+          "style": {
+            "navigationBarTitleText": "消息",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        },
+        {
+          "path": "notice/detail",
+          "style": {
+            "navigationBarTitleText": "消息",
+            "enablePullDownRefresh": false,
+            "navigationBarTextStyle": "black"
+          }
+        }
+      ]
+    },
+    {
+      "root": "pages/business/others",
+      "pages": [
+        {
+          "path": "more-classify",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "classify-detail",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        },
+        {
+          "path": "classify-detail-second",
+          "style": {
+            "navigationBarTitleText": "",
+            "enablePullDownRefresh": false
+          }
+        }
+      ]
+    }
+  ],
+  // #endif
+  "globalStyle": {
+    "navigationStyle": "custom"
+  },
+  "easycom": {
+    "autoscan": true,
+    "^w-(.*)": "@/uni_modules/wmf-code/components/w-$1/w-$1.vue"
+  },
+  // #ifndef H5
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#333333",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "height": "60px",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/home.png",
+        "selectedIconPath": "static/home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/business/business",
+        "iconPath": "static/business.png",
+        "selectedIconPath": "static/business-active.png",
+        "text": "商圈"
+      },
+      {
+        "pagePath": "pages/cart/index",
+        "iconPath": "static/cart.png",
+        "selectedIconPath": "static/cart-active.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "static/user.png",
+        "selectedIconPath": "static/user-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  // #endif
+  "condition": {
+    "current": 0,
+    "list": [
+      {
+        "name": "test",
+        "path": "pages/card/tabbar/home"
+      }
+    ]
+  }
+}

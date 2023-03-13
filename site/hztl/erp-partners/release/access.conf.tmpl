@@ -1,0 +1,36 @@
+upstream {{ .DeployName }}-web {
+  {{- range .Web.Addrs }}
+  server {{ . }};
+  {{- end }}
+  keepalive 1;
+}
+
+server {
+  listen 443 ssl http2;
+  server_name {{ .Domain }};
+
+  location / {
+    proxy_pass http://{{ .DeployName }}-web;
+  }
+
+  proxy_http_version 1.1;
+  proxy_set_header Connection "";
+  proxy_set_header Host $http_host;
+  proxy_set_header X-Real-IP $remote_addr;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  proxy_set_header X-Forwarded-Proto $scheme;
+  proxy_connect_timeout 3s;
+
+  ssl_certificate     /etc/nginx/ssl-certs/{{ domainAncestor .Domain 1 }}/{{ domainAncestor .Domain 1 }}.fullchain;
+  ssl_certificate_key /etc/nginx/ssl-certs/{{ domainAncestor .Domain 1 }}/{{ domainAncestor .Domain 1 }}.key;
+
+  access_log /var/log/nginx/{{ .Domain }}/access.log;
+  error_log  /var/log/nginx/{{ .Domain }}/access.err;
+}
+
+server {
+  listen 80;
+  server_name {{ .Domain }};
+
+  return 301 https://$host$request_uri;
+}

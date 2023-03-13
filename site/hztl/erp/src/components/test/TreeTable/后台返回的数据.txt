@@ -1,0 +1,96 @@
+{
+  "code": 0,
+  "data": [
+    {
+      "id": "20192018",
+      "innerCode": null,
+      "peerNo": null,
+      "innerSort": null,
+      "parentId": 1,
+      "level": null,
+      "typeName": "字典总类",
+      "isItem": false,
+      "tableName": null,
+      "typeCode": "root",
+      "isCreated": 0,
+      "isInner": null,
+      "remark": null,
+      "isCreatedCn": "字典",
+      "createtime": null,
+      "createdBy": null,
+      "updatetime": null,
+      "updatedBy": null,
+      "children": [
+        {
+          "id": "1143876853210157057",
+          "innerCode": null,
+          "peerNo": null,
+          "innerSort": null,
+          "parentId": 20192018,
+          "level": null,
+          "typeName": "商品类型",
+          "isItem": false,
+          "tableName": null,
+          "typeCode": "system",
+          "isCreated": 0,
+          "isInner": true,
+          "remark": null,
+          "isCreatedCn": "商品",
+          "createtime": null,
+          "createdBy": null,
+          "updatetime": null,
+          "updatedBy": null,
+          "children": [
+            {
+              "id": "2551979950211072",
+              "innerCode": null,
+              "peerNo": null,
+              "innerSort": null,
+              "parentId": 1143876853210157057,
+              "level": null,
+              "typeName": "衣服",
+              "isItem": true,
+              "tableName": "dd_role_type",
+              "typeCode": "role_type",
+              "isCreated": 1,
+              "isInner": true,
+              "remark": null,
+              "isCreatedCn": "衣服",
+              "createtime": null,
+              "createdBy": null,
+              "updatetime": null,
+              "updatedBy": null,
+              "children": [
+                
+              ]
+            },
+            {
+              "id": "1085410005638799362",
+              "innerCode": null,
+              "peerNo": null,
+              "innerSort": null,
+              "parentId": 1143876853210157057,
+              "level": null,
+              "typeName": "女鞋",
+              "isItem": true,
+              "tableName": "dd_ext_entity",
+              "typeCode": "entity",
+              "isCreated": 1,
+              "isInner": true,
+              "remark": "",
+              "isCreatedCn": "女鞋",
+              "createtime": null,
+              "createdBy": null,
+              "updatetime": null,
+              "updatedBy": null,
+              "children": [
+                
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "msg": "�����ɹ�"
+}

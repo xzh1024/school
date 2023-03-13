@@ -1,0 +1,24 @@
+# vim: set ft=nginx:
+
+server {
+    listen {{ "{{ .ListenPort }}" }} default_server reuseport;
+    root /var/www/store-h5;
+
+    {{ if ne .ExternalURL.Path "" }}
+    rewrite ^{{ .ExternalURL.Path }}$      /  last;
+    rewrite ^{{ .ExternalURL.Path }}(/.*)$ $1 last;
+    {{- end }}
+
+    location / {
+        try_files $uri /index.html;
+    }
+    location ~ \.html {
+        add_header Cache-Control "must-revalidate";
+    }
+    location ~ \.(js|css|png|gif|jpg|svg|ico|woff|woff2|ttf|eot|map|json)$ {
+        expires max;
+    }
+    {{ "{{ if .SendfileOff }}sendfile off;{{ end }}" }}
+    access_log /var/log/nginx/store-h5/web.log std;
+    error_log  /var/log/nginx/store-h5/web.err;
+}

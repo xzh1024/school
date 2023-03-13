@@ -1,0 +1,29 @@
+@import "../../../vars.less";
+.w-e-panel-content-har-field {
+  display: flex;
+  //  > input {
+  //    padding: 4px 12px;
+  //    font-size: 14px;
+  //    color: rgb(29,33,41);
+  //    &:focus, &:active{
+  //      background-color: #fff;
+  //      border-color: rgb(71,135,240);
+  //      box-shadow: 0 0 0 0 rgb(190, 218, 225);
+  //    }
+  //  }
+  //}
+}
+
+.w-e-panel-content-har-field-tpl{
+  display: inline-block;
+  position: relative;
+  border-bottom: none!important;
+  &:after{
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    border-bottom: 1px solid #333;
+    width: 100%;
+  }
+}

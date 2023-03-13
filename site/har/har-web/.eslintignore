@@ -1,0 +1,4 @@
+/*.json
+/*.cjs
+/dist
+node_modules

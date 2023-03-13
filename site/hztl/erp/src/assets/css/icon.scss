@@ -1,0 +1,911 @@
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+
+  &.cooperator-icon {
+    width: 16px;
+    height: 16px;
+    background-size: 16px;
+    &.cooperator-phone-icon {
+      background-image: url("./icons/cooperator/cooperator-phone.png");
+    }
+    &.cooperator-man-icon {
+      background-image: url("./icons/cooperator/cooperator-man.png");
+    }
+    &.cooperator-no-icon {
+      background-image: url("./icons/cooperator/cooperator-no.png");
+    }
+  }
+}
+
+.icon-img-prefix {
+  display: inline-block;
+  width: 12px;
+  height: 14px;
+  margin-top: 21px;
+  margin-left: 5px;
+  background-repeat: no-repeat;
+}
+
+.icon-img-prefix-s {
+  display: inline-block;
+  width: 12px;
+  height: 14px;
+  margin-top: 13px;
+  margin-left: 5px;
+  background-repeat: no-repeat;
+}
+
+.icon-img-suffix {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-top: 6px;
+  margin-right: 0;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.upload-img-suffix {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.icon-index-cards {
+  display: inline-block;
+  width: 74px;
+  height: 74px;
+  margin-bottom: 10px;
+  background-repeat: no-repeat;
+}
+
+.icon-change-box {
+  display: inline-block;
+  width: 30px;
+  height: 35px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.icon-img-header-info {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  /* cursor: pointer; */
+}
+
+.icon-img-header {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+// .icon-img-header:hover {
+// background-image: url('./icons/changes2.png');
+// }
+.icon-img-user-set {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 20px;
+  background-repeat: no-repeat;
+}
+
+.icon-img-password-edit {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 58px;
+  background-repeat: no-repeat;
+}
+
+.icon-img-user-loginout {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 92px;
+  background-repeat: no-repeat;
+}
+
+.icon-img-em {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  margin-left: 10px;
+  background-repeat: no-repeat;
+}
+
+.icon-dic-box {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+
+/* 工作台背景icon */
+.icon-main-box {
+  display: inline-block;
+  width: 92px;
+  height: 40px;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 2px 0 3px;
+  display: flex;
+  align-items: center;
+}
+
+.icon-img-main-1 {
+  background-image: url("./icons/main-bg-1.png");
+  background-size: 100% 100%;
+}
+
+.icon-img-main-2 {
+  background-image: url("./icons/main-bg-2.png");
+  background-size: 100% 100%;
+}
+
+.icon-img-main-3 {
+  background-image: url("./icons/main-bg-3.png");
+  background-size: 100% 100%;
+}
+
+.icon-img-main-4 {
+  background-image: url("./icons/main-bg-4.png");
+  background-size: 100% 100%;
+}
+
+// .icon-img-collect-1 {
+// 	background-image: url('./icons/icon-img-collect-1.png');
+// 	background-size: 108px 68px;
+// }
+
+// .icon-img-collect-2 {
+// 	background-image: url('./icons/icon-img-collect-2.png');
+// 	background-size: 108px 68px;
+// }
+
+// .icon-img-collect-3 {
+// 	background-image: url('./icons/icon-img-collect-3.png');
+// 	background-size: 108px 68px;
+// }
+
+// .icon-img-collect-4 {
+// 	background-image: url('./icons/icon-img-collect-4.png');
+// 	background-size: 108px 68px;
+// }
+
+// .icon-img-collect-5 {
+// 	background-image: url('./icons/icon-img-collect-5.png');
+// 	background-size: 108px 68px;
+// }
+
+// .icon-img-collect-6 {
+// 	background-image: url('./icons/icon-img-collect-6.png');
+// 	background-size: 108px 68px;
+// }
+
+// .icon-img-collect-7 {
+// 	background-image: url('./icons/icon-img-collect-7.png');
+// 	background-size: 108px 68px;
+// }
+
+// .icon-img-collect-8 {
+// 	background-image: url('./icons/icon-img-collect-8.png');
+// 	background-size: 108px 68px;
+// }
+
+// .icon-img-collect-9 {
+// 	background-image: url('./icons/icon-img-collect-9.png');
+// 	background-size: 108px 68px;
+// }
+
+/* 用户设置&退出 */
+.el-dropdown-menu__item span {
+  padding-left: 20px;
+}
+
+.el-dropdown-menu__item:hover .icon-img-user-set {
+  background-image: url("./icons/set-user-active.png");
+}
+
+.el-dropdown-menu__item:hover .icon-img-user-loginout {
+  background-image: url("./icons/out.png");
+}
+
+/*  */
+.menu-box {
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin: 16px auto 0;
+  position: relative;
+}
+
+.menu-logo {
+  display: inline-block;
+  margin: 16px 0 0 28px;
+  width: 150px;
+  height: 24px;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: bold;
+  .menu-title {
+    padding-left: 15px;
+  }
+}
+
+.nav-logo {
+  display: inline-block;
+  margin: 0;
+  min-width: 150px;
+  max-width: 180px;
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #00a7fb;
+  @include font_color("header-color-name");
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: bold;
+  .menu-title {
+    padding-left: 15px;
+  }
+}
+
+.emoloyee-company-icon {
+  width: 44px;
+  height: 44px;
+}
+
+.icon-items {
+  width: 100%;
+  height: 100%;
+}
+
+.operation-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-size: 30px;
+  border-style: none;
+  border-width: 0px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #b0dcff;
+  border-radius: 10px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.icon-img-name {
+  background-image: url("./icons/name.png");
+}
+
+.icon-img-codes {
+  background-image: url("./icons/codes.png");
+}
+
+// .icon-img-company {
+// background-image: url('./icons/company.png');
+// }
+.icon-img-lock {
+  background-image: url("./icons/lock.png");
+}
+
+.icon-img-mobile {
+  background-image: url("./icons/mobile.png");
+}
+
+.icon-img-address {
+  background-image: url("./icons/address.png");
+}
+
+.icon-img-eye {
+  background-image: url("./icons/eye.png");
+}
+
+.icon-img-eyeopen {
+  background-image: url("./icons/eyeopen.png");
+}
+
+// .icon-img-pic {
+// background-image: url('./icons/pic.png');
+// }
+.icon-img-logo {
+  background-image: url("./icons/logo.png");
+}
+
+.success-status-iocn {
+  background-image: url("./icons/success.png");
+}
+
+/* 左边菜单栏icon */
+.icon-img-menu {
+  background-image: url("./icons/menu.png");
+}
+
+/* 菜单栏 icon */
+.icon-img-workbench-system-settings-black {
+  background-image: url("./icons/system-settings-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-personnel-management-black {
+  background-image: url("./icons/personnel-management-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-base-black {
+  background-image: url("./icons/base-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-purchase-black {
+  background-image: url("./icons/purchase-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-sales-black {
+  background-image: url("./icons/sales-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-store-black {
+  background-image: url("./icons/store-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-cashier-black {
+  background-image: url("./icons/cashier-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-business-black {
+  background-image: url("./icons/business-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-business-black {
+  background-image: url("./icons/business-black.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-repaire-white {
+  background-image: url("./icons/repaire-white.png");
+  background-size: 22px 22px;
+}
+/* 工作台 icon */
+.icon-img-workbench-system-settings-white {
+  background-image: url("./icons/system-settings-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-personnel-management-white {
+  background-image: url("./icons/personnel-management-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-base-white {
+  background-image: url("./icons/base-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-purchase-white {
+  background-image: url("./icons/purchase-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-sales-white {
+  background-image: url("./icons/sales-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-store-white {
+  background-image: url("./icons/store-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-cashier-white {
+  background-image: url("./icons/cashier-white.png");
+  background-size: 22px 22px;
+}
+.icon-img-workbench-report-white {
+  background-image: url("./icons/report-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-business-white {
+  background-image: url("./icons/business-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-oa-white {
+  background-image: url("./icons/oa-white.png");
+  background-size: 22px 22px;
+}
+
+.icon-img-workbench-white {
+  background-image: url("./icons/workbench-white.png");
+  background-size: 22px 22px;
+}
+
+/* 用户头像icon */
+.icon-img-user-header {
+  width: 30px;
+  height: 30px;
+  background-size: 30px;
+  background-image: url("./icons/head-pic.png");
+}
+
+.icon-img-split {
+  background-image: url("./icons/icon-split.png");
+}
+
+/* 勾选icon */
+.icon-select-info {
+  background-image: url("./icons/select.png");
+}
+
+.icon-select-info:hover {
+  background-image: url("./icons/selectactive.png");
+}
+
+.icon-selected-info {
+  background-image: url("./icons/selectactive.png");
+}
+
+/* 添加icon */
+.icon-add-info {
+  background-image: url("./icons/add.png");
+}
+
+.icon-add-info:hover {
+  background-image: url("./icons/addactive.png");
+}
+
+/* 编辑icon */
+.icon-edit-info {
+  background-image: url("./icons/edit.png");
+}
+
+.icon-edit-info:hover {
+  background-image: url("./icons/editactive.png");
+}
+
+/* 停用、启用icon */
+.icon-enable-info {
+  background-image: url("./icons/enable.png");
+}
+
+.icon-enable-info:hover {
+  background-image: url("./icons/enableactive.png");
+}
+
+.icon-disable-info {
+  background-image: url("./icons/disable.png");
+}
+
+.icon-disable-info:hover {
+  background-image: url("./icons/disableactive.png");
+}
+
+/* 删除icon */
+.icon-delete-info {
+  background-image: url("./icons/delete.png");
+}
+
+.icon-delete-info:hover {
+  background-image: url("./icons/deleteactive.png");
+}
+
+/* 更新iocn */
+.icon-update-info {
+  background-image: url("./icons/update.png");
+}
+
+.icon-update-info:hover {
+  background-image: url("./icons/updateactive.png");
+}
+
+/* 更新iocn2 */
+.icon-update2-info {
+  background-image: url("./icons/update2.png");
+}
+
+.icon-update2-info:hover {
+  background-image: url("./icons/updateactive2.png");
+}
+
+/* 审核icon */
+.icon-check-info {
+  background-image: url("./icons/check.png");
+}
+
+.icon-check-info:hover {
+  background-image: url("./icons/checkactive.png");
+}
+
+/* 上架icon */
+.icon-on-shelves {
+  background-image: url("./icons/on-shelves.png");
+}
+
+.icon-on-shelves:hover {
+  background-image: url("./icons/on-shelvesactive.png");
+}
+
+/* 下架icon */
+.icon-off-shelves {
+  background-image: url("./icons/off-shelves.png");
+}
+
+.icon-off-shelves:hover {
+  background-image: url("./icons/off-shelvesactive.png");
+}
+
+/* 放大内容icon */
+.icon-enlarge-info {
+  background-image: url("./icons/enlarge.png");
+}
+
+.icon-enlarge-info:hover {
+  background-image: url("./icons/enlargeactive.png");
+}
+
+/* 浏览icon */
+.icon-view-info {
+  background-image: url("./icons/view.png");
+}
+
+.icon-view-info:hover {
+  background-image: url("./icons/viewactive.png");
+}
+
+/* 应用icon */
+.icon-apply-info {
+  filter: opacity(0.4);
+  background-image: url("./icons/apply.png");
+}
+
+.icon-apply-info:hover {
+  filter: opacity(1);
+  background-image: url("./icons/apply.png");
+}
+
+/* 装配图icon */
+.icon-dwg-info {
+  filter: opacity(0.4);
+  background-image: url("./icons/dwg.png");
+}
+
+.icon-dwg-info:hover {
+  filter: opacity(1);
+  background-image: url("./icons/dwg.png");
+}
+
+/* 车型icon */
+.icon-vehmodel-info {
+  filter: opacity(0.4);
+  background-image: url("./icons/vehmodel.png");
+}
+
+.icon-vehmodel-info:hover {
+  filter: opacity(1);
+  background-image: url("./icons/vehmodel.png");
+}
+
+/* 查看流水icon */
+.icon-view-water {
+  filter: opacity(0.4);
+  background-image: url("./icons/view-water.png");
+}
+
+.icon-view-water:hover {
+  filter: opacity(1);
+  background-image: url("./icons/view-water.png");
+}
+
+/* 冲销icon */
+.icon-unsettle-info {
+  filter: opacity(0.6);
+  background-image: url("./icons/unsettle-info.svg");
+}
+
+.icon-unsettle-info:hover {
+  filter: opacity(1);
+  background-image: url("./icons/unsettle-info.svg");
+}
+
+/* 打印icon */
+.icon-print-info {
+  filter: opacity(0.6);
+  background-image: url("./icons/print.png");
+}
+
+.icon-print-info:hover {
+  filter: opacity(1);
+  background-image: url("./icons/print.png");
+}
+
+/* 菜单栏logo */
+.icon-img-logo-menu {
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  background-size: 24px;
+  background-image: url("./icons/logo-menu.png");
+}
+
+/* 电装logo */
+.icon-img-denso-logo-menu {
+  display: inline-block;
+  vertical-align: middle;
+  width: 36px;
+  height: 36px;
+  background-size: 36px;
+  background-image: url("./icons/logo-denso-menu.png");
+  margin-left: -6px;
+  margin-top: -6px;
+}
+
+/* 菜单栏logo */
+.logo-icon {
+  width: 42px;
+  height: 40px;
+  background-size: 42px;
+  background-image: url("./icons/logo-icon.png");
+}
+
+/* logo-中号 */
+.logo-icon-middle {
+  background-image: url("./icons/logo-menu.png");
+}
+
+/* 入口页面logo */
+.logo-text {
+  background-size: 150px;
+  background-image: url("./icons/logo/logo-text.png");
+  background-repeat: no-repeat;
+}
+
+.logo-text-denso {
+  background-size: 200px;
+  background-image: url("./icons/logo/logo-text-denso.png");
+  background-repeat: no-repeat;
+}
+
+/* 顶部logo容器 */
+.icon-top {
+  margin: 0 !important;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  // opacity: 0.6;
+  border-radius: 50%;
+  background-size: 18px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #00a7fb;
+}
+
+.icon-top:hover {
+  margin: 0 !important;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  // opacity: 1;
+  border-radius: 50%;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #00a7fb;
+}
+
+/* 用户手册icon */
+.icon-img-top-manual {
+  background-image: url("./icons/top-manual.png");
+}
+/* 采购篮icon */
+.icon-img-top-purchase {
+  background-image: url("./icons/top-purchase.png");
+}
+
+/* 报价篮icon */
+.icon-img-top-quotation {
+  background-image: url("./icons/top-quotation.png");
+}
+
+/* 平台icon */
+.icon-img-top-platform {
+  background-image: url("./icons/top-platform.png");
+}
+
+/* 消息icon */
+.icon-img-top-bell {
+  background-image: url("./icons/top-bell.png");
+}
+
+/* 待办icon */
+.icon-img-top-pending {
+  background-image: url("./icons/top-pending.png");
+}
+
+/* 更新日志 */
+.icon-img-change-log:hover {
+  width: 30px;
+  height: 30px;
+  background-size: 30px;
+  background-image: url("./icons/change-log-active.png");
+}
+
+.icon-img-change-log {
+  width: 30px;
+  height: 30px;
+  background-size: 30px;
+  background-image: url("./icons/change-log.png");
+}
+
+/* 用户设置 */
+.icon-img-drop-set {
+  background-image: url("./icons/set-user.png");
+}
+
+.icon-img-drop-out {
+  background-image: url("./icons/out-info.png");
+}
+
+/* 公司icon */
+.company-icon-img-active {
+  background-image: url("./icons/company-active-icon.png");
+}
+
+.comapny-icon-img-info {
+  background-image: url("./icons/comapny-info-icon.png");
+}
+
+/* 基本字典icon */
+.icon-common-d {
+  background-image: url("./icons/common-d.png");
+  background-size: 22px 22px;
+}
+
+.icon-bills-d {
+  background-image: url("./icons/bills-d.png");
+  background-size: 22px 22px;
+}
+
+.icon-repair-d {
+  background-image: url("./icons/repaire-d.png");
+  background-size: 22px 22px;
+}
+
+.icon-customer-d {
+  background-image: url("./icons/customer-d.png");
+  background-size: 22px 22px;
+}
+
+.icon-goods-d {
+  background-image: url("./icons/goods-d.png");
+  background-size: 22px 22px;
+}
+
+.icon-logistics-d {
+  background-image: url("./icons/logistics-d.png");
+  background-size: 22px 22px;
+}
+
+.icon-search {
+  background-image: url("./icons/search.png");
+  background-size: 22px 22px;
+}
+
+/* 查看icon */
+.icon {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+
+  & + .icon {
+    margin-left: 5px;
+  }
+
+  &.operation-icon {
+    width: 20px;
+    height: 20px;
+    background-size: 30px;
+    border-style: none;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #b0dcff;
+    border-radius: 10px;
+    &.avavehmodel-icon {
+      background-image: url("./icons/part/avavehmodel-icon.png");
+    }
+    &:hover {
+      background-color: #3ba7ff;
+    }
+    &.reset-el-icon {
+      font-size: 16px;
+      line-height: 22px;
+      &:hover {
+        color: #3aa7ff;
+        @include font_color("color-primary");
+      }
+    }
+  }
+
+  &.tag-icon {
+    width: 28px;
+    height: 28px;
+    background-size: 28px 28px;
+    background-image: url("./icons/lack.png");
+
+    &.icon-tag-lack {
+      background-image: url("./icons/lack.png");
+    }
+  }
+
+  &.fund-account-open-icon {
+    width: 80px;
+    height: 80px;
+    background-size: 80px;
+    background-image: url("./icons/finance/fund-account-open.png");
+  }
+}
+
+/**2020-1-15 员工界面icons**/
+
+.pass-check-icon {
+  filter: opacity(0.4);
+  background-image: url("./icons/pass-check-icon.png");
+}
+.pass-check-icon:hover {
+  filter: opacity(1);
+}
+.leave-icon {
+  filter: opacity(0.4);
+  background-image: url("./icons/leave-icon.png");
+}
+.leave-icon:hover {
+  filter: opacity(1);
+}
+
+.icon-flow-step {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-size: 100% 100%;
+  background-image: url("./icons/flow-step.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.icon-flow-step-small {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-size: 70% 70%;
+  background-image: url("./icons/flow-step.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}

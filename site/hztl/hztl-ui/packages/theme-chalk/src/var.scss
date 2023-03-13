@@ -1,0 +1,218 @@
+$color-primary: #3AA7FF; //
+$color-success: #00DC8D;
+$color-warning: #FFA708;
+$color-danger: #FF424D;
+$color-text-primary: #171F24;
+$color-text-regular: #778087;
+$color-text-secondary: #AAB2B7;
+$color-text-placeholder: #D2D7DB;
+$border-color-base: #E6E6E6;
+$border-color-light: #D9D9D9;
+$border-color-table: #E8EAEF; //
+$color-content-bg: #FBFBFB; //
+$color-dark-bg: #E7EBED;
+$color-bg-primary: #00A7FB; //
+$color-bg-primary-dark: #009CEB; //
+$color-bg-primary-light: #ecf5ff;
+$color-bg-grey: #f2f7f9;
+$color-bg-gray: #b0b0b0;
+$color-base-background: #e7ebed; //
+
+$color-bg-primary-active: #338fcc; //
+$menu-color-primary-active: #3AA7FF; //
+$table-color-primary: #333333;
+$table-color-active: #3AA7FF; //
+$table-color-bg-active: #e0f1ff; //
+
+
+$main-padding-size: 10px;
+$main-margin-size: 10px ;
+
+$themes: (
+  light: (
+    color-light: #409EFF,
+    color-primary: #3AA7FF,
+    color-success: #00DC8D,
+    color-warning: #FFA708,
+    color-danger: #FF424D,
+    color-text-primary: #171F24,
+    color-text-regular: #778087,
+    color-text-secondary: #AAB2B7,
+    color-text-placeholder: #D2D7DB,
+    border-color-base: #E6E6E6,
+    border-color-light: #D9D9D9,
+    border-color-table: #E8EAEF,
+    color-content-bg: #FBFBFB,
+    color-dark-bg: #E7EBED,
+    color-bg-primary: #00A7FB,
+    color-bg-primary-dark: #009CEB,
+    color-bg-primary-light: #ecf5ff,
+    color-bg-primary-active: #338fcc,
+    color-bg-header: #3A5BA2,
+    color-bg-grey: #f2f7f9,
+    color-bg-gray: #b0b0b0,
+    color-base-background: #e7ebed,
+    menu-color-primary-active: #3AA7FF,
+    table-color-primary: #606266,
+    table-header-color: #909399,
+    table-color-active: #3aa7ff,
+    table-color-bg-active: #e0f1ff,
+    table-color-bg-striped: #F9FDFF,
+    table-header-color-bg: #F9FDFF,
+
+    header-color-primary: #171F24,
+    header-color-name: #00A7FB,
+    header-color-menu: #606266,
+    header-color-bg-primary: #F6F6F6,
+    button-primary-disabled: #a0cfff,
+    button-primary-hover: #66b1ff,
+    button-primary-plain-bg: #ecf5ff,
+    button-primary-plain-border: #b3d8ff,
+    button-primary-plain-disabled: #8cc5ff,
+    button-primary-plain-disabled-bg: #ecf5ff,
+    button-primary-plain-disabled-border: #d9ecff
+  ),
+  blue: (
+    color-light: #F28841,
+    color-primary: #314A81,
+    color-success: #00DC8D,
+    color-warning: #FFA708,
+    color-danger: #FF424D,
+    color-text-primary: #171F24,
+    color-text-regular: #778087,
+    color-text-secondary: #AAB2B7,
+    color-text-placeholder: #D2D7DB,
+    border-color-base: #E6E6E6,
+    border-color-light: #D9D9D9,
+    border-color-table: #AEAEAE,
+    color-content-bg: #F2F2F2,
+    color-dark-bg: #E7EBED,
+    color-bg-primary: #314A81,
+    color-bg-primary-dark: #F28841,
+    color-bg-primary-light: #ecf5ff,
+    color-bg-primary-active: #273B67,
+    color-bg-header: #3A5BA2,
+    color-bg-grey: #f2f7f9,
+    color-bg-gray: #b0b0b0,
+    color-base-background: #E0E0E0,
+    menu-color-primary-active: #F28841,
+    table-color-primary: #000000,
+    table-header-color: #000000,
+    table-color-active: #000000,
+    table-color-bg-active: #F0BD9C,
+    table-color-bg-striped: #EBEBEB,
+    table-header-color-bg: #DBDBDB,
+    header-color-primary: #FFFFFF,
+    header-color-name: #FFFFFF,
+    header-color-menu: #FFFFFF,
+    header-color-bg-primary: #3A5BA2,
+    button-primary-disabled: #F2CFB8,
+    button-primary-hover: #F2A46F,
+    button-primary-plain-bg: #FFF3EB,
+    button-primary-plain-border: #F28841,
+    button-primary-plain-disabled: #C9C7C6,
+    button-primary-plain-disabled-bg: #EBEBEB,
+    button-primary-plain-disabled-border: #C9C7C6
+  ),
+  green: (
+    color-light: #F28841,
+    color-primary: #027543,
+    color-success: #00DC8D,
+    color-warning: #FFA708,
+    color-danger: #FF424D,
+    color-text-primary: #171F24,
+    color-text-regular: #778087,
+    color-text-secondary: #AAB2B7,
+    color-text-placeholder: #D2D7DB,
+    border-color-base: #E6E6E6,
+    border-color-light: #D9D9D9,
+    border-color-table: #AEAEAE,
+    color-content-bg: #F2F2F2,
+    color-dark-bg: #E7EBED,
+    color-bg-primary: #027543,
+    color-bg-primary-dark: #F28841,
+    color-bg-primary-light: #ecf5ff,
+    color-bg-primary-active: #015D35,
+    color-bg-header: #3A5BA2,
+    color-bg-grey: #f2f7f9,
+    color-bg-gray: #b0b0b0,
+    color-base-background: #E0E0E0,
+    menu-color-primary-active: #027543,
+    table-color-primary: #000000,
+    table-header-color: #000000,
+    table-color-active: #000000,
+    table-color-bg-active: #B4CCC1,
+    table-color-bg-striped: #EBEBEB,
+    table-header-color-bg: #DBDBDB,
+    header-color-primary: #FFFFFF,
+    header-color-name: #FFFFFF,
+    header-color-menu: #FFFFFF,
+    header-color-bg-primary: #00965E,
+    button-primary-disabled: #F2CFB8,
+    button-primary-hover: #F2A46F,
+    button-primary-plain-bg: #FFF3EB,
+    button-primary-plain-border: #F28841,
+    button-primary-plain-disabled: #C9C7C6,
+    button-primary-plain-disabled-bg: #EBEBEB,
+    button-primary-plain-disabled-border: #C9C7C6
+  )
+);
+
+//遍历主题map
+@mixin themeify {
+  @each $theme-name, $theme-map in $themes {
+      //!global 把局部变量强升为全局变量
+      $theme-map: $theme-map !global;
+      //判断html的data-theme的属性值  #{}是sass的插值表达式
+      //& sass嵌套里的父容器标识   @content是混合器插槽，像vue的slot
+      [data-theme="#{''+$theme-name}"] & {
+          @content;
+      }
+  }
+}
+
+//声明一个根据Key获取颜色的function
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+//获取背景颜色
+@mixin background_color($color, $opacity: 1) {
+  @include themeify {
+    background-color: rgba(themed($color), $opacity);
+  }
+}
+
+//获取字体颜色
+@mixin font_color($color, $opacity: 1) {
+  @include themeify {
+    color: rgba(themed($color), $opacity);
+  }
+}
+
+//获取边框颜色
+@mixin border_color($color, $opacity: 1) {
+  @include themeify {
+    border-color: rgba(themed($color), $opacity);
+  }
+}
+@mixin border_top_color($color, $opacity: 1) {
+  @include themeify {
+    border-top-color: rgba(themed($color), $opacity);
+  }
+}
+@mixin border_right_color($color, $opacity: 1) {
+  @include themeify {
+    border-right-color: rgba(themed($color), $opacity);
+  }
+}
+@mixin border_bottom_color($color, $opacity: 1) {
+  @include themeify {
+    border-bottom-color: rgba(themed($color), $opacity);
+  }
+}
+@mixin border_left_color($color, $opacity: 1) {
+  @include themeify {
+    border-left-color: rgba(themed($color), $opacity);
+  }
+}

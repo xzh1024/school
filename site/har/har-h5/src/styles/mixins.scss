@@ -1,0 +1,37 @@
+@mixin position-center {
+	position: absolute !important;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+@mixin ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin blur {
+	-webkit-backdrop-filter: blur(20px);
+	backdrop-filter: blur(20px);
+	color: $uni-main-color;
+}
+
+
+@mixin flex {
+	position: relative;
+	display: flex;
+	align-items: center;
+}
+@mixin flex-bar {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+@mixin flex-center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

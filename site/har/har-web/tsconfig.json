@@ -1,0 +1,22 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["global.d.ts","src/**/*.vue","src/**/*.ts","src/**/*.tsx"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "preserveValueImports":false,
+    "importsNotUsedAsValues":"remove",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@images/*": ["./platformSettings/demo/images/*"]
+    },
+    "types": [
+      "vite/client",
+      "vite-plugin-pages/client"
+    ],
+  },
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}

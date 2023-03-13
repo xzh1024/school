@@ -1,0 +1,103 @@
+
+@import './var.scss';
+
+.ht-detail-form, .ht-detail-info {
+    background: #ffffff;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+
+    .el-form {
+        flex: auto;
+        overflow: auto;
+        height: 1px;
+    }
+
+    .el-form-item {
+        margin: 0 !important;
+        border: 1px solid $border-color-table;
+        @include border_color("border-color-table");
+        border-bottom-width: 0;
+
+        .el-form-item__label {
+            background-color: $color-bg-grey;
+            @include background_color("color-primary", 0.1);
+            border-right: 1px solid $border-color-table;
+            @include border_right_color("border-color-table");
+        }
+
+        &:last-child {
+            border-bottom-width: 1px;
+        }
+
+        .form-value {
+            padding-left: 10px;
+            display: inline-block;
+            width: 100%;
+            color: $color-primary;
+            @include font_color("color-primary");
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+.ht-dialog-box {
+    .el-dialog__body {
+        height: 500px;
+        background: #e7ebed;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+
+        > div {
+            flex: auto;
+        }
+    }
+
+    .container-box {
+        margin-top: 5px;
+        display: flex;
+        justify-content: flex-end;
+
+        .amount-font {
+            margin-right: 20px;
+        }
+
+        .amount-font, .text-font {
+            display: inline-block;
+        }
+    }
+}
+
+.ht-dialog-box-auto {
+    .el-dialog__body {
+        background: #e7ebed;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+
+        > div {
+            flex: auto;
+        }
+    }
+
+    .container-box {
+        margin-top: 5px;
+        display: flex;
+        justify-content: flex-end;
+
+        .amount-font {
+            margin-right: 20px;
+        }
+
+        .amount-font, .text-font {
+            display: inline-block;
+        }
+    }
+}
+
+.ht-detail-form {
+    width: 30%;
+}

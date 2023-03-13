@@ -1,0 +1,23 @@
+dev:
+  user: ubuntu
+  nodes:
+    - { addr: 127.0.0.1, labels: { } }
+demo:
+qa:
+  user: three
+  nodes:
+    - { addr: 127.0.0.1, labels: { } }
+qa2:
+  user: three
+  nodes:
+    - { addr: 127.0.0.1, labels: { } }
+preview:
+  user: three
+  nodes:
+    - { addr: 192.168.10.32  }
+    - { addr: 192.168.10.132  }
+production:
+  user: three
+  nodes:
+    - { addr: 192.168.10.32  }
+    - { addr: 192.168.10.132  }

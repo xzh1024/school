@@ -1,0 +1,32 @@
+@import "./var";
+
+.ht-light-box.el-dialog__wrapper {
+  .el-dialog {
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: none;
+    background: transparent;
+    .el-dialog__header {
+      margin: 0;
+      padding: 0;
+      height: 0;
+      width: 0;
+    }
+  
+    .el-dialog__body {
+      padding: 0;
+  
+      img {
+        // 去除inline-block 间隙
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 80vw;
+        max-height: unset;
+        font-size: 40px;
+        padding: 20px;
+      }
+    }
+  }
+}

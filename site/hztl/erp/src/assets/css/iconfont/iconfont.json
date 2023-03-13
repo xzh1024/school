@@ -1,0 +1,100 @@
+{
+  "id": "2347039",
+  "name": "东方思锐web",
+  "font_family": "font_family",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "20009931",
+      "name": "oa-requisition",
+      "font_class": "oa-requisition",
+      "unicode": "e6f8",
+      "unicode_decimal": 59128
+    },
+    {
+      "icon_id": "19680291",
+      "name": "oa-generation",
+      "font_class": "oa-generation",
+      "unicode": "e6f3",
+      "unicode_decimal": 59123
+    },
+    {
+      "icon_id": "19680292",
+      "name": "oa-withdraw",
+      "font_class": "oa-withdraw",
+      "unicode": "e6f4",
+      "unicode_decimal": 59124
+    },
+    {
+      "icon_id": "19680293",
+      "name": "oa-collect",
+      "font_class": "oa-collect",
+      "unicode": "e6f5",
+      "unicode_decimal": 59125
+    },
+    {
+      "icon_id": "19680294",
+      "name": "oa-reimbursement",
+      "font_class": "oa-reimbursement",
+      "unicode": "e6f6",
+      "unicode_decimal": 59126
+    },
+    {
+      "icon_id": "19680295",
+      "name": "oa-retreat",
+      "font_class": "oa-retreat",
+      "unicode": "e6f7",
+      "unicode_decimal": 59127
+    },
+    {
+      "icon_id": "19680281",
+      "name": "top-oa",
+      "font_class": "top-oa",
+      "unicode": "e6f2",
+      "unicode_decimal": 59122
+    },
+    {
+      "icon_id": "19614936",
+      "name": "top-user",
+      "font_class": "top-user",
+      "unicode": "e6ec",
+      "unicode_decimal": 59116
+    },
+    {
+      "icon_id": "19614937",
+      "name": "top-app",
+      "font_class": "top-app",
+      "unicode": "e6ed",
+      "unicode_decimal": 59117
+    },
+    {
+      "icon_id": "19614938",
+      "name": "top-backlog",
+      "font_class": "top-backlog",
+      "unicode": "e6ee",
+      "unicode_decimal": 59118
+    },
+    {
+      "icon_id": "19614939",
+      "name": "top-purchase",
+      "font_class": "top-purchase",
+      "unicode": "e6ef",
+      "unicode_decimal": 59119
+    },
+    {
+      "icon_id": "19614940",
+      "name": "top-notice",
+      "font_class": "top-notice",
+      "unicode": "e6f0",
+      "unicode_decimal": 59120
+    },
+    {
+      "icon_id": "19614941",
+      "name": "top-offer",
+      "font_class": "top-offer",
+      "unicode": "e6f1",
+      "unicode_decimal": 59121
+    }
+  ]
+}

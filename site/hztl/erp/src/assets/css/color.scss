@@ -1,0 +1,32 @@
+@import './var.scss';
+
+/* 字体颜色 */
+.text-grey {
+    color: #999999;
+}
+
+.text-primary {
+    color: #409EFF;
+}
+
+.text-red, .text-danger {
+    color: #f56c6c;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-warning {
+    color: $color-warning;
+}
+
+/* 背景色 */
+.bg-primary {
+    background: #00a7fb;
+}
+
+/*  提示文字位置  */
+.tips-span{
+  float: right;
+}

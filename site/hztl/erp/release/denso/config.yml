@@ -1,0 +1,4 @@
+name: erp
+timeZone: { name: China, offset: 28800 }
+data:
+  pathPrefix: /erp

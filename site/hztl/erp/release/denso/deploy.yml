@@ -1,0 +1,8 @@
+qa:
+  services:
+    web:
+      image: ccr.ccs.tencentyun.com/dnst-store/erp
+production:
+  services:
+    web:
+      image: ccr.ccs.tencentyun.com/dnst-store/erp
