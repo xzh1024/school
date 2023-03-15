@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
-import { wordToNum } from "xzh1024_npm_test/dist/webpack-numbers";
+import { wordToNum } from "xzh1024_npm_test";
 
 const getWordNum = () => {
   console.log("------------");
