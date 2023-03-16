@@ -79,5 +79,6 @@ const handleClose = (key, keyPath) => {
 <style lang="scss" scoped>
 .menu-box {
   height: 100%;
+  user-select: none;
 }
 </style>
