@@ -7,18 +7,28 @@
 <body>
 
 <h3>sub window</h3>
-
+<button onclick="pushMsg('aaaa')">aaa</button>
+<button onclick="pushMsg('bbbb')">bbb</button>
 <script>
-
-    // 通过 window.opener 获取到打开当前窗口的窗口，即 super window
-    // 由于当前是同源窗口传递消息，所以第二个参数设为 /
-    // window.opener.postMessage('super window 接收到了一条消息', '/');
-    if(window.opener) {
-        window.opener.postMessage('super window 接收到了一条消息', '/');
-    } else if(top.postMessage) {
-        top.postMessage('super window 接收到了一条消息', '/');
+    window.onload = function() {
+        console.log(window.opener)
+        console.log(top.postMessage)
+        // 通过 window.opener 获取到打开当前窗口的窗口，即 super window
+        // 由于当前是同源窗口传递消息，所以第二个参数设为 /
+        // window.opener.postMessage('super window 接收到了一条消息', '/');
+        if(window.opener) {
+            window.opener.postMessage('super window 接收到了一条消息', '/');
+        } else if(top.postMessage) {
+            top.postMessage('super window 接收到了一条消息', '/');
+        }
     }
-
+    function pushMsg(msg) {
+        if(window.opener) {
+            window.opener.postMessage(msg, '/');
+        } else if(top.postMessage) {
+            top.postMessage(msg, '/');
+        }
+    }
 </script>
 </body>
 </html>
