@@ -8,9 +8,13 @@
 </template>
 
 <script setup>
-const res = wx.getMenuButtonBoundingClientRect()
+import { onMounted } from "vue";
+const res = wx.getMenuButtonBoundingClientRect();
 
-console.log(res)
+onMounted(() => {
+  console.log("---------------");
+  console.log(res);
+});
 </script>
 
 <style>
