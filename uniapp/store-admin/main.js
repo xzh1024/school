@@ -1,4 +1,5 @@
 import App from './App'
+import barTop from './components/bar-top/bar-top.vue'
 
 // #ifndef VUE3
 import Vue from 'vue'
@@ -38,11 +39,14 @@ const app = new Vue({
 })
 app.$mount()
 // #endif
+// app.Component
 
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
 export function createApp() {
   const app = createSSRApp(App)
+  console.log(app)
+  app.component('bar-top', barTop)
   return {
     app
   }

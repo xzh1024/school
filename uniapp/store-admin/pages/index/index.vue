@@ -1,46 +1,67 @@
 <template>
-  <view class="content">
-    <image class="logo" src="/static/logo.png"></image>
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
+  <bar-top />
+  <!-- 自定义的顶部导航栏 -->
+  <view>
+    <view>
+      <view
+        class="head"
+        :style="{
+          height: `${S_height}px`,
+        }"
+        >
+        <view class="head-left">
+          ←
+        </view>
+        <view>
+          {{ title }}
+        </view>
+        </view
+      >
     </view>
   </view>
 </template>
 
 <script setup>
-import { onMounted } from "vue";
-const res = wx.getMenuButtonBoundingClientRect();
+import { onMounted, reactive, ref, toRefs } from "vue";
 
 onMounted(() => {
-  console.log("---------------");
-  console.log(res);
+  capSule();
 });
+
+const title = ref("小店");
+
+// 存储胶囊按钮的位置数据
+const search_data = reactive({
+  S_height: 0, // 胶囊按钮的高度
+  S_top: 0, // 胶囊按钮距离顶部的高度
+});
+
+const { S_height, S_top } = toRefs(search_data);
+
+// 获取胶囊按钮的位置数据
+function capSule() {
+  const { statusBarHeight } = uni.getSystemInfoSync();
+  const but_data = wx.getMenuButtonBoundingClientRect();
+  console.log(but_data);
+  search_data.S_height = (but_data.top - statusBarHeight) * 2 + but_data.height;
+  search_data.S_top = but_data.top;
+}
 </script>
 
-<style>
-.content {
+<style lang="scss" scoped>
+.head {
+  // color: $uni-color-error;
+  // background: red;
+  border-bottom: 1px solid #cccccc;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
-}
-
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
+  position: relative;
+  .head-left {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 </style>
