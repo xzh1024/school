@@ -1,0 +1,87 @@
+/* 文本超出隐藏 */
+.over-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+/* 横幅管理，分类管理 */
+.sort-Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+}
+.sort-position {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80rpx;
+  padding: 0 20rpx;
+}
+.sort-table {
+  background-color: inherit !important;
+  border-bottom: 1rpx solid #e6e6e6 !important;
+  padding: 30rpx 20rpx !important;
+}
+.occupy {
+  flex: 0.5;
+}
+.sort-but {
+  color: #ffffff;
+  background-color: #e64340;
+  border-radius: 7rpx;
+  padding: 4rpx 12rpx;
+  font-size: 24rpx;
+}
+/* 底部按钮 */
+.newly-added-view {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff; 
+}
+.newly-added {
+  background-color: #ed6b51;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: #ffffff;
+  font-size: 33rpx;
+  border-radius: 10rpx;
+  margin: 0 20rpx 68rpx 20rpx;
+}
+
+/* 弹框样式 */
+.space-view {
+  height: 900rpx;
+  padding-bottom: 30rpx;
+  background: #fefefe;
+  overflow-y: auto;
+  padding: 20rpx;
+}
+.modify-white {
+  background-color: #ffffff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 950rpx;
+  border-top-left-radius: 20rpx;
+}
+/* 弹窗里的标题，取消按钮 */
+.modify-sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 30rpx;
+}
+.modify-sub image {
+  display: block;
+  width: 30rpx;
+  height: 30rpx;
+}

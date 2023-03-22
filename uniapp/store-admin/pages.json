@@ -4,13 +4,20 @@
     {
       "path": "pages/index/index",
       "style": {
-		"navigationStyle": "custom"
+        "navigationStyle": "custom"
       }
     },
     {
       "path": "pages/commodity/commodity",
       "style": {
         "navigationBarTitleText": "商品"
+      }
+    },
+    {
+      "path": "pages/sort-admin/sort",
+      "style": {
+        "navigationBarTitleText": "分类管理",
+        "navigationBarBackgroundColor": "#ffffff"
       }
     },
     {
@@ -28,26 +35,26 @@
   },
   "uniIdRouter": {},
   "tabBar": {
-		"color": "#333333",
-		"selectedColor": "#339966",
+    "color": "#333333",
+    "selectedColor": "#339966",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-				"iconPath": "static/tabs/home.png",
-				"selectedIconPath": "static/tabs/home-fill.png"
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-fill.png"
       },
       {
         "pagePath": "pages/commodity/commodity",
         "text": "商品",
-				"iconPath": "static/tabs/shopping.png",
-				"selectedIconPath": "static/tabs/shopping-fill.png"
+        "iconPath": "static/tabs/shopping.png",
+        "selectedIconPath": "static/tabs/shopping-fill.png"
       },
       {
         "pagePath": "pages/order/order",
         "text": "订单",
-				"iconPath": "static/tabs/order.png",
-				"selectedIconPath": "static/tabs/order-fill.png"
+        "iconPath": "static/tabs/order.png",
+        "selectedIconPath": "static/tabs/order-fill.png"
       }
     ]
   }
