@@ -1,0 +1,50 @@
+import React, { Component } from "react";
+
+export default class App extends Component {
+  constructor() {
+    super();
+    console.log(this);
+    // 不推荐
+    this.handleClick2 = this.handleClick2.bind(this);
+  }
+
+  a = "aaa";
+
+  handleClick2(event) {
+    console.log(this);
+    console.log(event);
+    console.log("click2");
+  }
+  handleClick3 = (event) => {
+    console.log(this);
+    console.log(event);
+    console.log("click3");
+  };
+  handleClick4() {
+    console.log(this);
+    console.log("click4");
+  }
+
+  render() {
+    return (
+      <div>
+        <input />
+        <button
+          onClick={() => {
+            console.log(this);
+            console.log("click1");
+          }}
+        >
+          add1
+        </button>
+        <button onClick={this.handleClick2}>add2</button>
+        <button onClick={this.handleClick3}>add3</button>
+        <button onClick={() => this.handleClick4()}>add4</button>
+      </div>
+    );
+  }
+}
+
+/*
+React并不会真正的绑定事件到每一个具体的《》的元素上，而是采用事件代理的模式：
+*/

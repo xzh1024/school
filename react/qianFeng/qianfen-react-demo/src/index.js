@@ -1,7 +1,9 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import App from "./01-base/01-class组件";
+import React from 'react'
+// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client'
+// import App from './01-base/01-class组件'
 // import App from "./01-base/02-函数式组件";
+// import App from "./01-base/03-组件的嵌套";
 // import App from "./01-base/04-组件的样式";
 // import App from "./01-base/05-事件绑定-1.js";
 // import App from "./01-base/06-事件绑定-2.js";
@@ -20,6 +22,7 @@ import App from "./01-base/01-class组件";
 // import App from "./01-base/20-受控.js";
 // import App from "./01-base/21-受控cinema.js";
 // import App from "./01-base/22-受控todolist.js";
+
 // import App from "./02-advanced/01-子传父.js";
 // import App from "./02-advanced/03-受控卖座选项卡.js";
 // import App from "./02-advanced/04-父子通信版-表单域组件.js";
@@ -27,7 +30,7 @@ import App from "./01-base/01-class组件";
 // import App from "./02-advanced/06-中间人模式.js";
 // import App from "./02-advanced/07-发布订阅模式.js";
 // import App from "./02-advanced/08-订阅发布模式案例.js";
-// import App from "./02-advanced/09-context.js";
+import App from "./02-advanced/09-context.js";
 // import App from "./02-advanced/10-插槽.js";
 // import App from "./02-advanced/11-插槽抽屉.js";
 // import App from "./02-advanced/12-生命周期-初始化.js";
@@ -45,6 +48,7 @@ import App from "./01-base/01-class组件";
 // import App from './02-advanced/24-性能优化.js';
 // import App from './02-advanced/25-swiper-同步.js';
 // import App from './02-advanced/27-swiper-组件.js';
+
 // import App from './03-hooks/01-useState.js';
 // import App from './03-hooks/02-todolist.js';
 // import App from './03-hooks/03-useEffect.js';
@@ -61,47 +65,12 @@ import App from "./01-base/01-class组件";
 // import App from './03-hooks/14-useReducer2.js';
 // import App from './03-hooks/15-useReducer3.js';
 // import App from './03-hooks/16-自定义hooks.js';
-// import App from './04-router/App.js';
-// import App from './05-redux/App.js';
-// import App from './06-react-redux/App.js';
-// import App from './07-antd/01-antd引入';
-// import App from './07-antd/02-栅格系统';
-// import App from './07-antd/03-layout';
-// import App from './07-antd/04-下拉菜单';
-// import App from './07-antd/05-步骤条';
-// import App from './07-antd/06-轮播';
-// import App from './07-antd/07-table';
-// import App from './07-antd/08-树形控件';
-// import App from './07-antd/09-modal';
-// import App from './08-antd-mobile/App';
-// import App from './09-immutable/01-base';
-// import App from './09-immutable/02-map';
-// import App from './09-immutable/03-map2';
-// import App from './09-immutable/04-List';
-// import App from './09-immutable/05-个人信息修改';
-// import App from './09-immutable/05-个人信息修改2';
-// import App from './09-immutable/redux/App';
-// import App from './10-mobx/04-router/App';
-// import App from './11-styled-components/App';
-// import App from './11-styled-components/01-透传props';
-// import App from './11-styled-components/02-样式化组件';
-// import App from './11-styled-components/03-样式扩展';
-// import App from './11-styled-components/04-动画';
-// import App from './13-redux-saga/App';
-// import App from './13-redux-saga/05-redux/App';
-// import App from './14-react-补充/portal/App';
-// import App from './14-react-补充/懒加载/App';
-// import App from './14-react-补充/forwardRef/App';
-// import App from './14-react-补充/forwardRef/Apo_forwardRef';
-// import App from './14-react-补充/memo/App';
 
-import { Provider } from 'mobx-react';
-import './index.css';
-import store from './10-mobx/04-router/mobx/store';
+// ReactDOM.render(<div>111</div>, document.getElementById('root'))
 
-ReactDom.render(
-  <Provider store={store}>
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <React.StrictMode>
     <App />
-  </Provider>,
-  document.getElementById('root')
-);
+  </React.StrictMode>
+)

@@ -1,0 +1,14 @@
+.box {
+    /* display: inline-block;
+    width: 100px; */
+    height: 100px;
+    background-color: rgb(196, 227, 255);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.line-through {
+    text-decoration: line-through;
+}

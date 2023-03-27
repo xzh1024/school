@@ -1,13 +1,12 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component } from "react";
 import axios from "axios";
 
-function FilmList(props) {
-  // state = {
-  //   filmList: [],
-  // };
-  const [filmList, setFilmList] = useState([])
+class FilmList extends Component {
+  state = {
+    filmList: [],
+  };
 
-  function getList(type) {
+  getList = (type) => {
     if (type === 1) {
       axios({
         method: "get",
@@ -21,7 +20,9 @@ function FilmList(props) {
         const data = res.data;
         if (data.status === 0) {
           const list = data.data.films || [];
-          setFilmList(list);
+          this.setState({
+            filmList: list,
+          });
         }
       });
     } else {
@@ -37,36 +38,36 @@ function FilmList(props) {
         const data = res.data;
         if (data.status === 0) {
           const list = data.data.films || [];
-          setFilmList(list);
+          this.setState({
+            filmList: list,
+          });
         }
       });
     }
   };
 
-  // componentDidMount() {
-  //   this.getList(this.props.type);
-  // }
-  useEffect(() => {
-    getList(props.type);
-  }, [props.type])
-  
+  componentDidMount() {
+    this.getList(this.props.type);
+  }
 
-  // UNSAFE_componentWillReceiveProps(nextProps) {
-  //   if (nextProps.type !== this.props.type) {
-  //     this.getList(nextProps.type);
-  //   }
-  // }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.type !== this.props.type) {
+      this.getList(nextProps.type);
+    }
+  }
 
+  render() {
     return (
       <div>
-        <div>{props.type}</div>
+        <div>{this.props.type}</div>
         <div>
-          {filmList.map((item) => (
+          {this.state.filmList.map((item) => (
             <div key={item.filmId}>{item.name}</div>
           ))}
         </div>
       </div>
     );
+  }
 }
 
 export default class App extends Component {
