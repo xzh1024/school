@@ -1,0 +1,19 @@
+.search {
+  height: calc(100% - 50px);
+  margin-bottom: 50px;
+  // height: 100%;
+  // box-sizing: border-box;
+  // padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .search-input {
+    flex: none;
+    height: 50px;
+    border-bottom: 1px solid #eeeeee;
+  }
+  .search-content {
+    flex: 1;
+    overflow-y: auto;
+  }
+}

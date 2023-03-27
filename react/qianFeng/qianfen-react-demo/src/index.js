@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
 // import ReactDOM from 'react-dom';
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
 // import App from './01-base/01-class组件'
 // import App from "./01-base/02-函数式组件";
 // import App from "./01-base/03-组件的嵌套";
@@ -30,7 +31,7 @@ import ReactDOM from 'react-dom/client'
 // import App from "./02-advanced/06-中间人模式.js";
 // import App from "./02-advanced/07-发布订阅模式.js";
 // import App from "./02-advanced/08-订阅发布模式案例.js";
-import App from "./02-advanced/09-context.js";
+// import App from "./02-advanced/09-context.js";
 // import App from "./02-advanced/10-插槽.js";
 // import App from "./02-advanced/11-插槽抽屉.js";
 // import App from "./02-advanced/12-生命周期-初始化.js";
@@ -66,11 +67,61 @@ import App from "./02-advanced/09-context.js";
 // import App from './03-hooks/15-useReducer3.js';
 // import App from './03-hooks/16-自定义hooks.js';
 
+// import App from './04-router/App.js';
+
+// import App from './05-redux/App.js';
+
+// import App from './06-react-redux/App.js';
+
+// import App from './07-antd/01-antd引入';
+
+// import App from './07-antd/02-栅格系统';
+// import App from './07-antd/03-layout';
+// import App from './07-antd/04-下拉菜单';
+// import App from './07-antd/05-步骤条';
+// import App from './07-antd/06-轮播';
+// import App from './07-antd/07-table';
+// import App from './07-antd/08-树形控件';
+// import App from './07-antd/09-modal';
+
+// import App from './08-antd-mobile/App';
+
+// import App from './09-immutable/01-base';
+// import App from './09-immutable/02-map';
+// import App from './09-immutable/03-map2';
+// import App from './09-immutable/04-List';
+// import App from './09-immutable/05-个人信息修改';
+// import App from './09-immutable/05-个人信息修改2';
+// import App from './09-immutable/redux/App';
+
+// import App from './10-mobx/04-router/App';
+
+// import App from './11-styled-components/App';
+// import App from './11-styled-components/01-透传props';
+// import App from './11-styled-components/02-样式化组件';
+// import App from './11-styled-components/03-样式扩展';
+// import App from './11-styled-components/04-动画';
+
+import App from './12-单元测试/App';
+
+// import App from './13-redux-saga/App';
+// import App from './13-redux-saga/05-redux/App';
+// import App from './14-react-补充/portal/App';
+// import App from './14-react-补充/懒加载/App';
+// import App from './14-react-补充/forwardRef/App';
+// import App from './14-react-补充/forwardRef/Apo_forwardRef';
+// import App from './14-react-补充/memo/App';
+
 // ReactDOM.render(<div>111</div>, document.getElementById('root'))
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+  // <React.StrictMode>
+  <App />
+  // </React.StrictMode>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

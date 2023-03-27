@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import axios from "axios";
-import "./css/03-communication.scss";
+import React, { Component } from 'react';
+import axios from 'axios';
+import './css/03-communication.scss';
 
 const GlobaContext = React.createContext();
 
@@ -9,32 +9,33 @@ export default class App extends Component {
     super();
     this.state = {
       filmList: [],
-      filmInfo: {},
+      filmInfo: {}
     };
 
-    axios.get("./test.json").then((res) => {
+    axios.get('./test.json').then((res) => {
       console.log(res.data);
       this.setState({
-        filmList: res.data || [],
+        filmList: res.data || []
       });
     });
   }
 
   changeFilmInfo = (item) => {
     this.setState({
-      filmInfo: item,
+      filmInfo: item
     });
   };
 
   render() {
     const { filmList } = this.state;
     return (
+      // 供应者
       <GlobaContext.Provider
         value={{
-          call: "打电话",
-          sms: "短信",
+          call: '打电话',
+          sms: '短信',
           info: this.state.filmInfo,
-          changeInfo: this.changeFilmInfo,
+          changeInfo: this.changeFilmInfo
         }}
       >
         <div>
@@ -55,12 +56,14 @@ export default class App extends Component {
 class FilmItem extends Component {
   render() {
     return (
+      // 消费者，顾客，用户；使用者，消耗者
       <GlobaContext.Consumer>
         {(value) => (
           <div
             className="film-item clearfix"
             onClick={() => value.changeInfo(this.props.data)}
           >
+            <h3>{value.sms}</h3>
             <div>{this.props.data.name}</div>
             <img className="film-img" src={this.props.data.poster} alt="" />
           </div>
@@ -82,7 +85,7 @@ class FilmDetail extends Component {
               <div>{datas.info.name}</div>
               <img className="film-img" src={this.props.data.poster} alt="" />
             </div>
-          )
+          );
         }}
       </GlobaContext.Consumer>
     );

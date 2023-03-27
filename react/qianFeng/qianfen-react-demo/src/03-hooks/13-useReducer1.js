@@ -16,14 +16,15 @@ const reducer = (prevState, action) => {
       newState.count--;
       return newState;
     }
-    default:
+    default: {
       return prevState;
+    }
   }
 };
 
 // 外部的对象
 const intialState = {
-  count: 0,
+  count: 0
 };
 
 export default function App() {
@@ -34,7 +35,7 @@ export default function App() {
       <button
         onClick={() =>
           dispatch({
-            type: 'minus',
+            type: 'minus'
           })
         }
       >
@@ -44,7 +45,7 @@ export default function App() {
       <button
         onClick={() =>
           dispatch({
-            type: 'add',
+            type: 'add'
           })
         }
       >

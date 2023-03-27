@@ -2,6 +2,16 @@ import React, { PureComponent } from "react";
 import axios from "axios";
 import BetterScroll from "better-scroll";
 
+/**
+ * PureComponent会帮你比较新props跟旧的props，新的state和老的state（值相等，
+ * 或者对象含有相同的属性、且属性值相等），决定 shouldComponentUpdate 返回
+ * true 或者 false ，从而决定要不要呼叫 render function。
+ * 
+ * 注意
+ *    如果你的 state 或 props "永远都会变"，那 PureComponent 并不会比较快，
+ *    因为 shallowEqual 也需要花时间。
+ * 
+ * **/
 export default class App extends PureComponent {
   state = {
     myName: "aaa",

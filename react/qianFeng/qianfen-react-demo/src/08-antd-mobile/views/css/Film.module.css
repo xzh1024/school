@@ -1,0 +1,7 @@
+.active {
+  color: blue;
+}
+
+:global(.active) {
+  color: yellow;
+}
