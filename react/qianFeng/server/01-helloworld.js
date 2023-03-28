@@ -2,10 +2,11 @@ const express = require('express');
 const { buildSchema } = require('graphql');
 const graphqlHttp = require('express-graphql');
 const Scchema = buildSchema(`
-  type Query{
+  type Query {
     hello: String,
-    getName: String,
-    getAge: Int
+    getAge: Int,
+    getAllNames: [String],
+    getAllAges: [Int],
   }
 `);
 
@@ -15,11 +16,14 @@ const root = {
     const str = 'hello world';
     return str;
   },
-  getName: () => {
-    return 'kerwin';
-  },
   getAge: () => {
     return 18;
+  },
+  getAllNames: () => {
+    return ['张三', '李四', '王五'];
+  },
+  getAllAges: () => {
+    return [18, 20, 21];
   }
 };
 
