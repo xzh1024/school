@@ -21,9 +21,10 @@ const Scchema = buildSchema(`
   type Mutation {
     createFilm(input: FilmInput): Film,
     updateFilm(id: Int!, input: FilmInput): Film,
+    deleteFilm(id: Int!): Int,
   }
 `);
-const faskeDb = [
+let faskeDb = [
   {
     id: 1,
     name: '111',
@@ -48,17 +49,21 @@ const root = {
   getNowplayingList: () => {
     return faskeDb;
   },
-  createFilm: ({input}) => {
-    console.log(input)
+  createFilm: ({ input }) => {
+    console.log(input);
     const obj = { ...input, id: faskeDb.length + 1 };
     faskeDb.push(obj);
     return obj;
   },
-  updateFilm: ({id, input}) => {
-    console.log(input)
-    const findData = faskeDb.find(item => item.id === id);
-    Object.assign(findData, input)
+  updateFilm: ({ id, input }) => {
+    console.log(input);
+    const findData = faskeDb.find((item) => item.id === id);
+    Object.assign(findData, input);
     return findData;
+  },
+  deleteFilm: ({ id }) => {
+    faskeDb = faskeDb.filter((item) => item.id !== id);
+    return 1;
   }
 };
 

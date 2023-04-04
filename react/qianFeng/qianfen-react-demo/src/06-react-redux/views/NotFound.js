@@ -8,6 +8,7 @@ function NotFound(props) {
   return <div>404 not found</div>;
 }
 
+// 高阶函数
 function myConnect(cb, obj) {
   const value = cb && cb();
   return (MyComponent) => {
@@ -26,11 +27,11 @@ export default myConnect(
     // console.log(state);
     return {
       a: 1,
-      b: 2,
+      b: 2
     };
   },
   {
     fn1() {},
-    fn2() {},
+    fn2() {}
   }
 )(NotFound);

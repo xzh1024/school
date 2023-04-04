@@ -4,7 +4,8 @@ import store from '../../../mobx/store';
 export default function Detail(props) {
   console.log(props);
   useEffect(() => {
-    console.log('create');
+    console.log('store');
+    console.log(store.changeHide);
 
     // store.dispath  通知
     // store.isTabbarShow = false;

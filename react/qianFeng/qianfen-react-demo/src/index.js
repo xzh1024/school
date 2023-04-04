@@ -1,7 +1,24 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals';
+/**
+ * 4.HOC与context通信在react-redux底层中的应用
+ *    (1)connect是HOC，高阶组件
+ *    (2)Provider组件，可以让容器组件拿到state，使用了context
+ * 5.高阶组件构建与应用
+ *  HOC不仅仅是一个方法，确切说应该是一个组件工厂，获取低阶组件，生成高阶组件
+ *    (1)代码复用，代码模块化
+ *    (2)增删改props
+ *    (3)渲染劫持
+ * **/
+// import { Provider } from 'react-redux';
+// import { store, persistor } from './06-react-redux/redux/store';
+// import { PersistGate } from 'redux-persist/integration/react';
+
+import store from './10-mobx/04-router/mobx/store';
+import { Provider } from 'mobx-react';
+import './index.css';
+// import reportWebVitals from './reportWebVitals';
 // import App from './01-base/01-class组件'
 // import App from "./01-base/02-函数式组件";
 // import App from "./01-base/03-组件的嵌套";
@@ -45,7 +62,7 @@ import reportWebVitals from './reportWebVitals';
 // import App from "./02-advanced/20-新生命周期-1.js";
 // import App from "./02-advanced/21-新生命周期-1-案例.js";
 // import App from "./02-advanced/22-新生命周期-2.js";
-// import App from './02-advanced/23-新生命周期-2-案例.js';
+import App from './02-advanced/23-新生命周期-2-案例.js';
 // import App from './02-advanced/24-性能优化.js';
 // import App from './02-advanced/25-swiper-同步.js';
 // import App from './02-advanced/27-swiper-组件.js';
@@ -102,7 +119,7 @@ import reportWebVitals from './reportWebVitals';
 // import App from './11-styled-components/03-样式扩展';
 // import App from './11-styled-components/04-动画';
 
-import App from './12-单元测试/App';
+// import App from './12-单元测试/App';
 
 // import App from './13-redux-saga/App';
 // import App from './13-redux-saga/05-redux/App';
@@ -114,14 +131,30 @@ import App from './12-单元测试/App';
 
 // ReactDOM.render(<div>111</div>, document.getElementById('root'))
 
+console.log(store);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <App />
+  //   <App />
   // </React.StrictMode>
+
+  // <Provider store={store}>
+  //   <App />
+  // </Provider>
+
+  // redux数据持久化
+  // <Provider store={store}>
+  //   <PersistGate loading={null} persistor={persistor}>
+  //     <App />
+  //   </PersistGate>
+  // </Provider>
+  // mobx-react
+  <Provider store={store}>
+    <App />
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();

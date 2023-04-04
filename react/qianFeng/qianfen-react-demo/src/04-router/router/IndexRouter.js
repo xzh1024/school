@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  // HashRouter as Router,
-  BrowserRouter as Router,
+  // HashRouter as Router, // 在路径中包含了#，相当于HTML的锚点定位。（# 符号的英文叫hash，所以叫HashRouter）
+  BrowserRouter as Router, // 使用的是HTML5的新特性History，没有HashRouter(锚点定位)那样通用，低版本浏览器可能不支持。
   Switch,
   Redirect,
   Route,

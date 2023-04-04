@@ -2,14 +2,15 @@ import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 import { TabbarReducer, CityReducer, CinemaListReducer } from './reducers';
 import reduxThunk from 'redux-thunk';
 import reduxPromise from 'redux-promise';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import { persistStore, persistReducer } from 'redux-persist'; // redux数据持久化
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
+// redux持久化配置
 const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['CityReducer'],
-  blacklist: ['TabbarReducer'],
+  key: 'react-root', // 储存的标识名
+  storage, // 储存方式
+  whitelist: ['CityReducer'], // 白名单
+  blacklist: ['TabbarReducer'], // 黑名单
 };
 
 const reducer = combineReducers({

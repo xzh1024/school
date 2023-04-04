@@ -10,7 +10,6 @@ export default function Cinemas(props) {
   );
 
   useEffect(() => {
-    console.log(111);
     if (cinemaList.length === 0) {
       // 去后台取数据
       store.dispatch(getCinemaListAction());
@@ -19,7 +18,7 @@ export default function Cinemas(props) {
     }
     // 订阅
     const unsubscribe = store.subscribe(() => {
-      console.log('Cinema 订阅');
+      console.log('Cinema 中订阅');
       setCinemaList(store.getState().CinemaListReducer.list);
     });
 

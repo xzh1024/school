@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useLayoutEffect } from 'react'
+import React, { Component, useEffect, useLayoutEffect } from 'react';
 
 /**
  *
@@ -13,7 +13,7 @@ import React, { Component, useEffect, useLayoutEffect } from 'react'
  *    只有一次回流、重绘的代价。
  */
 function Child() {
-  console.log(111)
+  console.log(111);
   // componentDidMount() {
   //   window.onresize = () => {
   //     console.log("resize");
@@ -33,34 +33,34 @@ function Child() {
   // useLayoutEffect(() => {
   useEffect(() => {
     window.onresize = () => {
-      console.log('resize')
-    }
+      console.log('resize');
+    };
 
     const timer = setInterval(() => {
-      console.log(new Date().getTime())
-    }, 2000)
+      console.log(new Date().getTime());
+    }, 2000);
 
     return function Unmount() {
-      console.log('组件销毁')
-      window.onresize = null
-      clearInterval(timer)
-    }
-  }, [])
+      console.log('组件销毁');
+      window.onresize = null;
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <div>
       <h3>child</h3>
     </div>
-  )
+  );
 }
 
 export default class App extends Component {
   state = {
     isCreated: true
-  }
+  };
 
   componentWillUnmount() {
-    console.log('App组件销毁')
+    console.log('App组件销毁');
   }
 
   render() {
@@ -70,13 +70,13 @@ export default class App extends Component {
           onClick={() => {
             this.setState({
               isCreated: !this.state.isCreated
-            })
+            });
           }}
         >
           delete child
         </button>
         {this.state.isCreated && <Child></Child>}
       </div>
-    )
+    );
   }
 }

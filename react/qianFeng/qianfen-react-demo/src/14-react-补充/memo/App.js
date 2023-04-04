@@ -1,6 +1,7 @@
 import React, { Component, memo } from 'react';
 
-// PureComponent 只能用于class组件，memo 用于function组件
+// PureComponent 只能用于class组件
+// memo 用于function组件
 export default class App extends Component {
   state = {
     name: 'zhangsan',

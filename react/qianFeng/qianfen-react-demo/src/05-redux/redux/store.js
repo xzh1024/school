@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, combineReducers, createStore } from 'redux';
 import { TabbarReducer, CityReducer, CinemaListReducer } from './reducers';
-import reduxThunk from 'redux-thunk';
-import reduxPromise from 'redux-promise';
+import reduxThunk from 'redux-thunk'; // store.dispatch参数可以是一个function
+import reduxPromise from 'redux-promise'; // store.dispatch参数可以是一个promise对象
 
 const reducer = combineReducers({
   TabbarReducer,
@@ -52,10 +52,12 @@ function createMyStore(reducer) {
   var list = [];
   var state = reducer(undefined, {});
 
+  // 订阅
   function subscribe(callback) {
     list.push(callback);
   }
 
+  // 发布
   function dispatch(action) {
     state = reducer(state, action);
     for (var i in list) {

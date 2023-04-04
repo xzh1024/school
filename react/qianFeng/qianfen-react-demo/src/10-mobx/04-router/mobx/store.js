@@ -1,8 +1,14 @@
 import axios from 'axios';
-import { observable, configure, action, runInAction } from 'mobx';
-configure({
-  enforceActions: 'always',
-});
+import {
+  makeAutoObservable,
+  makeObservable,
+  observable,
+  action,
+  runInAction
+} from 'mobx';
+// configure({
+//   enforceActions: 'always',
+// });
 // const store = observable(
 //   {
 //     isTabbarShow: true,
@@ -24,24 +30,38 @@ configure({
 
 // experimentalDecorators
 class Store {
-  @observable isTabbarShow = true;
-  @observable list = [];
-
-  @action changeShow() {
+  constructor() {
+    // makeAutoObservable(this);
+    makeObservable(
+      //指向
+      this,
+      {
+        //定义当前mobx类对象中数据类型
+        isTabbarShow: observable,
+        list: observable,
+        changeShow: action,
+        changeHide: action,
+        getList: action
+      }
+    );
+  }
+  isTabbarShow = true;
+  list = [];
+  changeShow() {
     this.isTabbarShow = true;
   }
-  @action changeHide() {
+  changeHide() {
     this.isTabbarShow = false;
   }
-  @action getList() {
+  getList() {
     axios({
       method: 'get',
       url: 'https://m.maizuo.com/gateway?cityId=110100&ticketFlag=1&k=7964413',
       headers: {
         'X-Client-Info':
           '{"a":"3000","ch":"1002","v":"5.2.0","e":"16551164151371705180160001","bc":"110100"}',
-        'X-Host': 'mall.film-ticket.cinema.list',
-      },
+        'X-Host': 'mall.film-ticket.cinema.list'
+      }
     })
       .then((res) => {
         runInAction(() => {

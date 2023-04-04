@@ -8,11 +8,11 @@ export default class App extends Component {
   myRef = React.createRef();
 
   getSnapshotBeforeUpdate() {
-    // console.dir(this.myRef.current);
-    // console.log('scrollHeight:', this.myRef.current.scrollHeight); // 网页正文全文高
-    // console.log('clientHeight:', this.myRef.current.clientHeight); // 网页可见区域高
-    // console.log("offsetHeight:" , this.myRef.current.offsetHeight); // 网页可见区域高（包括边线的高）
-    // console.log('scrollTop:', this.myRef.current.scrollTop); // 网页被卷去的高
+    console.dir(this.myRef.current);
+    console.log('scrollHeight:', this.myRef.current.scrollHeight); // 网页正文全文高
+    console.log('clientHeight:', this.myRef.current.clientHeight); // 网页可见区域高
+    console.log("offsetHeight:" , this.myRef.current.offsetHeight); // 网页可见区域高（包括边线的高）
+    console.log('scrollTop:', this.myRef.current.scrollTop); // 网页被卷去的高
     return this.myRef.current.scrollHeight;
   }
 

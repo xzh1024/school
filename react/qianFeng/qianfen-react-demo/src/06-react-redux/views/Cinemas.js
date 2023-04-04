@@ -50,7 +50,7 @@ function Cinemas(props) {
           <dl
             key={item.cinemaId}
             style={{
-              padding: '10px',
+              padding: '10px'
             }}
           >
             <dt>{item.name}</dt>
@@ -66,10 +66,10 @@ const mapStateToProps = (state) => {
   // console.log(state);
   return {
     cityName: state.CityReducer.cityName,
-    cinemaList: state.CinemaListReducer.list,
+    cinemaList: state.CinemaListReducer.list
   };
 };
 const mapDispatchToProps = {
-  getCinemaListAction,
+  getCinemaListAction
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Cinemas);
