@@ -1,9 +1,5 @@
-import styles from './index.less';
+import { Navigate } from 'umi';
 
-export default function IndexPage() {
-  return (
-    <div>
-      <h1 className={styles.title}>Page index</h1>
-    </div>
-  );
+export default function Index() {
+  return <Navigate to="/film" />;
 }
