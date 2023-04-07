@@ -9,17 +9,17 @@ export default class Tabbar extends Component {
         <ul>
           <li>
             <NavLink to="/film" activeclassname="active">
-              film
+              电影
             </NavLink>
           </li>
           <li>
             <NavLink to="/cinema" activeclassname="active">
-              cinema
+              影院
             </NavLink>
           </li>
           <li>
             <NavLink to="/center" activeclassname="active">
-              center
+              我的
             </NavLink>
           </li>
         </ul>

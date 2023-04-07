@@ -1,3 +1,4 @@
+import { Button } from 'antd-mobile';
 import { useEffect, useState } from 'react';
 import {
   // history,
@@ -16,7 +17,7 @@ export default function Login() {
         console.log(res);
       });
   }, []);
-  
+
   return (
     <div>
       <input
@@ -36,7 +37,9 @@ export default function Login() {
         onInput={(e: any) => setPassword(e.target.value)}
       />
       <br />
-      <button
+      <Button
+        size="mini"
+        color="primary"
         onClick={() => {
           fetch('/users/login', {
             method: 'POST',
@@ -69,7 +72,7 @@ export default function Login() {
         }}
       >
         登录
-      </button>
+      </Button>
     </div>
   );
 }

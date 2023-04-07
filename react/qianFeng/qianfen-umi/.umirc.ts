@@ -9,21 +9,23 @@ import { defineConfig } from 'umi';
 export default defineConfig({
   // history: { type: 'hash' },
   // 配置式路由
-  routes: [
-    { path: '/', component: 'index' },
-    { path: '/film', component: './Film' },
-    { path: '/cinema', component: './cinema/index' },
-    { path: '/detail/:id', component: '@/pages/detail/$id.tsx' },
-    { path: '/center', component: './Center', wrappers: ['@/wrappers/Auth'] },
-    { path: '/login', component: './Login' },
-    { path: '/*', component: '@/pages/404' }
-  ],
+  // routes: [
+  //   { path: '/', component: 'index' },
+  //   { path: '/film', component: './Film' },
+  //   { path: '/cinema', component: './cinema/index' },
+  //   { path: '/detail/:id', component: '@/pages/detail/$id.tsx' },
+  //   { path: '/city', component: '@/pages/City' },
+  //   { path: '/center', component: './Center', wrappers: ['@/wrappers/Auth'] },
+  //   { path: '/login', component: './Login' },
+  //   { path: '/*', component: '@/pages/404' }
+  // ],
   // npmClient: 'npm',
+  // 反向代理
   proxy: {
     '/api': {
       target: 'https://i.maoyan.com',
-      changeOrigin: true
-      // 'pathRewrite': { '^/api' : '' },
+      changeOrigin: true // host设置成target，即为node服务器代理之后的请求后台的host
+      // pathRewrite: { '^/api': '' }
     }
   }
 });
