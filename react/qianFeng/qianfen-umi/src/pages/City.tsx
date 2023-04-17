@@ -1,8 +1,8 @@
 import { IndexBar, List } from 'antd-mobile';
 import { useEffect, useState } from 'react';
-import { 
-  useNavigate
-} from 'umi';
+import { useNavigate } from 'umi';
+// import {connect} from 'dva';
+// import { connect } from 'umi';
 
 interface CityModel {
   cityId: number;
@@ -16,9 +16,8 @@ interface CityRow {
   items: CityModel[];
 }
 
-export default function City() {
+function City(props: any) {
   const navigate = useNavigate();
-  
 
   const [list, setList] = useState<CityRow[]>([]);
 
@@ -50,7 +49,15 @@ export default function City() {
 
   const changeCity = (item: CityModel) => {
     console.log(item);
+    console.log(props);
     // 修改store state中的状态
+    // props.dispatch({
+    //   type: 'changeCity',
+    //   payload: {
+    //     cityName: item.name,
+    //     cityId: item.cityId
+    //   }
+    // });
     navigate('/cinema');
   };
 
@@ -89,3 +96,6 @@ export default function City() {
     </div>
   );
 }
+
+// export default connect(() => ({}))(City);
+export default City;

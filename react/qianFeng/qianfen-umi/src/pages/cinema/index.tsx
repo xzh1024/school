@@ -1,12 +1,17 @@
 import { NavBar } from 'antd-mobile';
 import { SearchOutline } from 'antd-mobile-icons';
 import { useState } from 'react';
+// import { history, connect } from 'umi';
 import { history } from 'umi';
+// import { connect } from 'dva';
 import Comingsoon from './Comingsoon';
 import Nowplaying from './Nowplaying';
 import './index.less';
 
-export default function Cinema() {
+// @connect(({ cityName }) => ({
+//   cityName
+// }))
+function Cinema() {
   const [type, setType] = useState(0);
   const [tabs] = useState(['正在热映', '即将上映']);
   return (
@@ -35,3 +40,9 @@ export default function Cinema() {
     </div>
   );
 }
+// 这里的 testModel 是对应 model 的 namespace
+// function mapStateToProps({ city }: any) {
+//   return { ...city };
+// }
+// export default connect(mapStateToProps)(Cinema);
+export default Cinema;
