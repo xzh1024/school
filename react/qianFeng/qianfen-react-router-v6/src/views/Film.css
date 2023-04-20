@@ -1,0 +1,16 @@
+.tabs {
+  display: flex;
+}
+
+.tabs .tab-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.tabs .tab-item.active {
+  color: brown;
+}

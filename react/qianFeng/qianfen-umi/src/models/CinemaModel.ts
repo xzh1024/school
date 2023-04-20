@@ -3,25 +3,25 @@ export default {
   state: {
     list: []
   },
-  effects: {
-    *getList(action: any, obj: any) {
-      console.log(obj);
-      const { put, call } = obj;
-      // const res = yield call(getListForCinema);
+  reducers: {
+    changeList(prevState: any, action: any) {
+      return { ...prevState, list: action.payload };
     }
   },
-  reducers: {
-    // save(state: any, { payload }: any) {
-    //   return { ...state, ...payload };
-    // },
-    // changeCity(prevState: any, action: any) {
-    //   console.log(action);
-    //   return { ...prevState, ...action };
-    // }
+  effects: {
+    *getList(action: any, obj: any): any {
+      console.log(obj);
+      const { put, call } = obj;
+      const res = yield call(getListForCinema);
+      yield put({
+        type: 'changeList',
+        payload: res
+      });
+    }
   }
 };
 
-async function getListForCinema(): Promise<any> {
+async function getListForCinema() {
   const res = await fetch(
     'https://m.maizuo.com/gateway?cityId=110100&ticketFlag=1&k=4673145',
     {

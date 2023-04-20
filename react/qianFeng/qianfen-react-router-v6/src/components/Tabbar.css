@@ -1,0 +1,13 @@
+footer ul {
+
+  display: flex;
+}
+
+footer ul li {
+  list-style: none;
+  flex: 1;
+}
+
+footer ul li .is-active {
+  color: brown;
+}
