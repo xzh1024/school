@@ -19,12 +19,15 @@
 
 <body>
     <div class="box">
+        <!-- 1、创建 canvas 元素 -->
         <canvas id="clock" width="500" height="500">你的浏览器不支持canvas,请升级你的浏览器</canvas>
     </div>
 
     <script>
         /** @type {HTMLCanvasElement} */
+        // 2、获取 canvas 对象
         var dom = document.getElementById('clock');
+        // 3、获取 canvas 上下文环境对象
         var ctx = dom.getContext('2d');
         var width = ctx.canvas.width;
         var height = ctx.canvas.height;
@@ -84,9 +87,9 @@
             ctx.rotate(rad + mrad);
             ctx.lineWidth = 6 * rem; //线条样式：属性：设置或返回当前的线条宽度
             ctx.lineCap = 'round'; //设置或返回线条的结束端点样式
-            ctx.moveTo(0, 10 * rem); //路径：把路径移动到画布中的指定点，不创建线条
-            ctx.lineTo(0, -r / 2); //路径：添加一个新点，然后在画布中创建从该点到最后指定点的线条
-            ctx.stroke();
+            ctx.moveTo(0, 10 * rem); //路径：把路径移动到画布中的指定点，不创建线条 // 起点坐标 (x, y)
+            ctx.lineTo(0, -r / 2); //路径：添加一个新点，然后在画布中创建从该点到最后指定点的线条 // 终点坐标 (x, y)
+            ctx.stroke(); // 将起点和终点连接起来
             ctx.restore(); //返回之前保存过的路径状态和属性
         }
 
