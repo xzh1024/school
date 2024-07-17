@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>toString</title>
+</head>
+
+<body>
+  <script>
+    var obj = {
+      num: 1,
+      toString: function () {
+        return this.num++;
+      }
+    }
+    if (obj == 1 && obj == 2 && obj == 3) {
+      console.log(obj)
+    } else {
+      console.log(0)
+    }
+  </script>
+</body>
+
+</html>
