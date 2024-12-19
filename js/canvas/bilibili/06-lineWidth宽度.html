@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 获取canvas元素
+      const canvas = document.createElement('canvas')
+      //   canvas.width = 600
+      //   canvas.height = 400
+      document.body.appendChild(canvas)
+      // 2. 获取上下文
+      const ctx = canvas.getContext('2d')
+      // 3. 设置宽高
+      canvas.width = 600
+      canvas.height = 400
+
+      // 3. 折线
+      //   ctx.beginPath()
+      // 3.1 起点
+      ctx.moveTo(100, 100)
+      // 3.2 使用lineTo 依次结过转折点
+      ctx.lineTo(200, 200)
+      ctx.lineWidth = 10
+      ctx.stroke()
+      ctx.lineTo(300, 100)
+      ctx.lineWidth = 1
+      ctx.stroke()
+      ctx.lineTo(400, 200)
+      ctx.lineWidth = 5
+      // 3.3 使用stroke() 画图
+      ctx.stroke()
+    </script>
+  </body>
+</html>

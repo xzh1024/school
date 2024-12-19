@@ -176,6 +176,12 @@ export default {
       this.canvas = this.$refs.refCanvas;
       this.ctx = this.canvas.getContext("2d");
 
+      console.log('epcImg--')
+      console.log(epcImg.width)
+      console.log(epcImg.width)
+      console.log(containerWidth)
+      console.log(containerHeight)
+
       if (epcImg.width * aspectRatio >= epcImg.height) {
         this.defaultCanvasWidth = containerWidth;
         this.defaultScale = this.defaultCanvasWidth / epcImg.width;

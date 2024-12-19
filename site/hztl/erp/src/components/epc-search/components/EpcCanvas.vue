@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 100%; height: 100%;">
+  <div style="width: 100%; height: 100%">
     <div v-if="url" ref="refContainer" class="box-container">
       <img v-show="false" ref="refImg" :src="url" @load="initCanvas" />
       <canvas
@@ -64,7 +64,7 @@ export default {
       default: true
     }
   },
-  data() {
+  data () {
     return {
       epcImg: null,
       canvas: null,
@@ -78,32 +78,32 @@ export default {
   },
   computed: {
     relTableData: {
-      get() {
+      get () {
         return this.tableData;
       },
-      set(val) {
+      set (val) {
         this.$emit("update:tableData", val);
       }
     },
     relSelectedRows: {
-      get() {
+      get () {
         return this.selectedRows;
       },
-      set(val) {
+      set (val) {
         this.$emit("update:selectedRows", val);
       }
     }
   },
   watch: {
     selectedRows: {
-      handler() {
+      handler () {
         this.ctx && this.drawAllEpcPositions();
       },
       immediate: true
     }
   },
   methods: {
-    getPositionArry(position) {
+    getPositionArry (position) {
       return (
         position
           // eslint-disable-next-line no-useless-escape
@@ -112,7 +112,7 @@ export default {
           .map(item => Number(item || 0) * this.scale * this.defaultScale)
       );
     },
-    hanleEpcPositionChange(e) {
+    hanleEpcPositionChange (e) {
       if (
         this.relTableData.length &&
         this.relTableData.some(item => {
@@ -143,12 +143,12 @@ export default {
         this.drawAllEpcPositions();
       }
     },
-    initCanvas() {
+    initCanvas () {
       this.drawCanvas();
       this.bindWheel();
       this.bindDrag();
     },
-    drawCanvas() {
+    drawCanvas () {
       const containerWidth = this.$refs.refContainer.clientWidth;
       const containerHeight = this.$refs.refContainer.clientHeight;
       const aspectRatio = containerWidth / containerHeight;
@@ -172,7 +172,7 @@ export default {
       this.scale = 1;
       this.drawEpcImg();
     },
-    drawEpcImg() {
+    drawEpcImg () {
       this.canvas.width = this.defaultCanvasWidth * this.scale;
       this.canvas.height = this.defaultCanvasHeight * this.scale;
       this.ctx.drawImage(
@@ -184,14 +184,14 @@ export default {
       );
       this.drawAllEpcPositions();
     },
-    drawAllEpcPositions() {
+    drawAllEpcPositions () {
       if (this.relTableData.length) {
         this.relTableData.forEach(item => {
           this.drawEpcPosition(item);
         });
       }
     },
-    drawEpcPosition(drawData) {
+    drawEpcPosition (drawData) {
       let type = null;
       if (this.relSelectedRows.includes(drawData)) {
         type = "active";
@@ -219,16 +219,16 @@ export default {
       this.ctx.fillText(
         drawData.partRefOnImage,
         parseFloat(positionArry[0]) +
-          (parseFloat(positionArry[2]) - text.width * scale) / 2 +
-          (text.width * scale) / 2,
+        (parseFloat(positionArry[2]) - text.width * scale) / 2 +
+        (text.width * scale) / 2,
         parseFloat(positionArry[1]) +
-          fontSize / 4 +
-          parseFloat(positionArry[3]) / 2 +
-          4 * scale,
+        fontSize / 4 +
+        parseFloat(positionArry[3]) / 2 +
+        4 * scale,
         parseFloat(positionArry[2])
       );
     },
-    fillRoundRect(positionArry, r) {
+    fillRoundRect (positionArry, r) {
       const x = parseFloat(positionArry[0]);
       const y = parseFloat(positionArry[1]);
       const w = parseFloat(positionArry[2]);
@@ -245,7 +245,7 @@ export default {
       this.ctx.arc(x + r, y + r, r, Math.PI, (Math.PI * 3) / 2);
       this.ctx.fill();
     },
-    scaleHandle(type) {
+    scaleHandle (type) {
       if (type === "enlarge" && this.scale < 3) {
         this.scale += 0.1;
       } else if (type === "shrink" && this.scale > 1) {
@@ -253,7 +253,7 @@ export default {
       }
       this.drawEpcImg();
     },
-    bindWheel() {
+    bindWheel () {
       this.$refs.refContainer.addEventListener("mousewheel", e => {
         if (e.deltaY > 0) {
           this.scaleHandle("shrink");
@@ -262,7 +262,7 @@ export default {
         }
       });
     },
-    bindDrag() {
+    bindDrag () {
       this.canvas.onmousedown = e => {
         const startXLen = e.clientX;
         const startYLen = e.clientY;
@@ -275,14 +275,14 @@ export default {
             x <= -this.canvas.offsetWidth + MIN_LEN
               ? -this.canvas.offsetWidth + MIN_LEN
               : x >= this.$refs.refContainer.offsetWidth - MIN_LEN
-              ? this.$refs.refContainer.offsetWidth - MIN_LEN
-              : x;
+                ? this.$refs.refContainer.offsetWidth - MIN_LEN
+                : x;
           y =
             y <= -this.canvas.offsetHeight + MIN_LEN
               ? -this.canvas.offsetHeight + MIN_LEN
               : y >= this.$refs.refContainer.offsetHeight - MIN_LEN
-              ? this.$refs.refContainer.offsetHeight - MIN_LEN
-              : y;
+                ? this.$refs.refContainer.offsetHeight - MIN_LEN
+                : y;
           this.canvas.style.left = x + "px";
           this.canvas.style.top = y + "px";
         };

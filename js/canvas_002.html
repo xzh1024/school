@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <canvas id="myCanvas" width="500" height="500"></canvas>
+
+    <script>
+      const canvas = document.getElementById('myCanvas')
+      const ctx = canvas.getContext('2d')
+      let isClicked = false // 用于记录是否已经点击
+      let clickX, clickY // 记录点击坐标
+
+      // 初始化画布
+      function initCanvas() {
+        ctx.fillStyle = 'white'
+        ctx.fillRect(0, 0, canvas.width, canvas.height)
+        ctx.strokeRect(0, 0, canvas.width, canvas.height)
+      }
+
+      // 高亮选中点击的像素
+      function highlightPixel(x, y) {
+        ctx.fillStyle = 'red' // 选中像素的颜色
+        ctx.fillRect(x, y, 10, 10) // 假设高亮选中的是10x10的区域
+      }
+
+      // 监听鼠标点击事件
+      canvas.addEventListener('mousedown', function (e) {
+        // 计算点击坐标相对于canvas的位置
+        const rect = canvas.getBoundingClientRect()
+        clickX = e.clientX - rect.left
+        clickY = e.clientY - rect.top
+        isClicked = true
+      })
+
+      // 绘制或重绘canvas
+      function renderCanvas() {
+        initCanvas() // 初始化画布
+        if (isClicked) {
+          highlightPixel(clickX, clickY) // 高亮选中的像素
+        }
+      }
+
+      // 主逻辑
+      ;(function main() {
+        renderCanvas() // 首次渲染画布
+
+        // 用于持续监听和处理点击事件
+        window.requestAnimationFrame(main)
+      })()
+    </script>
+  </body>
+</html>
