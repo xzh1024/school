@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>with 和 eval</title>
+  </head>
+  <body>
+    <script>
+      // with 简化对象属性的访问
+      var person = {
+        name: 'tom',
+        age: 18,
+        seyHello: function () {
+          console.log('Hello ' + this.name + '!')
+        }
+      }
+      with (person) {
+        console.log(name) // tom
+        console.log(age) // 18
+        seyHello() // Hello tom!
+      }
+
+      // eval 将字符串当作JavaScript代码执行
+      var str = 'console.log("Hello World!")'
+      eval(str) // Hello World!
+    </script>
+  </body>
+</html>
