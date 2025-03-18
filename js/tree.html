@@ -1,145 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>树形菜单</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <script>
-        var data = [
-            { id: 1, name: "办公管理", pid: 0 },
-            { id: 2, name: "请假申请", pid: 1 },
-            { id: 3, name: "出差申请", pid: 1 },
-            { id: 4, name: "请假记录", pid: 2 },
-            { id: 5, name: "系统设置", pid: 0 },
-            { id: 6, name: "权限管理", pid: 5 },
-            { id: 7, name: "用户角色", pid: 6 },
-            { id: 8, name: "菜单设置", pid: 6 },
-            { id: 9, name: "test设置", pid: 8 },
-        ];
+      var data = [
+        { id: 1, name: '办公管理', pid: 0 },
+        { id: 2, name: '请假申请', pid: 1 },
+        { id: 3, name: '出差申请', pid: 1 },
+        { id: 4, name: '请假记录', pid: 2 },
+        { id: 5, name: '系统设置', pid: 0 },
+        { id: 6, name: '权限管理', pid: 5 },
+        { id: 7, name: '用户角色', pid: 6 },
+        { id: 8, name: '菜单设置', pid: 6 },
+        { id: 9, name: 'test设置', pid: 8 }
+      ]
 
-        // 方法一
-        function toTree(list) {
-            var map = {};
-            list.forEach(item => {
-                // 删除 所有 children,以防止多次调用
-                delete item.children;
-                // 将数据存储为以 id 为 KEY 的 map 索引数据列
-                map[item.id] = item
-            })
-            //        console.log(map);
-            var tree = [];
-            list.forEach(function (item) {
-                // 以当前遍历项，的pid,去map对象中找到索引的id
-                var parent = map[item.pid];
-                // 好绕啊，如果找到索引，那么说明此项不在顶级当中,那么需要把此项添加到，他对应的父级中
-                if (parent) {
-                    (parent.children || (parent.children = [])).push(item);
-                } else {
-                    // 如果没有在map中找到对应的索引ID,那么直接把 当前的item添加到 val结果集中，作为顶级
-                    tree.push(item);
-                }
-            });
-            return tree;
-        }
-        console.log(toTree(data))
+      // 方法一
+      function toTree(list) {
+        var map = {}
+        list.forEach((item) => {
+          // 删除 所有 children,以防止多次调用
+          delete item.children
+          // 将数据存储为以 id 为 KEY 的 map 索引数据列
+          map[item.id] = item
+        })
+        //        console.log(map);
+        var tree = []
+        list.forEach(function (item) {
+          // 以当前遍历项，的pid,去map对象中找到索引的id
+          var parent = map[item.pid]
+          // 好绕啊，如果找到索引，那么说明此项不在顶级当中,那么需要把此项添加到，他对应的父级中
+          if (parent) {
+            ;(parent.children || (parent.children = [])).push(item)
+          } else {
+            // 如果没有在map中找到对应的索引ID,那么直接把 当前的item添加到 val结果集中，作为顶级
+            tree.push(item)
+          }
+        })
+        return tree
+      }
+      console.log(toTree(data))
 
-        // 递归版本
-        function arrToTree(list, pid) {
-            let treeData = []; // 新建数组，用来储存当前对象的子对象
-            list.forEach(item => {
-                // 遍历寻找子对象
-                if (item.pid === pid) {
-                    // 递归 返回对象的children列表
-                    const children = arrToTree(list, item.id);
-                    // 如果有children就将数组添加给对象
-                    if (children.length) {
-                        item.children = children;
-                    }
-                    // 将完整的item添加给导出的数组
-                    treeData.push(item);
-                }
-            });
-            return treeData; // 每次递归回返回当前的子列表
-        }
+      // 递归版本
+      function arrToTree(list, pid) {
+        let treeData = [] // 新建数组，用来储存当前对象的子对象
+        list.forEach((item) => {
+          // 遍历寻找子对象
+          if (item.pid === pid) {
+            // 递归 返回对象的children列表
+            const children = arrToTree(list, item.id)
+            // 如果有children就将数组添加给对象
+            if (children.length) {
+              item.children = children
+            }
+            // 将完整的item添加给导出的数组
+            treeData.push(item)
+          }
+        })
+        return treeData // 每次递归回返回当前的子列表
+      }
 
-        const treeData = arrToTree(data, 0);
-        console.log(treeData);
+      const treeData = arrToTree(data, 0)
+      console.log(treeData)
 
-
-        const data2 = [
+      const data2 = [
+        {
+          id: 1,
+          name: '办公管理',
+          pid: 0,
+          children: [
             {
-                "id": 1,
-                "name": "办公管理",
-                "pid": 0,
-                "children": [
-                    {
-                        "id": 2,
-                        "name": "请假申请",
-                        "pid": 1,
-                        "children": [
-                            {
-                                "id": 4,
-                                "name": "请假记录",
-                                "pid": 2
-                            }
-                        ]
-                    },
-                    {
-                        "id": 3,
-                        "name": "出差申请",
-                        "pid": 1
-                    }
-                ]
+              id: 2,
+              name: '请假申请',
+              pid: 1,
+              children: [
+                {
+                  id: 4,
+                  name: '请假记录',
+                  pid: 2
+                }
+              ]
             },
             {
-                "id": 5,
-                "name": "系统设置",
-                "pid": 0,
-                "children": [
-                    {
-                        "id": 6,
-                        "name": "权限管理",
-                        "pid": 5,
-                        "children": [
-                            {
-                                "id": 7,
-                                "name": "用户角色",
-                                "pid": 6
-                            },
-                            {
-                                "id": 8,
-                                "name": "菜单设置",
-                                "pid": 6,
-                                "children": [
-                                    {
-                                        "id": 9,
-                                        "name": "test设置",
-                                        "pid": 8
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+              id: 3,
+              name: '出差申请',
+              pid: 1
             }
-        ]
-        // 树形结构扁平化
-        function flatTree(list) {
-            let tempFlat = [];
-            list.forEach(item => {
-                tempFlat.push({ ...item })
-                if (item.children) {
-                    tempFlat.concat(treeFlat(item.children))
+          ]
+        },
+        {
+          id: 5,
+          name: '系统设置',
+          pid: 0,
+          children: [
+            {
+              id: 6,
+              name: '权限管理',
+              pid: 5,
+              children: [
+                {
+                  id: 7,
+                  name: '用户角色',
+                  pid: 6
+                },
+                {
+                  id: 8,
+                  name: '菜单设置',
+                  pid: 6,
+                  children: [
+                    {
+                      id: 9,
+                      name: 'test设置',
+                      pid: 8
+                    }
+                  ]
                 }
-            })
-            return tempFlat
+              ]
+            }
+          ]
         }
-        console.log(flatTree(data));
+      ]
+      // 树形结构扁平化
+      function flatTree(list) {
+        let tempFlat = []
+        list.forEach((item) => {
+          tempFlat.push({ ...item })
+          if (item.children) {
+            tempFlat = tempFlat.concat(flatTree(item.children))
+          }
+        })
+        return tempFlat
+      }
+      console.log(flatTree(data2))
     </script>
-</body>
-
+  </body>
 </html>

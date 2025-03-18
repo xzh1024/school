@@ -7,6 +7,7 @@
   </head>
   <body>
     <script>
+      var list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       // 33. 如何实现数组的随机排序？
       // （1）使用数组 sort 方法对数组元素随机排序，让 Math.random() 出来的数与 0.5 比较，如果大于就返回 1 交换位置，如果小于就返回 -1，不交换位置。
       function randomSort(a, b) {
@@ -14,7 +15,7 @@
       }
       //  缺点：每个元素被派到新数组的位置不是随机的，原因是 sort() 方法是依次比较的。
       // （2）随机从原数组抽取一个元素，加入到新数组
-      function randomSort(arr) {
+      function randomSort2(arr) {
         var result = []
         while (arr.length > 0) {
           var randomIndex = Math.floor(Math.random() * arr.length)
@@ -23,6 +24,7 @@
         }
         return result
       }
+      // console.log(randomSort2(list))
       // （3）随机交换数组内的元素（洗牌算法类似
       function randomSort(arr) {
         var index,
@@ -50,6 +52,16 @@
         }
         return array
       }
+
+      function randomSort5(arr) {
+        var temp = []
+        while (arr.length) {
+          const index = Math.floor(Math.random() * arr.length)
+          temp.push(arr.splice(index, 1)[0])
+        }
+        return temp
+      }
+      console.log(randomSort5(JSON.parse(JSON.stringify(list))))
     </script>
   </body>
 </html>
