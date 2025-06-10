@@ -1,0 +1,30 @@
+.comprehensive-query-container {
+  &-search {
+    margin-bottom: 16px;
+    position: relative;
+    max-height: 80px;
+    transition: max-height .3s;
+    overflow: hidden;
+
+    .search-btns {
+      text-align: right;
+      button {
+        margin-left: 5px !important;
+      }
+    }
+
+    .ant-divider {
+      margin: 0;
+    }
+  }
+
+  .ant-form-item {
+    margin-bottom: 12px !important;
+  }
+  
+  .ant-table-cell {
+    padding: 4px 6px !important;
+    border-inline-end: none !important;
+  }
+
+}

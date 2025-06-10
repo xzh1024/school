@@ -1,0 +1,117 @@
+@import './menu.scss';
+
+.dashboard-timeline {
+  .ant-timeline-item-tail {
+    background: #bfd1ff;
+  }
+
+  .ant-timeline-item-head {
+    inset-block-start: 12px;
+  }
+}
+
+// 首页标准
+
+.dashboard-popver {
+  .title {
+    display: flex;
+    height: 38px;
+    line-height: 38px;
+    background-color: #f3f6fa;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .cityType {
+    display: flex;
+    justify-content: baseline;
+    align-items: center;
+    border-bottom: 1px solid #e9ebf3;
+  }
+
+  .cityType:last-child {
+    margin-top: 5px;
+    border-bottom: 0;
+    padding-bottom: 15px;
+  }
+
+  .left {
+    width: 85px;
+    text-align: center;
+  }
+
+  .city {
+    width: 334px;
+  }
+
+  .hotel,
+  .plane {
+    width: 80px;
+    color: rgb(90, 96, 116);
+  }
+
+  .train {
+    width: 150px;
+    color: rgb(90, 96, 116);
+  }
+
+  .right {
+    ul {
+      padding-left: 0;
+    }
+  }
+
+  .wrapper {
+    width: auto !important;
+  }
+
+  .main {
+    width: 334px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: baseline;
+    align-items: center;
+    margin-bottom: 0;
+    padding-left: 0;
+    li {
+      font-size: 14px;
+      color: #5a6074;
+      min-height: 32.5px;
+      line-height: 32.5px;
+      padding-left: 14px;
+      position: relative;
+    }
+
+    .dot {
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  .lastMain {
+    width: 334px;
+    padding-left: 0;
+    line-height: 32.5px;
+    font-size: 14px;
+    color: #5a6074;
+    .dot {
+      margin-right: 3px;
+    }
+  }
+
+  .last {
+    .hotel,
+    .plane,
+    .train {
+      position: relative;
+      top: 10px;
+    }
+  }
+
+  .empty {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: -15px;
+  }
+}

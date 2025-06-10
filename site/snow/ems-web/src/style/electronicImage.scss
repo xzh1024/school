@@ -1,0 +1,14 @@
+.electronic-image-print {
+  padding: 0 10%;
+
+  .ant-pro-card .ant-pro-card-body {
+    padding-inline: 0px;
+  }
+
+  // 二维码文字大小
+  .claim-number-barcode {
+    text {
+      font-size: 28px !important;
+    }
+  }
+}

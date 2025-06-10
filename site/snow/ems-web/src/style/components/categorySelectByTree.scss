@@ -1,0 +1,22 @@
+.user-tree-select-container {
+  &-search {
+    display: flex;
+    align-items: center;
+    &-input {
+      width: 240px;
+      padding: 6px 0 16px 0;
+    }
+
+    &-select {
+      margin-left: 16px;
+    }
+  }
+
+  &-tree {
+    max-height: 600px;
+    overflow: scroll;
+  }
+  .tree-search-value {
+    color: #1677ff;
+  }
+}

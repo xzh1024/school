@@ -1,0 +1,35 @@
+.pro-table-container {
+  width: 100%;
+
+  .pro-table-tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 12px;
+
+    .pro-table-tools-left {
+      flex: 1;
+    }
+
+    .pro-table-tools-right {
+      padding-left: 12px;
+      display: flex;
+      align-items: center;
+
+      .tool-action {
+        padding-left: 12px;
+        cursor: pointer;
+        display: inline-block;
+      }
+    }
+
+    .select-number-container {
+      padding: 4px 8px;
+      width: max-content;
+    }
+  }
+  .select-number-container-row {
+    padding: 4px 8px;
+    width: max-content;
+  }
+}

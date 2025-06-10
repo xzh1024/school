@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="40" height="41.666748046875" viewBox="0 0 40 41.666748046875">
+  <defs>
+    <filter id="master_svg0_63_00990/56_00486" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB" x="-10" y="-7.5" width="41.66666603088379" height="43.33333206176758">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="2.5" dx="0"/>
+      <feGaussianBlur stdDeviation="2.5"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.35686275362968445 0 0 0 0 0.7098039388656616 0 0 0 0.20000000298023224 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+    <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id="master_svg1_56_00395" gradientTransform="translate(9.903048691154332 9.265332662932138) rotate(0) scale(12.863068184549356 8.72253534328074)">
+      <stop offset="0%" stop-color="#95B3FF" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="1"/>
+    </radialGradient>
+    <filter id="master_svg2_63_00990/56_00486" filterUnits="objectBoundingBox" color-interpolation-filters="sRGB" x="-10" y="-7.5" width="41.66666603088379" height="43.33333206176758">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+      <feOffset dy="2.5" dx="0"/>
+      <feGaussianBlur stdDeviation="2.5"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0.35686275362968445 0 0 0 0 0.7098039388656616 0 0 0 0.20000000298023224 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+    <mask id="master_svg3_63_00990/56_00486" style="mask-type:alpha" maskUnits="userSpaceOnUse">
+      <g filter="url(#master_svg2_63_00990/56_00486)">
+        <rect x="9.166748046875" y="8.33331298828125" width="21.66666603088379" height="23.333332061767578" rx="1.6666666269302368" fill="#FFFFFF" fill-opacity="1"/>
+      </g>
+    </mask>
+    <radialGradient cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" id="master_svg4_56_00400" gradientTransform="translate(26.300803225720244 26.063090975264345) rotate(134.038128746887) scale(7.252767703597171 10.684087446322689)">
+      <stop offset="0%" stop-color="#95B3FF" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <g>
+    <g>
+      <rect x="0" y="0" width="40" height="40" rx="6.666666507720947" fill="#2C68FF" fill-opacity="1"/>
+    </g>
+    <g>
+      <g mask="url(#master_svg3_63_00990/56_00486)">
+        <g filter="url(#master_svg0_63_00990/56_00486)">
+          <rect x="9.166748046875" y="8.33331298828125" width="21.66666603088379" height="23.333332061767578" rx="1.6666666269302368" fill="url(#master_svg1_56_00395)" fill-opacity="1"/>
+        </g>
+        <g>
+          <rect x="10.833251953125" y="10.00006103515625" width="18.333332061767578" height="16.66666603088379" rx="1.6666666269302368" fill="#FFFFFF" fill-opacity="1"/>
+        </g>
+        <g>
+          <path d="M30.085101953124997,15.000061035156257Q29.443501953125,22.96680103515625,27.166101953125,25.86726103515625C24.888701953125,28.767761035156248,23.081871953125,29.70506103515625,20.833251953125,30.83216103515625C20.833251953125004,31.35376103515625,20.833251953125004,31.17116103515625,20.833251953125,31.66676103515625Q21.683549953125,31.66676103515625,30.916551953125,31.66546103515625L30.912451953125,15.000061035156257L30.085101953124997,15.000061035156257Z" fill-rule="evenodd" fill="url(#master_svg4_56_00400)" fill-opacity="1"/>
+        </g>
+      </g>
+      <g transform="matrix(0,1,-1,0,27.50006103515625,-4.16644287109375)">
+        <rect x="15.833251953125" y="11.66680908203125" width="16.66666603088379" height="1.6666666269302368" rx="0.4166666567325592" fill="#2C68FF" fill-opacity="1"/>
+      </g>
+      <g transform="matrix(-0.7071067690849304,0.7071068286895752,-0.7071068286895752,-0.7071067690849304,61.676767116136034,7.499642234713974)">
+        <path d="M29.28515625,17.35683153515625L29.28515625,19.02349853515625C29.28515625,19.48373853515625,29.65825225,19.85682853515625,30.11849025,19.85682853515625L39.18679625,19.85682853515625C39.251476249999996,19.85682853515625,39.31525625,19.84176853515625,39.37315625,19.81283853515625L41.87315625,18.56283853515625C42.18025625,18.40928853515625,42.18025625,17.97103853515625,41.87315625,17.81748853515625L39.37315625,16.56748723515625C39.31525625,16.53855903515625,39.251476249999996,16.52349853515625,39.18679625,16.52349853515625L30.11848925,16.52349853515625C29.65825225,16.52349853515625,29.28515625,16.89659453515625,29.28515625,17.35683153515625Z" fill="#2C68FF" fill-opacity="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

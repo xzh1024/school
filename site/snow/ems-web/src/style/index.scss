@@ -1,0 +1,246 @@
+// mixin置顶引入
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './mixin.scss';
+@import 'reset-css';
+@import './warningMessage.scss';
+@import './travelConfirm.scss';
+@import './components/index.scss';
+@import './layout.scss';
+@import './comprehensiveQuery.scss';
+@import './accountingTreatment.scss';
+@import './login.scss';
+@import './electronicImage.scss';
+@import './trend/index.scss';
+@import './ai.scss';
+@import './accountWorkCalendar.scss';
+
+@layer utilities {
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .shadow-header {
+      box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.05);
+    }
+
+    .bg-new-header {
+      background: url('../../public/images/bg-header.jpg') no-repeat;
+      background-size: 100% 100%
+    }
+    .bg-dashboard {
+      background: url('../../public/images/bg-dashboard.jpg') no-repeat;
+    }
+
+    .form-item-label-warp {
+      .ant-form-item-label {
+        white-space: pre-wrap;
+        overflow: visible;
+      }
+    }
+
+    .dashboard-container {
+      padding: 8px 12px 24px;
+      position: relative;
+      border-radius: 8px;
+      background: #ffffff;
+      box-shadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.06),inset 0px 0px 3px 2px #FFFFFF';
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 12px;
+        width: 4px;
+        height: 18px;
+        border-radius: 1px;
+        background: #2c68ff;
+      }
+    }
+
+    // 页面容器样式
+    .page-container {
+      background: #f5f5f5;
+
+      .ant-pro-page-container {
+        background: #f5f5f5;
+      }
+
+      .ant-page-header {
+        background: #fff !important;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+      }
+
+      .ant-pro-grid-content {
+        padding: 16px;
+      }
+      .ant-pro-page-container-children-container {
+        padding: 0;
+      }
+    }
+
+    .show-more-search {
+      position: relative;
+      transition: max-height 0.3s;
+      overflow: hidden;
+    }
+  }
+}
+
+@media print {
+  @page {
+    size: auto;
+    /* 打印的边距 上右下左 */
+    margin: 0 0 0 0;
+  }
+  .ant-descriptions-item-label {
+    font-size: 12px !important;
+  }
+  .ant-descriptions-item-content {
+    font-size: 12px !important;
+  }
+  .ant-descriptions-item {
+    padding-bottom: 3px !important;
+  }
+
+  html {
+    background-color: #ffffff;
+    height: auto;
+    margin: 0px;
+  }
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+
+  .ant-spin-container {
+    height: 100%;
+  }
+}
+.app {
+  width: 200px;
+}
+
+.not-find-container {
+  width: 100%;
+  height: 100%;
+  background: url('../../public/images/404.png') no-repeat;
+  background-size: 100%;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  .content {
+    width: 45%;
+    text-align: center;
+    color: #2f91ff;
+    .number {
+      font-size: 1600%;
+      font-weight: bold;
+    }
+    .desc {
+      font-size: 34px;
+      font-weight: 400;
+    }
+  }
+}
+
+.container {
+  div {
+    margin-bottom: 10px;
+    background: #2f91ff;
+    color: white;
+  }
+}
+
+.ant-select-selection-item {
+  align-self: auto !important;
+}
+
+.ant-pro-page-container-children-container {
+  padding: 16px !important;
+}
+
+// 嵌入报账单独页面样式
+.unique-page {
+  width: 100%;
+  height: 100%;
+  .ant-pro-page-container-children-container {
+    padding: 0 !important;
+  }
+
+  .ant-page-header {
+    padding: 0 40px;
+  }
+}
+
+.ant-skeleton-title {
+  margin-bottom: 1rem;
+}
+
+.order-detail-table {
+  .ant-pro-card-body {
+    padding: 0;
+  }
+}
+
+.category-container {
+  .ant-spin-nested-loading,
+  .ant-spin-container {
+    height: 100% !important;
+  }
+}
+
+.svg-icon-colorful path {
+  fill: inherit !important;
+}
+
+.category-menu-left {
+  background-image: url('../../public/images/left-menu.png');
+  background-position: 300px 1660px;
+
+  &-list {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+.ant-pro-card .ant-pro-card-title {
+  font-weight: 600;
+}
+
+.gu-mirror {
+  position: fixed !important;
+  margin: 0 !important;
+  z-index: 9999 !important;
+  opacity: 0.8;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+}
+.gu-hide {
+  display: none !important;
+}
+.gu-unselectable {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+.gu-transit {
+  opacity: 0.2;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+  filter: alpha(opacity=20);
+}
+
+

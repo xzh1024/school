@@ -1,0 +1,42 @@
+.warning-message-container {
+  height: 100vh;
+  width: 100vw;
+  padding: 28px;
+  overflow: hidden scroll;
+
+  .ant-pro-card-body {
+    padding-inline: 0;
+    padding-block: 0;
+  }
+
+  .warning-message-box {
+    margin: 16px;
+    margin-top: 32px;
+    .warning-message-header {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+  }
+
+  .rpa-hold {
+    color: #ED5E5A;
+  }
+  .rpa-pass {
+    color: #20BF75;
+  }
+
+  .red-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #EA3423;
+  }
+
+  .yellow-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #FDFF54;
+  }
+}
