@@ -87,6 +87,10 @@
       console.log('data--2')
       console.log(data2)
       console.log(data2 === target)
+
+      window.addEventListener('message', function (event) {
+        console.log(event.data)
+      })
     </script>
   </body>
 </html>

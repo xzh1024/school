@@ -137,6 +137,91 @@
         return tempFlat
       }
       console.log(flatTree(data2))
+
+      var list = [
+        {
+          pid: 0,
+          id: 1,
+          name: 'name1'
+        },
+        {
+          pid: 0,
+          id: 2,
+          name: 'name2'
+        },
+        {
+          pid: 0,
+          id: 3,
+          name: 'name3'
+        },
+        {
+          pid: 1,
+          id: 10,
+          name: 'name10'
+        },
+        {
+          pid: 1,
+          id: 11,
+          name: 'name11'
+        },
+        {
+          pid: 3,
+          id: 31,
+          name: 'name31'
+        },
+        {
+          pid: 3,
+          id: 32,
+          name: 'name32'
+        },
+        {
+          pid: 3,
+          id: 33,
+          name: 'name33'
+        },
+        {
+          pid: 32,
+          id: 321,
+          name: 'name321'
+        },
+        {
+          pid: 32,
+          id: 322,
+          name: 'name322'
+        }
+      ]
+      function getTree(list, pid = 0) {
+        let tmpList = []
+        list.forEach((item) => {
+          if (item.pid === pid) {
+            item.children = getTree(list, item.id)
+            // const children = getTree(list, item.id)
+            // if (children.length) {
+            //   item.children = [...children]
+            // }
+            tmpList.push(item)
+          }
+        })
+        return tmpList
+      }
+
+      const tree = getTree(list)
+      console.log('tree--')
+      console.log(tree)
+
+      function flatTree(list) {
+        let tempList = []
+        list.forEach((item) => {
+          tempList.push(item)
+          if (item.children) {
+            tempList = tempList.concat(flatTree(item.children))
+          }
+        })
+        return tempList
+      }
+      var flatList = flatTree(tree)
+      console.log('flatList--')
+      console.log(flatList)
     </script>
   </body>
 </html>

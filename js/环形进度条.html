@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>环形进度条</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+      }
+
+      .progress-circle {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: conic-gradient(
+          #4caf50 var(--progress, 0%),
+          #e0e0e0 0% var(--progress, 0%),
+          #e0e0e0 100%
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .progress-label {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-circle" id="progressCircle">
+      <span class="progress-label" id="progressLabel">0%</span>
+    </div>
+    <script src="script.js"></script>
+    <script>
+      window.onload = function () {
+        // requestAnimationFrame polyfill
+        const requestAnimFrame = (function () {
+          return (
+            window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+              window.setTimeout(callback, 1000 / 60)
+            }
+          )
+        })()
+
+        // 使用示例
+        function animate() {
+          // 动画逻辑
+          requestAnimFrame(animate)
+        }
+
+        requestAnimFrame(animate)
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const progressCircle = document.getElementById('progressCircle')
+          const progressLabel = document.getElementById('progressLabel')
+          let progress = 0
+          const duration = 2000 // 动画持续时间（毫秒）
+          let startTime = null
+
+          // 常见的缓动函数
+          const easingFunctions = {
+            linear: (t) => t,
+            easeInQuad: (t) => t * t,
+            easeOutQuad: (t) => -t * (t - 2),
+            easeInOutQuad: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t)
+          }
+
+          // 选择缓动函数
+          const easingFunction = easingFunctions.easeInOutQuad
+
+          function updateProgress(timestamp) {
+            if (!startTime) startTime = timestamp
+            const elapsed = timestamp - startTime
+            const t = Math.min(elapsed / duration, 1)
+            const easedT = easingFunction(t)
+
+            progress = Math.round(easedT * 100) // 更新进度
+            progressCircle.style.setProperty('--progress', `${progress}%`)
+            progressLabel.textContent = `${progress}%`
+
+            if (progress < 100) {
+              requestAnimationFrame(updateProgress) // 继续动画
+            } else {
+              // 可选：动画结束后执行的操作
+              console.log('动画结束')
+            }
+          }
+
+          // 开始动画
+          requestAnimationFrame(updateProgress)
+        })
+      }
+    </script>
+  </body>
+</html>

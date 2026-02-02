@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Scheduler {
+        limit = 2
+        add(promiseCreator) {
+          /** ... **/
+        }
+        // ...
+      }
+      const timeout = (time) =>
+        new Promise((resolve) => {
+          setTimeout(resolve, time)
+        })
+      const scheduler = new Scheduler()
+
+      const addTask = (time, order) => {
+        scheduler.add(() => timeout(time).then(() => console.log(order)))
+      }
+
+      addTask(1000, '1')
+      addTask(500, '2')
+      addTask(300, '3')
+      addTask(400, '4')
+
+      scheduler.start()
+
+      // - 0ms    -> run 1 & 2
+      // - 500ms  -> output 2，run 3
+      // - 800ms  -> output 3，run 4
+      // - 1000ms -> output 1，run 4
+      // - 1200ms -> output 4
+      window.onload = function () {}
+    </script>
+  </body>
+</html>

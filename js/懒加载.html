@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>懒加载</title>
+    <style>
+      .imgs .img {
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="imgs">
+      <div class="img">
+        <img
+          data-src="https://img2.baidu.com/it/u=4148259400,4258146290&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500"
+          alt=""
+        />
+      </div>
+      <div class="img">
+        <img data-src="2" alt="" />
+      </div>
+      <div class="img">
+        <img data-src="3" alt="" />
+      </div>
+      <div class="img">
+        <img data-src="4" alt="" />
+      </div>
+      <div class="img">
+        <img data-src="5" alt="" />
+      </div>
+      <div class="img">
+        <img data-src="6" alt="" />
+      </div>
+      <div class="img">
+        <img data-src="7" alt="" />
+      </div>
+      <div class="img">
+        <img data-src="8" alt="" />
+      </div>
+      <div class="img">
+        <img data-src="9" alt="" />
+      </div>
+      <div class="img">
+        <img data-src="10" alt="" />
+      </div>
+    </div>
+    <script>
+      // 获取所有需要懒加载的图片
+      const images = document.querySelectorAll('img[data-src]')
+      console.log('images')
+      console.log(images)
+
+      // 创建一个 Intersection Observer 实例
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // 当图片进入视口时，加载图片
+            const img = entry.target
+            img.src = img.dataset.src // 使用 data-src 属性
+            img.onload = () => {
+              img.classList.add('loaded') // 添加已加载的样式
+            }
+            observer.unobserve(img) // 停止观察该元素
+          }
+        })
+      })
+
+      // 为每个图片元素注册观察
+      images.forEach((img) => {
+        observer.observe(img)
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数据类型</title>
+  </head>
+  <body>
+    <script>
+      const k1 = Symbol('k1')
+      console.log(k1)
+      const obj = {
+        [k1]: 'v1'
+      }
+      obj[k1] = 'v2'
+      console.log(obj) // 'Symbol(k2)'
+      console.log(obj[k1])
+      console.log(k1.toString()) // 'Symbol(k1)'
+      console.log(String(k1)) // 'Symbol(k1)'
+      console.log(Boolean(k1)) // true
+      console.log([1, 2].toString()) // '1,2'
+      console.log(Object.prototype.toString.call([1, 2])) // '[object Array]'
+    </script>
+  </body>
+</html>
