@@ -1,8 +1,5 @@
 /*
- ** Script must return a value.
- ** example:
- ** var userName = $GetCurrentAttribute('iam_user_id:login_name')
- ** return userName;
+ ** IAM_USER_GROUP 生产-753191652310589440 uat-741367889857609728
  */
 var tenantNum = $GetCurrentTenant().tenantNum
 // var id = $GetValue('id')
@@ -293,10 +290,15 @@ if (id) {
   // 查询是否投诉过
   for (var i = 0;i < sourceList.length;i++) {
     var itemData = sourceList[i]
-    $Print('经销商投诉-typeMap:', typeMap[itemData.t_tracea_code_type])
+    $Print('经销商投诉-是否投诉-itemData', itemData)
+    $Print('经销商投诉-是否投诉-typeMap:', typeMap[itemData.t_tracea_code_type])
+    // 没有溯源编码则跳过
+    if (!itemData.t_traceability_num) {
+      continue
+    }
+
     if (typeMap[itemData.t_tracea_code_type]) {
       // 如果不是箱二维码、箱喷码则不调用是否投诉接口
-      $Print('经销商投诉-查询-itemData', itemData)
       var params = JSON.stringify({
         tenantId: $GetCurrentTenant().tenantId,
         traceabilityCode: itemData.t_traceability_num, // 溯源编码
