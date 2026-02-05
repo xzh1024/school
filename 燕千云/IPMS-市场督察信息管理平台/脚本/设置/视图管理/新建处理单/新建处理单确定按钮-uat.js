@@ -7,12 +7,12 @@
 var tenantNum = $GetCurrentTenant().tenantNum
 var incidentId = $GetValue('_parentId') || $GetValue('id')
 
-function isNumberStr(str) {
+function isNumberStr (str) {
   var num = parseInt(str)
   return !isNaN(num) && str.trim().length > 0 && str === num.toString()
 }
 
-function convertStrToNumber(str) {
+function convertStrToNumber (str) {
   if (isNumberStr(str)) {
     return parseInt(str)
   } else {
@@ -85,7 +85,7 @@ var th_l = 0
 
 var th_dj = $GetValue('multiplechoice_iuzcktir')
 
-function filterThDj(arr) {
+function filterThDj (arr) {
   var t_customer_ordernums_arr = []
   var result_arr = []
   arr.forEach(function (item) {
@@ -344,7 +344,7 @@ var key = JSON.stringify({
 })
 $Invoke('yqcloud-external', 'SyncParticipantInvoker', key)
 
-function submitByCode(bo, params) {
+function submitByCode (bo, params) {
   var body = {
     requestParamMap: { businessObjectCode: bo },
     payload: JSON.stringify(params)

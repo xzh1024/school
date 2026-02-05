@@ -138,7 +138,7 @@ if (traceabilities && traceabilities.length) {
 }
 
 var tsd_part = $SearchBusinessObject(
-  'INCIDENT_PARTICIPANT',
+  'INCIDENT_PARTICIPANT', // 事件单参与者 选择业务对象字段
   {
     task_id: tackItem['id']
   },

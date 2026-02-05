@@ -1,0 +1,30 @@
+溯源单
+后端接口：https://app.rwork.crc.com.cn/docx/doxk9zibdI3LXij2HgXogzgAJAf
+详情中的结构：服务项>溯源单>视图设计>溯源项目-包装箱编码和瓶/听编码(业务对象>溯源单溯源项目明细)
+
+MessageException
+
+
+1.设置>选项集>溯源编码类型:TRACEABILITY_CODE_TYPE
+溯源编码类型：箱二维码、瓶听二维码、箱喷码、瓶/听喷码（old：包装箱编码、瓶/听编码）
+包装箱编码：BOX_CODE（old）
+瓶/听编码：BOTTLE_CODE（old）
+箱二维码：BOX_QR_CODE // 
+箱喷码：BOX_INKJET_CODE //
+瓶听二维码：BOTTLE_QR_CODE
+瓶/听喷码：BOTTLE_INKJET_CODE
+
+2.业务对象>投诉单违约产品情况
+箱二维码：t_box_qr_code
+箱喷码：t_box_inkjet_code
+瓶听二维码：t_bottle_qr_code
+瓶/听喷码：t_bottle_inkjet_code
+
+3.视图管理>门户-事件单详情>新建溯源单按钮脚本    // 查询IAM_USER_GROUP时，prod-753191652310589440，uat-741367889857609728
+4.视图管理>创建溯源单>确定按钮脚本
+5.视图管理>新建二次溯源单>确定按钮脚本
+6.视图管理>门户-事件单详情>新建投诉单按钮脚本
+7.视图管理>新建投诉单-经销商投诉单使用>提交按钮脚本
+
+动作
+2.视图管理>提单人二次填写核实单

@@ -1,0 +1,58 @@
+技术平台-专业组
+node：v18.16.0  pnpm
+node：v16.16.0  npm
+
+教学视频：
+https://app.rwork.crc.com.cn/file/boxk97PtBfwVF17bXg0YV2fwSGg
+https://app.rwork.crc.com.cn/file/boxk9RRdNH4WBGDOsA4SWTZDzhf
+
+代码仓库：
+https://d4s.crb.cn/gitlab/itsm/yqcloud-front-itsm
+
+技术文档：https://app.rwork.crc.com.cn/docx/doxk9aC5lc7cTbDqzMcmOOlaWhA
+华润啤酒-燕千云用户手册：https://app.rwork.crc.com.cn/docx/doxk9eknZl6XXMNPjcZ8Gr0RpFg
+AAA重要---雪花培训交接文档：https://app.rwork.crc.com.cn/docx/doxk99u9ceIyP2CX3DlIuAy4rve
+https://app.rwork.crc.com.cn/docx/doxk9vfVYEOciZ03lUj5dnCytJe  前端开发交接文档
+
+访问地址：
+https://ipms-uat.crb.cn/oauth/login?clientid=ipms-uat&target=#/
+ipms-uat.crb.cn/#/portal/home
+window._env_.itsm="http://localhost:9093"
+
+燕千云前端依赖库安装
+① 执行npm  install安装依赖，如果安装过程中报错，可以执行npm  install --registry http://nexus.saas.hand-china.com/repository/yqcloud-npm-group/ --legacy-peer-deps
+② 执行npm install @babel/runtime@7.28.4 --save --legacy-peer-deps安装runtime，否则发版时会导致打包失败
+
+运行时报错可能是权限问题，执行：
+chmod -R 755 /Users/xiezihan/Desktop/work/code/ITSM/yqcloud-front-itsm/node_modules/@zknow/boot/bin/
+
+1.ipms-uat: https://ipms-uat.crb.cn/oauth/login?clientid=ipms-uat&target=#/
+用户名:ipms@default.crb.cn
+密码:6n&Yptm8
+莫小西01：mxx@qq.com
+密码：abcd@1234
+赵春武：petterzhao 6n&Yptm8
+秦海泉：qinhaiquan
+娄培华：loupeihua1
+
+ipms-生产：
+
+https://ipms.crb.cn/oauth/login?client_id=itsm&target=#/
+用户名:ipms@default.crb.cn
+密码:6n&Yptm8
+
+经销商投诉单 JXSTS20260108-0002
+
+10.测试环境日志地址：
+https://r-dsu.crb.cn/p/c-xg7tk:p-pctk8/workloads
+账号：hand-1172
+密码：XOywP4!OtSHD
+lowcode
+如果报脚本错误，怎样定位bug
+
+11.正式环境日志：
+https://r.crb.cn/p/c-5zfmb:p-74x98/workload/deployment:itsm-prod:yqcloud-lowcode
+账号：hand-1172
+密码：XOywP4!OtSHD
+
+

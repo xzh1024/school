@@ -1,0 +1,10 @@
+AISM测试登录地址：
+https://aism-uat.crb.cn/oauth/login?client_id=aism-uat&target=#/
+账号：aism@default.crb.cn
+密码：Lq@7894$tk
+
+AISM生产登录地址：
+https://aism.crb.cn/oauth/login?client_id=aism&target=#/
+账号：aism@default.crb.cn
+原密码：Lq@7894$tk
+新密码：AISM20251201!
