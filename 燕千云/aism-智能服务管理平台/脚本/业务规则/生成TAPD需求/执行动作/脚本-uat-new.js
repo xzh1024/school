@@ -10,7 +10,7 @@ $Print('生成tapd需求===')
 var incidentId = $GetValue("_parentId") || $GetValue("id");
 var projectNumber = '';
 var projectName = $GetValue('t_tapd_project_name');
-var requirementName = $GetValue('t_tapd_requirement_name'); // 需求名称
+var requirementName = $GetValue('t_tapd_requirement_name') || ($GetValue('number') + ' ' + $GetValue('short_description')); // 需求名称
 
 $Print('生成tapd需求===, projectName', projectName);
 $Print('生成tapd需求===, requirementName:', requirementName);

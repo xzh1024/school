@@ -199,7 +199,8 @@ var createParams = {
   // t_sales_division: '',
   // t_market_centre: '',
   // t_line_incident_id: incidentId,
-  t_submitted_by_department_one: t_submitted_by_department_one // 提单人所属部门
+  t_submitted_by_department_one: t_submitted_by_department_one, // 提单人所属部门
+  t_approval_history: '632606333061562368:' + userId + ':1', // 审批历史
 }
 var managerData = getManagerData(userId)
 $Print('新建投诉单-审批人数据:', JSON.stringify(managerData))
@@ -226,6 +227,7 @@ if (!createParams['t_business_department_contacts']) {
     fd['t_business_department_contacts']
 }
 $Print('新建投诉单-createParams:', createParams)
+$Print('新建投诉单-createParams:2:', JSON.stringify(createParams))
 // var parentRes = submitByCode('HR_RELATIVE', parentParams)
 var orderData = submitByCode('INCIDENT', createParams)
 $Print('新建投诉单-orderData:', orderData)
@@ -272,6 +274,16 @@ var updateParentParams = {
 
 var updateParentRes = submitByCode('INCIDENT', updateParentParams)
 $Print('新建投诉单-updateParentRes:', updateParentRes)
+
+
+// 关单需触发通知模版>【已办】关闭事件单(CLOSE_INCIDENT)
+$Print('新建投诉单-触发通知模版:', '开始')
+var sendTodoInvokerRes = $Invoke('yqcloud-external', 'SendTodoInvoker', JSON.stringify({
+  id: incidentId,
+  businessObjectCode: 'INCIDENT',
+  actionCode: 'CLOSE'
+}))
+$Print('新建投诉单-触发通知模版:结束:', sendTodoInvokerRes)
 
 // 违约产品情况-包装箱、瓶/听  表格数据处理
 // var parentList = $SearchBusinessObject(
