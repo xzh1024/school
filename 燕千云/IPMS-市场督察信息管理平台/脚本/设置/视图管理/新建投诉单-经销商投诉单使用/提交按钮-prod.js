@@ -10,8 +10,6 @@ var tenantNum = $GetCurrentTenant().tenantNum
 var user = $GetCurrentPerson()
 var userId = user.id
 
-$Print('新建投诉单-id:', incidentId)
-$Print('新建投诉单-tenantNum:', tenantNum)
 var fd = $GetBusinessObject('INCIDENT', incidentId, [
   'closed_by',
   't_complaint_form_no', // 投诉单编号
@@ -29,7 +27,6 @@ var fd = $GetBusinessObject('INCIDENT', incidentId, [
   't_business_department_contacts'
   // 't_business_department_contacts:real_name'
 ])
-$Print('debug23 fd=' + fd)
 
 /* 定义提交创建事件单的函数  bo:业务对象， params：插入业务对象的数据*/
 function submitByCode (bo, params) {
@@ -39,19 +36,12 @@ function submitByCode (bo, params) {
     },
     payload: JSON.stringify(params)
   }
-  $Print('新建投诉单-body完整参数:', JSON.stringify(body))
-
   var response = $CallInterface(
     String(tenantNum),
     'LOW_CODE',
     'BOSUB',
     JSON.stringify(body)
   )
-
-  $Print('新建投诉单-返回', response) // "number":"TS20260116-0004"
-
-  // var responseNode = JSON.parse(response)
-  // return responseNode['id']
   return JSON.parse(response)
 }
 
@@ -69,9 +59,6 @@ function getManagerData (userId) {
   ])
   if (list && list.length) {
     var itemData = list[0]
-    $Print('新建投诉单-部门领导:', itemData)
-    $Print('新建投诉单-部门领导-id:', itemData['director_id'])
-    $Print('新建投诉单-部门领导-id-id:', itemData['director_id:director_id'])
     if (itemData) {
       data['director_id'] = itemData['director_id'] || '' // 丁麒崴：634522367918739456
       data['director_id:director_id'] =
@@ -167,51 +154,30 @@ var paramsArr = [
 ]
 var t_submitted_by_department_one = ''
 var userDatas = $SearchBusinessObject("IAM_USER", { "id": userId }, ["department_id:name"]);
-$Print("userDatas=", userDatas)
 if (userDatas.length > 0) {
   t_submitted_by_department_one = userDatas[0]["department_id:name"]
   // return userDatas["department_id:name"];
 }
-$Print("userDatas=t_submitted_by_department_one--", t_submitted_by_department_one)
 
 // 新建投诉单的表单参数
 var createParams = {
   _status: 'create',
   short_description: '投诉单',
-  // short_description:
-  //   (tsd[0]['t_sales_division'] || '') + f d['t_complaint_form_no'] + '投诉单',
   parent_id: incidentId, // 父级事件单
   service_item_id: '628299624163446784', // 服务项：投诉单
-  // state_id: '632615547465105408', // 状态：隔级上级审批中
   state_id: '632615169130496000', // 状态：直属上级审批中
-  // submitted_by: fd['submitted_by'], // 提单人
   submitted_by: userId, // 提单人-当前用户
-  // closed_by: fd['submitted_by'], // 关单人
   service_catalog_id: '628299591038795776', // 服务目录：投诉单
   't_business_department_contacts:real_name':
     fd['t_business_department_contacts:real_name'], // 业务部联络人姓名
-  // assignee_person_id: '628299855913299968', // 当前处理人
-  // 'assignee_person_id:real_name': 'ipms'
-  // creation_date: '2026-01-19 17:27:02' // 创建时间
-
-  // t_business_department_contacts: '',
-  // t_business_department_phone: '',
-  // t_sales_division: '',
-  // t_market_centre: '',
-  // t_line_incident_id: incidentId,
-  t_submitted_by_department_one: t_submitted_by_department_one // 提单人所属部门
+  t_submitted_by_department_one: t_submitted_by_department_one, // 提单人所属部门
+  t_approval_history: '632606333061562368:' + userId + ':1', // 审批历史
 }
 var managerData = getManagerData(userId)
-$Print('新建投诉单-审批人数据:', JSON.stringify(managerData))
 
 if (fd['t_is_operations_manager'] == '是') {
-  $Print(
-    '新建投诉单-是否业务部经理发起-是:',
-    managerData['director_id:director_id']
-  )
   createParams.assignee_person_id = managerData['director_id:director_id'] // 当前处理人-隔级领导id
 } else {
-  $Print('新建投诉单-是否业务部经理发起-否:', managerData['director_id'])
   createParams.assignee_person_id = managerData['director_id'] // 当前处理人-直接领导id
 }
 
@@ -225,15 +191,11 @@ if (!createParams['t_business_department_contacts']) {
   createParams['t_business_department_contacts'] =
     fd['t_business_department_contacts']
 }
-$Print('新建投诉单-createParams:', createParams)
-// var parentRes = submitByCode('HR_RELATIVE', parentParams)
 var orderData = submitByCode('INCIDENT', createParams)
-$Print('新建投诉单-orderData:', orderData)
 if (!orderData) {
   return
 }
 var orderId = orderData['id']
-$Print('新建投诉单-parentRes:', orderId) // 800087655384743936
 
 // 更新投诉单
 var updateSubParams = {
@@ -243,7 +205,6 @@ var updateSubParams = {
     (orderData['t_sales_division'] || '') + orderData['number'] + '投诉单' // 标题
 }
 var updateSubRes = submitByCode('INCIDENT', updateSubParams)
-$Print('新建投诉单-updateSubRes:', updateSubRes)
 
 var arr = [
   {
@@ -261,7 +222,6 @@ var relationRes = $CallInterface(
     payload: JSON.stringify(arr)
   })
 )
-$Print('新建投诉单-关联关系res:', relationRes)
 
 // 更新父单状态
 var updateParentParams = {
@@ -273,35 +233,20 @@ var updateParentParams = {
 var updateParentRes = submitByCode('INCIDENT', updateParentParams)
 $Print('新建投诉单-updateParentRes:', updateParentRes)
 
-// 违约产品情况-包装箱、瓶/听  表格数据处理
-// var parentList = $SearchBusinessObject(
-//   'COMPLAINT_DEFAULT_PRODUCT', // 投诉单违约产品情况
-//   {
-//     t_t_incident_id: incidentId
-//   },
-//   [
-//     't_box_code', // 包装箱编码
-//     't_bottle_can_code' // 瓶/听编码
-//   ]
-// )
-// $Print('新建投诉单-parentList:', parentList)
 
-// if (parentList && parentList.length) {
-//   parentList.forEach(function (item) {
-//     submitByCode('COMPLAINT_DEFAULT_PRODUCT', {
-//       _status: 'create',
-//       t_t_incident_id: orderId,
-//       t_box_code: item['t_box_code'],
-//       t_bottle_can_code: item['t_bottle_can_code']
-//     })
-//   })
-// }
+// 关单需触发通知模版>【已办】关闭事件单(CLOSE_INCIDENT)
+$Print('新建投诉单-触发通知模版:', '开始')
+var sendTodoInvokerRes = $Invoke('yqcloud-external', 'SendTodoInvoker', JSON.stringify({
+  id: incidentId,
+  businessObjectCode: 'INCIDENT',
+  actionCode: 'CLOSE'
+}))
+$Print('新建投诉单-触发通知模版:结束:', sendTodoInvokerRes)
 
 /* 投诉单创建成功后，同步经销商投诉单中的表格数据 */
 // 违约产品情况-包装箱二维码
 var list1 = $SearchBusinessObject(
   'DEALER_COMPLAINT_QRCODE', // 业务对象-经销商投诉单包装箱二维码
-  // 查询的条件Map。条件仅支持 equal 判断。
   {
     t_t_incident_id: incidentId // 事件单id
   },
@@ -342,7 +287,6 @@ if (list2 && list2.length) {
     var itemData = list2[i]
     var newData = {
       t_t_incident_id: orderId, // 事件单id
-      // t_tracea_code_type: 'BOX_INKJET_CODE', // 溯源编码类型
       t_case_serial_numbers: itemData['t_case_serial_numbers'], // 溯源编码 t_bottle_can_code
       t_inkjet_image: itemData['t_inkjet_image'], // 图片
       t_qr_code_value1: itemData['t_qr_code_value1'], // 二维码码值
@@ -401,10 +345,6 @@ if (list4 && list4.length) {
     submitByCode('DEALER_COMPLAINT_BOTTLE_INKJETCODE', newData)
   }
 }
-$Print('经销商投诉-投诉单-list-1：' + list1)
-$Print('经销商投诉-投诉单-list-2：' + list2)
-$Print('经销商投诉-投诉单-list-3：' + list3)
-$Print('经销商投诉-投诉单-list-4：' + list4)
 
 // 标签：生产工厂(简称)
 // 业务对象：库存组织中间表(STORAGE_MIDDLE)
@@ -419,14 +359,38 @@ var productionPlantList = $SearchBusinessObject(
     'crb_inventory_organization_id' // 库存组织
   ]
 )
-$Print('新建投诉单-生产工厂:', productionPlantList)
-
 if (productionPlantList && productionPlantList.length) {
   productionPlantList.forEach(function (item) {
     submitByCode('STORAGE_MIDDLE', {
       _status: 'create',
       incident_id: orderId,
       crb_inventory_organization_id: item['crb_inventory_organization_id']
+    })
+  })
+}
+
+var tabls = $GetValue('_children')
+var terminalDetailsList = []
+if (tabls && tabls.length > 0) {
+  tabls.forEach(function (item) {
+    // 受影响情况-终端明细
+    if (item.businessObjectId === '631806758171181056') {
+      terminalDetailsList = item.data || []
+    }
+  })
+}
+// 投诉单 终端明细
+if (terminalDetailsList && terminalDetailsList.length) {
+  terminalDetailsList.forEach(function (item) {
+    submitByCode('COMPLAINT_TERMINAL_DETAILS', {
+      _status: 'create',
+      t_incident_id: orderId,
+      t_terminal_name: item['t_terminal_name'],
+      t_terminal_type: item['t_terminal_type'],
+      t_product_found_number: item['t_product_found_number'],
+      t_depositions_number: item['t_depositions_number'],
+      t_whether_evidence: item['t_whether_evidence'],
+      t_delete: item['t_delete'],
     })
   })
 }

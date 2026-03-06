@@ -381,7 +381,7 @@ if (tabls && tabls.length > 0) {
 }
 // 投诉单 终端明细
 if (terminalDetailsList && terminalDetailsList.length) {
-  terminalDetailsList.forEach(function (item, index) {
+  terminalDetailsList.forEach(function (item) {
     submitByCode('COMPLAINT_TERMINAL_DETAILS', {
       _status: 'create',
       t_incident_id: orderId,
