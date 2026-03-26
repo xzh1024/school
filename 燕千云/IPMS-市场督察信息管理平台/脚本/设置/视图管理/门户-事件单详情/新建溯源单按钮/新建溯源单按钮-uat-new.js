@@ -1,9 +1,14 @@
 /*
- ** IAM_USER_GROUP 生产-753191652310589440 uat-741367889857609728
+ ** Script must return a value.
+ ** example:
+ ** var userName = $GetCurrentAttribute('iam_user_id:login_name')
+ ** return userName;
+ IAM_USER_GROUP 生产-753191652310589440 uat-741367889857609728
  */
 var tenantNum = $GetCurrentTenant().tenantNum
 // var id = $GetValue('id')
 var id = $GetValue('_parentId') || $GetValue('id')
+
 // 查询投诉单违约产品情况 COMPLAINT_DEFAULT_PRODUCT
 var complaints = $SearchBusinessObject(
   'COMPLAINT_DEFAULT_PRODUCT',
@@ -12,10 +17,78 @@ var complaints = $SearchBusinessObject(
   },
   ['t_bottle_can_code', 't_box_code', 't_qr_code_value1', 't_qr_code_picture']
 )
-$Print('经销商投诉-complaints：' + complaints)
-$Print('经销商投诉-complaints-length：' + complaints.length)
 
-// 查询溯源单溯源项目明细 TRACEABILITY_PROJ_DETAIL
+// 当前登录人
+var curUser = $GetCurrentPersonId();
+// 是否可创建关闭的自动溯源单，默认不可以。当登录人是【市场督查部固定审核人员】时可以创建关闭的自动溯源单。
+var t_can_auto_close_data = "NO";
+
+// 查询当前登录人是否是【市场督查部固定审核人员】
+var departmentInfo = $SearchBusinessObject('ORG_DEPARTMENT', {
+  t_market_inspection_department_personnel: curUser
+}, [])
+
+// 是否能溯源到经销商
+var t_whether_traceability = 'NO_THREE'
+
+// 市场督查人员需要进行自动溯源，如果自动溯源结果达标，则可以创建关闭的自动溯源单
+function handleAutoTraceability () {
+
+  // 瓶/听二维码
+  var t_qr_code_values = $SearchBusinessObject('TRACEABILITY_PROJ_DETAIL', {
+    t_incident_id: id
+  }, ['t_traceability_num', 'id'])
+
+  var qrCodeList = []
+
+  for (var i = 0;i < t_qr_code_values.length;i++) {
+    if (t_qr_code_values[i].t_traceability_num) {
+      qrCodeList.push(t_qr_code_values[i].t_traceability_num)
+    }
+  }
+
+  var params = JSON.stringify({
+    qrCodeList: qrCodeList
+  })
+
+  var res = JSON.parse($Invoke('yqcloud-external', 'CrbMarketWineCollectionInvoker', params))
+
+  if (res && res.length) {
+
+    for (var i = 0;i < res.length;i++) {
+
+      if (res[i].targetName && res[i].targetCode) {
+        t_whether_traceability = 'YES'
+      }
+
+      var curData = null;
+      for (var j = 0;j < t_qr_code_values.length;j++) {
+        if (t_qr_code_values[j].t_traceability_num === res[i].qrCode) {
+          curData = t_qr_code_values[j];
+          break;
+        }
+      }
+
+      if (curData) {
+        submitByCode('TRACEABILITY_PROJ_DETAIL', {
+          id: curData.id,
+          t_quantity_of_the_same_product: res[i].orderCount,
+          _status: 'update'
+        })
+      }
+    }
+  }
+
+}
+
+// 非空判断
+if (departmentInfo && departmentInfo.length > 0) {
+  // 自动溯源
+  handleAutoTraceability();
+  t_can_auto_close_data = 'YES'
+}
+
+// 查询溯源单溯源项目明细
 var traceabilities = $SearchBusinessObject(
   'TRACEABILITY_PROJ_DETAIL',
   {
@@ -23,16 +96,6 @@ var traceabilities = $SearchBusinessObject(
   },
   ['t_traceability_num', 't_tracea_code_type']
 )
-
-// 名称：查询经销商投诉单包装箱二维码 DEALER_COMPLAINT_QRCODE
-// 描述：用于设计经销商投诉单包装箱二维码子表
-// var complaints = $SearchBusinessObject(
-//   'DEALER_COMPLAINT_QRCODE', // 经销商投诉单包装箱二维码
-//   {
-//     t_t_incident_id: id
-//   },
-//   ['t_bottle_can_code', 't_box_code', 't_qr_code_value1']
-// )
 
 var list = []
 if (complaints && complaints.length) {
@@ -134,7 +197,7 @@ var allList = []
     瓶听二维码：BOTTLE_QR_CODE
     瓶/听喷码：BOTTLE_INKJET_CODE
 */
-$Print('经销商投诉-id：' + id)
+
 if (id) {
   /* 查询投诉单违约产品情况 COMPLAINT_DEFAULT_PRODUCT */
   // 违约产品情况-包装箱二维码
@@ -231,7 +294,7 @@ if (id) {
     },
     [
       't_bottle_serial_numbers', // 瓶 / 听喷码
-      't_inkjet_image', // 喷码图片
+      't_t_inkjet_image', // 喷码图片
       't_qr_code_value1' // 二维码码值
     ]
   )
@@ -243,7 +306,7 @@ if (id) {
         t_traceability_num: itemData['t_bottle_serial_numbers'], // 溯源编码 t_bottle_can_code
         t_qr_code_value1: itemData['t_qr_code_value1'], // 二维码码值
         t_tracea_code_type: 'BOTTLE_INKJET_CODE', // 溯源编码类型
-        t_code_img_file: itemData['t_inkjet_image'] // 图片
+        t_code_img_file: itemData['t_t_inkjet_image'] // 图片
       }
       // 判断是否已经创建
       if (!isExist2(traceabilities, newData)) {
@@ -251,12 +314,7 @@ if (id) {
       }
     }
   }
-  $Print('经销商投诉-list-1：' + list1)
-  $Print('经销商投诉-list-2：' + list2)
-  $Print('经销商投诉-list-3：' + list3)
-  $Print('经销商投诉-list-4：' + list4)
-  $Print('经销商投诉-list-allList：' + allList)
-  $Print('经销商投诉-list-allList：2' + traceabilities)
+
   // 数据写入溯源单溯源项目明细表
   for (var i = 0;i < allList.length;i++) {
     submitByCode(
@@ -265,7 +323,7 @@ if (id) {
     )
   }
 
-  // 查询溯源单溯源项目明细 TRACEABILITY_PROJ_DETAIL
+  // 查询溯源单溯源项目明细
   var sourceList = $SearchBusinessObject(
     'TRACEABILITY_PROJ_DETAIL',
     {
@@ -274,10 +332,6 @@ if (id) {
     ['t_traceability_num', 't_tracea_code_type', 't_code_img_file']
   )
   var tempList = []
-
-  $Print('经销商投诉-sourceList：' + sourceList)
-  $Print('经销商投诉-sourceList-STR：' + JSON.stringify(sourceList))
-  $Print('经销商投诉-sourceList-length:' + sourceList.length)
 
   var typeMap = {
     // BOX_CODE: 'boxQr', // old
@@ -290,8 +344,7 @@ if (id) {
   // 查询是否投诉过
   for (var i = 0;i < sourceList.length;i++) {
     var itemData = sourceList[i]
-    $Print('经销商投诉-是否投诉-itemData', itemData)
-    $Print('经销商投诉-是否投诉-typeMap:', typeMap[itemData.t_tracea_code_type])
+
     // 没有溯源编码则跳过
     if (!itemData.t_traceability_num) {
       continue
@@ -304,13 +357,11 @@ if (id) {
         traceabilityCode: itemData.t_traceability_num, // 溯源编码
         type: typeMap[itemData.t_tracea_code_type] // boxQr:箱二维码,boxInk:箱喷码
       })
-      $Print('经销商投诉-查询-params:', params)
+
       var res = JSON.parse(
         $Invoke('yqcloud-external', 'CrbMarketWineCollectionInvoke', params)
       )
-      $Print('经销商投诉-查询-res:', JSON.stringify(res))
-      $Print('经销商投诉-查询-res:', res)
-      $Print('经销商投诉-查询-res-status:', res['status'])
+
       var tempItem = {
         _status: 'update',
         id: itemData.id
@@ -329,20 +380,17 @@ if (id) {
         tempItem['t_last_complaint_check_order'] = '' // 上次投诉核实单号
         tempItem['t_complained'] = '否' // 是否投诉过
       }
-      $Print('经销商投诉-查询-tempItem:', tempItem)
 
       tempList.push(tempItem)
     }
   }
-  $Print('经销商投诉-查询-tempList-length:', tempList.length)
+
   // 数据写入溯源单溯源项目明细表-得到投诉信息后的更新
   for (var i = 0;i < tempList.length;i++) {
-    $Print('经销商投诉-查询-res-item:', tempList[i])
+
     submitByCode('TRACEABILITY_PROJ_DETAIL', tempList[i])
   }
 }
-
-var curUser = $GetCurrentPersonId()
 
 var yd = $GetBusinessObject('INCIDENT', id, [
   'closed_by',
@@ -354,8 +402,6 @@ var yd = $GetBusinessObject('INCIDENT', id, [
   'assignee_person_id',
   't_complaint_form_no'
 ])
-$Print('debug29 yd=' + yd)
-$Print('debug29 yd-t_complaint_form_no=' + yd['t_complaint_form_no'])
 
 var draftType = ''
 if (yd && yd.service_item_id == '6282996241634467844163446784') {
@@ -363,7 +409,6 @@ if (yd && yd.service_item_id == '6282996241634467844163446784') {
   draftType = 'create_ts_sy'
 }
 
-$Print('溯源单debug-draftType：' + draftType)
 if (draftType) {
   var arr = [
     't_short_description',
@@ -381,7 +426,7 @@ if (draftType) {
     't_sy_attech',
     't_remark_instruction'
   ]
-  $Print('debug29 incidentId=' + id)
+
   /* 查询当前单据-当前登录人-发起沟通时存的所有有效状态草稿 并且取最新的那条*/
   var drafts = $SearchBusinessObject(
     'INCIDENT_DRAFT',
@@ -394,23 +439,13 @@ if (draftType) {
     },
     arr
   )
-  $Print('debug29 drafts=' + drafts)
 
   var record = null
   if (drafts && drafts.length > 0) {
     record = drafts[0]
   }
 
-  $Print('debug29 record=' + record)
-  $Print('溯源单debug-record：' + record)
-  $Print('溯源单debug-id：' + id)
   if (record && id) {
-    $Print('debug29 record!=NULL')
-    $Print('debug29 t_assignee_person_id=' + record['t_assignee_person_id'])
-    $Print(
-      'debug29 t_assignee_person_id:real_name=' +
-      record['t_assignee_person_id:real_name']
-    )
 
     var obj = {
       id: id,
@@ -434,19 +469,20 @@ if (draftType) {
       t_ocms: record['t_ocms'],
       't_ocms:t_name': record['t_ocms:t_name'],
       t_sy_attech: record['t_sy_attech'],
-      t_remark_instruction: record['t_remark_instruction']
+      t_remark_instruction: record['t_remark_instruction'],
     }
-    $Print('debug29 STR obj', JSON.stringify(obj))
+
     return obj
   }
 }
+
 function findEnabledPerson (personId, flag, key) {
   var userGroup = $GetBusinessObject('IAM_USER_GROUP', '741367889857609728', [
     'owner_id',
     'name',
     'owner_id:real_name'
   ])
-  $Print('userGroup===', userGroup)
+
   var ownerObj = {
     id: userGroup['owner_id'],
     name: userGroup['owner_id:real_name']
@@ -468,21 +504,19 @@ function findEnabledPerson (personId, flag, key) {
       } // 人员不存在
     }
   }
-  $Print('person=====', person)
+
   if (person.is_enabled) {
     return {
       id: person[key],
       name: person[key + ':real_name']
     } // 直接返回可用的人员ID
   } else {
-    $Print('===falsePerson=====')
     var handoverList =
       $SearchBusinessObject(
         'HANDOVER_FORM',
         { t_transferor: personId, t_handover_status: 'true' },
         ['t_handover_person', 't_handover_person:real_name']
       ) || []
-    $Print('handoverList=====', handoverList)
     if (handoverList.length > 0) {
       var handOver = $GetBusinessObject(
         'IAM_USER',
@@ -496,7 +530,7 @@ function findEnabledPerson (personId, flag, key) {
           key + ':real_name'
         ]
       )
-      $Print('handOver=====', handOver)
+
       if (handOver.is_enabled) {
         if (handOver[key]) {
           return {
@@ -539,19 +573,97 @@ function findEnabledPerson (personId, flag, key) {
     } // 没有找到可用的人员
   }
 }
-$Print('溯源单debug-id2：', id)
+
 if (id) {
-  $Print('debug40 personData=' + id)
+
   var personData = $GetBusinessObject('INCIDENT', id, [
     'assignee_person_id',
     'assignee_person_id:real_name',
     'closed_by:director_id',
     'closed_by:director_id:real_name',
     'closed_by:real_name',
-    'assignee_person_id:department_id:parent_id:t_p_dept_desc_shrt'
+    'assignee_person_id:department_id:parent_id:t_p_dept_desc_shrt',
+    't_traceability_plant'
   ])
 
-  $Print('溯源单debug-personData：', personData)
+  // 声明生产日期
+  var t_production_date = '';
+  // 是否全等
+  var productFlag = true;
+  // 箱二维码
+  var boxQrList = $SearchBusinessObject(
+    'DEALER_COMPLAINT_QRCODE',
+    { t_t_incident_id: id },
+    ['t_product_time']
+  );
+  // 瓶听二维码
+  var bottleQrList = $SearchBusinessObject(
+    'DEALER_COMPLAINT_BOTTLE_QRCODE',
+    { t_t_incident_id: id },
+    ['t_product_time']
+  );
+  // 箱喷码
+  var boxInkList = $SearchBusinessObject(
+    'DEALER_COMPLAINT_INCODE',
+    { t_t_incident_id: id },
+    ['t_case_serial_numbers']
+  );
+  // 瓶听喷码
+  var bottleInkList = $SearchBusinessObject(
+    'DEALER_COMPLAINT_BOTTLE_INKJETCODE',
+    { t_t_incident_id: id },
+    ['t_bottle_serial_numbers']
+  );
+
+  for (var i = 0;i < boxQrList.length;i++) {
+    if (t_production_date === '') {
+      t_production_date = boxQrList[i].t_product_time
+    }
+    if (t_production_date !== boxQrList[i].t_product_time) {
+      productFlag = false
+    }
+  }
+
+  for (var i = 0;i < bottleQrList.length;i++) {
+    if (t_production_date === '') {
+      t_production_date = bottleQrList[i].t_product_time
+    }
+    if (t_production_date !== bottleQrList[i].t_product_time) {
+      productFlag = false
+    }
+  }
+
+  for (var i = 0;i < boxInkList.length;i++) {
+    if (t_production_date === '') {
+      t_production_date = boxInkList[i].t_case_serial_numbers
+    }
+    if (t_production_date !== boxInkList[i].t_case_serial_numbers) {
+      productFlag = false
+    }
+  }
+
+  for (var i = 0;i < bottleInkList.length;i++) {
+    if (t_production_date === '') {
+      t_production_date = bottleInkList[i].t_bottle_serial_numbers
+    }
+    if (t_production_date !== bottleInkList[i].t_bottle_serial_numbers) {
+      productFlag = false
+    }
+  }
+
+  if (productFlag && t_production_date) {
+    function formatDate (dateStr) {
+      try {
+        return dateStr.replace(/^(\d{4})(\d{2})(\d{2})$/, '$1-$2-$3');
+      } catch (err) {
+        return ''
+      }
+    }
+    t_production_date = formatDate(t_production_date + '');
+  } else {
+    t_production_date = ''
+  }
+
   if (personData) {
     var drafData = findEnabledPerson(
       personData['assignee_person_id'],
@@ -559,20 +671,27 @@ if (id) {
       'director_id'
     )
 
-    $Print('溯源单debug-drafData：', drafData)
     if (drafData.id) {
       return {
         id: id,
         t_advice: '',
         assignee_person_id: drafData.id,
-        'assignee_person_id:real_name': drafData.name
+        'assignee_person_id:real_name': drafData.name,
+        t_traceability_plant: personData.t_traceability_plant,
+        t_production_date: t_production_date,
+        t_whether_traceability: t_whether_traceability,
+        t_can_auto_close_data: t_can_auto_close_data
       }
     } else {
       return {
         id: id,
         t_advice: '',
         assignee_person_id: '',
-        'assignee_person_id:real_name': ''
+        'assignee_person_id:real_name': '',
+        t_traceability_plant: personData.t_traceability_plant,
+        t_production_date: t_production_date,
+        t_whether_traceability: t_whether_traceability,
+        t_can_auto_close_data: t_can_auto_close_data
       }
     }
   } else {
@@ -580,7 +699,10 @@ if (id) {
       id: id,
       t_advice: '',
       assignee_person_id: '',
-      'assignee_person_id:real_name': ''
+      'assignee_person_id:real_name': '',
+      t_production_date: t_production_date,
+      t_whether_traceability: t_whether_traceability,
+      t_can_auto_close_data: t_can_auto_close_data
     }
   }
 }

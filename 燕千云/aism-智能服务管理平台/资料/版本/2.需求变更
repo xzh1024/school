@@ -1,0 +1,13 @@
+SYSTEM,OPTION_VALUE_1,OPTION_VALUE_2
+一、服务项
+开发需求提报(先审批后开发）
+可见属性控制、必填属性控制、编辑属性控制
+默认值 "SYSTEM,OPTION_VALUE_1,OPTION_VALUE_2" 改为 "SYSTEM"
+
+
+
+服务项审批/分单
+
+
+
+1.动作管理

@@ -140,7 +140,7 @@ var paramsArr = [
   't_dm_approval', // 直属上级审批
   // 'state_id', // 状态
   // 'submitted_by', // 提单人
-  't_previous_processor', // 上一处理人
+  // 't_previous_processor', // 上一处理人
   't_previous_state', // 上一状态
   // 't_submitted_by_department_one', // 提单人所属部门
   // 默认Section
@@ -166,12 +166,13 @@ var createParams = {
   parent_id: incidentId, // 父级事件单
   service_item_id: '628299624163446784', // 服务项：投诉单
   state_id: '632615169130496000', // 状态：直属上级审批中
-  submitted_by: userId, // 提单人-当前用户
+  submitted_by: userId, // 提单人: 当前用户
   service_catalog_id: '628299591038795776', // 服务目录：投诉单
   't_business_department_contacts:real_name':
     fd['t_business_department_contacts:real_name'], // 业务部联络人姓名
   t_submitted_by_department_one: t_submitted_by_department_one, // 提单人所属部门
   t_approval_history: '632606333061562368:' + userId + ':1', // 审批历史
+  t_previous_processor: userId, // 上一处理人: 当前用户
 }
 var managerData = getManagerData(userId)
 
@@ -328,7 +329,7 @@ var list4 = $SearchBusinessObject(
   },
   [
     't_bottle_serial_numbers', // 瓶 / 听喷码
-    't_inkjet_image', // 喷码图片
+    't_t_inkjet_image', // 喷码图片
     't_qr_code_value1' // 二维码码值
   ]
 )
@@ -338,7 +339,7 @@ if (list4 && list4.length) {
     var newData = {
       t_t_incident_id: orderId, // 事件单id
       t_bottle_serial_numbers: itemData['t_bottle_serial_numbers'], // 溯源编码
-      t_inkjet_image: itemData['t_inkjet_image'], // 二维码图片
+      t_t_inkjet_image: itemData['t_t_inkjet_image'], // 二维码图片
       t_qr_code_value1: itemData['t_qr_code_value1'], // 二维码码值
       _status: 'create'
     }
@@ -381,7 +382,7 @@ if (tabls && tabls.length > 0) {
 }
 // 投诉单 终端明细
 if (terminalDetailsList && terminalDetailsList.length) {
-  terminalDetailsList.forEach(function (item) {
+  terminalDetailsList.forEach(function (item, index) {
     submitByCode('COMPLAINT_TERMINAL_DETAILS', {
       _status: 'create',
       t_incident_id: orderId,
