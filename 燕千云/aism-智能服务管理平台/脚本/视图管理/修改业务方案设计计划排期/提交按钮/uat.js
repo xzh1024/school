@@ -31,8 +31,8 @@ var updateParams = {
 var startTimestamp = new Date(startDate + ' 00:00:00').getTime() // 开始时间戳
 var nowTimestamp = new Date().getTime() // 当前时间戳
 if (nowTimestamp >= startTimestamp) {
-    updateParams.state_id = '784793902370148352' // 方案设计中
-    updateParams.t_business_actual_start_date = $GetCurrentDate() // 获取当前日期对应的字符串，格式固定为yyyy-MM-dd
+    updateParams.state_id = '784793902370148352' // 业务方案设计中
+    updateParams.t_business_actual_start_date = $GetCurrentDate() // 业务方案实际开始日期
 }
 submitByCode('INCIDENT', updateParams)
 

@@ -6,6 +6,8 @@
 */
 var creationDate = $GetValue('creation_date');
 
+$Print('开发排序-creationDate:', creationDate);
+
 var list = $SearchBusinessObject(
     'TAPD_REQUIRE', // 开发需求提报（人力）-TAPD需求表
     {
@@ -21,19 +23,21 @@ var list = $SearchBusinessObject(
 )
 
 list.sort(function (a, b) {
-    var date1 = a.creation_date,
-        date2 = b.creation_date;
-    if (date1 === date2) {
-        return b.number - a.number;
-    }
+    var date1 = a.creation_date ? new Date(a.creation_date).getTime() : a.creation_date,
+        date2 = b.creation_date ? new Date(b.creation_date).getTime() : b.creation_date;
     return date1 - date2; // 从小到大排序
 });
+$Print('开发排序-list:', list);
+$Print('开发排序-list-length:', list.length);
 
 for (var i = 0;i < list.length;i++) {
     var item = list[i];
     if (item.creation_date >= creationDate) {
+
+        $Print('开发排序-100:', i + 1);
         return i + 1
     }
 }
+$Print('开发排序-200:', list.length || 1);
 
 return list.length || 1;

@@ -20,20 +20,21 @@ var list = $SearchBusinessObject(
     ]
 )
 
-list.sort(function (a, b) {
-    var date1 = a.creation_date,
-        date2 = b.creation_date;
-    if (date1 === date2) {
-        return b.number - a.number;
-    }
-    return date1 - date2; // 从小到大排序
-});
+if (list && list.length > 0) {
+    list.sort(function (a, b) {
+        var date1 = a.creation_date ? new Date(a.creation_date).getTime() : a.creation_date,
+            date2 = b.creation_date ? new Date(b.creation_date).getTime() : b.creation_date;
+        return date1 - date2; // 从小到大排序
+    });
 
-for (var i = 0;i < list.length;i++) {
-    var item = list[i];
-    if (item.creation_date >= creationDate) {
-        return i + 1
+    for (var i = 0;i < list.length;i++) {
+        var item = list[i];
+        if (item.creation_date >= creationDate) {
+            return i + 1
+        }
     }
+
+    return list.length;
 }
 
-return list.length || 1;
+return 1;

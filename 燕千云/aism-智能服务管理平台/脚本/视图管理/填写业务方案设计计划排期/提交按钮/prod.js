@@ -32,8 +32,8 @@ var startTimestamp = new Date(startDate + ' 00:00:00').getTime() // 开始时间
 var nowTimestamp = new Date().getTime() // 当前时间戳
 if (nowTimestamp >= startTimestamp) {
     // 跳过‘业务方案设计待开始’直接到‘业务方案设计中’
-    updateParams.state_id = '796727302336151552' // 方案设计中
-    updateParams.t_business_actual_start_date = $GetCurrentDate() // 获取当前日期对应的字符串，格式固定为yyyy-MM-dd
+    updateParams.state_id = '796727302336151552' // 业务方案设计中
+    updateParams.t_business_actual_start_date = $GetCurrentDate() // 业务方案实际开始日期
     submitByCode('INCIDENT', updateParams)
     $Invoke('yqcloud-external', 'SendTodoInvoker', JSON.stringify({
         id: id,
