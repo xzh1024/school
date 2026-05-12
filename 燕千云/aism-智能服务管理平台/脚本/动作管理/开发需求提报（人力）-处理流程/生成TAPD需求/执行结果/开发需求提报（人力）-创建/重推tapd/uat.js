@@ -2,18 +2,22 @@
  * @Author: yangluxi
  * @Date: 2025-12-22 13:13:19
  * @LastEditors: yangluxi
- * @LastEditTime: 2026-01-08 09:44:22
+ * @LastEditTime: 2026-01-06 14:48:55
  * @FilePath: /script_backups_code/AISM_UAT/开发需求提报（人力）/创建tapd.js
  * @Description: 
  */
 
 var incidentId = $GetValue("_parentId") || $GetValue("id");
-var incident = $GetBusinessObject('INCIDENT', incidentId, ['assignee_person_id', 't_tapd_project_name', 't_copy_sign', 't_hr_type', 'parent_id']);
+
+var fieldsArr = [
+    'assignee_person_id', // 当前处理人
+    't_tapd_project_name', // TAPD项目名称
+    't_copy_sign', // 复制工单标识
+    'parent_id', // 父级事件单
+]
+var incident = $GetBusinessObject('INCIDENT', incidentId, fieldsArr);
 var projectNumber = $GetValue("t_tapd_project_name") || incident['t_tapd_project_name'];
 var requirementName = $GetValue('t_tapd_requirement_name') || ($GetValue('number') + ' ' + $GetValue('short_description')); // 需求名称
-
-$Print('debug004 tapd incidentId', incidentId);
-$Print('debug004 tapd incident', incident);
 var ids = [];
 if (incident['t_copy_sign'] && incident['parent_id']) {
     /* 查询变更子表信息 */
@@ -27,7 +31,6 @@ if (incident['t_copy_sign'] && incident['parent_id']) {
             't_pause_reason',
         ]
     );
-    $Print('debug004 tapd changeInfos', changeInfos);
     if (changeInfos.length > 0) {
         changeInfos.forEach(function (item) {
             ids.push(item['id']);
@@ -40,17 +43,22 @@ var params = JSON.stringify({
     projectNumber: projectNumber,
     requirementName: requirementName,
     ids: ids,
+    businessDesc: $GetValue('t_tapd_business_desc'), // 需求概述
+    storyAcceptanceTime: $GetValue('t_tapd_accept_time_hr'), // 需求受理时间
+    storySubmitDepartment: $GetValue('t_tapd_story_submit_department'), // 需求来源部门
+    storySubmitUser: $GetValue('t_tapd_story_submit_user'), // 需求提出人
+    expectCompletionTime: $GetValue('t_tapd_expect_completion_time'), // 期望完成时间
+    businessPriority: $GetValue('t_tapd_priority_hr'), // 紧急度
+    storySource: $GetValue('t_tapd_story_source_hr'), // 需求类型
+    valueType: $GetValue('t_tapd_value_type_hr'), // 价值类型
+    storyPlanUser: $GetValue('t_tapd_story_plan_user'), // 需求对接人
+    storyBa: $GetValue('t_tapd_story_ba'), // BA
 });
-$Print('debug004 params', params);
+$Print("生成tapd需求-params:", params);
 var data = $Invoke('yqcloud-external', "TapdNewInvoker", params);
-
-$Print('debug004 suceess', !data['success']);
-$Print('debug004 suceess', typeof (data['success']));
 
 if (data['success'] === 'false' || data['success'] === false) {
     $SetValue('t_is_create_requirement', 'F');
 } else if (data['success'] === 'true' || data['success'] === true) {
     $SetValue('t_is_create_requirement', 'F');
 }
-
-$Print('debug004 生成tapd, data', data);

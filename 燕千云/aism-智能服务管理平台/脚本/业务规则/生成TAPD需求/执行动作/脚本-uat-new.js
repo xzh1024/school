@@ -30,9 +30,18 @@ if (projectNumber) {
         projectNumber: projectNumber,
         requirementName: requirementName,
         action: "TAPD_CREATE_REQUIREMENT",
+        businessDesc: $GetValue('t_tapd_business_desc'), // 需求概述
+        storyAcceptanceTime: $GetValue('t_tapd_accept_time'), // 需求受理时间
+        storySubmitDepartment: $GetValue('t_tapd_story_submit_department'), // 需求来源部门
+        storySubmitUser: $GetValue('t_tapd_story_submit_user'), // 需求提出人
+        expectCompletionTime: $GetValue('t_tapd_expect_completion_time'), // 期望完成时间
+        businessPriority: $GetValue('t_tapd_priority'), // 紧急度
+        storySource: $GetValue('t_tapd_story_source'), // 需求类型
+        valueType: $GetValue('t_tapd_value_type'), // 价值类型
+        storyPlanUser: $GetValue('t_tapd_story_plan_user'), // 需求对接人
+        storyBa: $GetValue('t_tapd_story_ba'), // BA
     });
+    $Print("生成tapd需求-params:", params);
     var data = $Invoke('yqcloud-external', "TapdInvoker", params);
-
-    $Print('生成tapd需求===, params', params);
-    $Print('生成tapd需求===, data', data);
+    $Print('生成tapd需求-data:', data);
 }

@@ -17,16 +17,16 @@ var fieldsArr = [
 
 
 var curIncident = $GetBusinessObject("INCIDENT", incidentId, fieldsArr);
-$Print('驳回-curIncident:', curIncident);
+$Print('撤回-curIncident:', curIncident);
 
 var stateId = $GetValue("state_id") || curIncident['state_id'];
 var assigneePersonId = $GetValue("assignee_person_id") || curIncident['assignee_person_id'];
 var approvalHistory = $GetValue("t_approval_history") || curIncident['t_approval_history'];
 
 
-$Print('驳回-stateId:', stateId);
-$Print('驳回-assigneePersonId:', assigneePersonId);
-$Print('驳回-approvalHistory:', approvalHistory);
+$Print('撤回-stateId:', stateId);
+$Print('撤回-assigneePersonId:', assigneePersonId);
+$Print('撤回-approvalHistory:', approvalHistory);
 
 
 if (approvalHistory) {
@@ -40,6 +40,9 @@ if (approvalHistory) {
     var newHistory = "";
     for (var i = 0;i < approvalList.length;i++) {
         var list = approvalList[i].split(":");
+        $Print('撤回-approvalHistory:', approvalHistory);
+        $Print('撤回-list:', list);
+        $Print('撤回-list[2]:', list[2]);
         if (list[2] == "1") {
             var checkLastFlag = false;
             if (i == approvalList.length - 1) {
@@ -55,14 +58,11 @@ if (approvalHistory) {
                 flag = true;
                 $SetValue("state_id", list[0]);
                 $SetValue("assignee_person_id", list[1]);
-                handleLastAssigneePerson(approvalList[i - 1]);
                 if (list[1]) {
                     var personData = findEnabledPerson(list[1]);
-                    $Print('驳回-personData:', personData);
-                    $Print('驳回-personData-name:', personData.name);
+                    $Print('撤回-personData-name:', personData.name);
                     if (personData.id) {
                         $SetValue("assignee_person_id", personData.id);
-                        $SetValue("assignee_person_id:real_name", personData.name);
                     } else {
                         $SetValue("assignee_person_id", '');
                     }
@@ -111,18 +111,5 @@ function findEnabledPerson (personId) {
             id: "",
             name: "",
         };
-    }
-}
-
-// 更新 上个处理人
-function handleLastAssigneePerson (data) {
-    var list = data.split(":");
-    if (list && list.length) {
-        var personData = findEnabledPerson(list[1]);
-        if (personData.id) {
-            $SetValue("t_last_assignee_person_id", personData.id);
-        } else {
-            $SetValue("t_last_assignee_person_id", '');
-        }
     }
 }
