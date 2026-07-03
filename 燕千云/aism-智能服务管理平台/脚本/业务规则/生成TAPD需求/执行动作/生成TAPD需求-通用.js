@@ -60,9 +60,8 @@ if (projectNumber) {
     if (expectCompletionTime) {
         params.expectCompletionTime = String(expectCompletionTime);
     }
-    if (curIncident && curIncident['t_sc_item'] === 'JSXQSQ') {
+    if (curIncident && curIncident['t_sc_item'] === 'SC_ITEM_031') {
         params.teachStory = true; // 是否技术需求: 不传，默认就是通用需求。 true 表示技术需求 
-        params.storySource = $GetValue('t_tapd_story_source_js'); // 需求类型
     }
     $Print("生成tapd需求-params:", JSON.stringify(params));
     var data = $Invoke('yqcloud-external', "TapdInvoker", JSON.stringify(params));

@@ -6,7 +6,6 @@
  * @FilePath: /script_backups_code/AISM_UAT/业务规则/生成TAPD需求.js
  * @Description: 
  */
-$Print('生成tapd需求===')
 var incidentId = $GetValue("_parentId") || $GetValue("id");
 var projectNumber = '';
 var projectName = $GetValue('t_tapd_project_name');
@@ -14,13 +13,6 @@ var requirementName = $GetValue('t_tapd_requirement_name') || ($GetValue('number
 
 $Print('生成tapd需求===, projectName', projectName);
 $Print('生成tapd需求===, requirementName:', requirementName);
-
-
-var curIncident = $GetBusinessObject("INCIDENT", incidentId, [
-    "t_sc_item", // 服务类型
-]);
-$Print('生成tapd需求-res:', curIncident);
-$Print('生成tapd需求-res-服务类型:', curIncident['t_sc_item']);
 
 var project = $GetBusinessObject('CRB_PROJECT', projectName, ['t_number', 't_name']);
 
@@ -30,10 +22,10 @@ projectNumber = project['t_number'];
 
 $Print('生成tapd需求===, projectNumber', projectNumber);
 $Print('生成tapd需求-需求受理时间', $GetValue('t_tapd_accept_time'));
-$Print('生成tapd需求-期望完成时间', $GetValue('t_tapd_expect_completion_date'));
+$Print('生成tapd需求-期望完成时间', $GetValue('t_tapd_expect_completion_time'));
 
 var storyAcceptanceTime = $GetValue('t_tapd_accept_time') // 需求受理时间
-var expectCompletionTime = $GetValue('t_tapd_expect_completion_date') // 期望完成时间
+var expectCompletionTime = $GetValue('t_tapd_expect_completion_time') // 期望完成时间
 
 if (projectNumber) {
     var params = {
@@ -45,7 +37,7 @@ if (projectNumber) {
         // storyAcceptanceTime: $GetValue('t_tapd_accept_time'), // 需求受理时间
         storySubmitDepartment: $GetValue('t_tapd_story_submit_department'), // 需求来源部门
         storySubmitUser: $GetValue('t_tapd_story_submit_user'), // 需求提出人
-        // expectCompletionTime: $GetValue('t_tapd_expect_completion_date'), // 期望完成时间
+        // expectCompletionTime: $GetValue('t_tapd_expect_completion_time'), // 期望完成时间
         businessPriority: $GetValue('t_tapd_priority'), // 紧急度
         storySource: $GetValue('t_tapd_story_source'), // 需求类型
         valueType: $GetValue('t_tapd_value_type'), // 价值类型
@@ -59,10 +51,6 @@ if (projectNumber) {
     // 期望完成时间
     if (expectCompletionTime) {
         params.expectCompletionTime = String(expectCompletionTime);
-    }
-    if (curIncident && curIncident['t_sc_item'] === 'JSXQSQ') {
-        params.teachStory = true; // 是否技术需求: 不传，默认就是通用需求。 true 表示技术需求 
-        params.storySource = $GetValue('t_tapd_story_source_js'); // 需求类型
     }
     $Print("生成tapd需求-params:", JSON.stringify(params));
     var data = $Invoke('yqcloud-external', "TapdInvoker", JSON.stringify(params));
