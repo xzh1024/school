@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watchEffect } from 'vue'
+// watchEffect 立即运行一个函数，同时响应式地追踪其依赖，并在依赖更改时重新执行。
 
 let message = ref<string>('hello')
 let message2 = ref<string>('world')
