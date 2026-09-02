@@ -11,8 +11,24 @@
         limit = 2
         add(promiseCreator) {
           /** ... **/
+          this.list.push(promiseCreator)
         }
         // ...
+        list = []
+        async run(promiseCreator) {
+          await promiseCreator()
+          if(this.list.length > 0) {
+            this.run(this.list.shift())
+          }
+          return false;
+        }
+        start() {
+          if(this.list.length === 0) return;
+          const list = this.list || []
+          for(let i = 0; i < this.limit; i++) {
+            this.run(list.shift())
+          }
+        }
       }
       const timeout = (time) =>
         new Promise((resolve) => {
