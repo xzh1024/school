@@ -3,10 +3,12 @@ class Bus {
   constructor() {
     this.callbacks = {}
   }
+  // 订阅
   $on(name, fn) {
     this.callbacks[name] = this.callbacks[name] || []
     this.callbacks[name].push(fn)
   }
+  // 发布
   $emit(name, args) {
     if (this.callbacks[name]) {
       this.callbacks[name].forEach((cb) => cb(args))
